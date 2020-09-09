@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    //movement speed of the player
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        //slow down if neither are 0, sqrt2 movement in both directions. 
-        //0.70710678118 is sqrt(2) / 2
+        //slow down if neither are 0, sqrt2 movement in both directions. 0.70710678118 is sqrt(2) / 2.
+        // Assumes the player is moving in both x and y direction maximum amount (keyboard)
         if (x != 0 && y != 0)
         {
             movement.x = x * 0.70710678118f;
