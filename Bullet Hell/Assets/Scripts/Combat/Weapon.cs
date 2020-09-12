@@ -20,7 +20,11 @@ namespace Combat
         // private float ScheduledTimeOfFire { get; set; }
         private bool WaitingToFire { get; set; }
         private float FireDelay { get; set; }
-        public Ammo CannonAmmo { get; set; }
+        public GameObject CannonAmmo 
+        { 
+            set { this.cannonAmmo = value; }    
+            get { return this.cannonAmmo; }
+        }
 
         public float RateOfFire
         {
@@ -48,7 +52,7 @@ namespace Combat
         void FixedUpdate()
         {
             // Check if spacebar has is being pressed
-            if (Input.GetKeyDown(KeyCode.Space) == true)
+            if (Input.GetKey(KeyCode.Space) == true)
             {
                 this.RequestCannonFire();
             }
@@ -92,7 +96,7 @@ namespace Combat
         {
             try
             {
-
+                
                 var a = this.CannonAmmo.GetComponent<Ammo>();
                 // shoot the 'ammo' straight ahead
                 if (this.bulletSpeed > 0)
