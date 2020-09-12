@@ -954,10 +954,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2056871656207258370, guid: 76464114d5828524182d08aac2be5135, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6145413690389774497, guid: 76464114d5828524182d08aac2be5135, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -1019,10 +1015,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6959100618729470712, guid: a0372c5d716eb9947bb55e083ac5b677, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6959100618729470714, guid: a0372c5d716eb9947bb55e083ac5b677, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.43
