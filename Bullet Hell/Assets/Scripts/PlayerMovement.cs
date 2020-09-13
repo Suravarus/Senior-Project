@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [SerializeField] FieldOfView fieldOfView;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     //inputs are taken once per frame
     void Update()
     {
+        fieldOfView.setOrigin(transform.position);
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         //slow down if neither are 0, sqrt2 movement in both directions. 
