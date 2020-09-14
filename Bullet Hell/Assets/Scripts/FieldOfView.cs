@@ -26,7 +26,7 @@ public class FieldOfView : MonoBehaviour
 
     void LateUpdate()
     {
-        int rayCount = 50;
+        int rayCount = 500;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
         float viewDistance = 15f;
@@ -95,6 +95,7 @@ public class FieldOfView : MonoBehaviour
         this.origin = origin;
     }
 
+    // if we want to change fov
     public void setAimDirection(Vector3 aimDirection)
     {
         startingAngle = getAngleFromVectorFloat(aimDirection) - fov / 2f;
