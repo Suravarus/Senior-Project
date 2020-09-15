@@ -216,6 +216,42 @@ MonoBehaviour:
   _armor: 0
   _baseDamage: 0
   _shield: 0
+--- !u!114 &31688782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31688780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3e9c7757af8274f9f0c0a63113e8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearts:
+  - {fileID: 388545754}
+  - {fileID: 1580458820}
+  - {fileID: 1502839541}
+  - {fileID: 960760736}
+  - {fileID: 447480863}
+  - {fileID: 1784898460}
+  - {fileID: 666332806}
+  - {fileID: 1178072742}
+  - {fileID: 2049187187}
+  - {fileID: 1974130832}
+  - {fileID: 1722837156}
+  - {fileID: 1958288046}
+  - {fileID: 1819710616}
+  - {fileID: 558379221}
+  - {fileID: 1779800380}
+  - {fileID: 688028576}
+  - {fileID: 713824471}
+  - {fileID: 1549476086}
+  - {fileID: 344444959}
+  - {fileID: 131765887}
+  fullHeart: {fileID: 21300000, guid: 8f03d65eca65243d0963f648c2e9824a, type: 3}
+  halfHeart: {fileID: 21300000, guid: af1d44c8d77c341869dcdb0b63c5cff8, type: 3}
+  emptyHeart: {fileID: 21300000, guid: f741e82cd77978644bc121fe1de4da49, type: 3}
 --- !u!1 &131765885
 GameObject:
   m_ObjectHideFlags: 0
