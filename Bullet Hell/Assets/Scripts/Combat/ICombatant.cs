@@ -8,11 +8,6 @@ namespace Combat
         /// <summary>Handle taking damage.</summary>
         void TakeDamage(int damage);
 
-        /// <summary>Any retaliation that happens during TakeDamage() method.</summary>
-        void Retaliate(ref Combatant enemy);
-
-        void Attack(ref Combatant enemy);
-
         /// <summary>Handle death. Should destroy <c>GameObject</c>.</summary>
         void Die();
 

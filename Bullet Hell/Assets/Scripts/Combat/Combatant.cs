@@ -102,10 +102,32 @@ namespace Combat
         ArrayList Buffs { get; set; }
 
         // ---------- Monobehaviour code --------------
+
+        // ALGORITHM:
+        // - CHECK for Collider2D Component
+        // - SET Combat parameters
         public virtual void Awake()
         {
-            // set combat parameters so that the
-            // accessor can validate the data.
+            // CHECK for Collider2D Component -----------------
+            var collider = this.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                // IF Collider has not been set as a trigger -> THROW ERR
+                if (!collider.isTrigger)
+                {
+                    var err = new NotSupportedException(
+                        $"{this.GetType().Name} script requires that {collider.GetType().Name}.IsTrigger = true."
+                        + "Please set it via the UnityEditor.");
+                    throw err;
+                }
+            }
+            else // IF Collider component does not exist -> THROW ERR
+            {
+                var err = new MissingComponentException($"Missing component: {new Collider2D().GetType().Name}");
+                throw err;
+            }
+
+            // SET Combat parameters - data will be validated by accessors.
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.Armor = this._armor;
@@ -113,12 +135,7 @@ namespace Combat
             this.BaseDamage = this._baseDamage;
         }
 
-        // -------- IEnemy ------------------
-
-        public virtual void Attack(ref Combatant enemy)
-        {
-            enemy.TakeDamage(this.BaseDamage);
-        }
+        // -------- IEnemy Implementation------------------
 
         /// <summary>
         /// Method that determines how the object takes damage.
@@ -127,16 +144,9 @@ namespace Combat
         public virtual void TakeDamage(int damage)
         {
             this.Health -= damage;
-            if (this.Health == 0)
+            if (this.Health < 1)
                 Die();
         }
-
-        /// <summary>
-        /// (optional) Method used to apply any retaliation affects on the
-        /// attacking object.
-        /// </summary>
-        /// <param name="enemy">Object that is attacking</param>
-        public virtual void Retaliate(ref Combatant enemy) { }
 
         /// <summary>
         /// Default behaviour is to destroy the gameobject.
