@@ -13,29 +13,61 @@ public class Weapon : MonoBehaviour
     [Header("Combat")]
     [Tooltip("Bullets per second")]
     public float rateOfFire = 1f;
-    private float fireDelay;
+    public float range = 1f;
+    private float _fireDelay;
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
     // private float TimeOfFireRequest { get; set; }
     private float TimeSinceFireRequest { get; set; }
     // private float ScheduledTimeOfFire { get; set; }
     private bool WaitingToFire { get; set; }
-    private float FireDelay { get; set; }
+    private float FireDelay 
+    {
+        set
+        {
+            if (value > 0)
+                this._fireDelay = value;
+            else
+                this._fireDelay = 0;
+
+        }
+        get
+        {
+            return this._fireDelay;
+        }
+    }
     public GameObject CannonAmmo
     {
         set { this.cannonAmmo = value; }
         get { return this.cannonAmmo; }
     }
 
-    public float RateOfFire
-    {
-        set { this.rateOfFire = value; }
-        get { return this.rateOfFire; }
-    }
     
+    void Awake()
+    {
+        
+        // check that fire rate has not been set to negative.
+        if (this.rateOfFire <= 0f)
+        {
+            throw new ArgumentOutOfRangeException($"{this.GetType().Name}.{nameof(this.rateOfFire)}"
+                , this.rateOfFire
+                , $"Cannot be <= 0.");
+        }
 
-    // Update is called once per frame
-    void Update()
+        // calculate FireDelay based on rateOfFire
+        this.FireDelay = 0;
+        // set initial parameters.
+        this.TimeSinceFireRequest = 0f;
+        this.WaitingToFire = false;
+
+    }
+
+    private float CalculateDelay()
+    {
+        return (1f / this.rateOfFire);
+    }
+
+    void FixedUpdate()
     {
         //point towards mouse rotating around player
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -43,65 +75,32 @@ public class Weapon : MonoBehaviour
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
-
-    }
-
-    
-    void Awake()
-    {
-        // check that fire rate has not been set to negative.
-        if (this.rateOfFire < 0)
-            throw new ArgumentOutOfRangeException(
-                "Cannon.Awake() - Rate of Fire cannot be < 0."
-            );
-        // calculate FireDelay based on rateOfFire
-        this.FireDelay = (1f / this.rateOfFire);
-        // set initial parameters.
-        //this.LastFiredDeltaTime = 0f;
-        //this.TimeOfFireRequest = 0f;
-        this.TimeSinceFireRequest = 0f;
-        //this.ScheduledTimeOfFire = 0f;
-        this.WaitingToFire = false;
-    }
-
-    void FixedUpdate()
-    {
         // Check if spacebar has is being pressed
-        if (Input.GetKey(KeyCode.Space) == true)
+        if (Input.GetKey(KeyCode.Space))
         {
             this.RequestCannonFire();
         }
-        // update elapsed time
-        this.TimeSinceFireRequest += Time.deltaTime;
-        // check if cannon is waiting to fire
+
         if (this.WaitingToFire)
         {
-            // check if current time == the requested time of fire.
-            if (this.TimeSinceFireRequest >= this.FireDelay)
+            // update elapsed time
+            this.TimeSinceFireRequest += Time.fixedDeltaTime;
+            this.FireDelay -= this.TimeSinceFireRequest;
+            if (this.FireDelay == 0)
             {
-                // fire cannon
-                this.Fire();
-                // reset wait parameters
                 this.WaitingToFire = false;
-                //this.ScheduledTimeOfFire = 0f;
-                //this.TimeOfFireRequest = 0f;
-
             }
         }
     }
 
     public void RequestCannonFire()
     {
-        if (this.FireDelay == 0)
+        if (!this.WaitingToFire)
         {
-            this.Fire();
-        }
-        else if (!this.WaitingToFire)
-        {
-            // set the neccessary parameters for a delayed 'fire'
-            this.TimeSinceFireRequest = 0f;
-            // this.ScheduledTimeOfFire = this.TimeOfFireRequest + this.FireDelay;
             this.WaitingToFire = true;
+            this.Fire();
+            this.FireDelay = this.CalculateDelay();
+            this.TimeSinceFireRequest = Time.deltaTime;
         }
     }
 
@@ -119,9 +118,13 @@ public class Weapon : MonoBehaviour
             if (this.baseDamage > 0)
                 a.baseDamage = this.baseDamage;
 
-            Instantiate(this.CannonAmmo,
-            this.transform.position,
-            this.transform.rotation);
+            a.ammoOwner = this.GetComponentInParent<Combatant>();
+            a.weapon = this;
+
+            var st = this.transform.GetChild(0);
+            Debug.Log($"{st.name}, {st.localScale}");
+
+            Instantiate(this.CannonAmmo, st.position, st.rotation);
         }
 
         catch (Exception ex)
