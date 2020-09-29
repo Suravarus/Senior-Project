@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // FIXME LINE-OF-SITE-TEAM[1] - Is this neccessary? If not, please remove.
     [SerializeField] FieldOfView fieldOfView;
     public float moveSpeed = 5f;
 
@@ -15,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
     //inputs are taken once per frame
     void Update()
-    {
-        fieldOfView.setOrigin(transform.position);
+    { 
+        // FIXME LINE-OF-SITE-TEAM[1] - The following line was commented out as it was causing errors in Unity.
+        // Please check to see if this line is neccessary or if it can be taken out.
+        //
+        //fieldOfView.setOrigin(this.transform.position);
 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
