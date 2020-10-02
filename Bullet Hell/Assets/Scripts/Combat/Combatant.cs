@@ -181,6 +181,15 @@ namespace Combat
             Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform);
         }
 
+        /// <summary>
+        /// Shoots the RangedWeapon. The weapon's rate of fire is taken into account.
+        /// </summary>
+        public void ShootRangedWeapon()
+        {
+            // TODO COMBAT-TEAM[1]
+            this.RangedWeapon.RequestWeaponFire();
+        }
+
         // -------- IEnemy Implementation------------------
 
         /// <summary>
