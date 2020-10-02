@@ -14,6 +14,17 @@ namespace Combat
         // For editor use only. DO NOT USE IN CODE
         public int _shield = 0;
 
+        [Tooltip("Prefab that will serve as the ranged weapon")]
+        public GameObject rangedWeaponWrapper;
+
+        private Weapon _rangedWeapon;
+
+        public Weapon RangedWeapon
+        {
+            set { this._rangedWeapon = value; }
+            get { return this._rangedWeapon; }
+        }
+
         /// <summary>
         /// Current player health.
         /// <list type="bullet">
@@ -106,6 +117,8 @@ namespace Combat
         // ALGORITHM:
         // - CHECK for Collider2D Component
         // - SET Combat parameters
+        // - CHECK for Ranged Weapon Game Object
+        // - SET Combat parameters
         public virtual void Awake()
         {
             // CHECK for Collider2D Component -----------------
@@ -127,12 +140,45 @@ namespace Combat
                 throw err;
             }
 
+            // CHECK for Ranged Weapon Game Object
+            if (this.rangedWeaponWrapper != null)
+            {
+                // Check for Weapon Component on Ranged Weapon Game Object
+                var wp = this.rangedWeaponWrapper.GetComponentInChildren<Weapon>();
+                if (wp != null)
+                {
+                    Debug.Log(wp.gameObject.name);
+                    this.RangedWeapon = wp;
+                } else
+                {
+                    throw new MissingComponentException(
+                        $"The {nameof(this.rangedWeaponWrapper)} property of the {this.GetType().Name}" 
+                        + $" component in {this.gameObject.name} is missing the {new Weapon().GetType().Name} component");
+                }
+            }
+            else
+            {
+                throw new MissingComponentException(
+                    $"Please set the {nameof(this.RangedWeapon)} field for the {this.GetType().Name} " +
+                    $"component of the {this.gameObject.name} GameObject");
+            }
+
             // SET Combat parameters - data will be validated by accessors.
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.Armor = this._armor;
             this.Shield = this._shield;
             this.BaseDamage = this._baseDamage;
+        }
+
+        /// <summary>
+        /// Aims the ranged weapon at the specified target position.
+        /// </summary>
+        /// <param name="targetPosition">The point in world-space at which the target is at.</param>
+        public void AimRangedWeapon(Vector3 targetPosition)
+        {
+            // TODO COMBAT-TEAM[1] - Will there ever be a STATE in which the Player is Disarmed?
+            Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform);
         }
 
         // -------- IEnemy Implementation------------------
@@ -165,6 +211,22 @@ namespace Combat
         public virtual void Respawn(Vector2 spawnPoint)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Rotates the given <c>Transform</c> object around the Z-axis and 
+        /// towards the target vector vector.
+        /// </summary>
+        /// <author>Umair - Combat Team</author>
+        /// <param name="targetVector">Vector that points to the desired target</param>
+        /// <param name="transform">The Transform of the object that is to be rotated</param>
+        public static void RotateTo(Vector3 targetVector, Transform transform)
+        {
+            // Update weapon postion based on player input by pointing towards mouse rotating around player
+            Vector3 difference = targetVector - transform.position;
+            difference.Normalize();
+            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
         }
     }
 }
