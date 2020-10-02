@@ -75,10 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
-  baseDamage: 0
-  bulletSpeed: 55
+  weaponAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
+  baseDamage: 1
+  bulletSpeed: 10
   rateOfFire: 1
+  range: 4
 --- !u!212 &3890707071394072342
 SpriteRenderer:
   m_ObjectHideFlags: 0
