@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Threading;
+﻿
 using UnityEngine;
+using Combat;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +11,23 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     Vector2 movement;
+
+    private Combatant combatant;
+
+    void Awake()
+    {
+        // CHECK for Combatant Component
+        var cb = this.GetComponent<Combatant>();
+        if (cb != null)
+        {
+            this.combatant = cb;
+        }
+        else
+        {
+            throw new MissingReferenceException(
+                $"GameObject {this.gameObject.name} is missing component {new Combatant().GetType().Name}");
+        }
+    }
 
     //inputs are taken once per frame
     void Update()
@@ -38,9 +53,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //called on a timer, not tied to framerate. Called 50 times per second by default.
+    // ALGORITHM:
+    //     MOVE player
+    //     AIM weapon toward mouse location
+    //     SHOOT weapon if spacebar is pressed
     void FixedUpdate()
     {
+        // move player 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        // aim weapon toward mouse location
+        this.combatant.AimRangedWeapon(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+        // Shoot weapon if SPACEBAR is pressed
+        if (Input.GetKey(KeyCode.Space))
+        {
+            this.combatant.RangedWeapon.RequestWeaponFire();
+        }
     }
 }
