@@ -1,13 +1,11 @@
 using Combat;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class Weapon : MonoBehaviour
 {
     [Header("Ammo")]
-    public GameObject cannonAmmo;
+    public GameObject weaponAmmo;
     public int baseDamage;
     public float bulletSpeed;
     [Header("Combat")]
@@ -36,10 +34,10 @@ public class Weapon : MonoBehaviour
             return this._fireDelay;
         }
     }
-    public GameObject CannonAmmo
+    public GameObject WeaponAmmo
     {
-        set { this.cannonAmmo = value; }
-        get { return this.cannonAmmo; }
+        set { this.weaponAmmo = value; }
+        get { return this.weaponAmmo; }
     }
 
     
@@ -67,38 +65,40 @@ public class Weapon : MonoBehaviour
         return (1f / this.rateOfFire);
     }
 
+    // ALGORITHM:
+    //   IF the weapon is waiting to fire:
+    //     UPDATE elapsed time since the last shot was fired
+    //     SUBTRACT elapsed time from FireDelay
+    //     IF FireDelay is 0:
+    //       SET WaitingToFire = FALSE
     void FixedUpdate()
     {
-        //point towards mouse rotating around player
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        difference.Normalize();
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
-
-        // Check if spacebar has is being pressed
-        if (Input.GetKey(KeyCode.Space))
-        {
-            this.RequestCannonFire();
-        }
-
+        // IF the weapon is waiting to fire:
         if (this.WaitingToFire)
         {
-            // update elapsed time
+            // UPDATE elapsed time since the last shot was fired
             this.TimeSinceFireRequest += Time.fixedDeltaTime;
+            // SUBTRACT elapsed time from FireDelay
             this.FireDelay -= this.TimeSinceFireRequest;
+            // IF FireDelay is 0:
             if (this.FireDelay == 0)
             {
+                // SET WaitingToFire = FALSE
                 this.WaitingToFire = false;
             }
         }
     }
 
-    public void RequestCannonFire()
+    /// <summary>
+    ///  Shoots the weapon taking into account the weapon's rate of fire.
+    /// </summary>
+    /// <author>Johnny Chavez - Combat Team</author>
+    public void RequestWeaponFire()
     {
         if (!this.WaitingToFire)
         {
             this.WaitingToFire = true;
-            this.Fire();
+            this.Shoot();
             this.FireDelay = this.CalculateDelay();
             this.TimeSinceFireRequest = Time.deltaTime;
         }
@@ -106,12 +106,12 @@ public class Weapon : MonoBehaviour
 
     /// <summary> fire cannon.</summary>
     /// <exception> Is Ammo NULL? </exception>
-    private void Fire()
+    private void Shoot()
     {
         try
         {
 
-            var a = this.CannonAmmo.GetComponent<Ammo>();
+            var a = this.WeaponAmmo.GetComponent<Ammo>();
             // shoot the 'ammo' straight ahead
             if (this.bulletSpeed > 0)
                 a.speed = this.bulletSpeed + 10;
@@ -124,7 +124,7 @@ public class Weapon : MonoBehaviour
             var st = this.transform.GetChild(0);
             Debug.Log($"{st.name}, {st.localScale}");
 
-            Instantiate(this.CannonAmmo, st.position, st.rotation);
+            Instantiate(this.WeaponAmmo, st.position, st.rotation);
         }
 
         catch (Exception ex)
