@@ -36,7 +36,6 @@ namespace Combat
             }
 
             // TODO COMBAT-TEAM[2] check that all properties have been set.
-            Debug.Log($"Ammo owner is {this.ammoOwner.name}");
         }
 
         // ALGORITHM:
@@ -75,7 +74,6 @@ namespace Combat
         void OnTriggerEnter2D(Collider2D collisionInfo)
         {
             // PRINT Debug collision info
-            Debug.Log($"{this.GetType().Name} - {this.gameObject.name} collided with {collisionInfo.name}");
             // GET enemy combatant from the collisionInfo
             var enemy = collisionInfo.GetComponent<Combatant>();
             // IF collided with enemy<Combatant> that does not own this ammo: 
@@ -85,7 +83,6 @@ namespace Combat
                 {
                     // DO damage to enemy
                     enemy.TakeDamage(this.baseDamage);
-                    Debug.Log($"{this.GetType().Name}: enemy health is " + enemy._health);
                     Destroy(this.gameObject);
                 }
             } else
