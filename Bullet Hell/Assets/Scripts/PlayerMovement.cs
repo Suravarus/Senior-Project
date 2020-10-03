@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         // Shoot weapon if SPACEBAR is pressed
         if (Input.GetKey(KeyCode.Space))
         {
-            this.combatant.RangedWeapon.RequestWeaponFire();
+            this.combatant.ShootRangedWeapon();
         }
     }
 }
