@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1336329747428619614}
   - component: {fileID: 1336329747428619615}
   - component: {fileID: -6021147437501406100}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 13
   baseDamage: 1
   ammoOwner: {fileID: 0}
   weapon: {fileID: 0}
@@ -132,7 +132,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

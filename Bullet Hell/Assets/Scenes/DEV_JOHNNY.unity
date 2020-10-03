@@ -779,6 +779,10 @@ PrefabInstance:
       propertyPath: rateOfFire
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7972298592708067806, guid: 9e4560c5e2080b14a845d8370f8e0a3f, type: 3}
+      propertyPath: range
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8040880550500251356, guid: 9e4560c5e2080b14a845d8370f8e0a3f, type: 3}
       propertyPath: rangedWeaponGameObject
       value: 

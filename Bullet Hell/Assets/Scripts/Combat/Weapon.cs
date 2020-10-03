@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     [Header("Combat")]
     [Tooltip("Bullets per second")]
     public float rateOfFire = 1f;
-    public float range = 1f;
+    public float range = 3f;
     private float _fireDelay;
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
