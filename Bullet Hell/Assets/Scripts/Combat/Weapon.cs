@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     public float range = 3f;
     private float _fireDelay;
     public int ammoType = 0;
+    public bool infAmmo = false;
     
 
     // will keep track of the last time this weapon 'fired'
@@ -129,7 +130,11 @@ public class Weapon : MonoBehaviour
             //Debug.Log($"{st.name}, {st.localScale}");
 
             //Use bullets linked to weapon type
-            if (this.ammoType == 0)
+            if (infAmmo)
+            {
+                Instantiate(this.WeaponAmmo, st.position, st.rotation);
+            }
+            else if (this.ammoType == 0)
             {
                 if (this.weaponOwner.smallAmmo > 0)
                 {
@@ -156,7 +161,6 @@ public class Weapon : MonoBehaviour
                     this.weaponOwner.largeAmmo -= 1;
                 }
             }
-            
         }
 
         catch (Exception ex)

@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: rangedWeaponWrapper
       value: 
       objectReference: {fileID: 1181274016}
+    - target: {fileID: 8040880550500251356, guid: 9e4560c5e2080b14a845d8370f8e0a3f, type: 3}
+      propertyPath: smallAmmo
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e4560c5e2080b14a845d8370f8e0a3f, type: 3}
 --- !u!1 &1181274016 stripped
@@ -899,6 +903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 180859023769436941, guid: b8fd7849bbe9c9e4bacb33c879b5bfce, type: 3}
+      propertyPath: smallAmmo
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 1117947693627065857, guid: b8fd7849bbe9c9e4bacb33c879b5bfce, type: 3}
       propertyPath: playerRB
       value: 
