@@ -10,8 +10,8 @@ public class Weapon : MonoBehaviour
     public float bulletSpeed;
     [Header("Combat")]
     [Tooltip("Bullets per second")]
-    public float rateOfFire = 1f;
-    public float range = 3f;
+    public float rateOfFire = 1f; // DEFAULT - modify this threw Unity and not here
+    public float range = 1f; // DEFAULT - modify this threw Unity and not here
     private float _fireDelay;
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     private float TimeSinceFireRequest { get; set; }
     // private float ScheduledTimeOfFire { get; set; }
     private bool WaitingToFire { get; set; }
-    private float FireDelay 
+    private float FireDelay
     {
         set
         {
@@ -40,10 +40,10 @@ public class Weapon : MonoBehaviour
         get { return this.weaponAmmo; }
     }
 
-    
+
     void Awake()
     {
-        
+
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
         {
@@ -133,5 +133,5 @@ public class Weapon : MonoBehaviour
                 "Weapon.Fire() - has Ammo been set?", ex);
         }
     }
-    
+
 }
