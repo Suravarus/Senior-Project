@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [Header("Ammo")]
     public GameObject weaponAmmo;
+    public Combatant weaponOwner;
     public int baseDamage;
     public float bulletSpeed;
     [Header("Combat")]
@@ -13,6 +14,9 @@ public class Weapon : MonoBehaviour
     public float rateOfFire = 1f;
     public float range = 3f;
     private float _fireDelay;
+    public int ammoType = 0;
+    
+
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
     // private float TimeOfFireRequest { get; set; }
@@ -43,7 +47,7 @@ public class Weapon : MonoBehaviour
     
     void Awake()
     {
-        
+        weaponOwner = this.GetComponentInParent<Combatant>();
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
         {
@@ -97,6 +101,7 @@ public class Weapon : MonoBehaviour
     {
         if (!this.WaitingToFire)
         {
+            Debug.Log("Fired!");
             this.WaitingToFire = true;
             this.Shoot();
             this.FireDelay = this.CalculateDelay();
@@ -110,7 +115,6 @@ public class Weapon : MonoBehaviour
     {
         try
         {
-
             var a = this.WeaponAmmo.GetComponent<Ammo>();
             // shoot the 'ammo' straight ahead
             if (this.bulletSpeed > 0)
@@ -122,9 +126,37 @@ public class Weapon : MonoBehaviour
             a.weapon = this;
 
             var st = this.transform.GetChild(0);
-            Debug.Log($"{st.name}, {st.localScale}");
+            //Debug.Log($"{st.name}, {st.localScale}");
 
-            Instantiate(this.WeaponAmmo, st.position, st.rotation);
+            //Use bullets linked to weapon type
+            if (this.ammoType == 0)
+            {
+                if (this.weaponOwner.smallAmmo > 0)
+                {
+                    //Debug.Log("Small ammo fired");
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
+                    this.weaponOwner.smallAmmo = this.weaponOwner.smallAmmo - 1;
+                }
+            }
+            else if (this.ammoType == 1)
+            {
+                if (this.weaponOwner.mediumAmmo > 0)
+                {
+                    //Debug.Log("Medium ammo fired");
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
+                    this.weaponOwner.mediumAmmo -= 1;
+                }
+            }
+            else if (this.ammoType == 2)
+            {
+                if (this.weaponOwner.largeAmmo > 0)
+                {
+                    //Debug.Log("Large ammo fired");
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
+                    this.weaponOwner.largeAmmo -= 1;
+                }
+            }
+            
         }
 
         catch (Exception ex)
