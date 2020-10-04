@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3180103725296446142}
   - component: {fileID: 2387130654419103666}
   m_Layer: 0
-  m_Name: Enemy1_v3
+  m_Name: PossesedAncient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   playerRB: {fileID: 0}
+  rangedWeaponWrapper: {fileID: 0}
 --- !u!114 &2387130654419103666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,11 +161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3730b3d493b614282adc6082bdc40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
-  _maxHealth: 10
+  _health: 100
+  _maxHealth: 200
   _armor: 0
   _baseDamage: 0
   _shield: 0
+  smallAmmo: 0
+  mediumAmmo: 0
+  largeAmmo: 0
   rangedWeaponWrapper: {fileID: 7063365860875830339}
 --- !u!1 &7063365860875830339
 GameObject:
