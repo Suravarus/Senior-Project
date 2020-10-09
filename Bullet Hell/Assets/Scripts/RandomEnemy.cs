@@ -9,10 +9,10 @@ public class RandomEnemy : MonoBehaviour
      int xPos;
      int yPos;
      int enemyCount;
-    public int xMapMin;
-    public int xMapMax;
-    public int yMapMin;
-    public int yMapMax;
+    public int xMapMin = -10;
+    public int xMapMax = 10;
+    public int yMapMin = -10;
+    public int yMapMax = 10;
 
     // Start is called before the first frame update
     void Start()
