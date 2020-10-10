@@ -14,6 +14,10 @@ namespace Combat
         // For editor use only. DO NOT USE IN CODE
         public int _shield = 0;
 
+        public int smallAmmo = 0;
+        public int mediumAmmo = 0;
+        public int largeAmmo = 0;
+
         [Tooltip("Prefab that will serve as the ranged weapon")]
         public GameObject rangedWeaponWrapper;
 
@@ -187,8 +191,9 @@ namespace Combat
         /// </summary>
         public void ShootRangedWeapon()
         {
-            // TODO COMBAT-TEAM[1]
             this.RangedWeapon.RequestWeaponFire();
+            // TODO COMBAT-TEAM[1]
+            
         }
 
         // -------- IEnemy Implementation------------------

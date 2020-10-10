@@ -9,6 +9,7 @@ public class Enemy1 : MonoBehaviour
     public Rigidbody2D playerRB; //the players rigid 2d
     private Rigidbody2D enemyRB; //the unit which has the script attached
     private Vector2 lookDirection; //enemy vision direction
+    public GameObject rangedWeaponWrapper;
     private Weapon rangedWeapon; // Weapon prefab that should be attached to the mob
     private Combatant combatant;
 
@@ -17,6 +18,7 @@ public class Enemy1 : MonoBehaviour
     // - CHECK for Combatant Component
     private void Awake()
     {
+
         // CHECK for Rigidbody Component -----------------
         var rb = this.GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -44,7 +46,18 @@ public class Enemy1 : MonoBehaviour
                 $"Missing component: {new Combatant().GetType().Name}");
         }
     }
-    
+
+    // ALGORITHM:
+    // - Give Enemy infinite Ammo
+    private void Start()
+    {
+        //get weapon
+        rangedWeapon = this.combatant.GetComponentInChildren<Weapon>();
+
+        //give ammo
+        rangedWeapon.infAmmo = true;
+    }
+
     // ALGORITHM:
     // - CALCULATE lookDirection
     // - IF Player is within range:
