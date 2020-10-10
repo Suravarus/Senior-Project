@@ -118,7 +118,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.036977053, y: -0.073954105}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  playerRB: {fileID: 4229305816417946445, guid: 9e4560c5e2080b14a845d8370f8e0a3f, type: 3}
+  playerRB: {fileID: 0}
 --- !u!114 &180859023769436941
 MonoBehaviour:
   m_ObjectHideFlags: 0
