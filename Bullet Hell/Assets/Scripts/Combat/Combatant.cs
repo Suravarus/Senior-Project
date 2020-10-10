@@ -121,18 +121,19 @@ namespace Combat
         // - SET Combat parameters
         public virtual void Awake()
         {
+            // FIXME [COMBAT-TEAM] *ARROWS SHOULD BE NOT TRIGGER 
             // CHECK for Collider2D Component -----------------
             var collider = this.GetComponent<Collider2D>();
             if (collider != null)
             {
                 // IF Collider has not been set as a trigger -> THROW ERR
-                if (!collider.isTrigger)
-                {
-                    var err = new NotSupportedException(
-                        $"{this.GetType().Name} script requires that {collider.GetType().Name}.IsTrigger = true."
-                        + "Please set it via the UnityEditor.");
-                    throw err;
-                }
+                //if (!collider.isTrigger)
+                //{
+                //    var err = new NotSupportedException(
+                //        $"{this.GetType().Name} script requires that {collider.GetType().Name}.IsTrigger = true."
+                //        + "Please set it via the UnityEditor.");
+                //    throw err;
+                //}
             }
             else // IF Collider component does not exist -> THROW ERR
             {
