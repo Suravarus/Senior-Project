@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomEnemy : MonoBehaviour
 {
-    public Rigidbody2D[] enemy;
+    public Enemy1[] enemy;
     public int EnemyLimit;
      int xPos;
      int yPos;
@@ -25,7 +25,15 @@ public class RandomEnemy : MonoBehaviour
         {
             xPos = Random.Range(xMapMin, xMapMax);
             yPos = Random.Range(yMapMin, yMapMax);
-            Instantiate(enemy[Random.Range(0,2)], new Vector3(xPos, yPos, 0), Quaternion.identity);
+
+            // get player object
+            var player = GameObject.FindObjectOfType<PlayerMovement>();
+            
+            // set playerrb in enemy object
+            var enem = enemy[Random.Range(0, 2)];
+            enem.playerRB = player.rb;
+            
+            Instantiate(enem, new Vector3(xPos, yPos, 0), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
