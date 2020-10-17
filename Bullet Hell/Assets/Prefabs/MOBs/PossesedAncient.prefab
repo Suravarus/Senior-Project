@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2387130654419103666}
   m_Layer: 0
   m_Name: PossesedAncient
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
+  enemyTag: 
   rangedWeaponWrapper: {fileID: 7063365860875830339}
 --- !u!1 &7063365860875830339
 GameObject:

@@ -17,6 +17,7 @@ namespace Combat
         public int smallAmmo = 0;
         public int mediumAmmo = 0;
         public int largeAmmo = 0;
+        public string enemyTag;
 
         [Tooltip("Prefab that will serve as the ranged weapon")]
         public GameObject rangedWeaponWrapper;
@@ -174,6 +175,12 @@ namespace Combat
             this.Armor = this._armor;
             this.Shield = this._shield;
             this.BaseDamage = this._baseDamage;
+
+            //check for enemyTag
+            if (enemyTag != null) {
+                throw new MissingComponentException(
+                    $"EnemyTag is undefined.");
+            }
         }
 
         /// <summary>

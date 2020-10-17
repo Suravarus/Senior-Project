@@ -45,6 +45,9 @@ public class Enemy1 : MonoBehaviour
             throw new MissingComponentException(
                 $"Missing component: {new Combatant().GetType().Name}");
         }
+
+        //set enemyTag
+        this.combatant.enemyTag = "Player";
     }
 
     // ALGORITHM:
