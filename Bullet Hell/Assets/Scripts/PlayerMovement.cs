@@ -4,8 +4,6 @@ using Combat;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // FIXME LINE-OF-SITE-TEAM[1] - Is this neccessary? If not, please remove.
-    [SerializeField] FieldOfView fieldOfView;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -31,11 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     //inputs are taken once per frame
     void Update()
-    { 
-        // FIXME LINE-OF-SITE-TEAM[1] - The following line was commented out as it was causing errors in Unity.
-        // Please check to see if this line is neccessary or if it can be taken out.
-        //
-        //fieldOfView.setOrigin(this.transform.position);
+    {
 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -43,8 +37,10 @@ public class PlayerMovement : MonoBehaviour
         //0.70710678118 is sqrt(2) / 2
         if (x != 0 && y != 0)
         {
-            movement.x = x * 0.70710678118f;
-            movement.y = y * 0.70710678118f;
+            movement.x = x;
+            movement.y = y;
+            if (movement.magnitude > 1)
+                movement = movement.normalized;
         }
         else
         {

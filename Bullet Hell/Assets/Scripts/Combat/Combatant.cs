@@ -59,7 +59,7 @@ namespace Combat
                 if (this._maxHealth < this.Health)
                 {
                     throw new Exception(
-                        $"{nameof(Combatant)}.{nameof(MaxHealth)} must be greated than {nameof(Health)}");
+                        $"{nameof(Combatant)}.{nameof(MaxHealth)} must be greater than {nameof(Health)}");
                 }
             }
 
