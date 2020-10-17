@@ -9,6 +9,7 @@ public class ShooterAI : MonoBehaviour
     public float Max_Dist = 2;
     public float speed = 3f;
     public float nextWaypointDistance = 1f;
+    public bool moving = true;
 
     private Transform target;
     private Vector2 DistanceFromTarget;
@@ -48,39 +49,42 @@ public class ShooterAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (path == null)
-            return;
-
-        if(currentWaypoint >= path.vectorPath.Count)
+        if (moving)
         {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-            reachedEndOfPath = false;
-        //move along path
-        DistanceFromTarget = target.transform.position - transform.position;
-        if (DistanceFromTarget.magnitude > Max_Dist)
-        {//walk towards path if outside of max distance 
+            if (path == null)
+                return;
 
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
+            if (currentWaypoint >= path.vectorPath.Count)
+            {
+                reachedEndOfPath = true;
+                return;
+            }
+            else
+                reachedEndOfPath = false;
+            //move along path
+            DistanceFromTarget = target.transform.position - transform.position;
+            if (DistanceFromTarget.magnitude > Max_Dist)
+            {//walk towards path if outside of max distance 
 
-        }
-        else if (DistanceFromTarget.magnitude < Min_Dist)
-        {//flee if too close
-            rb.MovePosition(rb.position + -DistanceFromTarget.normalized * speed * Time.deltaTime);
-        }
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
 
-        //Vector2 force = direction * speed * Time.fixedDeltaTime;
+            }
+            else if (DistanceFromTarget.magnitude < Min_Dist)
+            {//flee if too close
+                rb.MovePosition(rb.position + -DistanceFromTarget.normalized * speed * Time.deltaTime);
+            }
 
-        //rb.AddForce(force);
+            //Vector2 force = direction * speed * Time.fixedDeltaTime;
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            //rb.AddForce(force);
 
-        if(distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
         }
     }
 }

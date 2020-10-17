@@ -8,8 +8,9 @@ public class ChaserAI : MonoBehaviour
 
     public float speed = 200f;
     public float nextWaypointDistance = 1f;
+    public bool moving = true;
 
-    private Transform target;
+    public Transform target;
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
@@ -46,26 +47,29 @@ public class ChaserAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (path == null)
-            return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
+        if (moving)
         {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-            reachedEndOfPath = false;
-        //move along path
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
+            if (path == null)
+                return;
+
+            if (currentWaypoint >= path.vectorPath.Count)
+            {
+                reachedEndOfPath = true;
+                return;
+            }
+            else
+                reachedEndOfPath = false;
+            //move along path
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            rb.MovePosition(rb.position + direction.normalized * speed * Time.fixedDeltaTime);
 
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
         }
     }
 }
