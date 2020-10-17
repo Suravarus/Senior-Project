@@ -78,8 +78,6 @@ public class Enemy1 : MonoBehaviour
             // SHOOT at the player
             this.combatant.ShootRangedWeapon();
         }
-        //enemyRB.AddForce(lookDirection * speed);
-        //enemyRB.MovePosition(enemyRB.position + lookDirection * speed * Time.fixedDeltaTime);
 
         Debug.DrawLine(playerRB.transform.position, transform.position);
     }
