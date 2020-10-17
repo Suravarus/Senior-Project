@@ -23,7 +23,8 @@ public class ChaserAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Player").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //target = GameObject.Find("Player").GetComponent<Transform>();
         //sets target to the player
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
