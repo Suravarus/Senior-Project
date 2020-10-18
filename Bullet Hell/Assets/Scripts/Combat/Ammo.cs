@@ -79,7 +79,7 @@ namespace Combat
             // IF collided with enemy<Combatant> that does not own this ammo: 
             if (enemy != null)
             {
-                if(enemy.name != this.ammoOwner.name && enemy.tag == this.ammoOwner.enemyTag)
+                if(enemy.name != this.ammoOwner.name && enemy.tag == this.ammoOwner._enemyTag)
                 {
                     // DO damage to enemy
                     enemy.TakeDamage(this.baseDamage);
