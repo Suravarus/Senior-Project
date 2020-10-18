@@ -45,9 +45,6 @@ public class Enemy1 : MonoBehaviour
             throw new MissingComponentException(
                 $"Missing component: {new Combatant().GetType().Name}");
         }
-
-        //set enemyTag
-        this.combatant.enemyTag = "Player";
     }
 
     // ALGORITHM:
@@ -78,8 +75,6 @@ public class Enemy1 : MonoBehaviour
             // SHOOT at the player
             this.combatant.ShootRangedWeapon();
         }
-
-        Debug.DrawLine(playerRB.transform.position, transform.position);
     }
 
 }
