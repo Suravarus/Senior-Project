@@ -14,17 +14,18 @@ public class Enemy1 : MonoBehaviour
     private Combatant combatant;
 
     // ALGORITHM:
-    // - CHECK for Rigidbody Component
+    // - SEARCH for Player's Rigidbody Component
+    // - SET PlayerRB field
     // - CHECK for Combatant Component
     private void Awake()
     {
 
-        // CHECK for Rigidbody Component -----------------
-        var rb = this.GetComponent<Rigidbody2D>();
+        // SEARCH for Player's Rigidbody Component -----------------
+        var rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            // SET enemyRB
-            this.enemyRB = rb;
+            // SET PlayerRB field
+            this.playerRB = rb;
             
         }
         else // IF Rigidbody component does not exist -> THROW ERR
