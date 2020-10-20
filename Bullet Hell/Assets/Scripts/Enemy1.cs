@@ -1,9 +1,13 @@
 ﻿
+using System;
 using UnityEngine;
+
 using Combat;
 
+[Obsolete("Prefabs using this class will soon be deleted. Please use updated Enemy prefabs.")]
 public class Enemy1 : MonoBehaviour
 {
+    
     public float speed = 5f;
 
     public Rigidbody2D playerRB; //the players rigid 2d
@@ -60,21 +64,25 @@ public class Enemy1 : MonoBehaviour
     }
 
     // ALGORITHM:
-    // - CALCULATE lookDirection
-    // - IF Player is within range:
-    // -   AIM at the player
-    // -   SHOOT at the player
+    // - IF Player is Alive
+    // -   CALCULATE lookDirection
+    // -   IF Player is within range:
+    // -     AIM at the player
+    // -     SHOOT at the player
     void FixedUpdate()
     {
-        lookDirection = (playerRB.transform.position - transform.position).normalized;
-        // ATTACK Player if Player is within weapon range
-        if (Mathf.RoundToInt(Vector3.Distance(this.transform.position, this.playerRB.transform.position))  
-            <= this.combatant.RangedWeapon.range + 1) // HACK COMBAT-TEAM[1] +1 to range because is seems shorter otherwise
+        if (this.playerRB.GetComponent<Combatant>().IsAlive())
         {
-            // AIM at the player
-            this.combatant.AimRangedWeapon(this.playerRB.transform.position);
-            // SHOOT at the player
-            this.combatant.ShootRangedWeapon();
+            lookDirection = (playerRB.transform.position - transform.position).normalized;
+            // ATTACK Player if Player is within weapon range
+            if (Mathf.RoundToInt(Vector3.Distance(this.transform.position, this.playerRB.transform.position))
+                <= this.combatant.RangedWeapon.range)
+            {
+                // AIM at the player
+                this.combatant.AimRangedWeapon(this.playerRB.transform.position);
+                // SHOOT at the player
+                this.combatant.ShootRangedWeapon();
+            }
         }
     }
 
