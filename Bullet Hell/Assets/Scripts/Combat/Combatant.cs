@@ -17,7 +17,33 @@ namespace Combat
         public int smallAmmo = 0;
         public int mediumAmmo = 0;
         public int largeAmmo = 0;
-        public string enemyTag;
+        [Tooltip("The tag associated with game objects to which this character should do damage.")]
+        public string _enemyTag = "";
+        public string EnemyTag
+        {
+            set
+            {
+                // CHECK that the tag is defined
+                bool valid = false;
+                foreach (String t in UnityEditorInternal.InternalEditorUtility.tags)
+                {
+                    if (value.Equals(t))
+                        valid = true;
+                }
+                if (!valid)
+                {
+                    // THROW err if value is empty
+                    if (String.IsNullOrEmpty(value))
+                        throw new MissingFieldException(this.GetType().Name, nameof(this.EnemyTag));
+                    
+                    // THROW err if not a valid tag.
+                    throw new Exception($"Value \'{value}\' is not a valid tag.");
+                }
+                    
+            }
+
+            get { return this._enemyTag; }
+        }
 
         [Tooltip("Prefab that will serve as the ranged weapon")]
         public GameObject rangedWeaponWrapper;
@@ -169,18 +195,20 @@ namespace Combat
                     $"component of the {this.gameObject.name} GameObject");
             }
 
+            // CHECK for enemyTag
+            if (_enemyTag.Length < 1)
+            {
+                throw new MissingComponentException(
+                    $"The {nameof(this._enemyTag)} of {this.gameObject.name} has not been set for the {this.GetType().Name} component.");
+            }
+
             // SET Combat parameters - data will be validated by accessors.
+            this.EnemyTag = this._enemyTag;
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.Armor = this._armor;
             this.Shield = this._shield;
             this.BaseDamage = this._baseDamage;
-
-            //check for enemyTag
-            if (enemyTag != null) {
-                throw new MissingComponentException(
-                    $"EnemyTag is undefined.");
-            }
         }
 
         /// <summary>

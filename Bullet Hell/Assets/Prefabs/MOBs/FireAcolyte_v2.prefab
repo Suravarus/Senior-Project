@@ -202,7 +202,7 @@ MonoBehaviour:
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
-  enemyTag: 
+  _enemyTag: Player
   rangedWeaponWrapper: {fileID: 1071461084074795909}
 --- !u!114 &3059381420242753568
 MonoBehaviour:

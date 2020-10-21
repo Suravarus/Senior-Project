@@ -14,17 +14,18 @@ public class Enemy1 : MonoBehaviour
     private Combatant combatant;
 
     // ALGORITHM:
-    // - CHECK for Rigidbody Component
+    // - SEARCH for Player's Rigidbody Component
+    // - SET PlayerRB field
     // - CHECK for Combatant Component
     private void Awake()
     {
 
-        // CHECK for Rigidbody Component -----------------
-        var rb = this.GetComponent<Rigidbody2D>();
+        // SEARCH for Player's Rigidbody Component -----------------
+        var rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            // SET enemyRB
-            this.enemyRB = rb;
+            // SET PlayerRB field
+            this.playerRB = rb;
             
         }
         else // IF Rigidbody component does not exist -> THROW ERR
@@ -45,9 +46,6 @@ public class Enemy1 : MonoBehaviour
             throw new MissingComponentException(
                 $"Missing component: {new Combatant().GetType().Name}");
         }
-
-        //set enemyTag
-        this.combatant.enemyTag = "Player";
     }
 
     // ALGORITHM:
@@ -78,8 +76,6 @@ public class Enemy1 : MonoBehaviour
             // SHOOT at the player
             this.combatant.ShootRangedWeapon();
         }
-
-        Debug.DrawLine(playerRB.transform.position, transform.position);
     }
 
 }
