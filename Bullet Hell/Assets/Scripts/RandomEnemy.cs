@@ -11,11 +11,12 @@ public class RandomEnemy : MonoBehaviour
     public int EnemyLimit;
     int xPos;
     int yPos;
-    int enemyCount;
+    public int enemyCount;
     public int xMapMin = -10;
     public int xMapMax = 10;
     public int yMapMin = -10;
     public int yMapMax = 10;
+    public bool allClear;
  
 
     //private bool SpawnHere;
@@ -23,6 +24,7 @@ public class RandomEnemy : MonoBehaviour
     void Start()
     {
         StartCoroutine(EnemyDrop());
+        //Debug.Log("Tile map size"+wall.cellBounds);
     }
 
     void Update()
@@ -53,13 +55,13 @@ public class RandomEnemy : MonoBehaviour
                 Vector3Int position =new Vector3Int(xPos , yPos, 0);
             if (tilemap.HasTile(position))
             {
-                Debug.Log("no spawn: " + position);
+                //Debug.Log("no spawn: " + position);
             }
             else
             {
                 Instantiate(enem, position, Quaternion.identity);
                 yield return new WaitForSeconds(0.1f);
-                Debug.Log("NO WALL: " + position);
+                //Debug.Log("NO WALL: " + position);
                 enemyCount += 1;
             }
             }
