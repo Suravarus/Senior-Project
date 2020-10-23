@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 2056871656207258370, guid: 76464114d5828524182d08aac2be5135, type: 3}
-  - {fileID: 1092396943132606011, guid: 8a41750b54934a44ca8d69a0e3beeeaf, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   EnemyLimit: 10
   xMapMin: -10
   xMapMax: 10
@@ -5325,7 +5325,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -15, y: -9, z: 0}
   m_Size: {x: 28, y: 19, z: 1}
-  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileAnchor: {x: 0, y: 0, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1

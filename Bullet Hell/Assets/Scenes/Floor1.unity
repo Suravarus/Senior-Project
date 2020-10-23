@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!50 &7156617 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 1117947693627065863, guid: b8fd7849bbe9c9e4bacb33c879b5bfce, type: 3}
-  m_PrefabInstance: {fileID: 2140929908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &567183894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,8 +1341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 7156617}
-  - {fileID: 2056871656207258370, guid: 76464114d5828524182d08aac2be5135, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   EnemyLimit: 2
   xMapMin: -14
   xMapMax: 14
