@@ -102,7 +102,7 @@ public class Weapon : MonoBehaviour
     {
         if (!this.WaitingToFire)
         {
-            Debug.Log("Fired!");
+            //Debug.Log("Fired!");
             this.WaitingToFire = true;
             this.Shoot();
             this.FireDelay = this.CalculateDelay();

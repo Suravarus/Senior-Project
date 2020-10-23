@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneTrans : MonoBehaviour
+public class DontDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,9 @@ public class SceneTrans : MonoBehaviour
     void Update()
     {
         
+    }
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
     }
 }
