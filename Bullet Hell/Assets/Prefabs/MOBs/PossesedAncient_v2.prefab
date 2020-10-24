@@ -42,11 +42,10 @@ GameObject:
   - component: {fileID: 6312442298162353741}
   - component: {fileID: 6312442298162353742}
   - component: {fileID: 6312442298162353743}
-  - component: {fileID: 6312442298162353736}
-  - component: {fileID: 6312442298162353737}
-  - component: {fileID: 6528945128683754309}
   - component: {fileID: 8915917448430493653}
   - component: {fileID: 8915917448430493658}
+  - component: {fileID: 4570616855359894702}
+  - component: {fileID: 7638484586805804672}
   m_Layer: 0
   m_Name: PossesedAncient_v2
   m_TagString: enemy
@@ -141,69 +140,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &6312442298162353736
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312442298162353738}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.036977053, y: -0.073954105}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.9375, y: 2.1875}
-    newSize: {x: 1.9375, y: 2.1875}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4937749, y: 1.7807512}
-  m_EdgeRadius: 0
---- !u!114 &6312442298162353737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312442298162353738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab89c099b98a2048976b7c1da75ced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  playerRB: {fileID: 0}
-  rangedWeaponWrapper: {fileID: 1854830476394428596}
---- !u!114 &6528945128683754309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312442298162353738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3730b3d493b614282adc6082bdc40b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
-  _maxHealth: 200
-  _armor: 0
-  _baseDamage: 0
-  _shield: 0
-  smallAmmo: 0
-  mediumAmmo: 0
-  largeAmmo: 0
-  _enemyTag: Player
-  rangedWeaponWrapper: {fileID: 1854830476394428596}
 --- !u!114 &8915917448430493653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,11 +177,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 6312442298162353738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c1419aa2b67c040bd0110f73040221, type: 3}
+  m_Script: {fileID: 11500000, guid: 1080b713ba4a39c4c8264a1d6b6c3b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   nextWaypointDistance: 1
+--- !u!114 &4570616855359894702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312442298162353738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81756af06c1d6f540a016ff23c07bc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyTag: Player
+  _health: 1
+  _maxHealth: 10
+  smallAmmo: 0
+  mediumAmmo: 0
+  largeAmmo: 0
+  rangedWeaponWrapper: {fileID: 1854830476394428596}
+  passive: 0
+  scanAtStart: 1
+  infinitAmmo: 1
+  speed: 5
+--- !u!70 &7638484586805804672
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312442298162353738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0032689571, y: -0.05962068}
+  m_Size: {x: 1.3556218, y: 1.8067414}
+  m_Direction: 0
 --- !u!1001 &7509806002107016106
 PrefabInstance:
   m_ObjectHideFlags: 0

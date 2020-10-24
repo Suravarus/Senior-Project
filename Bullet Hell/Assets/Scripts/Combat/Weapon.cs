@@ -1,6 +1,8 @@
-using Combat;
+
 using UnityEngine;
 using System;
+
+using Combat;
 
 public class Weapon : MonoBehaviour
 {
@@ -121,7 +123,7 @@ public class Weapon : MonoBehaviour
             if (this.bulletSpeed > 0)
                 a.speed = this.bulletSpeed + 10;
             if (this.baseDamage > 0)
-                a.baseDamage = this.baseDamage;
+                a.damage = this.baseDamage; // FIXME [combat-update IV]
 
             a.ammoOwner = this.GetComponentInParent<Combatant>();
             a.weapon = this;
@@ -170,4 +172,15 @@ public class Weapon : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Returns TRUE if the distance between target and this weapon's
+    /// position is within this weapon's range.
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public Boolean InRange(Vector3 target)
+    {
+        return Vector3.Distance(target
+            , this.transform.position) <= this.range;
+    }
 }

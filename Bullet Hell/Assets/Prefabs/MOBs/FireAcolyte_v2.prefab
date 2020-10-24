@@ -42,11 +42,10 @@ GameObject:
   - component: {fileID: 4681907991325052284}
   - component: {fileID: 4681907991325052287}
   - component: {fileID: 4681907991325052286}
-  - component: {fileID: 4681907991325052281}
-  - component: {fileID: 4681907991325052280}
-  - component: {fileID: 5618327743848925300}
-  - component: {fileID: 3059381420242753568}
-  - component: {fileID: 3673226528462908239}
+  - component: {fileID: 6422697140831921917}
+  - component: {fileID: 1477234538215355611}
+  - component: {fileID: 4687091655848055590}
+  - component: {fileID: 5669170425978868488}
   m_Layer: 0
   m_Name: FireAcolyte_v2
   m_TagString: enemy
@@ -141,33 +140,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &4681907991325052281
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4681907991325052283}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.036977053, y: -0.073954105}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
-    newSize: {x: 1.9375, y: 2.1875}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4937749, y: 1.7807512}
-  m_EdgeRadius: 0
---- !u!114 &4681907991325052280
+--- !u!114 &6422697140831921917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,35 +149,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4681907991325052283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab89c099b98a2048976b7c1da75ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1080b713ba4a39c4c8264a1d6b6c3b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  playerRB: {fileID: 0}
-  rangedWeaponWrapper: {fileID: 1071461084074795909}
---- !u!114 &5618327743848925300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4681907991325052283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3730b3d493b614282adc6082bdc40b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
-  _maxHealth: 100
-  _armor: 0
-  _baseDamage: 0
-  _shield: 0
-  smallAmmo: 0
-  mediumAmmo: 0
-  largeAmmo: 0
-  _enemyTag: Player
-  rangedWeaponWrapper: {fileID: 1071461084074795909}
---- !u!114 &3059381420242753568
+  speed: 2
+  nextWaypointDistance: 1
+--- !u!114 &1477234538215355611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,7 +182,23 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 1
---- !u!114 &3673226528462908239
+--- !u!70 &4687091655848055590
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681907991325052283}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08113067, y: -0.02281793}
+  m_Size: {x: 1.407315, y: 1.5746473}
+  m_Direction: 0
+--- !u!114 &5669170425978868488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,11 +207,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4681907991325052283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c1419aa2b67c040bd0110f73040221, type: 3}
+  m_Script: {fileID: 11500000, guid: 81756af06c1d6f540a016ff23c07bc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  nextWaypointDistance: 1
+  _enemyTag: Player
+  _health: 10
+  _maxHealth: 20
+  smallAmmo: 0
+  mediumAmmo: 0
+  largeAmmo: 0
+  rangedWeaponWrapper: {fileID: 1071461084074795909}
+  passive: 0
+  pacifist: 0
+  scanAtStart: 1
+  infinitAmmo: 1
+  speed: 5
 --- !u!1001 &9176935903880247451
 PrefabInstance:
   m_ObjectHideFlags: 0

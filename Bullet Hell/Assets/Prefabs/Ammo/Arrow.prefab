@@ -118,8 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _InGameName: basic arrow
+  _InGameDescription: Adds 1 ranged damage.
   speed: 13
-  baseDamage: 1
+  damage: 0
   ammoOwner: {fileID: 0}
   weapon: {fileID: 0}
 --- !u!70 &-6021147437501406100
