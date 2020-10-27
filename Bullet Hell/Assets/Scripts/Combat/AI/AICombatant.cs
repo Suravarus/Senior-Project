@@ -12,8 +12,8 @@ namespace Combat.AI
         [Header("Behavior Parameters")]
         [Tooltip("Should this AI only attack if provoked?.")]
         public Boolean passive = false;
-        [Tooltip("Should this AI scan for enemies in Start(). (default = true)")]
-        public Boolean scanAtStart = true;
+        [Tooltip("Should this AI scan for enemies in Start(). (default = false)")]
+        public Boolean scanAtStart = false;
         [Tooltip("If TRUE(default), this combatant will never run out of ammo.")]
         public Boolean infinitAmmo = true;
         [Tooltip("Speed at which this AI should move.")]
