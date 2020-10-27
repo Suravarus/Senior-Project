@@ -38,9 +38,6 @@ namespace Combat.AI
             // IF scanAtStart = TRUE:
             if (this.scanAtStart)
                 this.ScanForEnemies(); // SCAN for Enemies
-
-            if (this.HasEnemies())
-                Debug.LogWarning($"enemies: {this.EnemyCombatantsArr.Length}");
         }
 
         // ALGORITHM:
@@ -48,8 +45,10 @@ namespace Combat.AI
         // -   SET nearest, within-weapon-range, enemy as current target
         // - ELSE:
         // -   AGGRO on currentTarget
-        public void FixedUpdate()
+        public override void FixedUpdate()
         {
+            base.FixedUpdate();
+
             if (!this.InCombat())
             {
                 this.AquireNewTarget();
