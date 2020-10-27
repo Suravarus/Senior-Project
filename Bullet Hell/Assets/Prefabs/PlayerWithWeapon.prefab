@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721085136049678996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.397, z: 0}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6844096191901522523}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6903635801494056286}
   - component: {fileID: 6487850372343938067}
   m_Layer: 0
-  m_Name: Player_v2
+  m_Name: PlayerWithWeapon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786394176794595521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.034525752, y: -0.3025043, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8278982656567984559}
@@ -182,15 +182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3730b3d493b614282adc6082bdc40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyTag: enemy
   _health: 1000
   _maxHealth: 1000
-  _armor: 0
-  _baseDamage: 0
-  _shield: 0
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
-  _enemyTag: enemy
   rangedWeaponWrapper: {fileID: 721085136049678996}
 --- !u!114 &6487850372343938067
 MonoBehaviour:
@@ -208,6 +205,21 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 8f03d65eca65243d0963f648c2e9824a, type: 3}
   halfHeart: {fileID: 21300000, guid: af1d44c8d77c341869dcdb0b63c5cff8, type: 3}
   emptyHeart: {fileID: 21300000, guid: f741e82cd77978644bc121fe1de4da49, type: 3}
+--- !u!114 &6898726125380478044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844096191901522522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &7711724204205251915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3890707071394072336, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.618
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 3890707071394072336, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -271,8 +283,17 @@ PrefabInstance:
       propertyPath: infAmmo
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7515988958706509906, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+--- !u!1 &6844096191901522522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3890707071394072337, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+  m_PrefabInstance: {fileID: 7711724204205251915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6844096191901522523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3890707071394072336, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
