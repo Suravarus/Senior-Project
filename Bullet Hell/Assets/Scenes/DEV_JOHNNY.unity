@@ -410,7 +410,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -330846559
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &302683299
@@ -1522,7 +1522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -54
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1538,7 +1538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1546,7 +1546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392577940764375879, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_Pivot.x
@@ -1556,13 +1556,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2461858312416404833, guid: 624da428c5a112845b2696706b4de553, type: 3}
+      propertyPath: m_Name
+      value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461902960846372633, guid: 624da428c5a112845b2696706b4de553, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2462549300399140909, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 2575531416346271563, guid: 624da428c5a112845b2696706b4de553, type: 3}
       propertyPath: m_FillAmount
-      value: 0.386
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624da428c5a112845b2696706b4de553, type: 3}
@@ -1869,7 +1877,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6903635801494056286, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
       propertyPath: _health
-      value: 500
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903635801494056286, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: HealthUI
+      value: 
+      objectReference: {fileID: 1666764747}
+    - target: {fileID: 6903635801494056286, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: _maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8278982656567984559, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2297,6 +2313,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
+--- !u!1 &1666764746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2462549300399140909, guid: 624da428c5a112845b2696706b4de553, type: 3}
+  m_PrefabInstance: {fileID: 1051253270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1666764747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666764746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba42f8eac9ba01f4da6fb816704ce232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showTextAs: 1
 --- !u!1 &1778987074
 GameObject:
   m_ObjectHideFlags: 0
