@@ -5,6 +5,7 @@ using Combat;
 
 namespace Combat.AI
 {
+    [RequireComponent(typeof(Pathfinding.Seeker))]
     public class AICombatant : Combatant
     {
         // UnityEditor FIELDS -----------------------------------
@@ -47,29 +48,21 @@ namespace Combat.AI
         // -   SET nearest, within-weapon-range, enemy as current target
         // - ELSE:
         // -   AGGRO on currentTarget
-        // -   
-        // -   
-        // - IF Enemy is Alive
-        // -   IF Enemy is within range:
-        // -     AIM at the player
-        // -     SHOOT at the player
         public void FixedUpdate()
         {
-            if (this.InCombat())
+            if (!this.InCombat())
             {
-                var aq = this.AggroCurrentTarget();
-                Debug.LogWarning($"target aquired {aq}");
+                this.AquireNewTarget();
             } else
             {
-                var aq = this.AquireNewTarget();
-                Debug.LogWarning($"target aquired {aq}");
+                this.Aggro(this.currentTarget);
             }
             
         }
 
         public bool HasEnemies()
         {
-            return this.EnemyCombatantsArr != null && this.EnemyCombatantsArr.Length > 0;
+            return !this.ScanInProgress && this.EnemyCombatantsArr != null && this.EnemyCombatantsArr.Length > 0;
         }
 
         /// <summary>
@@ -100,7 +93,7 @@ namespace Combat.AI
         /// </list>
         /// </summary>
         /// <returns>TRUE if enemies have been found.</returns>
-        public bool ScanForEnemies()
+        private bool ScanForEnemies()
         {
             // UPDATE scanning status
             this.ScanInProgress = true;
@@ -187,21 +180,38 @@ namespace Combat.AI
         }
 
         /// <summary>
-        /// Aims and shoots and the current target. Returns TRUE if the weapon was fired.
+        /// Aims and shoots at the given enemy if it is within weapon-range.
+        /// Otherwise, it will chase the enemy.
+        /// Returns TRUE if the weapon was fired.
         /// <para>Will not execute if there is a scan in progress.</para>
         /// </summary>
         /// <returns></returns>
-        private Boolean AggroCurrentTarget()
+        // ALGORITHM:
+        //   IF Enemy is within weapon range:
+        //     ATTACK Enemy
+        //   ELSE
+        //     CHASE Enemy.
+        public Boolean Aggro(Combatant enemy)
         {
-            if (this.InCombat())
+            if (this.RangedWeapon.InRange(enemy.transform.position))
             {
-                // AIM at the player
-                this.AimRangedWeapon(this.currentTarget.transform.position);
-                // SHOOT at the player
-                this.ShootRangedWeapon();
+                this.ShootAt(enemy);
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Aims and shoots at the given enemy. Returns true if the weapon was actually fired.
+        /// </summary>
+        /// <param name="enemy"></param>
+        /// <returns></returns>
+        private Boolean ShootAt(Combatant enemy)
+        {
+            // AIM at the player
+            this.AimRangedWeapon(enemy.transform.position);
+            // SHOOT at the player
+            return this.ShootRangedWeapon();
         }
     }
 
