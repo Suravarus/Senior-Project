@@ -188,6 +188,7 @@ MonoBehaviour:
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
+  HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 721085136049678996}
 --- !u!114 &6487850372343938067
 MonoBehaviour:
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786394176794595521}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad3e9c7757af8274f9f0c0a63113e8dd, type: 3}
   m_Name: 
