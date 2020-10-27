@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: InGameUI
+    uniqueID: 3964120737
+    locked: 0
+  - name: OverlayUI
+    uniqueID: 542247805
+    locked: 0
