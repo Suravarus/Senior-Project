@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 namespace Combat
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CapsuleCollider2D))]
     public class Combatant : MonoBehaviour
     {
         [Header("Combat")]
@@ -144,7 +146,6 @@ namespace Combat
         // - SET Combat parameters
         public virtual void Awake()
         {
-            // FIXME [COMBAT-TEAM] *ARROWS SHOULD BE NOT TRIGGER 
             // CHECK for Collider2D Component -----------------
             var collider = this.GetComponent<CapsuleCollider2D>();
             if (collider != null)
