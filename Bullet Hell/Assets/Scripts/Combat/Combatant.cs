@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+
+using Combat.UI;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -17,6 +19,8 @@ namespace Combat
         public int smallAmmo = 0;
         public int mediumAmmo = 0;
         public int largeAmmo = 0;
+        [Header("UI")]
+        public HealthBar HealthUI;
         // ---------------------------------------------------------------------
         
         /// <summary>
@@ -180,7 +184,21 @@ namespace Combat
             this.Health = this._health;
         }
 
-        public virtual void Start() { }
+        public virtual void Start() 
+        {
+            // FIXME All combatants will require Healthbar in future.
+            // update health bar
+            if (this.HealthUI != null) 
+                this.HealthUI.UpdateValues(this);
+        }
+
+        public virtual void FixedUpdate()
+        {
+            if (!this.IsAlive())
+            {
+                this.Die();
+            }
+        }
 
 
         /// <summary>
@@ -231,8 +249,8 @@ namespace Combat
         public void TakeDamage(int damage)
         {
             this.Health -= damage;
-            if (this.Health < 1)
-                Die();
+            if (this.HealthUI != null) // FIXME All combatants will require Healthbar in future.
+                this.HealthUI.UpdateValues(this);            
         }
 
         /// <summary>
@@ -241,15 +259,11 @@ namespace Combat
         /// </summary>
         public virtual void Die()
         {
-            // set as inactive
-            this.gameObject.SetActive(false);
             // create new death object
-            var deathObject = new GameObject("PlayerDeath");
-            deathObject.AddComponent<SpriteRenderer>();
             var deathSprite = Resources.Load<Sprite>("Sprites/Skull");
-            deathObject.GetComponent<SpriteRenderer>().sprite = deathSprite;
-            deathObject.transform.position = this.transform.position;
-            deathObject.transform.localScale = new Vector3(5, 5, 1);
+            this.GetComponent<SpriteRenderer>().sprite = deathSprite;
+            this.RangedWeapon.gameObject.SetActive(false);
+            this.transform.localScale = new Vector3(5, 5, 1);
         }
 
         void OnTriggerEnter2D(Collider2D other)
