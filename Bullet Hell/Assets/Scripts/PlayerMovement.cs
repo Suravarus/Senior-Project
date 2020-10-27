@@ -59,10 +59,18 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         // aim weapon toward mouse location
-        this.combatant.AimRangedWeapon(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if (!this.combatant.Disarmed())
+        {
+            // get mouse position
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // maintain the same z-value
+            target.z = this.combatant.RangedWeapon.transform.position.z;
+            this.combatant.AimRangedWeapon(target);
+        }
+            
 
-        // Shoot weapon if SPACEBAR is pressed
-        if (Input.GetKey(KeyCode.Space))
+        // Shoot weapon if RIGHT-CLICK is CLICKED
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             this.combatant.ShootRangedWeapon();
         }
