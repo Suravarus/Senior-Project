@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+using Combat.AI;
 
 public class RandomEnemy : MonoBehaviour
 {
-    public Enemy1[] enemy;
+    public AICombatant[] enemy;
     public int EnemyLimit;
      int xPos;
      int yPos;
@@ -31,7 +32,7 @@ public class RandomEnemy : MonoBehaviour
             
             // set playerrb in enemy object
             var enem = enemy[Random.Range(0, 2)];
-            enem.playerRB = player.rb;
+            enem.EnemyTag = "Player";
             
             Instantiate(enem, new Vector3(xPos, yPos, 0), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
