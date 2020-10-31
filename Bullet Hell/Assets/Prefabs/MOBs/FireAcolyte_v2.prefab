@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   drawGizmos: 1
-  detailedGizmos: 0
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -235,10 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7d66e42e2dbca44b0d62b718306554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min_Dist: 1
-  Max_Dist: 2
   speed: 3
   nextWaypointDistance: 1
+  target: {fileID: 0}
+  closeTheGap: 0
 --- !u!1001 &9176935903880247451
 PrefabInstance:
   m_ObjectHideFlags: 0
