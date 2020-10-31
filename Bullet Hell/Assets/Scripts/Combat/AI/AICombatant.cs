@@ -205,13 +205,14 @@ namespace Combat.AI
         {
             Boolean shotsFired = false;
             // movement stuff
-            this.GetComponent<ShooterAI>().target = this.currentTarget.transform;
-            this.GetComponent<ShooterAI>().closeTheGap = !this.RangedWeapon.LineOfSight(this.currentTarget);
+            this.GetComponent<ShooterAI>().target = enemy.GetBodyTransform(Combatant.BodyPart.Head);
+            
             // weapon stuff
-            if (this.RangedWeapon.InRange(enemy.transform.position))
+            if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Head).position))
             {
-                this.ShootAt(enemy);
-                shotsFired = true;
+                this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Head).position);
+                this.GetComponent<ShooterAI>().closeTheGap = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
+                this.ShootRangedWeapon();
             }
             return shotsFired;
         }
@@ -221,19 +222,6 @@ namespace Combat.AI
             this.GetComponent<ShooterAI>().closeTheGap = false;
             this.GetComponent<ShooterAI>().target = null;
             this.AquireNewTarget();
-        }
-
-        /// <summary>
-        /// Aims and shoots at the given enemy. Returns true if the weapon was actually fired.
-        /// </summary>
-        /// <param name="enemy"></param>
-        /// <returns></returns>
-        private Boolean ShootAt(Combatant enemy)
-        {
-            // AIM at the player
-            this.AimRangedWeapon(enemy.transform.position);
-            // SHOOT at the player
-            return this.ShootRangedWeapon();
         }
     }
 
