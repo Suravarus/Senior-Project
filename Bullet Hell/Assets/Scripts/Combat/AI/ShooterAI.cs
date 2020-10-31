@@ -4,6 +4,7 @@ using Pathfinding;
 
 namespace Combat.AI
 {
+    [Obsolete("This component will soon be merged with AICombatant and will no longer be accessible.")]
     public class ShooterAI : MonoBehaviour
     {
         
@@ -90,30 +91,35 @@ namespace Combat.AI
                     return;
 
                 if (!this.GetComponent<AICombatant>().InCombat()
-                    || currentWaypoint >= path.vectorPath.Count)
+                    || currentWaypoint >= path.vectorPath.Count-1)
                 {
                     reachedEndOfPath = true;
                     return;
                 }
                 else
-                    reachedEndOfPath = false;
-                //move along path
-                DistanceFromTarget = target.transform.position - transform.position;
-                if (this.closeTheGap || DistanceFromTarget.magnitude > this.MaxDist)
-                {//walk towards path if outside of max distance 
-                    Debug.LogWarning($"Walking towards {this.target.gameObject.name}");
-                    this.WalkTowardsPath();
-                }
-                else if (DistanceFromTarget.magnitude < this.MinDist)
-                {//flee if too close
-                    this.Flee();
-                }
-
-                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-                if (distance < nextWaypointDistance)
                 {
-                    currentWaypoint++;
+                    this.reachedEndOfPath = false;
+
+                    // calculations
+                    var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
+                    var distanceFromTarget = Vector2.Distance(this.target.transform.position, this.transform.position);
+
+                    // check if too close to target
+                    if (distanceFromTarget < this.MinDist)
+                    {
+                        this.Flee();
+                    } 
+                    else if (distanceFromTarget > this.MaxDist) // check if far from player
+                    {
+                        this.WalkTowardsNextWaypoint();
+                    }
+
+                    float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+                    if (distance < nextWaypointDistance)
+                    {
+                        currentWaypoint++;
+                    }
                 }
             }
         }
@@ -124,10 +130,22 @@ namespace Combat.AI
             this.rb.MovePosition(this.rb.position + direction * this.speed * Time.deltaTime);
         }
 
+        /// <summary>
+        /// Makes this object move towards the next waypoint on the path.
+        /// </summary>
+        private void WalkTowardsNextWaypoint()
+        {
+            var direction = (this.path.vectorPath[this.currentWaypoint + 1] 
+                - this.transform.position)
+                .normalized;
+            this.rb.MovePosition(this.rb.position + (Vector2)direction * this.speed * Time.deltaTime);
+        }
+
         private void Flee()
         {
+            var dir = -((Vector2)this.target.transform.position - (Vector2)this.transform.position).normalized;
             this.rb.MovePosition(
-                this.rb.position + -this.DistanceFromTarget.normalized * this.speed * Time.deltaTime);
+                this.rb.position + dir * this.speed * Time.deltaTime);
         }
     }
 }
