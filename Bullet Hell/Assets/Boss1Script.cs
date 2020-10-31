@@ -143,6 +143,7 @@ public class Boss1Script : MonoBehaviour
         //movement.moving = true;
         hitbox.enabled = true;
         count = 0;
+        isJumping = false;
     }
 
 }
