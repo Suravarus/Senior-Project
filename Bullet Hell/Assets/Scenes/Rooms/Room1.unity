@@ -341,7 +341,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 4563607292953299916, guid: 44c7bda0fc0eb5749b70f4b9da9a22b0, type: 3}
   tilemap: {fileID: 852157549}
-  EnemyLimit: 5
+  EnemyLimit: 0
   enemyCount: 0
   xMapMin: -10
   xMapMax: 10
@@ -2754,7 +2754,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
