@@ -20,7 +20,6 @@ namespace Combat.AI
         public float speed = 5f;
         // ------------------------------------------------------
 
-        private Boolean movingToTarget = false;
         private Combatant currentTarget { get; set; }
         private Boolean ScanInProgress { get; set; }
         private Combatant[] _enemyCombatantsArr;
