@@ -264,6 +264,8 @@ namespace Combat
             this.GetComponent<SpriteRenderer>().sprite = deathSprite;
             this.RangedWeapon.gameObject.SetActive(false);
             this.transform.localScale = new Vector3(5, 5, 1);
+            this.GetComponent<Rigidbody2D>().Sleep();
+            this.GetComponent<Collider2D>().enabled = false;
         }
 
         void OnTriggerEnter2D(Collider2D other)

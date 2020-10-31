@@ -84,41 +84,44 @@ namespace Combat.AI
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (path == null)
-                return;
-
-            if (!this.GetComponent<AICombatant>().InCombat()
-                || currentWaypoint >= path.vectorPath.Count)
+            if (this.GetComponent<AICombatant>().IsAlive())
             {
-                reachedEndOfPath = true;
-                return;
-            }
-            else
-                reachedEndOfPath = false;
-            //move along path
-            DistanceFromTarget = target.transform.position - transform.position;
-            if (this.closeTheGap || DistanceFromTarget.magnitude > this.MaxDist)
-            {//walk towards path if outside of max distance 
-                Debug.LogWarning($"Walking towards {this.target.gameObject.name}");
-                this.WalkTowardsPath();
-            }
-            else if (DistanceFromTarget.magnitude < this.MinDist)
-            {//flee if too close
-                this.Flee();
-            }
+                if (path == null)
+                    return;
 
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                if (!this.GetComponent<AICombatant>().InCombat()
+                    || currentWaypoint >= path.vectorPath.Count)
+                {
+                    reachedEndOfPath = true;
+                    return;
+                }
+                else
+                    reachedEndOfPath = false;
+                //move along path
+                DistanceFromTarget = target.transform.position - transform.position;
+                if (this.closeTheGap || DistanceFromTarget.magnitude > this.MaxDist)
+                {//walk towards path if outside of max distance 
+                    Debug.LogWarning($"Walking towards {this.target.gameObject.name}");
+                    this.WalkTowardsPath();
+                }
+                else if (DistanceFromTarget.magnitude < this.MinDist)
+                {//flee if too close
+                    this.Flee();
+                }
 
-            if (distance < nextWaypointDistance)
-            {
-                currentWaypoint++;
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+                if (distance < nextWaypointDistance)
+                {
+                    currentWaypoint++;
+                }
             }
         }
 
         private void WalkTowardsPath()
         {
             Vector2 direction = ((Vector2)this.path.vectorPath[this.currentWaypoint] - this.rb.position).normalized;
-            this.rb.MovePosition(this.rb.position + direction.normalized * this.speed * Time.deltaTime);
+            this.rb.MovePosition(this.rb.position + direction * this.speed * Time.deltaTime);
         }
 
         private void Flee()
