@@ -6,6 +6,9 @@ using Combat;
 
 public class Weapon : MonoBehaviour
 {
+    // ------ UNITY EDITOR -----------------------------//
+    [Header("Development")]
+    public Boolean drawGizmo = false;
     [Header("Ammo")]
     public GameObject weaponAmmo;
     public Transform ammoSpawnPoint;
@@ -19,7 +22,7 @@ public class Weapon : MonoBehaviour
     private float _fireDelay;
     public int ammoType = 0;
     public bool infAmmo = false;
-    
+    // ------------------------------------------------//
 
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
@@ -193,22 +196,28 @@ public class Weapon : MonoBehaviour
         Boolean los = false;
         // get Bullets layer mask
         int layerMask = LayerMask.GetMask("Bullets");
-        // set to all except bullets
+        // set to all except bullets >> bit-operation
         layerMask = ~layerMask;
-        
-        RaycastHit2D[] results = Physics2D.RaycastAll(this.GetAmmoSpawnPoint().position, Vector3.Normalize(c.transform.position - this.GetAmmoSpawnPoint().position), this.range, layerMask);
-        if (results.Length > 0)
+
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(this.GetAmmoSpawnPoint().position, Vector3.Normalize(c.transform.position - this.GetAmmoSpawnPoint().position), this.range, layerMask);
+        if (raycastHit2D.collider != null)
         {
             
-            int objectID = results[0].transform.gameObject.GetInstanceID();
+            int objectID = raycastHit2D.collider.gameObject.GetInstanceID();
             if (objectID == c.gameObject.GetInstanceID())
             {
                 los = true;
-                // Debug.DrawLine(this.GetAmmoSpawnPoint().position, results[0].point, Color.yellow, 1000, false);
+                if (this.drawGizmo)
+                {
+                    Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.yellow, 1, false);
+                }
             } else
             {
-                // Debug.DrawLine(this.GetAmmoSpawnPoint().position, results[0].point, Color.red, 1000, false);
-                // Debug.LogWarning($"LOS Blocked by {results[0].transform.gameObject.name}");
+                if (this.drawGizmo)
+                {
+                    Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.red, 1000, false);
+                    Debug.LogWarning($"LOS Blocked by {raycastHit2D.collider.gameObject.name}");
+                }
             }
         }
 
