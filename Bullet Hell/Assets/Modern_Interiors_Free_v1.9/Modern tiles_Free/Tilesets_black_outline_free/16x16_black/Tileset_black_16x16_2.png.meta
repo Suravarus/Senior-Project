@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 6afc2cd6e0175f843a20a53b8d67df5e
+=======
+guid: 15e67ca80b6da374bbc355eda672a6ad
+>>>>>>> combat
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

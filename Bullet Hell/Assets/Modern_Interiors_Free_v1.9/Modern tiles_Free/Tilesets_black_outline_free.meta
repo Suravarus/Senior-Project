@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9b3243fc4d1d5314f84bc6be0f32672f
+=======
+guid: a3c1eadd041e0c24f940e3360561c34c
+>>>>>>> combat
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

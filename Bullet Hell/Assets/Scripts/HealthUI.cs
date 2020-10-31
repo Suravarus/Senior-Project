@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Combat;
 
+[RequireComponent(typeof(Combatant))]
 public class HealthUI : MonoBehaviour
 {
-
-    private Combatant combatInfo; 
+    private Combatant combatant; 
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -18,14 +18,14 @@ public class HealthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        combatInfo = GetComponent<Combatant>();
+        combatant = GetComponent<Combatant>();
 
         for (int i = 0; i < hearts.Length; i++)
         {
 
 
             //Show full or half heart
-            if (i < combatInfo.Health)
+            if (i < combatant.Health)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -35,7 +35,7 @@ public class HealthUI : MonoBehaviour
             }
 
             // Show max health on the screen
-            if (i < combatInfo.MaxHealth)
+            if (i < combatant.MaxHealth)
             {
                 hearts[i].enabled = true;
             }
