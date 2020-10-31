@@ -22,6 +22,12 @@ namespace Combat
         [Header("UI")]
         public HealthBar HealthUI;
         // ---------------------------------------------------------------------
+
+        public enum BodyPart
+        {
+            Head,
+            Chest
+        }
         
         /// <summary>
         /// When passing in a value, this accessor makes sure that the Tag has
@@ -298,6 +304,23 @@ namespace Combat
             difference.Normalize();
             float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        }
+
+        /// <summary>
+        /// Returns the transform associated with the given BodyPart
+        /// position of this gameObject.
+        /// </summary>
+        /// <returns></returns>
+        public Transform GetBodyTransform(BodyPart bodyPart)
+        {
+            var trans = this.transform.Find(bodyPart.ToString());
+            if (trans != null)
+            {
+                return trans;
+            } else
+            {
+                return this.transform;
+            }
         }
     }
 }
