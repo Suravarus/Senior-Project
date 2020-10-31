@@ -191,7 +191,7 @@ public class Weapon : MonoBehaviour
         return this.transform.GetChild(0);
     }
 
-    public Boolean LineOfSight(Combatant c)
+    public Boolean LineOfSight(Combatant c, Combatant.BodyPart bodyPart)
     {
         Boolean los = false;
         // get Bullets layer mask
@@ -199,7 +199,13 @@ public class Weapon : MonoBehaviour
         // set to all except bullets >> bit-operation
         layerMask = ~layerMask;
 
-        RaycastHit2D raycastHit2D = Physics2D.Raycast(this.GetAmmoSpawnPoint().position, Vector3.Normalize(c.transform.position - this.GetAmmoSpawnPoint().position), this.range, layerMask);
+        var direction = (c.GetBodyTransform(bodyPart).position - this.GetAmmoSpawnPoint().position).normalized;
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(
+            this.GetAmmoSpawnPoint().position, 
+            direction, 
+            this.range, 
+            layerMask
+            );
         if (raycastHit2D.collider != null)
         {
             
