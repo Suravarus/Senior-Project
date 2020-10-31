@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using Pathfinding;
 
@@ -7,16 +6,51 @@ namespace Combat.AI
 {
     public class ShooterAI : MonoBehaviour
     {
-        public float Min_Dist = 1;
-        public float Max_Dist = 2;
+        
+        
         public float speed = 3f;
         public float nextWaypointDistance = 1f;
 
-        private Transform target;
+        public Transform target;
         private Vector2 DistanceFromTarget;
+        /// <summary>
+        /// Whether the AI should attempt to get as close as possible to it's
+        /// target.
+        /// </summary>
+        public Boolean closeTheGap = false;
         Path path;
         int currentWaypoint = 0;
         bool reachedEndOfPath = false;
+
+        private float _minDist = 1;
+        public float MinDist
+        {
+            set { this._minDist = Math.Abs(value); }
+            get
+            {
+                if (!this.closeTheGap)
+                {
+                    return this._minDist;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        private float _maxDist = 2;
+        public float MaxDist
+        {
+            set { this._maxDist = Math.Abs(value); }
+            get
+            {
+                if (!this.closeTheGap)
+                    return this._maxDist;
+                return 1;
+            }
+        }
+
 
         Seeker seeker;
         Rigidbody2D rb;
@@ -27,14 +61,14 @@ namespace Combat.AI
         {
             seeker = GetComponent<Seeker>();
             rb = GetComponent<Rigidbody2D>();
-            target = GameObject.Find("Player").GetComponent<Transform>();
+            //this.target = GameObject.FindGameObjectWithTag("Player").transform;
             //sets target to the player
             InvokeRepeating("UpdatePath", 0f, .5f);
         }
 
         void UpdatePath()
         {
-            if (seeker.IsDone())
+            if (seeker.IsDone() && target != null)
                 seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
 
@@ -53,7 +87,8 @@ namespace Combat.AI
             if (path == null)
                 return;
 
-            if (currentWaypoint >= path.vectorPath.Count)
+            if (!this.GetComponent<AICombatant>().InCombat()
+                || currentWaypoint >= path.vectorPath.Count)
             {
                 reachedEndOfPath = true;
                 return;
@@ -62,21 +97,15 @@ namespace Combat.AI
                 reachedEndOfPath = false;
             //move along path
             DistanceFromTarget = target.transform.position - transform.position;
-            if (DistanceFromTarget.magnitude > Max_Dist)
+            if (this.closeTheGap || DistanceFromTarget.magnitude > this.MaxDist)
             {//walk towards path if outside of max distance 
-
-                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
-
+                Debug.LogWarning($"Walking towards {this.target.gameObject.name}");
+                this.WalkTowardsPath();
             }
-            else if (DistanceFromTarget.magnitude < Min_Dist)
+            else if (DistanceFromTarget.magnitude < this.MinDist)
             {//flee if too close
-                rb.MovePosition(rb.position + -DistanceFromTarget.normalized * speed * Time.deltaTime);
+                this.Flee();
             }
-
-            //Vector2 force = direction * speed * Time.fixedDeltaTime;
-
-            //rb.AddForce(force);
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -84,6 +113,18 @@ namespace Combat.AI
             {
                 currentWaypoint++;
             }
+        }
+
+        private void WalkTowardsPath()
+        {
+            Vector2 direction = ((Vector2)this.path.vectorPath[this.currentWaypoint] - this.rb.position).normalized;
+            this.rb.MovePosition(this.rb.position + direction.normalized * this.speed * Time.deltaTime);
+        }
+
+        private void Flee()
+        {
+            this.rb.MovePosition(
+                this.rb.position + -this.DistanceFromTarget.normalized * this.speed * Time.deltaTime);
         }
     }
 }

@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 {
     [Header("Ammo")]
     public GameObject weaponAmmo;
+    public Transform ammoSpawnPoint;
     public Combatant weaponOwner;
     public int baseDamage;
     public float bulletSpeed;
@@ -58,7 +59,6 @@ public class Weapon : MonoBehaviour
                 , this.rateOfFire
                 , $"Cannot be <= 0.");
         }
-
         // calculate FireDelay based on rateOfFire
         this.FireDelay = 0;
         // set initial parameters.
@@ -129,7 +129,6 @@ public class Weapon : MonoBehaviour
             a.weapon = this;
 
             var st = this.transform.GetChild(0);
-            //Debug.Log($"{st.name}, {st.localScale}");
 
             //Use bullets linked to weapon type
             if (infAmmo)
@@ -182,5 +181,37 @@ public class Weapon : MonoBehaviour
     {
         return Vector3.Distance(target
             , this.transform.position) <= this.range;
+    }
+
+    private Transform GetAmmoSpawnPoint()
+    {
+        return this.transform.GetChild(0);
+    }
+
+    public Boolean LineOfSight(Combatant c)
+    {
+        Boolean los = false;
+        // get Bullets layer mask
+        int layerMask = LayerMask.GetMask("Bullets");
+        // set to all except bullets
+        layerMask = ~layerMask;
+        
+        RaycastHit2D[] results = Physics2D.RaycastAll(this.GetAmmoSpawnPoint().position, Vector3.Normalize(c.transform.position - this.GetAmmoSpawnPoint().position), this.range, layerMask);
+        if (results.Length > 0)
+        {
+            
+            int objectID = results[0].transform.gameObject.GetInstanceID();
+            if (objectID == c.gameObject.GetInstanceID())
+            {
+                los = true;
+                // Debug.DrawLine(this.GetAmmoSpawnPoint().position, results[0].point, Color.yellow, 1000, false);
+            } else
+            {
+                // Debug.DrawLine(this.GetAmmoSpawnPoint().position, results[0].point, Color.red, 1000, false);
+                // Debug.LogWarning($"LOS Blocked by {results[0].transform.gameObject.name}");
+            }
+        }
+
+        return los;
     }
 }

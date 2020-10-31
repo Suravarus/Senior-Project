@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 1477234538215355611}
   - component: {fileID: 4687091655848055590}
   - component: {fileID: 5669170425978868488}
+  - component: {fileID: -5051725881224634116}
   m_Layer: 0
   m_Name: FireAcolyte_v2
   m_TagString: enemy
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4681907991325052283}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1080b713ba4a39c4c8264a1d6b6c3b2d, type: 3}
   m_Name: 
@@ -216,12 +217,28 @@ MonoBehaviour:
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
+  HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 1071461084074795909}
   passive: 0
-  pacifist: 0
   scanAtStart: 1
   infinitAmmo: 1
   speed: 5
+--- !u!114 &-5051725881224634116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681907991325052283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7d66e42e2dbca44b0d62b718306554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Min_Dist: 1
+  Max_Dist: 2
+  speed: 3
+  nextWaypointDistance: 1
 --- !u!1001 &9176935903880247451
 PrefabInstance:
   m_ObjectHideFlags: 0

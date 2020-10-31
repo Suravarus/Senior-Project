@@ -20,7 +20,7 @@ namespace Combat.AI
         public float speed = 5f;
         // ------------------------------------------------------
 
-
+        private Boolean movingToTarget = false;
         private Combatant currentTarget { get; set; }
         private Boolean ScanInProgress { get; set; }
         private Combatant[] _enemyCombatantsArr;
@@ -38,6 +38,18 @@ namespace Combat.AI
             // IF scanAtStart = TRUE:
             if (this.scanAtStart)
                 this.ScanForEnemies(); // SCAN for Enemies
+
+            if (!this.Disarmed())
+            {
+                this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
+                this.GetComponent<ShooterAI>().MaxDist = this.RangedWeapon.range;
+            }
+            else
+            {
+                this.GetComponent<ShooterAI>().MinDist = 1;
+                this.GetComponent<ShooterAI>().MaxDist = 1;
+            }
+                
         }
 
         // ALGORITHM:
@@ -51,10 +63,10 @@ namespace Combat.AI
 
             if (!this.InCombat())
             {
-                this.AquireNewTarget();
+                this.Disengage();
             } else
             {
-                this.Aggro(this.currentTarget);
+                this.Engage(this.currentTarget);
             }
             
         }
@@ -190,14 +202,26 @@ namespace Combat.AI
         //     ATTACK Enemy
         //   ELSE
         //     CHASE Enemy.
-        public Boolean Aggro(Combatant enemy)
+        public Boolean Engage(Combatant enemy)
         {
+            Boolean shotsFired = false;
+            // movement stuff
+            this.GetComponent<ShooterAI>().target = this.currentTarget.transform;
+            this.GetComponent<ShooterAI>().closeTheGap = !this.RangedWeapon.LineOfSight(this.currentTarget);
+            // weapon stuff
             if (this.RangedWeapon.InRange(enemy.transform.position))
             {
                 this.ShootAt(enemy);
-                return true;
+                shotsFired = true;
             }
-            return false;
+            return shotsFired;
+        }
+
+        public void Disengage()
+        {
+            this.GetComponent<ShooterAI>().closeTheGap = false;
+            this.GetComponent<ShooterAI>().target = null;
+            this.AquireNewTarget();
         }
 
         /// <summary>
