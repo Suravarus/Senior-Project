@@ -6,7 +6,7 @@ namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CapsuleCollider2D))]
-    public class Combatant : MonoBehaviour
+    public class Combatant : MonoBehaviour, ICombatant
     {
         [Header("Combat")]
         // UnityEditor properties ---------------------------------------------
@@ -28,7 +28,7 @@ namespace Combat
             Head,
             Chest
         }
-        
+
         /// <summary>
         /// When passing in a value, this accessor makes sure that the Tag has
         /// been defined in the UnityEditor.
@@ -51,11 +51,11 @@ namespace Combat
                     // THROW err if value is empty
                     if (String.IsNullOrEmpty(value))
                         throw new MissingFieldException(this.GetType().Name, nameof(this.EnemyTag));
-                    
+
                     // THROW err if not a valid tag.
                     throw new Exception($"Value \'{value}\' is not a valid tag.");
                 }
-                    
+
             }
 
             get { return this._enemyTag; }
@@ -132,7 +132,7 @@ namespace Combat
                 if (!value.isTrigger)
                     this._capsuleCollider2D = value;
                 else
-                    throw new Exception($"The {new CapsuleCollider2D().GetType().Name}" 
+                    throw new Exception($"The {new CapsuleCollider2D().GetType().Name}"
                         + $" for the {this.gameObject.name} gameobject must be set to FALSE.");
             }
         }
@@ -190,11 +190,11 @@ namespace Combat
             this.Health = this._health;
         }
 
-        public virtual void Start() 
+        public virtual void Start()
         {
             // FIXME All combatants will require Healthbar in future.
             // update health bar
-            if (this.HealthUI != null) 
+            if (this.HealthUI != null)
                 this.HealthUI.UpdateValues(this);
         }
 
@@ -256,7 +256,7 @@ namespace Combat
         {
             this.Health -= damage;
             if (this.HealthUI != null) // FIXME All combatants will require Healthbar in future.
-                this.HealthUI.UpdateValues(this);            
+                this.HealthUI.UpdateValues(this);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace Combat
             if (this.IsAlive())
             {
                 var ammo = other.gameObject.GetComponent<Ammo>();
-                bool rangedAttack = (ammo != null 
+                bool rangedAttack = (ammo != null
                     && ammo.ammoOwner.IsAlive()
                     && ammo.ammoOwner.tag == this.EnemyTag);
 
@@ -317,10 +317,16 @@ namespace Combat
             if (trans != null)
             {
                 return trans;
-            } else
+            }
+            else
             {
                 return this.transform;
             }
+        }
+
+        public virtual void OnAmmoCollision(int instanceID)
+        {
+            return;
         }
     }
 }
