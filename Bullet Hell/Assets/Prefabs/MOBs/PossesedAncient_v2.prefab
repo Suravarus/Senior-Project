@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 6312442298162353742}
   - component: {fileID: 6312442298162353743}
   - component: {fileID: 8915917448430493653}
-  - component: {fileID: 8915917448430493658}
   - component: {fileID: 4570616855359894702}
   - component: {fileID: 7638484586805804672}
+  - component: {fileID: 7886357035765756201}
   m_Layer: 0
   m_Name: PossesedAncient_v2
   m_TagString: enemy
@@ -168,20 +168,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 1
---- !u!114 &8915917448430493658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312442298162353738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1080b713ba4a39c4c8264a1d6b6c3b2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  nextWaypointDistance: 1
 --- !u!114 &4570616855359894702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,11 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Player
-  _health: 1
+  _health: 10
   _maxHealth: 10
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
+  HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 1854830476394428596}
   passive: 0
   scanAtStart: 1
@@ -221,6 +208,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0032689571, y: -0.05962068}
   m_Size: {x: 1.3556218, y: 1.8067414}
   m_Direction: 0
+--- !u!114 &7886357035765756201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312442298162353738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7d66e42e2dbca44b0d62b718306554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  nextWaypointDistance: 3
+  target: {fileID: 0}
+  chargeAtTheTarget: 0
 --- !u!1001 &7509806002107016106
 PrefabInstance:
   m_ObjectHideFlags: 0
