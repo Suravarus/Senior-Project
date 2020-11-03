@@ -223,6 +223,21 @@ namespace Combat.AI
             this.GetComponent<ShooterAI>().target = null;
             this.AquireNewTarget();
         }
+
+        // ALGORITHM
+        // IF owner has a living enemy AND collided object id != enemy id
+        //   THEN SET chargeAtTheTarget = TRUE
+        public override void OnAmmoCollision(int instanceID)
+        {
+            Debug.LogWarning($"OnAmmoCollision reports collision id {instanceID}");
+            if (this.InCombat() && instanceID != this.currentTarget.gameObject.GetInstanceID())
+            {
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
+            } else
+            {
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+            }
+        }
     }
 
 }
