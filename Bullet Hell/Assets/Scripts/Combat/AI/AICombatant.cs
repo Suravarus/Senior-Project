@@ -211,7 +211,7 @@ namespace Combat.AI
             if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Head).position))
             {
                 this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Head).position);
-                this.GetComponent<ShooterAI>().closeTheGap = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
+                //this.GetComponent<ShooterAI>().chargeAtTheTarget = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
                 this.ShootRangedWeapon();
             }
             return shotsFired;
@@ -219,7 +219,7 @@ namespace Combat.AI
 
         public void Disengage()
         {
-            this.GetComponent<ShooterAI>().closeTheGap = false;
+            this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
             this.GetComponent<ShooterAI>().target = null;
             this.AquireNewTarget();
         }
