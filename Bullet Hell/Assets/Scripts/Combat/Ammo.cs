@@ -81,18 +81,24 @@ namespace Combat
         // - Collider2D object that is set to Collider.IsTrigger = True, this code
         // ALGORITHM:
         // - GET enemy combatant from the other collider.
-        // - IF the other collider is not a Combatant, or it's an enemy Combatant
-        // -   THEN Destroy this gameobject.
+        // - IF the other collider is not a Combatant, or it's an enemy Combatant:
+        // -   THEN: 
+        // -     SEND instancedID of collision object to ammoOwner
+        // -     Destroy this gameobject.
         void OnTriggerEnter2D(Collider2D other)
         {
             // GET enemy combatant from the collisionInfo
             var collisionCombatant = other.GetComponent<Combatant>();
             var isOtherCombatant = collisionCombatant != null && collisionCombatant.name != this.ammoOwner.name;
             var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.ammoOwner.EnemyTag;
+
             // IF the other collider is not a Combatant, or it's an enemy Combatant
             if (collisionCombatant == null || isEnemyCombatant)
             {
-                Destroy(this.gameObject); // THEN Destroy this gameobject.
+                // Report the collision to the Combatant that shot the ammo.
+                this.ammoOwner.SendMessage(nameof(ICombatant.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                // Destroy this gameobject.
+                Destroy(this.gameObject); 
             }
         }
     }
