@@ -63,16 +63,7 @@ namespace Combat.AI
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            // FIXME temp ---------------------------------------
-            if (this.gameObject.name == "Turret Enemy")
-            {
-                Debug.LogWarning($"{this.gameObject.name} - incombat:{this.InCombat()}");
-                if (this.InCombat())
-                {
-                    Debug.LogWarning($"{this.gameObject.name} - target-name:{this.currentTarget.gameObject.name}");
-                }
-            }
-            // --------------------------------------------------
+
             if (!this.InCombat())
             {
                 this.Disengage();
@@ -247,7 +238,6 @@ namespace Combat.AI
         //   THEN SET chargeAtTheTarget = TRUE
         public override void OnAmmoCollision(int instanceID)
         {
-            Debug.LogWarning($"OnAmmoCollision reports collision id {instanceID}");
             if (this.InCombat() && instanceID != this.currentTarget.gameObject.GetInstanceID())
             {
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
