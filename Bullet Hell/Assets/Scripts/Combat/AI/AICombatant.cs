@@ -6,6 +6,7 @@ using Combat;
 namespace Combat.AI
 {
     [RequireComponent(typeof(Pathfinding.Seeker))]
+    [RequireComponent(typeof(Combat.AI.ShooterAI))]
     public class AICombatant : Combatant
     {
         // UnityEditor FIELDS -----------------------------------
