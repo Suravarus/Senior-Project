@@ -219,6 +219,9 @@ namespace Combat.AI
             return shotsFired;
         }
 
+        /// <summary>
+        /// Stop moving towards target and set target to NULL.
+        /// </summary>
         public void Disengage()
         {
             this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
