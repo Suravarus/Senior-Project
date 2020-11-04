@@ -43,8 +43,9 @@ GameObject:
   - component: {fileID: 8712118777339864067}
   - component: {fileID: 8712118777339864066}
   - component: {fileID: 6108665204855041432}
-  - component: {fileID: 1158536562840422115}
   - component: {fileID: 5007083933915892941}
+  - component: {fileID: 5293613830069688691}
+  - component: {fileID: 7534560155660660265}
   m_Layer: 0
   m_Name: Turret Enemy
   m_TagString: enemy
@@ -126,7 +127,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8712118777339864071}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -167,7 +168,39 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 1
---- !u!114 &1158536562840422115
+--- !u!70 &5007083933915892941
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712118777339864071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0032689571, y: -0.05962068}
+  m_Size: {x: 1.3556218, y: 1.8067414}
+  m_Direction: 0
+--- !u!114 &5293613830069688691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712118777339864071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7d66e42e2dbca44b0d62b718306554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  nextWaypointDistance: 1
+  target: {fileID: 0}
+  chargeAtTheTarget: 0
+--- !u!114 &7534560155660660265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,25 +221,8 @@ MonoBehaviour:
   HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 3945236220053457657}
   passive: 0
-  scanAtStart: 1
   infinitAmmo: 1
-  speed: 0
---- !u!70 &5007083933915892941
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8712118777339864071}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0032689571, y: -0.05962068}
-  m_Size: {x: 1.3556218, y: 1.8067414}
-  m_Direction: 0
+  speed: 5
 --- !u!1001 &5135746008896704999
 PrefabInstance:
   m_ObjectHideFlags: 0
