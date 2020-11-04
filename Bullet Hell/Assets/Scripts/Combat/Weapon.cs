@@ -1,11 +1,17 @@
-using Combat;
+
 using UnityEngine;
 using System;
 
+using Combat;
+
 public class Weapon : MonoBehaviour
 {
+    // ------ UNITY EDITOR -----------------------------//
+    [Header("Development")]
+    public Boolean drawGizmo = false;
     [Header("Ammo")]
     public GameObject weaponAmmo;
+    public Transform ammoSpawnPoint;
     public Combatant weaponOwner;
     public int baseDamage;
     public float bulletSpeed;
@@ -16,7 +22,7 @@ public class Weapon : MonoBehaviour
     private float _fireDelay;
     public int ammoType = 0;
     public bool infAmmo = false;
-    
+    // ------------------------------------------------//
 
     // will keep track of the last time this weapon 'fired'
     // private float LastFiredDeltaTime { get; set; }
@@ -56,7 +62,6 @@ public class Weapon : MonoBehaviour
                 , this.rateOfFire
                 , $"Cannot be <= 0.");
         }
-
         // calculate FireDelay based on rateOfFire
         this.FireDelay = 0;
         // set initial parameters.
@@ -121,13 +126,12 @@ public class Weapon : MonoBehaviour
             if (this.bulletSpeed > 0)
                 a.speed = this.bulletSpeed + 10;
             if (this.baseDamage > 0)
-                a.baseDamage = this.baseDamage;
+                a.damage = this.baseDamage;
 
             a.ammoOwner = this.GetComponentInParent<Combatant>();
             a.weapon = this;
 
             var st = this.transform.GetChild(0);
-            //Debug.Log($"{st.name}, {st.localScale}");
 
             //Use bullets linked to weapon type
             if (infAmmo)
@@ -170,4 +174,59 @@ public class Weapon : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Returns TRUE if the distance between target and this weapon's
+    /// position is within this weapon's range.
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public Boolean InRange(Vector3 target)
+    {
+        return Vector3.Distance(target
+            , this.transform.position) <= this.range;
+    }
+
+    private Transform GetAmmoSpawnPoint()
+    {
+        return this.transform.GetChild(0);
+    }
+
+    public Boolean LineOfSight(Combatant c, Combatant.BodyPart bodyPart)
+    {
+        Boolean los = false;
+        // get Bullets layer mask
+        int layerMask = LayerMask.GetMask("Bullets");
+        // set to all except bullets >> bit-operation
+        layerMask = ~layerMask;
+
+        var direction = (c.GetBodyTransform(bodyPart).position - this.GetAmmoSpawnPoint().position).normalized;
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(
+            this.GetAmmoSpawnPoint().position, 
+            direction, 
+            this.range, 
+            layerMask
+            );
+        if (raycastHit2D.collider != null)
+        {
+            
+            int objectID = raycastHit2D.collider.gameObject.GetInstanceID();
+            if (objectID == c.gameObject.GetInstanceID())
+            {
+                los = true;
+                if (this.drawGizmo)
+                {
+                    Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.yellow, 1, false);
+                }
+            } else
+            {
+                if (this.drawGizmo)
+                {
+                    Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.red, 1000, false);
+                    Debug.LogWarning($"LOS Blocked by {raycastHit2D.collider.gameObject.name}");
+                }
+            }
+        }
+
+        return los;
+    }
 }

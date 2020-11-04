@@ -1,17 +1,28 @@
 ﻿using System;
 using UnityEngine;
+
+using Combat.Utilities;
+
 namespace Combat
 {
     public class Ammo : MonoBehaviour
     {
+        [Tooltip("In-game name for this item. Will be stored in lower-case. Has a character-limit.")]
+        public String _InGameName = "";
+        [Tooltip("In-game description for this item. Will be stored as it was typed. Has a character-limit.")]
+        public String _InGameDescription = "";
+
         [Header("Movement")]
         public float speed = 5f;
 
         [Header("Combat")]
-        public int baseDamage = 1;
+        [Tooltip("This damage will be added to the damage of the weapon uses this ammo.")]
+        public int damage = 0;
 
         public Combatant ammoOwner;
         public Weapon weapon;
+
+        public GameInfo GameInfo { get; set; }
 
         private Rigidbody2D rigidBody2D;
         private Vector3 startingPosition;
@@ -41,10 +52,16 @@ namespace Combat
         // ALGORITHM:
         // - SET startingPosition
         // - SET velocity
+        // - SET GameInfo
         void Start()
         {
             this.startingPosition = this.transform.position;
             this.rigidBody2D.velocity = this.transform.up * speed;
+
+            // SET GameInfo
+            this.GameInfo = new GameInfo(this._InGameName, this._InGameDescription);
+            this._InGameName = null;
+            this._InGameDescription = null;
         }
 
         // ALGORITHM:
@@ -58,36 +75,29 @@ namespace Combat
             }
         }
 
-        // FIXME COLLISION-TEAM[1] This should be on the Combatant script.
         // PURPOSE:
         // - Since this method is called whenever this gameObject collides with ANY
         // - Collider2D object that is set to Collider.IsTrigger = True, this code
-        // - is being used to apply damage to any enemy this object collides with.
         // ALGORITHM:
-        // - PRINT Debug collision info
-        // - GET enemy combatant from the collisionInfo
-        // - IF collided with enemy<Combatabt> that does not own this ammo:
-        //     DO damage to enemy
-        //     DESTROY this gameObject
-        // - ELSE:
-        // -   DESTROY this gameObject
-        void OnTriggerEnter2D(Collider2D collisionInfo)
+        // - GET enemy combatant from the other collider.
+        // - IF the other collider is not a Combatant, or it's an enemy Combatant:
+        // -   THEN: 
+        // -     SEND instancedID of collision object to ammoOwner
+        // -     Destroy this gameobject.
+        void OnTriggerEnter2D(Collider2D other)
         {
-            // PRINT Debug collision info
             // GET enemy combatant from the collisionInfo
-            var enemy = collisionInfo.GetComponent<Combatant>();
-            // IF collided with enemy<Combatant> that does not own this ammo: 
-            if (enemy != null)
+            var collisionCombatant = other.GetComponent<Combatant>();
+            var isOtherCombatant = collisionCombatant != null && collisionCombatant.name != this.ammoOwner.name;
+            var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.ammoOwner.EnemyTag;
+
+            // IF the other collider is not a Combatant, or it's an enemy Combatant
+            if (collisionCombatant == null || isEnemyCombatant)
             {
-                if(enemy.name != this.ammoOwner.name)
-                {
-                    // DO damage to enemy
-                    enemy.TakeDamage(this.baseDamage);
-                    Destroy(this.gameObject);
-                }
-            } else
-            {
-                Destroy(this.gameObject);
+                // Report the collision to the Combatant that shot the ammo.
+                this.ammoOwner.SendMessage(nameof(ICombatant.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                // Destroy this gameobject.
+                Destroy(this.gameObject); 
             }
         }
     }

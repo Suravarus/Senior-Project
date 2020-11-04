@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7819098526325135062}
   m_Layer: 0
   m_Name: FireAcolyte
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   smallAmmo: 0
   mediumAmmo: 0
   largeAmmo: 0
+  enemyTag: 
   rangedWeaponWrapper: {fileID: 3433383197023108391}
 --- !u!1001 &6782506161648887353
 PrefabInstance:

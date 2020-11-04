@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _InGameName: corrupted flame
+  _InGameDescription: Adds 0.5 rangedDamage.
   speed: 15
-  baseDamage: 10
+  damage: 10
   ammoOwner: {fileID: 0}
   weapon: {fileID: 0}
 --- !u!70 &5872211060125573620

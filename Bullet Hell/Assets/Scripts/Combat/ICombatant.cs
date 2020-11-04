@@ -1,17 +1,30 @@
-using UnityEngine;
+﻿using UnityEngine;
+
 namespace Combat
 {
-    /// <summary> Interface with properties and methods
-    /// required of all Objects that will engage in combat.</summary>
     public interface ICombatant
     {
-        /// <summary>Handle taking damage.</summary>
+        string EnemyTag { get; set; }
+        int Health { get; set; }
+        int MaxHealth { get; set; }
+        int RangedDamage { get; }
+        Weapon RangedWeapon { get; set; }
+
+        void AimRangedWeapon(Vector3 targetPosition);
+        void Awake();
+        void Die();
+        bool Disarmed();
+        void FixedUpdate();
+        Transform GetBodyTransform(Combatant.BodyPart bodyPart);
+        bool IsAlive();
+        bool ShootRangedWeapon();
+        void Start();
         void TakeDamage(int damage);
 
-        /// <summary>Handle death. Should destroy <c>GameObject</c>.</summary>
-        void Die();
-
-        void Respawn(Vector2 spawnPoint);
+        /// <summary>
+        /// This method is called when an "Ammo" object collides with another object.
+        /// </summary>
+        /// <param name="instanceID">The InstanceID of the gameobject the Ammo collided with.</param>
+        void OnAmmoCollision(int instanceID);
     }
-
 }

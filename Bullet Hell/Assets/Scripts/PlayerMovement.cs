@@ -4,8 +4,6 @@ using Combat;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // FIXME LINE-OF-SITE-TEAM[1] - Is this neccessary? If not, please remove.
-    [SerializeField] FieldOfView fieldOfView;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -31,11 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     //inputs are taken once per frame
     void Update()
-    { 
-        // FIXME LINE-OF-SITE-TEAM[1] - The following line was commented out as it was causing errors in Unity.
-        // Please check to see if this line is neccessary or if it can be taken out.
-        //
-        //fieldOfView.setOrigin(this.transform.position);
+    {
 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -43,8 +37,10 @@ public class PlayerMovement : MonoBehaviour
         //0.70710678118 is sqrt(2) / 2
         if (x != 0 && y != 0)
         {
-            movement.x = x * 0.70710678118f;
-            movement.y = y * 0.70710678118f;
+            movement.x = x;
+            movement.y = y;
+            if (movement.magnitude > 1)
+                movement = movement.normalized;
         }
         else
         {
@@ -59,16 +55,22 @@ public class PlayerMovement : MonoBehaviour
     //     SHOOT weapon if spacebar is pressed
     void FixedUpdate()
     {
-        // move player 
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
         // aim weapon toward mouse location
-        this.combatant.AimRangedWeapon(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-        // Shoot weapon if SPACEBAR is pressed
-        if (Input.GetKey(KeyCode.Space))
+        if (this.combatant.IsAlive() && !this.combatant.Disarmed())
         {
-            this.combatant.ShootRangedWeapon();
+            // move player 
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // get mouse position
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // maintain the same z-value
+            target.z = this.combatant.RangedWeapon.transform.position.z;
+            this.combatant.AimRangedWeapon(target);
+
+            // Shoot weapon if RIGHT-CLICK is CLICKED
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                this.combatant.ShootRangedWeapon();
+            }
         }
     }
 }
