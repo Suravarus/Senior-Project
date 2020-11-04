@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8712118777339864067}
   - component: {fileID: 8712118777339864066}
   - component: {fileID: 6108665204855041432}
-  - component: {fileID: 6108665204855041431}
   - component: {fileID: 1158536562840422115}
   - component: {fileID: 5007083933915892941}
   m_Layer: 0
@@ -168,20 +167,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 1
---- !u!114 &6108665204855041431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8712118777339864071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1080b713ba4a39c4c8264a1d6b6c3b2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  nextWaypointDistance: 1
 --- !u!114 &1158536562840422115
 MonoBehaviour:
   m_ObjectHideFlags: 0
