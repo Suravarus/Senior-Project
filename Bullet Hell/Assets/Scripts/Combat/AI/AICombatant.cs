@@ -39,6 +39,9 @@ namespace Combat.AI
             if (this.scanAtStart)
                 this.ScanForEnemies(); // SCAN for Enemies
 
+            // SET ShooterAI properties
+            this.GetComponent<ShooterAI>().speed = this.speed;
+            this.GetComponent<ShooterAI>().nextWaypointDistance = this.speed;
             if (!this.Disarmed())
             {
                 this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
