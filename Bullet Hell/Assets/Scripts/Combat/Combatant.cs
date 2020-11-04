@@ -192,7 +192,7 @@ namespace Combat
 
         public virtual void Start()
         {
-            // FIXME All combatants will require Healthbar in future.
+            // TODO [UI] All combatants will require Healthbar in future.
             // update health bar
             if (this.HealthUI != null)
                 this.HealthUI.UpdateValues(this);
@@ -255,7 +255,7 @@ namespace Combat
         public void TakeDamage(int damage)
         {
             this.Health -= damage;
-            if (this.HealthUI != null) // FIXME All combatants will require Healthbar in future.
+            if (this.HealthUI != null) // TODO [UI] combatants will require Healthbar in future.
                 this.HealthUI.UpdateValues(this);
         }
 
