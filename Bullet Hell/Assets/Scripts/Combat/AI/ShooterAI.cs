@@ -18,7 +18,7 @@ namespace Combat.AI
         /// Whether the AI should attempt to get as close as possible to it's
         /// target.
         /// </summary>
-        public Boolean closeTheGap = false;
+        public Boolean chargeAtTheTarget = false;
         Path path;
         int currentWaypoint = 0;
         bool reachedEndOfPath = false;
@@ -29,7 +29,7 @@ namespace Combat.AI
             set { this._minDist = Math.Abs(value); }
             get
             {
-                if (!this.closeTheGap)
+                if (!this.chargeAtTheTarget)
                 {
                     return this._minDist;
                 }
@@ -46,7 +46,7 @@ namespace Combat.AI
             set { this._maxDist = Math.Abs(value); }
             get
             {
-                if (!this.closeTheGap)
+                if (!this.chargeAtTheTarget)
                     return this._maxDist;
                 return 1;
             }

@@ -6,14 +6,13 @@ using Combat;
 namespace Combat.AI
 {
     [RequireComponent(typeof(Pathfinding.Seeker))]
+    [RequireComponent(typeof(Combat.AI.ShooterAI))]
     public class AICombatant : Combatant
     {
         // UnityEditor FIELDS -----------------------------------
         [Header("Behavior Parameters")]
         [Tooltip("Should this AI only attack if provoked?.")]
         public Boolean passive = false;
-        [Tooltip("Should this AI scan for enemies in Start(). (default = false)")]
-        public Boolean scanAtStart = false;
         [Tooltip("If TRUE(default), this combatant will never run out of ammo.")]
         public Boolean infinitAmmo = true;
         [Tooltip("Speed at which this AI should move.")]
@@ -34,10 +33,10 @@ namespace Combat.AI
             base.Start(); // call base class start method.
             // SET infiniteAmmo
             this.RangedWeapon.infAmmo = this.infinitAmmo;
-            // IF scanAtStart = TRUE:
-            if (this.scanAtStart)
-                this.ScanForEnemies(); // SCAN for Enemies
 
+            // SET ShooterAI properties
+            this.GetComponent<ShooterAI>().speed = this.speed;
+            this.GetComponent<ShooterAI>().nextWaypointDistance = this.speed;
             if (!this.Disarmed())
             {
                 this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
@@ -63,6 +62,7 @@ namespace Combat.AI
             if (!this.InCombat())
             {
                 this.Disengage();
+                this.AquireNewTarget();
             } else
             {
                 this.Engage(this.currentTarget);
@@ -112,11 +112,11 @@ namespace Combat.AI
             // SEARCH for Enemy GameObjects
             var enemyGameObjects = GameObject.FindGameObjectsWithTag(this.EnemyTag);
 
-            // SET Enemy Combatants
+            // IF enemies found
             if (enemyGameObjects.Length > 0)
             {
+                // POPULATE EnemyCombatants Array
                 this.EnemyCombatantsArr = new Combatant[enemyGameObjects.Length];
-                // SET PlayerRB field
                 for (int i = 0; i < enemyGameObjects.Length; i++)
                 {
                     var c = enemyGameObjects[i].GetComponent<Combatant>();
@@ -136,8 +136,9 @@ namespace Combat.AI
         }
 
         /// <summary>
-        /// Iterates through the current list of enemies and returns
+        /// Iterates through AICombatant.EnemyCombatantsArr and returns
         /// the nearest one. NULL if none found.
+        /// AICombatant.ScanForEnemies() populates EnemyCombatantsArr
         /// <para>Will not execute if there is a scan in progress.</para>
         /// </summary>
         /// <returns></returns>
@@ -179,6 +180,7 @@ namespace Combat.AI
             if (!this.ScanInProgress)
             {
                 this.currentTarget = null;
+                this.ScanForEnemies();
                 var n = this.NearestEnemy();
                 if (n != null && this.RangedWeapon.InRange(n.transform.position))
                     this.currentTarget = n;
@@ -211,17 +213,33 @@ namespace Combat.AI
             if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Head).position))
             {
                 this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Head).position);
-                this.GetComponent<ShooterAI>().closeTheGap = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
+                //this.GetComponent<ShooterAI>().chargeAtTheTarget = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
                 this.ShootRangedWeapon();
             }
             return shotsFired;
         }
 
+        /// <summary>
+        /// Stop moving towards target and set target to NULL.
+        /// </summary>
         public void Disengage()
         {
-            this.GetComponent<ShooterAI>().closeTheGap = false;
+            this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
             this.GetComponent<ShooterAI>().target = null;
-            this.AquireNewTarget();
+        }
+
+        // ALGORITHM
+        // IF owner has a living enemy AND collided object id != enemy id
+        //   THEN SET chargeAtTheTarget = TRUE
+        public override void OnAmmoCollision(int instanceID)
+        {
+            if (this.InCombat() && instanceID != this.currentTarget.gameObject.GetInstanceID())
+            {
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
+            } else
+            {
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+            }
         }
     }
 

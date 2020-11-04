@@ -126,7 +126,7 @@ public class Weapon : MonoBehaviour
             if (this.bulletSpeed > 0)
                 a.speed = this.bulletSpeed + 10;
             if (this.baseDamage > 0)
-                a.damage = this.baseDamage; // FIXME [combat-update IV]
+                a.damage = this.baseDamage;
 
             a.ammoOwner = this.GetComponentInParent<Combatant>();
             a.weapon = this;
