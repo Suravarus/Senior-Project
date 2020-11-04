@@ -13,8 +13,6 @@ namespace Combat.AI
         [Header("Behavior Parameters")]
         [Tooltip("Should this AI only attack if provoked?.")]
         public Boolean passive = false;
-        [Tooltip("Should this AI scan for enemies in Start(). (default = false)")]
-        public Boolean scanAtStart = false;
         [Tooltip("If TRUE(default), this combatant will never run out of ammo.")]
         public Boolean infinitAmmo = true;
         [Tooltip("Speed at which this AI should move.")]
@@ -35,9 +33,6 @@ namespace Combat.AI
             base.Start(); // call base class start method.
             // SET infiniteAmmo
             this.RangedWeapon.infAmmo = this.infinitAmmo;
-            // IF scanAtStart = TRUE:
-            if (this.scanAtStart)
-                this.ScanForEnemies(); // SCAN for Enemies
 
             // SET ShooterAI properties
             this.GetComponent<ShooterAI>().speed = this.speed;
