@@ -60,7 +60,16 @@ namespace Combat.AI
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            // FIXME temp ---------------------------------------
+            if (this.gameObject.name == "Turret Enemy")
+            {
+                Debug.LogWarning($"{this.gameObject.name} - incombat:{this.InCombat()}");
+                if (this.InCombat())
+                {
+                    Debug.LogWarning($"{this.gameObject.name} - target-name:{this.currentTarget.gameObject.name}");
+                }
+            }
+            // --------------------------------------------------
             if (!this.InCombat())
             {
                 this.Disengage();
@@ -114,11 +123,11 @@ namespace Combat.AI
             // SEARCH for Enemy GameObjects
             var enemyGameObjects = GameObject.FindGameObjectsWithTag(this.EnemyTag);
 
-            // SET Enemy Combatants
+            // IF enemies found
             if (enemyGameObjects.Length > 0)
             {
+                // POPULATE EnemyCombatants Array
                 this.EnemyCombatantsArr = new Combatant[enemyGameObjects.Length];
-                // SET PlayerRB field
                 for (int i = 0; i < enemyGameObjects.Length; i++)
                 {
                     var c = enemyGameObjects[i].GetComponent<Combatant>();
@@ -138,8 +147,9 @@ namespace Combat.AI
         }
 
         /// <summary>
-        /// Iterates through the current list of enemies and returns
+        /// Iterates through AICombatant.EnemyCombatantsArr and returns
         /// the nearest one. NULL if none found.
+        /// AICombatant.ScanForEnemies() populates EnemyCombatantsArr
         /// <para>Will not execute if there is a scan in progress.</para>
         /// </summary>
         /// <returns></returns>
@@ -181,6 +191,7 @@ namespace Combat.AI
             if (!this.ScanInProgress)
             {
                 this.currentTarget = null;
+                this.ScanForEnemies();
                 var n = this.NearestEnemy();
                 if (n != null && this.RangedWeapon.InRange(n.transform.position))
                     this.currentTarget = n;
