@@ -75,7 +75,6 @@ namespace Combat
             }
         }
 
-        // FIXME COLLISION-TEAM[1] This should be on the Combatant script.
         // PURPOSE:
         // - Since this method is called whenever this gameObject collides with ANY
         // - Collider2D object that is set to Collider.IsTrigger = True, this code
