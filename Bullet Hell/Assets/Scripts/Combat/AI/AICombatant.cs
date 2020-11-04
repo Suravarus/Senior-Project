@@ -64,6 +64,7 @@ namespace Combat.AI
             if (!this.InCombat())
             {
                 this.Disengage();
+                this.AquireNewTarget();
             } else
             {
                 this.Engage(this.currentTarget);
@@ -222,7 +223,6 @@ namespace Combat.AI
         {
             this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
             this.GetComponent<ShooterAI>().target = null;
-            this.AquireNewTarget();
         }
 
         // ALGORITHM
