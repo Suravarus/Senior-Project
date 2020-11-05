@@ -222,7 +222,6 @@ public class Weapon : MonoBehaviour
                 if (this.drawGizmo)
                 {
                     Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.red, 1000, false);
-                    Debug.LogWarning($"LOS Blocked by {raycastHit2D.collider.gameObject.name}");
                 }
             }
         }

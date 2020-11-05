@@ -133,7 +133,6 @@ namespace Combat.UI
                     break;
                 case TextStyle.Percent:
                     int pct = (int)Math.Round(this.GetHealthAsDecimal() * 100, 0);
-                    Debug.LogWarning($"d: {this.GetHealthAsDecimal()} p:{pct}");
                     this.TextMeshProUGUI.SetText($"{pct} %");
                     break;
                 default:

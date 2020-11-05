@@ -29,7 +29,6 @@ public class MOBSpawn : MonoBehaviour
     void Start()
     {
         StartCoroutine(EnemyDrop());
-        //Debug.Log("Tile map size"+wall.cellBounds);
     }
 
     void Update()
