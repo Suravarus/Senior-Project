@@ -1,4 +1,5 @@
 ﻿using Combat;
+using Combat.AI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ public class Boss1Script : MonoBehaviour
 {
     public Transform player;
 
-    //ChaserAI movement;
+    ChaserAI movement;
     Rigidbody2D rb;
     CapsuleCollider2D hitbox;
     Combatant bossInfo;
@@ -19,10 +20,10 @@ public class Boss1Script : MonoBehaviour
     private bool isJumping = false;
     private int bossPhase = 1;
     private float jumpTime = 1;
-    private int jumpSpeed = 3;
+    private int jumpSpeed = 20;
     private bool goingUp = false;
     private bool goingDown = false;
-    private Transform target;
+    private Vector2 target;
     private Vector2 direction;
 
     private int count;
@@ -30,23 +31,22 @@ public class Boss1Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //movement = GetComponent<ChaserAI>();
+        movement = GetComponent<ChaserAI>();
         rb = GetComponent<Rigidbody2D>();
         hitbox = GetComponent<CapsuleCollider2D>();
         bossInfo = GetComponent<Combatant>();
         bossPos = GetComponent<Transform>();
-        target = bossPos;
+        target = bossPos.position;
     }
 
     // Update is called 50 times per second
     void FixedUpdate()
     {
-        Debug.Log("Update frame");
         if(bossPhase == 1 && bossInfo.Health <= (bossInfo.MaxHealth / 2))
         {
             bossPhase = 2;
-            jumpTime = 0.5f;
-            jumpSpeed = 6;
+            jumpTime /= 2;
+            jumpSpeed *= 2;
         }
 
         if (isJumping)
@@ -54,22 +54,22 @@ public class Boss1Script : MonoBehaviour
             if (goingUp)
             {
                 rb.MovePosition(rb.position + direction * jumpSpeed * Time.fixedDeltaTime);
-                if(target.position.y <= bossPos.position.y) //reached apex of jump
+                if(target.y <= bossPos.position.y) //reached apex of jump
                 {
-                    Debug.Log("About to wait");
                     goingUp = false;
+                    Debug.Log(target.y + " : rising : " + bossPos.position.y );
                     StartCoroutine(Wait(jumpTime));
                 }
             }
             else if (goingDown)
             {
                 rb.MovePosition(rb.position + direction * jumpSpeed * Time.fixedDeltaTime);
-                Debug.Log("I'm falling");
-                if (rb.position.y < target.position.y)
+                if (target.y > bossPos.position.y)
                 { //make sure the enemy does not fall too far
-                    rb.position = new Vector2(rb.position.x, target.position.y);
+                    Debug.Log(target.y + " : falling : " + bossPos.position.y);
+                    rb.position = new Vector2(rb.position.x, target.y);
                 }
-                if(rb.position.y == target.position.y)
+                if(rb.position.y == target.y)
                 {
                     Landing();
                 }
@@ -80,7 +80,7 @@ public class Boss1Script : MonoBehaviour
             count++;
             if(count > 200)
             {
-                //if (Random.Range(0f, 1000f) == 20) //variable amount of time to jump
+                //if ((UnityEngine.Random.Range(0f, 1000f) == 20)) //variable amount of time to jump
                     Jump();
             }
         }
@@ -119,29 +119,33 @@ public class Boss1Script : MonoBehaviour
 
     void GoUp()
     {
-        //movement.moving = false;
-        hitbox.enabled = false;
+        movement.moving = false;
+        hitbox.isTrigger = true;
         goingUp = true;
-        target.position = bossPos.position + new Vector3(0, 50, 0);
-        direction = (target.position - bossPos.position).normalized;
+        target = bossPos.position + new Vector3(0, 50, 0);
+        Debug.Log("target position" + target);
+        direction = (target - (Vector2)bossPos.position);
+        Debug.Log("nonnormal direction: " + direction);
+        direction = direction.normalized;
+        Debug.Log("normal direction: " + direction);
     }
 
     void FallDown()
     {
         goingUp = false;
         goingDown = true;
-        target.position = player.position; //players location
-        direction = (target.position - bossPos.position).normalized;
+        target = player.position; //players location
+        Debug.Log("target position " + target + "boss pos " + bossPos.position);
+        direction = (target - (Vector2)bossPos.position).normalized;
         //This is where we would show some animation 
         //suggesting the boss is falling at the player
     }
 
     void Landing()
     {
-
         goingDown = false;
-        //movement.moving = true;
-        hitbox.enabled = true;
+        movement.moving = true;
+        hitbox.isTrigger = false;
         count = 0;
         isJumping = false;
     }

@@ -8,12 +8,13 @@ namespace Combat.AI
 
         public float speed = 200f;
         public float nextWaypointDistance = 1f;
+        public bool moving = true;
 
         private Transform target;
         Path path;
         int currentWaypoint = 0;
         bool reachedEndOfPath = false;
-
+        int count = 0;
         Seeker seeker;
         Rigidbody2D rb;
 
@@ -31,8 +32,13 @@ namespace Combat.AI
 
         void UpdatePath()
         {
-            if (seeker.IsDone())
-                seeker.StartPath(rb.position, target.position, OnPathComplete);
+            if (moving)
+            {
+                if (seeker.IsDone())
+                {
+                    seeker.StartPath(rb.position, target.position, OnPathComplete);
+                }
+            }
         }
 
         void OnPathComplete(Path p)
@@ -47,27 +53,30 @@ namespace Combat.AI
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (path == null)
-                return;
-
-            if (!this.target.GetComponent<Combat.Combatant>().IsAlive()
-                || currentWaypoint >= path.vectorPath.Count)
+            if (moving)
             {
-                reachedEndOfPath = true;
-                return;
-            }
-            else
-                reachedEndOfPath = false;
-            //move along path
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
+                if (path == null)
+                    return;
+
+                if (!this.target.GetComponent<Combat.Combatant>().IsAlive()
+                    || currentWaypoint >= path.vectorPath.Count)
+                {
+                    reachedEndOfPath = true;
+                    return;
+                }
+                else
+                    reachedEndOfPath = false;
+                //move along path
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
 
 
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-            if (distance < nextWaypointDistance)
-            {
-                currentWaypoint++;
+                if (distance < nextWaypointDistance)
+                {
+                    currentWaypoint++;
+                }
             }
         }
     }
