@@ -136,14 +136,14 @@ public class Weapon : MonoBehaviour
             //Use bullets linked to weapon type
             if (infAmmo)
             {
-                Instantiate(a, st.position, st.rotation);
+                Instantiate(this.WeaponAmmo, st.position, st.rotation);
             }
             else if (this.ammoType == 0)
             {
                 if (this.weaponOwner.smallAmmo > 0)
                 {
                     //Debug.Log("Small ammo fired");
-                    Instantiate(a, st.position, st.rotation);
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
                     this.weaponOwner.smallAmmo = this.weaponOwner.smallAmmo - 1;
                 }
             }
@@ -152,7 +152,7 @@ public class Weapon : MonoBehaviour
                 if (this.weaponOwner.mediumAmmo > 0)
                 {
                     //Debug.Log("Medium ammo fired");
-                    Instantiate(a, st.position, st.rotation);
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
                     this.weaponOwner.mediumAmmo -= 1;
                 }
             }
@@ -161,7 +161,7 @@ public class Weapon : MonoBehaviour
                 if (this.weaponOwner.largeAmmo > 0)
                 {
                     //Debug.Log("Large ammo fired");
-                    Instantiate(a, st.position, st.rotation);
+                    Instantiate(this.WeaponAmmo, st.position, st.rotation);
                     this.weaponOwner.largeAmmo -= 1;
                 }
             }
@@ -222,6 +222,7 @@ public class Weapon : MonoBehaviour
                 if (this.drawGizmo)
                 {
                     Debug.DrawLine(this.GetAmmoSpawnPoint().position, raycastHit2D.point, Color.red, 1000, false);
+                    Debug.LogWarning($"LOS Blocked by {raycastHit2D.collider.gameObject.name}");
                 }
             }
         }

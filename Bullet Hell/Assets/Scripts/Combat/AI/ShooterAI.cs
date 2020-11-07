@@ -5,8 +5,6 @@ using Pathfinding;
 namespace Combat.AI
 {
     [Obsolete("This component will soon be merged with AICombatant and will no longer be accessible.")]
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(Seeker))]
     public class ShooterAI : MonoBehaviour
     {
         
@@ -62,23 +60,17 @@ namespace Combat.AI
         // Start is called before the first frame update
         void Start()
         {
-            if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
-            {
-                seeker = GetComponent<Seeker>();
-                rb = GetComponent<Rigidbody2D>();
-                //this.target = GameObject.FindGameObjectWithTag("Player").transform;
-                //sets target to the player
-                InvokeRepeating("UpdatePath", 0f, .5f);
-            }
+            seeker = GetComponent<Seeker>();
+            rb = GetComponent<Rigidbody2D>();
+            //this.target = GameObject.FindGameObjectWithTag("Player").transform;
+            //sets target to the player
+            InvokeRepeating("UpdatePath", 0f, .5f);
         }
 
         void UpdatePath()
         {
-            if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
-            {
-                if (seeker.IsDone() && target != null)
-                    seeker.StartPath(rb.position, target.position, OnPathComplete);
-            }
+            if (seeker.IsDone() && target != null)
+                seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
 
         void OnPathComplete(Path p)
@@ -93,8 +85,7 @@ namespace Combat.AI
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static 
-                && this.GetComponent<AICombatant>().IsAlive())
+            if (this.GetComponent<AICombatant>().IsAlive())
             {
                 if (path == null)
                     return;
