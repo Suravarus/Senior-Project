@@ -10,7 +10,7 @@ public class KillAll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        b = GameObject.Find("Random enemy").GetComponent<RandomEnemy>().enemyCount;
+        b = GameObject.Find("Random enemy").GetComponent<MOBSpawn>().EnemyCount;
     }
     private void Awake()
     {
