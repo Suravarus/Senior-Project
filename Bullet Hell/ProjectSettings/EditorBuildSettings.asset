@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rooms/Room4.unity
     guid: a5a0a63223c6a0a488a5fd6e94dfebda
   - enabled: 1
-    path: Assets/Scenes/Rooms/Shop_Room.unity
+    path: Assets/Scenes/Rooms/Shop_RoomQWER.unity
     guid: 27f98155f4b0454469f118cd666ed819
   - enabled: 1
     path: Assets/Scenes/Rooms/Special Room.unity
