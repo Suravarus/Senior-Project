@@ -34,8 +34,6 @@ public class Destroyalbe : MonoBehaviour
                 destroyable.SetTile(destroyable.WorldToCell(hitPos), null);
 
                 //hitPos = destroyable.WorldToCell(hit.point);
-                Debug.Log("x=" + hit.point.x);
-                Debug.Log("y=" + hit.point.y);
 
                 //hitPos.x = hit.point.x ;
                 //hitPos.y = hit.point.y ;

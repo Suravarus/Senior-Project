@@ -36,7 +36,7 @@ namespace Combat.AI
 
         public void OnPathComplete(Path p)
         {
-            Debug.Log("A path was calculated. Did it fail with an error? " + p.error);
+            // Debug.Log("A path was calculated. Did it fail with an error? " + p.error);
 
             // Path pooling. To avoid unnecessary allocations paths are reference counted.
             // Calling Claim will increase the reference count by 1 and Release will reduce
