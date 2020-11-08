@@ -200,7 +200,7 @@ namespace Combat
 
         public virtual void FixedUpdate()
         {
-            if (!this.IsAlive())
+            if (!this.IsAlive() && this.enabled)
             {
                 this.Die();
             }
@@ -265,6 +265,7 @@ namespace Combat
         /// </summary>
         public virtual void Die()
         {
+            this.enabled = false;
             // create new death object
             var deathSprite = Resources.Load<Sprite>("Sprites/Skull");
             this.GetComponent<SpriteRenderer>().sprite = deathSprite;
