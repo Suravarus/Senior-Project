@@ -9,8 +9,7 @@ using UnityEngine;
 
 public class Boss1Script : MonoBehaviour
 {
-    public Transform player;
-
+    Transform player;
     ChaserAI movement;
     Rigidbody2D rb;
     CapsuleCollider2D hitbox;
@@ -25,6 +24,7 @@ public class Boss1Script : MonoBehaviour
     private bool goingDown = false;
     private Vector2 target;
     private Vector2 direction;
+    private bool isDead = false;
 
     private int count;
 
@@ -36,6 +36,7 @@ public class Boss1Script : MonoBehaviour
         hitbox = GetComponent<CapsuleCollider2D>();
         bossInfo = GetComponent<Combatant>();
         bossPos = GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = bossPos.position;
     }
 

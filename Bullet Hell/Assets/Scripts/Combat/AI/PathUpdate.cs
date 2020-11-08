@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class PathUpdate : MonoBehaviour
 {
-    public float time = 1f;
-    int count = 0;
-    int frames = 50;
+    [Tooltip("Update the Graph every this many frames")]
+    public int interval = 50;
+    
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //frames = (int)(50 * time);
-        count++;
-        if (count > frames)
+        if (Time.frameCount % interval == 0)
         {
             AstarPath.active.Scan();
-            count = 0;
         }
     }
 }
