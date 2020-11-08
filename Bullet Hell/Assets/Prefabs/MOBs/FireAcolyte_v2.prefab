@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4687091655848055590}
   - component: {fileID: 5669170425978868488}
   - component: {fileID: -5051725881224634116}
+  - component: {fileID: 3245948081376226287}
   m_Layer: 0
   m_Name: FireAcolyte_v2
   m_TagString: enemy
@@ -205,7 +206,6 @@ MonoBehaviour:
   HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 1071461084074795909}
   passive: 0
-  scanAtStart: 1
   infinitAmmo: 1
   speed: 5
 --- !u!114 &-5051725881224634116
@@ -223,7 +223,29 @@ MonoBehaviour:
   speed: 3
   nextWaypointDistance: 1
   target: {fileID: 0}
-  closeTheGap: 0
+  chargeAtTheTarget: 0
+--- !u!114 &3245948081376226287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681907991325052283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  uncommonItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  rareItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  itemDropRate: 100
+  common: 60
+  uncommon: 30
+  rare: 10
 --- !u!1001 &9176935903880247451
 PrefabInstance:
   m_ObjectHideFlags: 0

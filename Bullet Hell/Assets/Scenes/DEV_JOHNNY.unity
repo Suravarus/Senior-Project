@@ -1823,6 +1823,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6943156, y: 1.0616102}
   m_EdgeRadius: 0
+--- !u!1 &1973365455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4681907991325052283, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+  m_PrefabInstance: {fileID: 1804525438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1973365463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973365455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  uncommonItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  rareItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  itemDropRate: 42
+  common: 0
+  uncommon: 0
+  rare: 0
 --- !u!1 &2085550576
 GameObject:
   m_ObjectHideFlags: 0

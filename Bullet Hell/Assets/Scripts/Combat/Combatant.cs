@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 using Combat.UI;
+using Loot;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -273,6 +274,7 @@ namespace Combat
             this.transform.localScale = new Vector3(5, 5, 1);
             this.GetComponent<Rigidbody2D>().Sleep();
             this.GetComponent<Collider2D>().enabled = false;
+            this.GetComponent<ItemDrop>().Spawn();
         }
 
         void OnTriggerEnter2D(Collider2D other)
