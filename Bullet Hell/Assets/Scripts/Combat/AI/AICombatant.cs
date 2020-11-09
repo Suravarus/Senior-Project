@@ -88,7 +88,6 @@ namespace Combat.AI
         /// <summary>
         /// Returns TRUE if this AI is targeting a Combatant that is alive. Otherwise,
         ///  it tries to obtain a new target and returns FALSE.
-        ///  <para>RECURSIVE</para>
         /// </summary>
         /// <returns></returns>
         public Boolean InCombat()
@@ -207,14 +206,18 @@ namespace Combat.AI
         {
             Boolean shotsFired = false;
             // movement stuff
-            this.GetComponent<ShooterAI>().target = enemy.GetBodyTransform(Combatant.BodyPart.Head);
+            this.GetComponent<ShooterAI>().target = enemy.GetBodyTransform(Combatant.BodyPart.Chest);
             
-            // weapon stuff
-            if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Head).position))
+            // IF target is in range
+            if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position))
             {
-                this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Head).position);
-                //this.GetComponent<ShooterAI>().chargeAtTheTarget = !this.RangedWeapon.LineOfSight(enemy, BodyPart.Head);
+                // SHOOT target 
+                this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
                 this.ShootRangedWeapon();
+            } else // ELSE
+            {
+                // CHARGE at target
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
             }
             return shotsFired;
         }
@@ -239,6 +242,19 @@ namespace Combat.AI
             } else
             {
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+            }
+        }
+
+        public override void TakeDamage(Combatant attacker)
+        {
+            base.TakeDamage(attacker);
+
+            // IF not fighting the aggressor
+            if (this.currentTarget == null 
+                || this.currentTarget.GetInstanceID() != attacker.GetInstanceID())
+            {
+                // TARGET the aggressor
+                this.currentTarget = attacker;
             }
         }
     }
