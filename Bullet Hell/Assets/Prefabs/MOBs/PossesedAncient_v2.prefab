@@ -183,11 +183,7 @@ MonoBehaviour:
   _enemyTag: Player
   _health: 10
   _maxHealth: 10
-  smallAmmo: 0
-  mediumAmmo: 0
-  largeAmmo: 0
   HealthUI: {fileID: 0}
-  animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 1854830476394428596}
   passive: 0
   infinitAmmo: 1
@@ -283,6 +279,10 @@ PrefabInstance:
       propertyPath: weaponAmmo
       value: 
       objectReference: {fileID: 979262230771606225, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: rateOfFire
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
 --- !u!4 &7684783636042226065 stripped
