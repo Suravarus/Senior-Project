@@ -274,7 +274,9 @@ namespace Combat
             this.transform.localScale = new Vector3(5, 5, 1);
             this.GetComponent<Rigidbody2D>().Sleep();
             this.GetComponent<Collider2D>().enabled = false;
-            this.GetComponent<ItemDrop>().Spawn();
+            // IF has ItemDrop component
+            if (this.GetComponent<ItemDrop>() != null)
+                this.GetComponent<ItemDrop>().Spawn(); // CALL ItemDrop
         }
 
         void OnTriggerEnter2D(Collider2D other)
