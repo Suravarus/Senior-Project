@@ -154,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d245f7a5d30fa8943aa5c63681d91689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  rb: {fileID: 786394176794595535}
+  speed: 10
 --- !u!70 &420755244860776867
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,6 +187,7 @@ MonoBehaviour:
   _health: 500
   _maxHealth: 500
   HealthUI: {fileID: 0}
+  animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 721085136049678996}
 --- !u!95 &1428033195
 Animator:
