@@ -17,6 +17,7 @@ namespace Combat.UI
 
         // UNITY EDITOR PROPERTIES -----------------
         public TextStyle showTextAs;
+        public Boolean destroyOnDeath = true;
         // -----------------------------------------
 
         // name of child objects expected by this script
@@ -140,9 +141,14 @@ namespace Combat.UI
                     break;
 
             }
-
             if (this.CurrentHealth == 0)
-                this.TextMeshProUGUI.SetText("DEAD");
+            {
+                if (this.destroyOnDeath)
+                    Destroy(this.gameObject);
+                else if (this.showTextAs != TextStyle.Hidden)
+                    this.TextMeshProUGUI.SetText("DEAD");
+            }
+            
         }
     }
 }

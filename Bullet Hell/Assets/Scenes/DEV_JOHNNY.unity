@@ -227,6 +227,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7534560155660660265, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
+      propertyPath: _health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534560155660660265, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
+      propertyPath: _maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8712118777339864064, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.4
@@ -1221,6 +1229,10 @@ PrefabInstance:
       propertyPath: HealthUI
       value: 
       objectReference: {fileID: 1051253272}
+    - target: {fileID: 7378092279696690728, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: baseDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
 --- !u!1 &1441475722
@@ -1606,6 +1618,18 @@ PrefabInstance:
     - target: {fileID: 4681907991325052284, guid: b568050f0f69a204388fd8bf07465604, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669170425978868488, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: _health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669170425978868488, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: _maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109266864301345683, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: m_Name
+      value: Canvas_Healthbar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b568050f0f69a204388fd8bf07465604, type: 3}
