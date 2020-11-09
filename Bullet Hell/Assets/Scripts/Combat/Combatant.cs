@@ -15,11 +15,6 @@ namespace Combat
         public string _enemyTag = "";
         public int _health = 1;
         public int _maxHealth = 10;
-        [Header("AmmoPouch")]
-        [Obsolete("These will be removed in the future. Ammo values will be taken from Inventory.")]
-        public int smallAmmo = 0;
-        public int mediumAmmo = 0;
-        public int largeAmmo = 0;
         [Header("UI")]
         public HealthBar HealthUI;
         // ---------------------------------------------------------------------
