@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1.9375, y: 2.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1092396943132606011
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   playerRB: {fileID: 0}
+  rangedWeaponWrapper: {fileID: 0}
 --- !u!114 &155880961526758193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,11 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3730b3d493b614282adc6082bdc40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyTag: 
   _health: 10
   _maxHealth: 10
-  _armor: 0
-  _baseDamage: 0
-  _shield: 0
+  HealthUI: {fileID: 0}
+  animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 4687996066467205312}
 --- !u!1 &4687996066467205312
 GameObject:
