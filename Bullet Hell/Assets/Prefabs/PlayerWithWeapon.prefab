@@ -187,9 +187,6 @@ MonoBehaviour:
   _enemyTag: enemy
   _health: 500
   _maxHealth: 500
-  smallAmmo: 0
-  mediumAmmo: 0
-  largeAmmo: 0
   HealthUI: {fileID: 0}
   rangedWeaponWrapper: {fileID: 721085136049678996}
 --- !u!95 &1428033195
@@ -235,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972830389010620516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalPosition: {x: 0, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 786394176794595533}
@@ -265,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2209327578641955503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.74, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 786394176794595533}
