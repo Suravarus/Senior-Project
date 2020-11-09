@@ -22,6 +22,12 @@ public class Weapon : MonoBehaviour
     private float _fireDelay;
     public int ammoType = 0;
     public bool infAmmo = false;
+    /// <summary>
+    /// The Animator component for the shooting animation. Can be NULL.
+    /// </summary>
+    [Header("Animation")]
+    [Tooltip("Animator this script interacts with in order to trigger a shooting animation. Can be NULL.")]
+    public Animator shootingAnimator;
     // ------------------------------------------------//
 
     // will keep track of the last time this weapon 'fired'
@@ -68,6 +74,11 @@ public class Weapon : MonoBehaviour
         this.TimeSinceFireRequest = 0f;
         this.WaitingToFire = false;
 
+    }
+
+    private void Start()
+    {
+        this.shootingAnimator = this.GetComponent<Animator>();
     }
 
     private float CalculateDelay()
@@ -121,6 +132,12 @@ public class Weapon : MonoBehaviour
     {
         try
         {
+            // IF Animator component is attached
+            if (this.shootingAnimator != null)
+            {
+                // PLAY shooting animation based on rateOfFire
+                this.shootingAnimator.Play("Shooting", -1, 1f/this.rateOfFire - 0.25f);
+            }
             var a = this.WeaponAmmo.GetComponent<Ammo>();
             // shoot the 'ammo' straight ahead
             if (this.bulletSpeed > 0)
