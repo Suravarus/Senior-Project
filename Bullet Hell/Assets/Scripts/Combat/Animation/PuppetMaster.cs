@@ -23,10 +23,7 @@ namespace Combat.Animation
         {
             this.CharacterAnimator = animator;
             this.Puppet = puppet;
-            previousPosition = this.Puppet.transform.position;
         }
-
-        private Vector2 previousPosition;
 
         /// <summary>
         /// Assigns animations to the puppet. 
@@ -34,13 +31,9 @@ namespace Combat.Animation
         /// </summary>
         public void PullTheStrings()
         {
-            // DETERMINE if player is moving via input.
-            //Boolean puppetIsMoving = Mathf.Abs(Input.GetAxis("Horizontal")) > 0.001f
-            //    || Mathf.Abs(Input.GetAxis("Vertical")) > 0.001f;
+            // DETERMINE if player is moving.
             var vel = this.Puppet.GetComponent<Rigidbody2D>().GetPointVelocity(this.Puppet.transform.position);
-            Debug.Log($"velocity: {vel} magnitude: {vel.magnitude}");
             Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
-            Debug.Log($"{typeof(PuppetMaster)} moving = {puppetIsMoving}");
             // CALCULATE the vector from the puppet's weapon to it's chest
             var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
             v = v.normalized;
