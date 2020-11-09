@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Player
-  _health: 1
-  _maxHealth: 10
+  _health: 50
+  _maxHealth: 50
   HealthUI: {fileID: 8485369463663962361}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 3945236220053457657}
