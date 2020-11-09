@@ -175,7 +175,7 @@ namespace Combat.AI
 
             var dir = ((Vector2)this.target.transform.position - (Vector2)this.transform.position).normalized;
 
-            this.rb.AddForce(dir * -this.acceleration);
+            this.rb.AddForce(dir * -this.acceleration * 1.5f);
         }
     }
 }
