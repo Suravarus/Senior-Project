@@ -40,22 +40,27 @@ namespace Combat
         {
             set
             {
-                // CHECK that the tag is defined
-                bool valid = false;
-                foreach (String t in UnityEditorInternal.InternalEditorUtility.tags)
-                {
-                    if (value.Equals(t))
-                        valid = true;
-                }
-                if (!valid)
-                {
-                    // THROW err if value is empty
-                    if (String.IsNullOrEmpty(value))
-                        throw new MissingFieldException(this.GetType().Name, nameof(this.EnemyTag));
+                this._enemyTag = value;
 
-                    // THROW err if not a valid tag.
-                    throw new Exception($"Value \'{value}\' is not a valid tag.");
-                }
+                // FIXME this code won't build. commenting out for now
+                // ----------------------------------------------------------
+                // // CHECK that the tag is defined
+                // bool valid = false;
+                //foreach (String t in UnityEditorInternal.InternalEditorUtility.tags)
+                //{
+                //    if (value.Equals(t))
+                //        valid = true;
+                //}
+                //if (!valid)
+                //{
+                //    // THROW err if value is empty
+                //    if (String.IsNullOrEmpty(value))
+                //        throw new MissingFieldException(this.GetType().Name, nameof(this.EnemyTag));
+
+                //    // THROW err if not a valid tag.
+                //    throw new Exception($"Value \'{value}\' is not a valid tag.");
+                //}
+                // ----------------------------------------------------------------
 
             }
 
