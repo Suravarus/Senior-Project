@@ -1,16 +1,21 @@
 ﻿
+using System;
 using UnityEngine;
+
 using Combat;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Combatant))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
-    public Rigidbody2D rb;
-
-    Vector2 movement;
+    // UNITY EDITOR ----------------------------//
+    public float speed = 1;
+    // ----------------------------------------//
 
     private Combatant combatant;
+    private Rigidbody2D rb;
+    Vector2 direction;
+    
 
     void Awake()
     {
@@ -19,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         if (cb != null)
         {
             this.combatant = cb;
+            this.rb = this.combatant.GetComponent<Rigidbody2D>();
         }
         else
         {
@@ -37,35 +43,40 @@ public class PlayerMovement : MonoBehaviour
         //0.70710678118 is sqrt(2) / 2
         if (x != 0 && y != 0)
         {
-            movement.x = x;
-            movement.y = y;
-            if (movement.magnitude > 1)
-                movement = movement.normalized;
+            direction.x = x;
+            direction.y = y;
+            if (direction.magnitude > 1)
+                direction = direction.normalized;
         }
         else
         {
-            movement.x = x;
-            movement.y = y;
+            direction.x = x;
+            direction.y = y;
         }
     }
 
     // ALGORITHM:
     //     MOVE player
+    //     GET mouse position
     //     AIM weapon toward mouse location
-    //     SHOOT weapon if spacebar is pressed
+    //     CALL puppetMaster
+    //     SHOOT weapon if righ-click is clicked
     void FixedUpdate()
     {
-        // aim weapon toward mouse location
+        
         if (this.combatant.IsAlive() && !this.combatant.Disarmed())
         {
-            // move player 
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // MOVE player 
+            this.rb.velocity = this.direction * this.speed;
+            //this.rb.MovePosition(
+            //    this.rb.position + this.movement * this.speed * Time.fixedDeltaTime);
             // get mouse position
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // maintain the same z-value
             target.z = this.combatant.RangedWeapon.transform.position.z;
+            // AIM weapon toward mouse location
             this.combatant.AimRangedWeapon(target);
-
+            // CALL puppetMaster
             // Shoot weapon if RIGHT-CLICK is CLICKED
             if (Input.GetKey(KeyCode.Mouse1))
             {

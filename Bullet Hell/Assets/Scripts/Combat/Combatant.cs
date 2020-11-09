@@ -3,6 +3,7 @@ using UnityEngine;
 
 using Combat.UI;
 using Loot;
+using Combat.Animation;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -17,13 +18,17 @@ namespace Combat
         public int _maxHealth = 10;
         [Header("UI")]
         public HealthBar HealthUI;
+        [Header("Animation")]
+        public Animator animator;
         // ---------------------------------------------------------------------
-
+        
         public enum BodyPart
         {
             Head,
             Chest
         }
+
+        public PuppetMaster Puppeteer { set; get; }
 
         /// <summary>
         /// When passing in a value, this accessor makes sure that the Tag has
@@ -192,12 +197,23 @@ namespace Combat
             // update health bar
             if (this.HealthUI != null)
                 this.HealthUI.UpdateValues(this);
+            if (this.animator == null)
+                this.animator = this.GetComponent<Animator>();
+            if (this.animator != null)
+                this.Puppeteer = new PuppetMaster(this.animator, this);
+        }
+
+        public virtual void Update()
+        {
+            if (this.Puppeteer != null)
+                this.Puppeteer.PullTheStrings();
         }
 
         public virtual void FixedUpdate()
         {
             if (!this.IsAlive() && this.enabled)
             {
+                Debug.LogWarning(this.gameObject.name + " DIE!");
                 this.Die();
             }
         }
