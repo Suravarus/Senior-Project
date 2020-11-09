@@ -1,7 +1,4 @@
 ﻿using Combat;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class DangerZone : MonoBehaviour
@@ -28,7 +25,8 @@ public class DangerZone : MonoBehaviour
         if (collision.tag == "Player")
         {
             danger.GetComponent<CompositeCollider2D>().isTrigger = true;
-            GameObject.Find("Player_v2").GetComponent<Combatant>()._health -= 500;
+            // KILL player
+            collision.GetComponent<Combatant>().Health = 0;
             
             Debug.Log("Entered");
         }
