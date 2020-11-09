@@ -13,6 +13,7 @@ namespace Combat.AI
         
         public float speed = 3f;
         public float nextWaypointDistance = 1f;
+        public float acceleration;
 
         public Transform target;
         private Vector2 DistanceFromTarget;
@@ -26,6 +27,8 @@ namespace Combat.AI
         bool reachedEndOfPath = false;
 
         private float _minDist = 1;
+
+        private float _timeSinceStatic = 0f;
         public float MinDist
         {
             set { this._minDist = Math.Abs(value); }
@@ -97,7 +100,9 @@ namespace Combat.AI
                 && this.GetComponent<AICombatant>().IsAlive())
             {
                 if (path == null)
+                {
                     return;
+                }
 
                 if (!this.GetComponent<AICombatant>().InCombat()
                     || currentWaypoint >= path.vectorPath.Count-1)
@@ -121,6 +126,9 @@ namespace Combat.AI
                     else if (distanceFromTarget > this.MaxDist) // check if far from player
                     {
                         this.WalkTowardsNextWaypoint();
+                    } else
+                    {
+                        this.rb.velocity = Vector2.zero;
                     }
 
                     float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -144,17 +152,30 @@ namespace Combat.AI
         /// </summary>
         private void WalkTowardsNextWaypoint()
         {
-            var direction = (this.path.vectorPath[this.currentWaypoint + 1] 
-                - this.transform.position)
-                .normalized;
-            this.rb.MovePosition(this.rb.position + (Vector2)direction * this.speed * Time.deltaTime);
+            if (this._timeSinceStatic < 0)
+                this._timeSinceStatic = 0;
+
+            var direction = (this.path.vectorPath[this.currentWaypoint + 1]
+                - this.transform.position).normalized;
+
+            this._timeSinceStatic += Time.deltaTime;
+
+            var newSpeed = this.rb.velocity.magnitude + this.acceleration * this._timeSinceStatic;
+            
+            if (newSpeed < this.speed)
+                this.rb.velocity = direction * newSpeed;
+            else
+                this.rb.velocity = direction * this.speed;
         }
 
         private void Flee()
         {
-            var dir = -((Vector2)this.target.transform.position - (Vector2)this.transform.position).normalized;
-            this.rb.MovePosition(
-                this.rb.position + dir * this.speed * Time.deltaTime);
+            if (this._timeSinceStatic > 0 || this.rb.velocity.magnitude == 0)
+                this._timeSinceStatic = 0;
+
+            var dir = ((Vector2)this.target.transform.position - (Vector2)this.transform.position).normalized;
+
+            this.rb.AddForce(dir * -this.acceleration);
         }
     }
 }

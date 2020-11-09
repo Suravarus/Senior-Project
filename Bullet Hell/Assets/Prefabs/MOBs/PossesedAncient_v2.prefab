@@ -184,10 +184,12 @@ MonoBehaviour:
   _health: 10
   _maxHealth: 10
   HealthUI: {fileID: 0}
+  animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 1854830476394428596}
   passive: 0
   infinitAmmo: 1
   speed: 5
+  nextWaypointDistance: 1
 --- !u!70 &7638484586805804672
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -218,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   nextWaypointDistance: 3
+  acceleration: 4.921
   target: {fileID: 0}
   chargeAtTheTarget: 0
 --- !u!1001 &7509806002107016106

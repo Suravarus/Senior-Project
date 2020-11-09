@@ -17,6 +17,8 @@ namespace Combat.AI
         public Boolean infinitAmmo = true;
         [Tooltip("Speed at which this AI should move.")]
         public float speed = 5f;
+        [Header("Movement AI")]
+        public int nextWaypointDistance;
         // ------------------------------------------------------
 
         private Combatant currentTarget { get; set; }
@@ -36,7 +38,7 @@ namespace Combat.AI
 
             // SET ShooterAI properties
             this.GetComponent<ShooterAI>().speed = this.speed;
-            this.GetComponent<ShooterAI>().nextWaypointDistance = this.speed;
+            this.GetComponent<ShooterAI>().nextWaypointDistance = this.nextWaypointDistance;
             if (!this.Disarmed())
             {
                 this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
