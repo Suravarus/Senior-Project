@@ -31,51 +31,59 @@ namespace Combat.Animation
         /// </summary>
         public void PullTheStrings()
         {
-            // DETERMINE if player is moving.
-            var vel = this.Puppet.GetComponent<Rigidbody2D>().GetPointVelocity(this.Puppet.transform.position);
-            Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
-            // CALCULATE the vector from the puppet's weapon to it's chest
-            var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
-            v = v.normalized;
-            // CALCULATE the direction the weapon is facing
-            var direction = PhysicsTool.DirectionFromHorizontal(v);
-            // IF player is moving
-            if (puppetIsMoving)
+            if (this.Puppet.IsAlive())
             {
-                // SET run animation based on direction
-                switch (direction)
+                // DETERMINE if player is moving.
+                var vel = this.Puppet.GetComponent<Rigidbody2D>().GetPointVelocity(this.Puppet.transform.position);
+                Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
+                // CALCULATE the vector from the puppet's weapon to it's chest
+                var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
+                v = v.normalized;
+                // CALCULATE the direction the weapon is facing
+                var direction = PhysicsTool.DirectionFromHorizontal(v);
+                // IF player is moving
+                if (puppetIsMoving)
                 {
-                    case PhysicsTool.Direction.Down:
-                        this.CharacterAnimator.Play(RunningStateName.RunDown.ToString());
-                        break;
-                    case PhysicsTool.Direction.Up:
-                        this.CharacterAnimator.Play(RunningStateName.RunUp.ToString());
-                        break;
-                    case PhysicsTool.Direction.Left:
-                        this.CharacterAnimator.Play(RunningStateName.RunLeft.ToString());
-                        break;
-                    case PhysicsTool.Direction.Right:
-                        this.CharacterAnimator.Play(RunningStateName.RunRight.ToString());
-                        break;
+                    // SET run animation based on direction
+                    switch (direction)
+                    {
+                        case PhysicsTool.Direction.Down:
+                            this.CharacterAnimator.Play(RunningStateName.RunDown.ToString());
+                            break;
+                        case PhysicsTool.Direction.Up:
+                            this.CharacterAnimator.Play(RunningStateName.RunUp.ToString());
+                            break;
+                        case PhysicsTool.Direction.Left:
+                            this.CharacterAnimator.Play(RunningStateName.RunLeft.ToString());
+                            break;
+                        case PhysicsTool.Direction.Right:
+                            this.CharacterAnimator.Play(RunningStateName.RunRight.ToString());
+                            break;
+                    }
                 }
-            } else // ELSE
+                else // ELSE
+                {
+                    // SET idle animation based on direction
+                    switch (direction)
+                    {
+                        case PhysicsTool.Direction.Down:
+                            this.CharacterAnimator.Play(IdleStateName.IdleDown.ToString());
+                            break;
+                        case PhysicsTool.Direction.Left:
+                            this.CharacterAnimator.Play(IdleStateName.IdleLeft.ToString());
+                            break;
+                        case PhysicsTool.Direction.Up:
+                            this.CharacterAnimator.Play(IdleStateName.IdleUp.ToString());
+                            break;
+                        case PhysicsTool.Direction.Right:
+                            this.CharacterAnimator.Play(IdleStateName.IdleRight.ToString());
+                            break;
+                    }
+                }
+            } else
             {
-                // SET idle animation based on direction
-                switch (direction)
-                {
-                    case PhysicsTool.Direction.Down:
-                        this.CharacterAnimator.Play(IdleStateName.IdleDown.ToString());
-                        break;
-                    case PhysicsTool.Direction.Left:
-                        this.CharacterAnimator.Play(IdleStateName.IdleLeft.ToString());
-                        break;
-                    case PhysicsTool.Direction.Up:
-                        this.CharacterAnimator.Play(IdleStateName.IdleUp.ToString());
-                        break;
-                    case PhysicsTool.Direction.Right:
-                        this.CharacterAnimator.Play(IdleStateName.IdleRight.ToString());
-                        break;
-                }
+                this.CharacterAnimator.StopPlayback();
+                this.CharacterAnimator.enabled = false;
             }
         }
     }
