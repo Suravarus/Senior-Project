@@ -248,9 +248,9 @@ namespace Combat
         /// Method that determines how the object takes damage.
         /// </summary>
         /// <param name="damage">Damage to be received</param>
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(Combatant attacker)
         {
-            this.Health -= damage;
+            this.Health -= attacker.RangedDamage;
             if (this.HealthUI != null) // TODO [UI] combatants will require Healthbar in future.
                 this.HealthUI.UpdateValues(this);
         }
@@ -285,7 +285,7 @@ namespace Combat
 
                 if (rangedAttack)
                 {
-                    this.TakeDamage(ammo.ammoOwner.RangedDamage);
+                    this.TakeDamage(ammo.ammoOwner);
                 }
             }
         }

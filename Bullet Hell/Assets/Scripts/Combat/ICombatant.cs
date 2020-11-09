@@ -19,10 +19,11 @@ namespace Combat
         bool IsAlive();
         bool ShootRangedWeapon();
         void Start();
-        void TakeDamage(int damage);
+        void TakeDamage(Combatant attacker);
 
         /// <summary>
-        /// This method is called when an "Ammo" object collides with another object.
+        /// This method is called by Ammo when an "Ammo" object, 
+        /// that was shot by this Combatant, collides with another object.
         /// </summary>
         /// <param name="instanceID">The InstanceID of the gameobject the Ammo collided with.</param>
         void OnAmmoCollision(int instanceID);
