@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 420755244860776867}
   - component: {fileID: 6903635801494056286}
   - component: {fileID: 1428033195}
+  - component: {fileID: 1016034445464567451}
   m_Layer: 0
   m_Name: PlayerWithWeapon
   m_TagString: Player
@@ -61,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786394176794595521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 8278982656567984559}
@@ -208,6 +209,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1016034445464567451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786394176794595521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157ec8c547a5adf489f1d0bf6098ee64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inRangeCursor: {fileID: 2800000, guid: d673263d78ce47f488b74edbdd14b6f2, type: 3}
+  outOfRangeCursor: {fileID: 2800000, guid: 944eece0a3c26194d96c7c96dd48f94a, type: 3}
 --- !u!1 &1972830389010620516
 GameObject:
   m_ObjectHideFlags: 0
