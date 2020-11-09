@@ -81,13 +81,13 @@ public class Weapon : MonoBehaviour
     //     SUBTRACT elapsed time from FireDelay
     //     IF FireDelay is 0:
     //       SET WaitingToFire = FALSE
-    void FixedUpdate()
+    void Update()
     {
         // IF the weapon is waiting to fire:
         if (this.WaitingToFire)
         {
             // UPDATE elapsed time since the last shot was fired
-            this.TimeSinceFireRequest += Time.fixedDeltaTime;
+            this.TimeSinceFireRequest += Time.deltaTime - this.TimeSinceFireRequest;
             // SUBTRACT elapsed time from FireDelay
             this.FireDelay -= this.TimeSinceFireRequest;
             // IF FireDelay is 0:
@@ -111,7 +111,7 @@ public class Weapon : MonoBehaviour
             this.WaitingToFire = true;
             this.Shoot();
             this.FireDelay = this.CalculateDelay();
-            this.TimeSinceFireRequest = Time.deltaTime;
+            this.TimeSinceFireRequest = 0f;
         }
     }
 
@@ -133,38 +133,8 @@ public class Weapon : MonoBehaviour
 
             var st = this.transform.GetChild(0);
 
-            //Use bullets linked to weapon type
-            if (infAmmo)
-            {
-                Instantiate(a, st.position, st.rotation);
-            }
-            else if (this.ammoType == 0)
-            {
-                if (this.weaponOwner.smallAmmo > 0)
-                {
-                    //Debug.Log("Small ammo fired");
-                    Instantiate(a, st.position, st.rotation);
-                    this.weaponOwner.smallAmmo = this.weaponOwner.smallAmmo - 1;
-                }
-            }
-            else if (this.ammoType == 1)
-            {
-                if (this.weaponOwner.mediumAmmo > 0)
-                {
-                    //Debug.Log("Medium ammo fired");
-                    Instantiate(a, st.position, st.rotation);
-                    this.weaponOwner.mediumAmmo -= 1;
-                }
-            }
-            else if (this.ammoType == 2)
-            {
-                if (this.weaponOwner.largeAmmo > 0)
-                {
-                    //Debug.Log("Large ammo fired");
-                    Instantiate(a, st.position, st.rotation);
-                    this.weaponOwner.largeAmmo -= 1;
-                }
-            }
+            Instantiate(a, st.position, st.rotation);
+            
         }
 
         catch (Exception ex)
