@@ -20,7 +20,6 @@ public class Weapon : MonoBehaviour
     public float rateOfFire = 1f;
     public float range = 3f;
     private float _fireDelay;
-    public int ammoType = 0;
     public bool infAmmo = false;
     /// <summary>
     /// The Animator component for the shooting animation. Can be NULL.
