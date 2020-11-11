@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,20 +20,20 @@ TagManager:
   - Enemies
   - Bullets
   - Camera
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - ND_PlayerBullet
+  - ND_EnemyBullet
+  - ND_SelfColliding
+  - ND_UserBullet1
+  - ND_UserBullet2
+  - ND_UserBullet3
+  - ND_UserBullet4
+  - ND_UserBullet5
+  - ND_UserBullet6
+  - ND_UserBullet7
+  - ND_UserBullet8
+  - Terrain
   - 
   - 
   - 
@@ -47,4 +48,46 @@ TagManager:
     locked: 0
   - name: OverlayUI
     uniqueID: 542247805
+    locked: 0
+  - name: Player
+    uniqueID: 3211253601
+    locked: 0
+  - name: Enemy
+    uniqueID: 4283412645
+    locked: 0
+  - name: ND_PlayerBullet
+    uniqueID: 2508940731
+    locked: 0
+  - name: ND_EnemyBullet
+    uniqueID: 2871175571
+    locked: 0
+  - name: ND_SelfColliding
+    uniqueID: 4127079107
+    locked: 0
+  - name: ND_UserBullet1
+    uniqueID: 864648585
+    locked: 0
+  - name: ND_UserBullet2
+    uniqueID: 2198965287
+    locked: 0
+  - name: ND_UserBullet3
+    uniqueID: 2435593527
+    locked: 0
+  - name: ND_UserBullet4
+    uniqueID: 3683669429
+    locked: 0
+  - name: ND_UserBullet5
+    uniqueID: 1899827801
+    locked: 0
+  - name: ND_UserBullet6
+    uniqueID: 1315501317
+    locked: 0
+  - name: ND_UserBullet7
+    uniqueID: 2008486127
+    locked: 0
+  - name: ND_UserBullet8
+    uniqueID: 3601274849
+    locked: 0
+  - name: Terrain
+    uniqueID: 2996111295
     locked: 0
