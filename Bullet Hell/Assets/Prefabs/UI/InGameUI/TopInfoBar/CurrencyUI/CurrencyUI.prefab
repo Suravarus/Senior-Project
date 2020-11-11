@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482515990930643212}
+  - component: {fileID: 8195119373564648816}
   m_Layer: 5
   m_Name: CurrencyUI
   m_TagString: Untagged
@@ -37,6 +38,21 @@ RectTransform:
   m_AnchoredPosition: {x: -75, y: 0}
   m_SizeDelta: {x: 48, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8195119373564648816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482515990930643211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5643a7cf6dd53409d3cc8315f5d2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _iconWidth: 32
+  _charWidth: 16
+  CurrencyText: {fileID: 2320118351911280835}
 --- !u!1001 &551536613292956432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +155,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2852402515175783378, guid: 62a8dade3d221d2499005aa19f95558c, type: 3}
   m_PrefabInstance: {fileID: 551536613292956432}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2320118351911280835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2852402515175783379, guid: 62a8dade3d221d2499005aa19f95558c, type: 3}
+  m_PrefabInstance: {fileID: 551536613292956432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4391809184401559723
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -202,6 +202,9 @@ namespace Combat
             // update health bar
             if (this.HealthUI != null)
                 this.HealthUI.UpdateValues(this);
+            else
+                throw new NullReferenceException(
+                    $"{nameof(this.HealthUI)} has not been set for {this.GetType()} component in {this.gameObject.name}");
             if (this.animator == null)
                 this.animator = this.GetComponent<Animator>();
             if (this.animator != null)
