@@ -11,20 +11,21 @@ namespace Loot
         public Item[] commonItems;
         public Item[] uncommonItems;
         public Item[] rareItems;
+        //public string test;
 
         // Drop Rates for ItemRarity in percentage
         [Header("Drop Rates")]
         [Tooltip("% that an Item should be dropped")]
-        [Range (1, 100)]
+        [Range (0, 100)]
         public int itemDropRate;
         [Tooltip("If an item is dropped, % that a common item is dropped")]
-        [Range(1, 100)]
+        [Range(0, 100)]
         public int common;
         [Tooltip("If an item is dropped, % that a uncommon item is dropped")]
-        [Range(1, 100)]
+        [Range(0, 100)]
         public int uncommon;
         [Tooltip("If an item is dropped, % that a rare item is dropped")]
-        [Range(1, 100)]
+        [Range(0, 100)]
         public int rare;
 
         public Item.Rarity getRarity()
@@ -33,6 +34,7 @@ namespace Loot
             int rarityRoll = Random.Range(1, 100);
             if (rarityRoll <= common)
             {
+                //test = GetComponent<Item>().testing;
                 Debug.Log("Number rolled:" + rarityRoll + "\nCommon item rolled" );
                 return Item.Rarity.common;
             }
