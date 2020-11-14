@@ -8,24 +8,23 @@ namespace Loot
     {
         public List<Item> inven;
         public int gold = 0;
-        public string weapname;
         
-        //private Inventory inventory;
-        // Start is called before the first frame update
-        //private void Start()
-        //{
-        //    inventory = GameObject.FindGameObjectsWithTag("Player").GetComponent<Inventory>();
-        //}
 
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Items"))
             {
-                weapname = other.gameObject.name.ToString();
+                
                 //Item itemType = other.gameObject.GetComponent<itemType>().type;
                 //inven.Add(itemType);
-                Debug.Log(weapname);
+               
                 Destroy(other.gameObject);
+            }
+
+            if (other.GetComponent<Weapon>() != null)
+            {
+                this.GetComponent<WeaponWielder>().GetQuarterMaster().PickupWeapon(other.GetComponent<Weapon>());
+                
             }
 
             if (other.CompareTag("Regen"))
