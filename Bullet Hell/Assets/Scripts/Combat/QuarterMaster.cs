@@ -140,6 +140,7 @@ namespace Combat
         {
             this.FirstWeapon().gameObject.SetActive(true);
             this.Wrapper.WrapWeapon(this.FirstWeapon());
+            this.Wrapper.CalibrateWeapon();
         }
 
         private void SwapWeapon(int a, int b)
