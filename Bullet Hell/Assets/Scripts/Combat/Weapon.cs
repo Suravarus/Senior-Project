@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour
     public float range = 3f;
     private float _fireDelay;
     public bool infAmmo = false;
+    public int ammo = 10;
+
     /// <summary>
     /// The Animator component for the shooting animation. Can be NULL.
     /// </summary>
@@ -129,34 +131,43 @@ public class Weapon : MonoBehaviour
     /// <exception> Is Ammo NULL? </exception>
     private void Shoot()
     {
-        try
+        if (ammo > 0 || infAmmo == true)
         {
-            // IF Animator component is attached
-            if (this.shootingAnimator != null)
+            try
             {
-                // PLAY shooting animation based on rateOfFire
-                this.shootingAnimator.Play("Shooting", -1, 1f/this.rateOfFire - 0.25f);
+                // IF Animator component is attached
+                if (this.shootingAnimator != null)
+                {
+                    // PLAY shooting animation based on rateOfFire
+                    this.shootingAnimator.Play("Shooting", -1, 1f / this.rateOfFire - 0.25f);
+                }
+                var a = this.WeaponAmmo.GetComponent<Ammo>();
+                if(infAmmo == false) ammo = ammo - 1;
+
+                // shoot the 'ammo' straight ahead
+                if (this.bulletSpeed > 0)
+                    a.speed = this.bulletSpeed + 10;
+                if (this.baseDamage > 0)
+                    a.damage = this.baseDamage;
+
+                a.ammoOwner = this.GetComponentInParent<Combatant>();
+                a.weapon = this;
+
+                var st = this.transform.GetChild(0);
+
+                Instantiate(a, st.position, st.rotation);
+
             }
-            var a = this.WeaponAmmo.GetComponent<Ammo>();
-            // shoot the 'ammo' straight ahead
-            if (this.bulletSpeed > 0)
-                a.speed = this.bulletSpeed + 10;
-            if (this.baseDamage > 0)
-                a.damage = this.baseDamage;
-
-            a.ammoOwner = this.GetComponentInParent<Combatant>();
-            a.weapon = this;
-
-            var st = this.transform.GetChild(0);
-
-            Instantiate(a, st.position, st.rotation);
-            
-        }
-
-        catch (Exception ex)
-        {
-            throw new Exception(
+            catch (Exception ex)
+            {
+                throw new Exception(
                 "Weapon.Fire() - has Ammo been set?", ex);
+            }
+        }
+        else
+        {
+            //if there is no ammo, make a poof sound?
+
         }
     }
     
