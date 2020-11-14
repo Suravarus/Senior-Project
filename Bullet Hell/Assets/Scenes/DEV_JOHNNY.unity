@@ -714,6 +714,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1973365463, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: commonItems.Array.data[0]
+      value: 
+      objectReference: {fileID: -3072932017284768729, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+    - target: {fileID: 1973365463, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: itemDropRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973365463, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: common
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: commonItems.Array.data[0]
+      value: 
+      objectReference: {fileID: -3072932017284768729, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: common
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: uncommon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: rare
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: uncommonItems.Array.data[0]
+      value: 
+      objectReference: {fileID: -3072932017284768729, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
+    - target: {fileID: 3245948081376226287, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: rareItems.Array.data[0]
+      value: 
+      objectReference: {fileID: -3072932017284768729, guid: 42cf632271e48f545bd20654441c25d8, type: 3}
     - target: {fileID: 4681907991325052283, guid: b568050f0f69a204388fd8bf07465604, type: 3}
       propertyPath: m_Name
       value: FireAcolyte_v2
@@ -766,7 +802,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5669170425978868488, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+      propertyPath: _health
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1973365463, guid: b568050f0f69a204388fd8bf07465604, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b568050f0f69a204388fd8bf07465604, type: 3}
 --- !u!1 &958525685
 GameObject:
@@ -1342,6 +1383,10 @@ PrefabInstance:
       propertyPath: HealthUI
       value: 
       objectReference: {fileID: 1841533611}
+    - target: {fileID: 7378092279696690734, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
 --- !u!1 &1441475722
@@ -1673,6 +1718,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1592602003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 721085136049678996, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+  m_PrefabInstance: {fileID: 1428033193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592602005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592602003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d345e08d6b34344ae8d6a22f0b4c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: 
 --- !u!1001 &1631033892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1813,6 +1876,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5643a7cf6dd53409d3cc8315f5d2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1746654636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 786394176794595521, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+  m_PrefabInstance: {fileID: 1428033193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1746654644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746654636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2124e576ec90a044beb799b87996648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inven: []
+  gold: 0
+  weapname: 
 --- !u!1001 &1821259339
 PrefabInstance:
   m_ObjectHideFlags: 0
