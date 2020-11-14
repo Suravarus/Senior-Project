@@ -64,6 +64,7 @@ namespace Combat
             this.transform.rotation = Quaternion.Euler(0, 0, 0);
             // position weapon
             this.WrappedWeapon.transform.position = this.InitialWeaponPosition;
+            this.WrappedWeapon.transform.SetParent(this.transform);
         }
 
         public void WrapWeapon(Weapon weapon)
