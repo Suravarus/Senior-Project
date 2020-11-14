@@ -181,12 +181,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81756af06c1d6f540a016ff23c07bc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6025897326632635121, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  rangedWeaponWrapper: {fileID: 1854830476394428596}
   _enemyTag: Player
   _health: 10
   _maxHealth: 10
   HealthUI: {fileID: 3758321781111701029}
   animator: {fileID: 0}
-  rangedWeaponWrapper: {fileID: 1854830476394428596}
   passive: 0
   infinitAmmo: 1
   speed: 5
