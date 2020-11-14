@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Combat.Utilities
+namespace Utilities
 {
     /// <summary>
     /// Contains information that the player will see about
