@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [Header("Ammo")]
     public GameObject weaponAmmo;
     public Transform ammoSpawnPoint;
-    public Combatant weaponOwner;
+    public WeaponWielder wielder;
     public int baseDamage;
     public float bulletSpeed;
     [Header("Combat")]
@@ -27,13 +27,15 @@ public class Weapon : MonoBehaviour
     [Header("Animation")]
     [Tooltip("Animator this script interacts with in order to trigger a shooting animation. Can be NULL.")]
     public Animator shootingAnimator;
+    [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
+    public Boolean flipEnabled = false;
     // ------------------------------------------------//
 
-    // will keep track of the last time this weapon 'fired'
-    // private float LastFiredDeltaTime { get; set; }
-    // private float TimeOfFireRequest { get; set; }
+    /// <summary>
+    /// Returns TRUE if this weapon has been flipped.
+    /// </summary>
+    private bool Flipped { get; set; }
     private float TimeSinceFireRequest { get; set; }
-    // private float ScheduledTimeOfFire { get; set; }
     private bool WaitingToFire { get; set; }
     private float FireDelay 
     {
@@ -57,9 +59,8 @@ public class Weapon : MonoBehaviour
     }
 
     
-    void Awake()
+    public void Awake()
     {
-        weaponOwner = this.GetComponentInParent<Combatant>();
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
         {
@@ -75,7 +76,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Start()
     {
         this.shootingAnimator = this.GetComponent<Animator>();
     }
@@ -91,7 +92,7 @@ public class Weapon : MonoBehaviour
     //     SUBTRACT elapsed time from FireDelay
     //     IF FireDelay is 0:
     //       SET WaitingToFire = FALSE
-    void Update()
+    public void Update()
     {
         // IF the weapon is waiting to fire:
         if (this.WaitingToFire)
@@ -144,10 +145,9 @@ public class Weapon : MonoBehaviour
             if (this.baseDamage > 0)
                 a.damage = this.baseDamage;
 
-            a.ammoOwner = this.GetComponentInParent<Combatant>();
             a.weapon = this;
 
-            var st = this.transform.GetChild(0);
+            var st = this.ammoSpawnPoint;
 
             Instantiate(a, st.position, st.rotation);
             
@@ -175,6 +175,24 @@ public class Weapon : MonoBehaviour
     private Transform GetAmmoSpawnPoint()
     {
         return this.transform.GetChild(0);
+    }
+
+    public bool IsFlipped()
+    {
+        return this.Flipped;
+    }
+
+    public void Flip()
+    {
+        if (!this.Flipped)
+        {
+            this.Flipped = true;
+            this.transform.Rotate(Vector2.right, 180);
+        } else
+        {
+            this.Flipped = false;
+            this.transform.Rotate(Vector2.right, 180);
+        }
     }
 
     public Boolean LineOfSight(Combatant c, Combatant.BodyPart bodyPart)

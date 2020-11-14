@@ -4,27 +4,27 @@ using UnityEngine;
 
 using Combat;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Combatant))]
+
+[RequireComponent(typeof(WeaponWielder))]
 public class PlayerMovement : MonoBehaviour
 {
     // UNITY EDITOR ----------------------------//
     public float speed = 1;
     // ----------------------------------------//
 
-    private Combatant combatant;
+    private WeaponWielder Wielder;
     private Rigidbody2D rb;
     Vector2 direction;
     
 
-    void Awake()
+    public void Awake()
     {
         // CHECK for Combatant Component
-        var cb = this.GetComponent<Combatant>();
+        var cb = this.GetComponent<WeaponWielder>();
         if (cb != null)
         {
-            this.combatant = cb;
-            this.rb = this.combatant.GetComponent<Rigidbody2D>();
+            this.Wielder = cb;
+            this.rb = this.Wielder.GetComponent<Rigidbody2D>();
         }
         else
         {
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //inputs are taken once per frame
-    void Update()
+    public void Update()
     {
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -61,26 +61,41 @@ public class PlayerMovement : MonoBehaviour
     //     AIM weapon toward mouse location
     //     CALL puppetMaster
     //     SHOOT weapon if righ-click is clicked
-    void FixedUpdate()
+    bool calc = true;
+    public void FixedUpdate()
     {
         
-        if (this.combatant.IsAlive() && !this.combatant.Disarmed())
+        if (this.Wielder.IsAlive())
         {
             // MOVE player 
             this.rb.velocity = this.direction * this.speed;
             //this.rb.MovePosition(
             //    this.rb.position + this.movement * this.speed * Time.fixedDeltaTime);
             // get mouse position
+
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // maintain the same z-value
-            target.z = this.combatant.RangedWeapon.transform.position.z;
+            target.z = this.Wielder.GetWeaponWrapper().transform.position.z;
+
+            //var a = (Vector2)(this.Wielder.RangedWeapon.ammoSpawnPoint.transform.position - this.Wielder.rangedWeaponWrapper.transform.position);
+            //var b = (Vector2)(target - this.Wielder.rangedWeaponWrapper.transform.position);
+            //Debug.Log($"weapon {a}");
+            //Debug.Log($"mouse {b}");
+            //var ang = Vector2.SignedAngle(a, b);
+            //Debug.Log($"angle {ang}");
+            //if (Mathf.Abs(ang) > 0)
+            //{
+            //    Debug.Log($"start {this.Wielder.RangedWeapon.transform.position}");
+            //    this.Wielder.rangedWeaponWrapper.transform.RotateAround(this.Wielder.rangedWeaponWrapper.transform.position, Vector3.forward, ang + ang * .1f);
+            //    Debug.Log($"after {this.Wielder.RangedWeapon.transform.position}");
+            //}
             // AIM weapon toward mouse location
-            this.combatant.AimRangedWeapon(target);
+            this.Wielder.AimWeapon(target);
             // CALL puppetMaster
             // Shoot weapon if RIGHT-CLICK is CLICKED
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                this.combatant.ShootRangedWeapon();
+                this.Wielder.ShootWeapon();
             }
         }
     }

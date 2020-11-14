@@ -7,7 +7,7 @@ namespace Combat.AI
 {
     [RequireComponent(typeof(Pathfinding.Seeker))]
     [RequireComponent(typeof(Combat.AI.ShooterAI))]
-    public class AICombatant : Combatant
+    public class AIWeaponWielder : WeaponWielder
     {
         // UnityEditor FIELDS -----------------------------------
         [Header("Behavior Parameters")]
@@ -21,7 +21,7 @@ namespace Combat.AI
         public int nextWaypointDistance;
         // ------------------------------------------------------
 
-        private Combatant currentTarget { get; set; }
+        private Combatant CurrentTarget { get; set; }
         private Boolean ScanInProgress { get; set; }
         private Combatant[] _enemyCombatantsArr;
         public Combatant[] EnemyCombatantsArr
@@ -57,9 +57,8 @@ namespace Combat.AI
         // -   SET nearest, within-weapon-range, enemy as current target
         // - ELSE:
         // -   AGGRO on currentTarget
-        public override void FixedUpdate()
+        public void FixedUpdate()
         {
-            base.FixedUpdate();
 
             if (!this.InCombat())
             {
@@ -67,7 +66,7 @@ namespace Combat.AI
                 this.AquireNewTarget();
             } else
             {
-                this.Engage(this.currentTarget);
+                this.Engage(this.CurrentTarget);
             }
             
         }
@@ -84,7 +83,7 @@ namespace Combat.AI
         public Boolean HasTarget()
         {
             return !this.ScanInProgress
-                && this.currentTarget != null;
+                && this.CurrentTarget != null;
         }
 
         /// <summary>
@@ -94,7 +93,7 @@ namespace Combat.AI
         /// <returns></returns>
         public Boolean InCombat()
         {
-            return this.HasTarget() && this.currentTarget.IsAlive();
+            return this.HasTarget() && this.CurrentTarget.IsAlive();
         }
 
         /// <summary>
@@ -180,11 +179,11 @@ namespace Combat.AI
         {
             if (!this.ScanInProgress)
             {
-                this.currentTarget = null;
+                this.CurrentTarget = null;
                 this.ScanForEnemies();
                 var n = this.NearestEnemy();
                 if (n != null && this.RangedWeapon.InRange(n.transform.position))
-                    this.currentTarget = n;
+                    this.CurrentTarget = n;
 
                 return this.HasTarget();
             }
@@ -214,8 +213,8 @@ namespace Combat.AI
             if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position))
             {
                 // SHOOT target 
-                this.AimRangedWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
-                this.ShootRangedWeapon();
+                this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
+                this.ShootWeapon();
             } else // ELSE
             {
                 // CHARGE at target
@@ -233,12 +232,15 @@ namespace Combat.AI
             this.GetComponent<ShooterAI>().target = null;
         }
 
-        // ALGORITHM
-        // IF owner has a living enemy AND collided object id != enemy id
-        //   THEN SET chargeAtTheTarget = TRUE
+        /// <summary>
+        /// This method is called by Ammo when an "Ammo" object, 
+        /// that was shot by this Combatant, collides with another object.
+        /// </summary>
+        /// <param name="instanceID">The InstanceID of the gameobject the Ammo collided with.</param>
         public override void OnAmmoCollision(int instanceID)
         {
-            if (this.InCombat() && instanceID != this.currentTarget.gameObject.GetInstanceID())
+            base.OnAmmoCollision(instanceID);
+            if (this.InCombat() && instanceID != this.CurrentTarget.gameObject.GetInstanceID())
             {
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
             } else
@@ -247,16 +249,16 @@ namespace Combat.AI
             }
         }
 
-        public override void TakeDamage(Combatant attacker)
+        public void TakeDamage(WeaponWielder attacker)
         {
             base.TakeDamage(attacker);
 
             // IF not fighting the aggressor
-            if (this.currentTarget == null 
-                || this.currentTarget.GetInstanceID() != attacker.GetInstanceID())
+            if (this.CurrentTarget == null 
+                || this.CurrentTarget.GetInstanceID() != attacker.GetInstanceID())
             {
                 // TARGET the aggressor
-                this.currentTarget = attacker;
+                this.CurrentTarget = attacker;
             }
         }
     }

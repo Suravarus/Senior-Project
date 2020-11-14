@@ -13,7 +13,6 @@ namespace Combat.UI
     /// </list>
     /// </summary>
     [RequireComponent(typeof(PlayerMovement))]
-    [RequireComponent(typeof(Combatant))]
     class CombatCursor : MonoBehaviour
     {
         // UnityEditor Properties -----------------------//
@@ -21,14 +20,14 @@ namespace Combat.UI
         public Texture2D outOfRangeCursor;
         // ---------------------------------------------//
 
-        private Combatant playerCombatant;
+        private WeaponWielder playerCombatant;
         private Boolean inRange = false;
-        void Start()
+        public void Start()
         {
-            this.playerCombatant = this.GetComponent<Combatant>();
+            this.playerCombatant = this.GetComponent<WeaponWielder>();
             Cursor.SetCursor(this.outOfRangeCursor, Vector2.zero, CursorMode.Auto);
         }
-        void Update()
+        public void Update()
         {
             var cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cursorPosition.z = 1;

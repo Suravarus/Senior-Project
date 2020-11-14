@@ -11,7 +11,7 @@ public class MOBSpawn : MonoBehaviour
     /// <summary>
     /// Array of AICombatant PreFabs
     /// </summary>
-    public AICombatant[] mobs;
+    public AIWeaponWielder[] mobs;
     public int EnemyLimit;
     int xPos;
     int yPos;

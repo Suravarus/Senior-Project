@@ -16,10 +16,10 @@ namespace Combat.Animation
         /// <summary>
         /// The Combatant that will be animated by this PuppetMaster.
         /// </summary>
-        public Combatant Puppet { get; set; }
+        public WeaponWielder Puppet { get; set; }
 
         private Animator CharacterAnimator { get; set; }
-        public PuppetMaster(Animator animator, Combatant puppet)
+        public PuppetMaster(Animator animator, WeaponWielder puppet)
         {
             this.CharacterAnimator = animator;
             this.Puppet = puppet;
@@ -34,7 +34,6 @@ namespace Combat.Animation
             if (this.Puppet.IsAlive())
             {
                 // DETERMINE if player is moving.
-                var vel = this.Puppet.GetComponent<Rigidbody2D>().GetPointVelocity(this.Puppet.transform.position);
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
                 // CALCULATE the vector from the puppet's weapon to it's chest
                 var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;

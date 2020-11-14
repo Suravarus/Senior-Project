@@ -97,14 +97,14 @@ namespace Combat.AI
         void FixedUpdate()
         {
             if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static 
-                && this.GetComponent<AICombatant>().IsAlive())
+                && this.GetComponent<AIWeaponWielder>().IsAlive())
             {
                 if (path == null)
                 {
                     return;
                 }
 
-                if (!this.GetComponent<AICombatant>().InCombat()
+                if (!this.GetComponent<AIWeaponWielder>().InCombat()
                     || currentWaypoint >= path.vectorPath.Count-1)
                 {
                     reachedEndOfPath = true;

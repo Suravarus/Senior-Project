@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-using Combat.Utilities;
+using Utilities;
 
 namespace Combat
 {
@@ -19,7 +19,6 @@ namespace Combat
         [Tooltip("This damage will be added to the damage of the weapon uses this ammo.")]
         public int damage = 0;
 
-        public Combatant ammoOwner;
         public Weapon weapon;
 
         public GameInfo GameInfo { get; set; }
@@ -88,14 +87,15 @@ namespace Combat
         {
             // GET enemy combatant from the collisionInfo
             var collisionCombatant = other.GetComponent<Combatant>();
-            var isOtherCombatant = collisionCombatant != null && collisionCombatant.name != this.ammoOwner.name;
-            var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.ammoOwner.EnemyTag;
+            var isOtherCombatant = collisionCombatant != null 
+                && collisionCombatant.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID();
+            var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.weapon.wielder.tag;
 
             // IF the other collider is not a Combatant, or it's an enemy Combatant
             if (collisionCombatant == null || isEnemyCombatant)
             {
                 // Report the collision to the Combatant that shot the ammo.
-                this.ammoOwner.SendMessage(nameof(ICombatant.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
                 // Destroy this gameobject.
                 Destroy(this.gameObject); 
             }
