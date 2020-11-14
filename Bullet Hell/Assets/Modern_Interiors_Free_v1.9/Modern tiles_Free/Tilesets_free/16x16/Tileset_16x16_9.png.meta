@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 1eac4626fdd547549b94f5e5081db28e
 TextureImporter:
   internalIDToNameTable:
@@ -1167,11 +1166,6 @@ TextureImporter:
   - first:
       213: -3107262711885178994
     second: Tileset_16x16_9_303
-=======
-guid: a2eb8c7095d58834fbe11d65376bbf8c
-TextureImporter:
-  internalIDToNameTable: []
->>>>>>> combat
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1211,20 +1205,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
   spriteMode: 2
-=======
-  spriteMode: 1
->>>>>>> combat
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   spritePixelsToUnits: 16
-=======
-  spritePixelsToUnits: 100
->>>>>>> combat
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1251,7 +1237,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -3031,11 +3016,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-=======
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
->>>>>>> combat
     outline: []
     physicsShape: []
     bones: []
