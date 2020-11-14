@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Combat;
+using UI;
 namespace Loot
 {
     public class Pickup : MonoBehaviour
     {
         public List<Item> inven;
         public int gold = 0;
-        
+        public CurrencyUI CurrencyUI;
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -36,6 +37,7 @@ namespace Loot
             if (other.CompareTag("Coins"))
             {
                 gold += 10;
+                CurrencyUI.SetAmount(gold);
                 Destroy(other.gameObject);
             }
 
@@ -45,5 +47,6 @@ namespace Loot
             //    Destroy(other.gameObject);
             //}
         }
+       
     }
 }
