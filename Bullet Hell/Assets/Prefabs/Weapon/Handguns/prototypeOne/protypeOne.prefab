@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 8992329155939103924}
   - component: {fileID: 8992329155939103925}
   - component: {fileID: 8992329155939103932}
+  - component: {fileID: 2075900597}
   m_Layer: 0
-  m_Name: pistol_crude_mistress
+  m_Name: protypeOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawGizmo: 0
   weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
-  ammoSpawnPoint: {fileID: 0}
+  ammoSpawnPoint: {fileID: 2412683568030260209}
   wielder: {fileID: 0}
   baseDamage: 1
   bulletSpeed: 20
@@ -86,7 +87,7 @@ MonoBehaviour:
   range: 4
   infAmmo: 1
   shootingAnimator: {fileID: 0}
-  flipEnabled: 0
+  flipEnabled: 1
 --- !u!212 &8992329155939103925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8992329155939103922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1f0db1faad755234a814d17530376d67, type: 2}
   m_CullingMode: 0
@@ -157,3 +158,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2075900597
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8992329155939103922}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
