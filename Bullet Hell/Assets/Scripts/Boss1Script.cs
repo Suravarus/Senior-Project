@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+using ND_VariaBULLET;
 
 public class Boss1Script : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class Boss1Script : MonoBehaviour
     CapsuleCollider2D hitbox;
     Combatant bossInfo;
     Transform bossPos;
+    SpreadPattern spread;
 
     private bool isJumping = false;
     private int bossPhase = 1;
@@ -36,6 +37,7 @@ public class Boss1Script : MonoBehaviour
         hitbox = GetComponent<CapsuleCollider2D>();
         bossInfo = GetComponent<Combatant>();
         bossPos = GetComponent<Transform>();
+        spread = GetComponentInChildren<SpreadPattern>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = bossPos.position;
     }
@@ -84,6 +86,8 @@ public class Boss1Script : MonoBehaviour
                 //if ((UnityEngine.Random.Range(0f, 1000f) == 20)) //variable amount of time to jump
                     Jump();
             }
+            else if(count == 10)
+                spread.TriggerAutoFire = false;
         }
 
     }
@@ -149,6 +153,7 @@ public class Boss1Script : MonoBehaviour
         hitbox.isTrigger = false;
         count = 0;
         isJumping = false;
+        spread.TriggerAutoFire = true;
     }
 
 }

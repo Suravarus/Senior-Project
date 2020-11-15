@@ -145,9 +145,9 @@ MonoBehaviour:
   colorShiftSpeed: 0
   randomStartColor: 0
   Opacity: 1
-  VerticalOrientation: 0
+  VerticalOrientation: 1
   Embellish: 5
   AutoEmbellish: 0
-  AutoEmbellishRange: {x: 0, y: 0}
-  AutoEmbellishSpeed: 1
+  AutoEmbellishRange: {x: 5, y: 5}
+  AutoEmbellishSpeed: 2
   ReAngleTime: 4
