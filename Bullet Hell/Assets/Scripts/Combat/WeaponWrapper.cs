@@ -61,10 +61,11 @@ namespace Combat
         public void CalibrateWeapon()
         {
             // reset weapon wrapper rotation
-            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Combatant.RotateTo(new Vector2(this.transform.position.x, this.transform.position.y+1), this.transform);
             // position weapon
             this.WrappedWeapon.transform.position = this.InitialWeaponPosition;
             this.WrappedWeapon.transform.SetParent(this.transform);
+            this.WrappedWeapon.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
         public void WrapWeapon(Weapon weapon)
