@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8278982656567984559}
+  - component: {fileID: 134744568231600571}
   m_Layer: 0
   m_Name: WeaponPivot
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 786394176794595533}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &134744568231600571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721085136049678996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345eb30bdecc9294989026ab6b71a552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786394176794595521
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +60,7 @@ GameObject:
   - component: {fileID: 1428033195}
   - component: {fileID: 1016034445464567451}
   - component: {fileID: 7023341392679994166}
+  - component: {fileID: 1998842602}
   m_Layer: 0
   m_Name: PlayerWithWeapon
   m_TagString: Player
@@ -218,12 +232,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: enemy
-  _health: 1
-  _maxHealth: 10
+  _health: 50
+  _maxHealth: 50
   HealthUI: {fileID: 0}
   animator: {fileID: 1428033195}
-  rangedWeaponWrapper: {fileID: 721085136049678996}
+  rangedWeaponWrapper: {fileID: 134744568231600571}
   startingWeapon: {fileID: 7378092279696690728}
+--- !u!114 &1998842602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786394176794595521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2124e576ec90a044beb799b87996648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inven: []
+  gold: 0
+  CurrencyUI: {fileID: 0}
 --- !u!1 &1972830389010620516
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,10 +320,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8278982656567984559}
     m_Modifications:
+    - target: {fileID: 1934036744767000279, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934036744767000279, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.013
+      objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: ammoSpawnPoint
       value: 
       objectReference: {fileID: 4311218641231241581}
+    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: shootingAnimator
+      value: 
+      objectReference: {fileID: 7378092279696690720}
+    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: flipEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194004, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_Name
       value: pistol_crude_mistress
@@ -361,6 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7378092279696690720 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5145271836151194010, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+  m_PrefabInstance: {fileID: 2378906308662439866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4311218641231241581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1934036744767000279, guid: 2c775ada529dff9499cd02324d32045c, type: 3}

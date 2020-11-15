@@ -48,13 +48,14 @@ MonoBehaviour:
   drawGizmo: 0
   weaponAmmo: {fileID: 979262230771606225, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
   ammoSpawnPoint: {fileID: 5055788378387810486}
-  weaponOwner: {fileID: 0}
+  wielder: {fileID: 0}
   baseDamage: 5
   bulletSpeed: 10
   rateOfFire: 1
   range: 4
   infAmmo: 1
   shootingAnimator: {fileID: 0}
+  flipEnabled: 0
 --- !u!212 &800762962836146413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -129,10 +130,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6674164468984074713}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 9077590212597520675}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
