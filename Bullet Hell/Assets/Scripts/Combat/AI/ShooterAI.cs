@@ -97,6 +97,7 @@ namespace Combat.AI
         void FixedUpdate()
         {
             if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static 
+                && this.GetComponent<AIWeaponWielder>() != null
                 && this.GetComponent<AIWeaponWielder>().IsAlive())
             {
                 if (path == null)
@@ -114,10 +115,9 @@ namespace Combat.AI
                 {
                     this.reachedEndOfPath = false;
 
-                    // calculations
-                    var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
+                    // CALCULATIONS
+                    // var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
                     var distanceFromTarget = Vector2.Distance(this.target.transform.position, this.transform.position);
-
                     // check if too close to target
                     if (distanceFromTarget < this.MinDist)
                     {
