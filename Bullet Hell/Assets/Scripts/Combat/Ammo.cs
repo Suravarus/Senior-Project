@@ -54,6 +54,7 @@ namespace Combat
         // - SET GameInfo
         void Start()
         {
+            this.GetComponent<SpriteRenderer>().sortingOrder = 2;
             this.startingPosition = this.transform.position;
             this.rigidBody2D.velocity = this.transform.up * speed;
 
@@ -86,18 +87,22 @@ namespace Combat
         void OnTriggerEnter2D(Collider2D other)
         {
             // GET enemy combatant from the collisionInfo
-            var collisionCombatant = other.GetComponent<Combatant>();
-            var isOtherCombatant = collisionCombatant != null 
-                && collisionCombatant.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID();
-            var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.weapon.wielder.tag;
-
-            // IF the other collider is not a Combatant, or it's an enemy Combatant
-            if (collisionCombatant == null || isEnemyCombatant)
+            var collidedWithAmmo = other.GetComponent<Ammo>() != null;
+            var collidedWithWeapon = other.GetComponent<Weapon>() != null;
+            if (!collidedWithAmmo && !collidedWithWeapon)
             {
-                // Report the collision to the Combatant that shot the ammo.
-                this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
-                // Destroy this gameobject.
-                Destroy(this.gameObject); 
+                var collisionCombatant = other.GetComponent<Combatant>();
+                var isOtherCombatant = collisionCombatant != null
+                    && collisionCombatant.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID();
+                var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.weapon.wielder.tag;
+                // IF the other collider is not a Combatant, or it's an enemy Combatant
+                if (collisionCombatant == null || isEnemyCombatant)
+                {
+                    // Report the collision to the Combatant that shot the ammo.
+                    this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                    // Destroy this gameobject.
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
