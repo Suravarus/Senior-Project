@@ -186,7 +186,9 @@ namespace Combat
         /// </summary>
         public void Die()
         {
-            Destroy(this);
+            this.OnDie();
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
 
         void OnTriggerEnter2D(Collider2D other)
