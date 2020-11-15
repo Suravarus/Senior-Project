@@ -24,8 +24,9 @@ namespace Loot
 
             if (other.GetComponent<Weapon>() != null)
             {
-                this.GetComponent<WeaponWielder>().GetQuarterMaster().PickupWeapon(other.GetComponent<Weapon>());
-                
+                var weapon = other.GetComponent<Weapon>();
+                weapon.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                this.GetComponent<WeaponWielder>().GetQuarterMaster().PickupWeapon(weapon);
             }
 
             if (other.CompareTag("Regen"))
