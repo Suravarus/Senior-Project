@@ -19,6 +19,8 @@ namespace Combat.AI
         public float speed = 5f;
         [Header("Movement AI")]
         public int nextWaypointDistance;
+        [Header("Physics")]
+        public bool collideWithCombatants = false;
         // ------------------------------------------------------
 
         private Combatant CurrentTarget { get; set; }
@@ -35,13 +37,28 @@ namespace Combat.AI
             base.Start(); // call base class start method.
             // SET infiniteAmmo
             this.RangedWeapon.infAmmo = this.infinitAmmo;
+            if (!this.collideWithCombatants)
+            {
+                var Combatants = GameObject.FindObjectsOfType<Combatant>();
+                foreach (Combatant c in Combatants)
+                {
+                    if (c.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
+                    {
+                        Physics2D.IgnoreCollision(
+                            c.gameObject.GetComponent<Collider2D>(), 
+                            this.GetComponent<Collider2D>());
+                    }
+                }
+            }
 
             // SET ShooterAI properties
             this.GetComponent<ShooterAI>().speed = this.speed;
             this.GetComponent<ShooterAI>().nextWaypointDistance = this.nextWaypointDistance;
+            Debug.Log($"{this.gameObject.name} disarmed: {this.Disarmed()}");
             if (!this.Disarmed())
             {
                 this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
+                Debug.Log($"{this.gameObject.name} min: {this.GetComponent<ShooterAI>().MinDist}");
                 this.GetComponent<ShooterAI>().MaxDist = this.RangedWeapon.range;
             }
             else
@@ -212,6 +229,8 @@ namespace Combat.AI
             // IF target is in range
             if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position))
             {
+                // DONT charge at target
+                this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
                 // SHOOT target 
                 this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
                 this.ShootWeapon();
@@ -249,7 +268,7 @@ namespace Combat.AI
             }
         }
 
-        public void TakeDamage(WeaponWielder attacker)
+        public override void TakeDamage(WeaponWielder attacker)
         {
             base.TakeDamage(attacker);
 
@@ -259,6 +278,7 @@ namespace Combat.AI
             {
                 // TARGET the aggressor
                 this.CurrentTarget = attacker;
+                Debug.Log($"{this.gameObject.name} charge {this.GetComponent<ShooterAI>().chargeAtTheTarget}");
             }
         }
     }
