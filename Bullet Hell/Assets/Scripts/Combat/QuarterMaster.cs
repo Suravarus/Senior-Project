@@ -110,6 +110,7 @@ namespace Combat
                 {
                     DeactivateFirstWeapon();
                 }
+                weapon.wielder = this.Wielder;
                 this.Arsenal.Add(weapon);
                 SwapWeapon(this.EquippedIndex, this.Arsenal.Count - 1);
                 ActivateFirstWeapon();
