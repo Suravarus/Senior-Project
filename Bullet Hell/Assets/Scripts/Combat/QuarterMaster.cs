@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Combat.UI;
 namespace Combat
 {
     /// <summary>
     /// Handles the arsenal of weapons for Combatant. 
     /// The Combatant will always be given the first weapon in the arsenal.
+    /// Also communitcates with the AbilityBar if that component is attached.
     /// </summary>
     public class QuarterMaster
     {
@@ -48,6 +50,7 @@ namespace Combat
         }
         private WeaponWrapper Wrapper { get; set; }
 
+        private WeaponBarUI WeaponBar { get; set; }
        
 
         /// <summary>
@@ -55,7 +58,10 @@ namespace Combat
         /// </summary>
         /// <param name="combatant"></param>
         /// <param name="weapons"></param>
-        public QuarterMaster(WeaponWielder wielder, Weapon[] weapons, WeaponWrapper weaponWrapper)
+        public QuarterMaster(WeaponWielder wielder, 
+            Weapon[] weapons, 
+            WeaponWrapper weaponWrapper,
+            WeaponBarUI abilityBar = null)
         {
             this.Wielder = wielder;
             this.Wrapper = weaponWrapper;
@@ -71,6 +77,17 @@ namespace Combat
             }
 
             this.ActivateFirstWeapon();
+
+            if (abilityBar != null)
+            {
+                this.WeaponBar = abilityBar;
+                this.WeaponBar.SetWeapons(this);
+            }
+        }
+
+        public Boolean HasWeaponBar()
+        {
+            return this.WeaponBar != null;
         }
 
         public WeaponWrapper GetWeaponWrapper() 
@@ -114,6 +131,7 @@ namespace Combat
                 this.Arsenal.Add(weapon);
                 SwapWeapon(this.EquippedIndex, this.Arsenal.Count - 1);
                 ActivateFirstWeapon();
+                this.WeaponBar.SetWeapons(this);
             } else
             {
                 throw new Exception(
@@ -142,6 +160,11 @@ namespace Combat
             this.FirstWeapon().gameObject.SetActive(true);
             this.Wrapper.WrapWeapon(this.FirstWeapon());
             this.Wrapper.CalibrateWeapon();
+
+            if (this.HasWeaponBar())
+            {
+                this.FirstWeapon().UIAmmoSlot = this.WeaponBar.GetAmmoSlot();
+            }
         }
 
         private void SwapWeapon(int a, int b)
@@ -163,6 +186,12 @@ namespace Combat
         private void DeactivateFirstWeapon()
         {
             this.Arsenal[this.EquippedIndex].gameObject.SetActive(false);
+            this.Arsenal[this.EquippedIndex].UIAmmoSlot = null;
+        }
+
+        public Weapon[] GetArsenal()
+        {
+            return this.Arsenal.ToArray();
         }
     }
 }

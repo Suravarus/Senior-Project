@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using Combat.Animation;
+using Combat.UI;
 
 namespace Combat
 {
@@ -12,9 +13,8 @@ namespace Combat
         [Tooltip("Child object that will be used to position ranged weapons.")]
         public WeaponWrapper rangedWeaponWrapper;
         public Weapon startingWeapon;
-
-        private Vector2 OffsetVector { get; set; }
-        private Boolean Flipped = false;
+        [Tooltip("This should only be set for the Player.")]
+        public WeaponBarUI weaponBarUI = null;
 
         private QuarterMaster quarterMaster;
         public QuarterMaster GetQuarterMaster()
@@ -49,7 +49,8 @@ namespace Combat
                 {
                     this.quarterMaster = new QuarterMaster(this, 
                         new Weapon[] { this.startingWeapon },
-                        this.rangedWeaponWrapper);
+                        this.rangedWeaponWrapper, 
+                        this.weaponBarUI);
                 }
                 else
                 {

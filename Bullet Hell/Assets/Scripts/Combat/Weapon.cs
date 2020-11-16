@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 
 using Combat;
+using UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class Weapon : MonoBehaviour
         get { return this.weaponAmmo; }
     }
 
+    public Slot UIAmmoSlot { get; set; }
     
     public void Awake()
     {
