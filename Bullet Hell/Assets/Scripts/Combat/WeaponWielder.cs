@@ -75,6 +75,19 @@ namespace Combat
             
         }
 
+        void OnDestroy()
+        {
+            var bullets = FindObjectsOfType<Ammo>();
+            foreach(var b in bullets)
+            {
+                if (b != null 
+                    && b.weapon != null 
+                    && b.weapon.wielder != null 
+                    && b.weapon.wielder.gameObject.GetInstanceID() == this.gameObject.GetInstanceID())
+                    Destroy(b.gameObject);
+            }
+        }
+
         public WeaponWrapper GetWeaponWrapper()
         {
             return this.GetQuarterMaster().GetWeaponWrapper();
