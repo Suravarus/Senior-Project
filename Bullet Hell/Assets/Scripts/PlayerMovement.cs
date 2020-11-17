@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
     //     AIM weapon toward mouse location
     //     CALL puppetMaster
     //     SHOOT weapon if righ-click is clicked
-    bool calc = true;
     public void FixedUpdate()
     {
         
