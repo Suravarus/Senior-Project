@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 using UI;
 
@@ -20,7 +20,7 @@ namespace Combat.UI
         /// WeaponBarUI.Start().
         /// </summary>
         public delegate void PostStartFunction(WeaponBarUI w);
-        public PostStartFunction PostStart;
+        public List<PostStartFunction> PostStart = new List<PostStartFunction>();
         
 
         public void Awake()
@@ -38,10 +38,12 @@ namespace Combat.UI
                 var slot = this.WeaponSlots[i];
                 slot.HideIcon();
                 slot.SetIndex(i);
-                slot.SetText((i + 1).ToString());
             }
 
-            this.PostStart?.Invoke(this);
+            this.SetActive(0);
+
+            foreach (PostStartFunction f in this.PostStart)
+                f.Invoke(this);
         }
 
         public Slot GetAmmoSlot()
@@ -86,6 +88,8 @@ namespace Combat.UI
         public void EquipWeaponAt(int i)
         {
             this.Wielder.GetQuarterMaster().AssignWeaponAt(i);
+            if (this.Wielder.Disarmed())
+                this.AmmoSlot.SetText("0");
             this.SetActive(i);
         }
 
@@ -97,6 +101,12 @@ namespace Combat.UI
                 if (i != index) s.Active = false;
                 else s.Active = true;
             }
+        }
+
+        public void SetKeyBinds(string[] binds)
+        {
+            for (int i = 0; i < binds.Length; i++)
+                this.WeaponSlots[i].SetText(binds[i]);
         }
     }
 }
