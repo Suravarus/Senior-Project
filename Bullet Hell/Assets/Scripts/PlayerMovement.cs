@@ -12,6 +12,7 @@ using Combat.UI;
 public class PlayerMovement : MonoBehaviour
 {
     // UNITY EDITOR ----------------------------//
+    [Tooltip("units per second")]
     public float speed = 1;
     public WeaponBarUI _weaponBarUI;
     // ----------------------------------------//
