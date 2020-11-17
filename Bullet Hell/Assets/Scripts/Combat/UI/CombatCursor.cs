@@ -22,31 +22,48 @@ namespace Combat.UI
 
         private WeaponWielder playerCombatant;
         private Boolean inRange = false;
+        private bool DisarmSet { get; set; }
         public void Start()
         {
             this.playerCombatant = this.GetComponent<WeaponWielder>();
             Cursor.SetCursor(this.outOfRangeCursor, Vector2.zero, CursorMode.Auto);
+            this.DisarmSet = true;
         }
         public void Update()
         {
             var cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cursorPosition.z = 1;
+
             if (this.playerCombatant != null)
             {
-                if (this.playerCombatant.RangedWeapon.InRange(cursorPosition))
+                if (!this.playerCombatant.Disarmed())
                 {
-                    if (!this.inRange)
+                    if (this.playerCombatant.RangedWeapon.InRange(cursorPosition))
                     {
-                        this.inRange = true;
-                        Cursor.SetCursor(this.inRangeCursor, Vector2.zero, CursorMode.Auto);
+                        if (!this.inRange)
+                        {
+                            this.inRange = true;
+                            Cursor.SetCursor(this.inRangeCursor, Vector2.zero, CursorMode.Auto);
+                            this.DisarmSet = false;
+                        }
+
                     }
-                        
-                } else if (this.inRange)
+                    else if (this.inRange)
+                    {
+                        this.inRange = false;
+                        Cursor.SetCursor(this.outOfRangeCursor, Vector2.zero, CursorMode.Auto);
+                        this.DisarmSet = true;
+                    }
+                }
+                else if (!this.DisarmSet)
                 {
                     this.inRange = false;
                     Cursor.SetCursor(this.outOfRangeCursor, Vector2.zero, CursorMode.Auto);
+                    this.DisarmSet = true;
                 }
             }
+
+            
         }
     }
 }
