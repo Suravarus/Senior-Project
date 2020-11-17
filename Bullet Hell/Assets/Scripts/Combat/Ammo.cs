@@ -89,7 +89,7 @@ namespace Combat
             // GET enemy combatant from the collisionInfo
             try
             {
-                if (other.gameObject.GetInstanceID() != this.weapon.wielder.GetInstanceID())
+                if (other.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID())
                 {
                     var collidedWithAmmo = other.GetComponent<Ammo>() != null;
                     var collidedWithWeapon = other.GetComponent<Weapon>() != null;
@@ -106,9 +106,9 @@ namespace Combat
                         Destroy(this.gameObject);
                     }
                 }
-            }catch (MissingReferenceException nx)
+            }catch (Exception ex)
             {
-                Debug.LogWarning(nx.Message);
+                Debug.LogWarning(ex.Message);
                 Destroy(this.gameObject);
             }
         }
