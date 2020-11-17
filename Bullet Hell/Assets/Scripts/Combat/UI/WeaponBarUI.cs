@@ -13,6 +13,12 @@ namespace Combat.UI
         // ----------------------//
         private Slot[] WeaponSlots { get; set; }
         private Slot AmmoSlot { get; set; }
+        /// <summary>
+        /// If set, this delegate will be called at the end of 
+        /// WeaponBarUI.Start().
+        /// </summary>
+        public delegate void PostStartFunction(WeaponBarUI w);
+        public PostStartFunction PostStart; 
         
 
         public void Awake()
@@ -26,8 +32,13 @@ namespace Combat.UI
             
             for (int i = 0; i < this.WeaponSlots.Length; i++)
             {
-                this.WeaponSlots[i].SetIndex(i);
+                var slot = this.WeaponSlots[i];
+                slot.HideIcon();
+                slot.SetIndex(i);
+                slot.SetText((i + 1).ToString());
             }
+
+            this.PostStart?.Invoke(this);
         }
 
         public Slot GetAmmoSlot()
@@ -48,6 +59,8 @@ namespace Combat.UI
                         var weaponRenderer = arsenal[i].gameObject.GetComponent<SpriteRenderer>();
                         s.SetIcon(weaponRenderer.sprite, weaponRenderer.transform.lossyScale);
                         s.SetIndex(i);
+                        s.SetText((i + 1).ToString());
+                        Debug.Log($"set-text: {(i + 1).ToString()}");
                     }
                 }
             }
