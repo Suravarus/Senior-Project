@@ -82,6 +82,9 @@ namespace Combat
             {
                 this.WeaponBar = abilityBar;
                 this.WeaponBar.SetWeapons(this);
+                // SET post-start function for WeaponBar in case
+                // it still has not completed it's Start() method.
+                this.WeaponBar.PostStart = this.PostWeaponBarStart;
             }
         }
 
@@ -192,6 +195,16 @@ namespace Combat
         public Weapon[] GetArsenal()
         {
             return this.Arsenal.ToArray();
+        }
+
+        /// <summary>
+        /// This function is set in the contructor as a delegate to the 
+        /// WeaponBar.
+        /// </summary>
+        /// <param name="weaponBar">The WeaponBar that will call this method</param>
+        private void PostWeaponBarStart(WeaponBarUI weaponBar)
+        {
+            weaponBar.SetWeapons(this);
         }
     }
 }
