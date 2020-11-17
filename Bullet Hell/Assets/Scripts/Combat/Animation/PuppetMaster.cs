@@ -36,7 +36,10 @@ namespace Combat.Animation
                 // DETERMINE if player is moving.
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
                 // CALCULATE the vector from the puppet's weapon to it's chest
-                var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
+                var target = (!this.Puppet.Disarmed() 
+                    ? this.Puppet.RangedWeapon.transform.position 
+                    : Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                var v = target - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
                 v = v.normalized;
                 // CALCULATE the direction the weapon is facing
                 var direction = PhysicsTool.DirectionFromHorizontal(v);
