@@ -29,9 +29,11 @@ namespace Combat.UI
             Cursor.SetCursor(this.outOfRangeCursor, Vector2.zero, CursorMode.Auto);
             this.DisarmSet = true;
         }
+
         public void Update()
         {
-            var cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var cursorPosition = Camera.main.ScreenToWorldPoint(
+                this.GetComponent<PlayerMovement>().GetCursorPosition());
             cursorPosition.z = 1;
 
             if (this.playerCombatant != null)
@@ -63,7 +65,7 @@ namespace Combat.UI
                 }
             }
 
-            
+
         }
     }
 }

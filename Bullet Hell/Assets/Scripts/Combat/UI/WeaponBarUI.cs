@@ -68,7 +68,7 @@ namespace Combat.UI
 
         public void SetAmmoCount(Weapon weapon)
         {
-            throw new System.NotImplementedException();
+            weapon.UIAmmoSlot = this.GetAmmoSlot();
         }
 
         /// <summary>

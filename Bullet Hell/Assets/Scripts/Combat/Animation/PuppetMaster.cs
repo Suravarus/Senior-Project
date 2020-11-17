@@ -17,6 +17,8 @@ namespace Combat.Animation
         /// The Combatant that will be animated by this PuppetMaster.
         /// </summary>
         public WeaponWielder Puppet { get; set; }
+        Boolean PuppetIsPlayer 
+        { get => this.Puppet.GetComponent<PlayerMovement>() != null; }
 
         private Animator CharacterAnimator { get; set; }
         public PuppetMaster(Animator animator, WeaponWielder puppet)
@@ -36,9 +38,9 @@ namespace Combat.Animation
                 // DETERMINE if player is moving.
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
                 // CALCULATE the vector from the puppet's weapon to it's chest
-                var target = (!this.Puppet.Disarmed() 
-                    ? this.Puppet.RangedWeapon.transform.position 
-                    : Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                var target = (!this.Puppet.Disarmed()
+                    ? this.Puppet.RangedWeapon.transform.position
+                    : Camera.main.ScreenToWorldPoint(this.Puppet.GetComponent<PlayerMovement>().GetCursorPosition()));
                 var v = target - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
                 v = v.normalized;
                 // CALCULATE the direction the weapon is facing
@@ -82,7 +84,8 @@ namespace Combat.Animation
                             break;
                     }
                 }
-            } else
+            }
+            else
             {
                 this.CharacterAnimator.StopPlayback();
                 this.CharacterAnimator.enabled = false;

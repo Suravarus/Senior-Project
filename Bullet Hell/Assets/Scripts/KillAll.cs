@@ -20,12 +20,14 @@ public class KillAll : MonoBehaviour
     void Update()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (Input.GetKeyDown("q"))
-        {
-            foreach (GameObject enemy in enemies)
-                GameObject.Destroy(enemy);
-            b = 0;
-        }
+
+        // FIXME - LOW PRIORITY - NEW INPUT SYSTEM
+        //if (Input.GetKeyDown("q"))
+        //{
+        //    foreach (GameObject enemy in enemies)
+        //        GameObject.Destroy(enemy);
+        //    b = 0;
+        //}
     }
 }
 
