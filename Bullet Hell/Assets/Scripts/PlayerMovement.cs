@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using Input;
 using Combat;
@@ -51,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        // WRITE Weaponbar Bindings
+        this.WeaponBar.PostStart.Add(wbar => {
+            string[] binds = new string[3];
+
+            binds[0] = this.Keybindings.WeaponBar.Cast_1.bindings.ToArray()[0].ToDisplayString();
+            binds[1] = this.Keybindings.WeaponBar.Cast_2.bindings.ToArray()[0].ToDisplayString();
+            binds[2] = this.Keybindings.WeaponBar.Cast_3.bindings.ToArray()[0].ToDisplayString();
+
+            wbar.SetKeyBinds(binds);
+        });
         // MOVEMENT LISTENERS
         this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
         this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
@@ -111,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnEnable() { this.Keybindings.Enable(); }
-    void OnDisable() { this.Keybindings.Disable(); }
+    void OnDisable() { if (this.Keybindings != null) this.Keybindings.Disable(); }
 
     public Vector2 GetDirection() { return this.Direction; }
     public Vector2 GetCursorPosition() { return this.CursorScreenPosition; }
