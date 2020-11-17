@@ -61,8 +61,25 @@ public class Weapon : MonoBehaviour
         get { return this.weaponAmmo; }
     }
 
-    public Slot UIAmmoSlot { get; set; }
-    
+    public Slot UIAmmoSlot 
+    {
+        set
+        {
+            this._uiAmmoSlot = value;
+            if (this._uiAmmoSlot != null)
+            {
+                if (!this.infAmmo)
+                    this._uiAmmoSlot.SetText(this.ammo.ToString());
+                else
+                    this._uiAmmoSlot.SetText("---");
+            }
+        }
+
+        get => this._uiAmmoSlot;
+    }
+
+    private Slot _uiAmmoSlot;
+
     public void Awake()
     {
         // check that fire rate has not been set to negative.
@@ -159,6 +176,13 @@ public class Weapon : MonoBehaviour
 
                 Instantiate(a, st.position, st.rotation);
 
+                if (this.UIAmmoSlot != null)
+                {   // FIXME similar to assignment code in UIAmmoSlot
+                    if (!infAmmo)
+                        this.UIAmmoSlot.SetText(this.ammo.ToString());
+                    else
+                        this.UIAmmoSlot.SetText("---");
+                } 
             }
             catch (Exception ex)
             {
