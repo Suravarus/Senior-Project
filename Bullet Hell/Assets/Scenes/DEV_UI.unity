@@ -1371,7 +1371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0facfc1c102da4184d1835c9fa4cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle: 1
 --- !u!114 &1320729090 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7023341392679994166, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
@@ -1572,6 +1571,18 @@ PrefabInstance:
       propertyPath: weaponBarUI
       value: 
       objectReference: {fileID: 378047056}
+    - target: {fileID: 8278982656567984559, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278982656567984559, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278982656567984559, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
 --- !u!1 &1441475722

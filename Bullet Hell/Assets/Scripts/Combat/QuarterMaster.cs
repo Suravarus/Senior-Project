@@ -182,7 +182,9 @@ namespace Combat
             weapon.transform.SetParent(null);
             weapon.transform.position = position;
             weapon.UIAmmoSlot = null;
-            weapon.GetComponent<CircleCollider2D>().enabled = true;
+            
+            var collider = weapon.GetComponent<Collider2D>();
+            if (collider != null) collider.enabled = true;
         }
 
         /// <summary>
