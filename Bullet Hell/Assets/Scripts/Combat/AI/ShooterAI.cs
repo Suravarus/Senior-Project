@@ -4,7 +4,7 @@ using Pathfinding;
 
 namespace Combat.AI
 {
-    [Obsolete("This component will soon be merged with AICombatant and will no longer be accessible.")]
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Seeker))]
     public class ShooterAI : MonoBehaviour
