@@ -49,15 +49,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawGizmo: 0
   weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
-  ammoSpawnPoint: {fileID: 0}
+  ammoSpawnPoint: {fileID: 1934036744767000279}
   wielder: {fileID: 0}
   baseDamage: 1
+  bulletSpeed: 8
   rateOfFire: 2
   range: 4
   infAmmo: 1
   ammo: 10
-  shootingAnimator: {fileID: 0}
-  flipEnabled: 0
+  shootingAnimator: {fileID: 5145271836151194010}
+  flipEnabled: 1
 --- !u!212 &5145271836151194003
 SpriteRenderer:
   m_ObjectHideFlags: 0
