@@ -9,9 +9,14 @@ using Combat;
 public class PlayerMovement : MonoBehaviour
 {
     // UNITY EDITOR ----------------------------//
-    public float speed = 1;
+    public float speed = 1f;
+    public float dash_strength = 2f;
+    public float dash_timer = 0.4f;
+    public String move_state = "move";
     // ----------------------------------------//
 
+    public float dash_timer_temp = 0;
+    private float temp_speed = 0;
     private Combatant combatant;
     private Rigidbody2D rb;
     Vector2 direction;
@@ -37,22 +42,55 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        //slow down if neither are 0, sqrt2 movement in both directions. 
-        //0.70710678118 is sqrt(2) / 2
-        if (x != 0 && y != 0)
+        //move_state controls if we can move
+        switch (move_state)
         {
-            direction.x = x;
-            direction.y = y;
-            if (direction.magnitude > 1)
-                direction = direction.normalized;
+            case "move":
+                //normal movement
+                float x = Input.GetAxisRaw("Horizontal");
+                float y = Input.GetAxisRaw("Vertical");
+                //slow down if neither are 0, sqrt2 movement in both directions. 
+                //0.70710678118 is sqrt(2) / 2
+                if (x != 0 && y != 0)
+                {
+                    direction.x = x;
+                    direction.y = y;
+                    if (direction.magnitude > 1)
+                        direction = direction.normalized;
+                }
+                else
+                {
+                    direction.x = x;
+                    direction.y = y;
+                }
+
+                //dashing
+                if (Input.GetKeyDown(KeyCode.LeftShift) && (x!=0 || y!=0))
+                {
+                    move_state = "dash";
+                    dash_timer_temp = dash_timer;
+                    temp_speed = speed;
+                    speed = speed * dash_strength;
+                }
+                break;
+
+            case "dash":
+                //no inputs, countdown timer
+                dash_timer_temp = dash_timer_temp - Time.deltaTime;
+                if (dash_timer_temp < 0) {
+                    //return to normal movement
+                    move_state = "move";
+                    speed = temp_speed;
+                } else if (dash_timer_temp < dash_timer / 4) {
+                    //slow down for end of dash 
+                    speed = dash_strength * 0.4f * temp_speed;
+                }
+                break;
+            default:
+                move_state = "move";
+                break;
         }
-        else
-        {
-            direction.x = x;
-            direction.y = y;
-        }
+        
     }
 
     // ALGORITHM:
