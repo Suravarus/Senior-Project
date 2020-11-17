@@ -24,7 +24,6 @@ namespace Combat.AI
         public Boolean chargeAtTheTarget = false;
         Path path;
         int currentWaypoint = 0;
-        bool reachedEndOfPath = false;
 
         private float _minDist = 1;
 
@@ -108,12 +107,10 @@ namespace Combat.AI
                 if (!this.GetComponent<AIWeaponWielder>().InCombat()
                     || currentWaypoint >= path.vectorPath.Count-1)
                 {
-                    reachedEndOfPath = true;
                     return;
                 }
                 else
                 {
-                    this.reachedEndOfPath = false;
 
                     // CALCULATIONS
                     // var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
