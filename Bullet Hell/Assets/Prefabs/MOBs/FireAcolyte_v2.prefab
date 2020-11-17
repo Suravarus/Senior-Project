@@ -218,10 +218,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 6933080155954550088}
   startingWeapon: {fileID: 5959262762207633352}
+  weaponBarUI: {fileID: 0}
   passive: 0
   infinitAmmo: 1
   speed: 5
   nextWaypointDistance: 1
+  collideWithCombatants: 0
 --- !u!114 &-5051725881224634116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +442,18 @@ PrefabInstance:
     - target: {fileID: 188560495310502459, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: rateOfFire
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: baseDamage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6858242880664343929, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
       propertyPath: m_LocalRotation.z
