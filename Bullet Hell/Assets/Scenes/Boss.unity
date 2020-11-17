@@ -959,6 +959,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1009096526093840156, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294480493256053284, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: CenterRotation
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294480493256053284, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: SpreadDegrees
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355378697114943676, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02617695
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355378697114943676, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99965733
+      objectReference: {fileID: 0}
     - target: {fileID: 5698693306068954447, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
       propertyPath: m_Name
       value: Boss1

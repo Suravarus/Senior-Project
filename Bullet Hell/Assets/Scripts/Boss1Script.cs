@@ -10,12 +10,13 @@ using ND_VariaBULLET;
 public class Boss1Script : MonoBehaviour
 {
     Transform player;
+    Transform bossPos;
     ChaserAI movement;
     Rigidbody2D rb;
     CapsuleCollider2D hitbox;
     Combatant bossInfo;
-    Transform bossPos;
-    SpreadPattern spread;
+    public SpreadPattern landingShot;
+    public SpreadPattern circleShot;
 
     private bool isJumping = false;
     private int bossPhase = 1;
@@ -26,6 +27,8 @@ public class Boss1Script : MonoBehaviour
     private Vector2 target;
     private Vector2 direction;
     private bool isDead = false;
+    private bool firing = false;
+    private float fireAngle = 0.0f;
 
     private int count;
 
@@ -37,7 +40,6 @@ public class Boss1Script : MonoBehaviour
         hitbox = GetComponent<CapsuleCollider2D>();
         bossInfo = GetComponent<Combatant>();
         bossPos = GetComponent<Transform>();
-        spread = GetComponentInChildren<SpreadPattern>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = bossPos.position;
     }
@@ -51,6 +53,13 @@ public class Boss1Script : MonoBehaviour
             jumpTime /= 2;
             jumpSpeed *= 2;
         }
+
+        if (firing)
+        {
+            circleShot.TriggerAutoFire = false;
+            firing = false;
+        }
+
 
         if (isJumping)
         {
@@ -80,14 +89,19 @@ public class Boss1Script : MonoBehaviour
         }
         else
         {
+            
             count++;
-            if(count > 200)
+            if(count % 100 == 0)
             {
-                //if ((UnityEngine.Random.Range(0f, 1000f) == 20)) //variable amount of time to jump
+                Shoot();
+            }
+            if(count > 500)
+            {
+                if ((UnityEngine.Random.Range(0f, 1000f) <= count % 150) || count == 1300) //variable amount of time to jump
                     Jump();
             }
-            else if(count == 10)
-                spread.TriggerAutoFire = false;
+            else if(count == 1)
+                landingShot.TriggerAutoFire = false;
         }
 
     }
@@ -95,19 +109,35 @@ public class Boss1Script : MonoBehaviour
     //Jump
     void Jump()
     {
+        Debug.Log("count = " + count);
         if (isJumping == false)
         {
             isJumping = true;
             GoUp();
         }
-
-
-
     }
+
+    void Shoot()
+    {
+        Vector2 temp = new Vector2(player.position.x - bossPos.position.x, player.position.y - bossPos.position.y).normalized;
+        
+        if(temp.x < 0)
+        {
+            fireAngle = 360 - (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg * -1);
+        }
+        else
+        {
+            fireAngle = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg;
+        }
+        circleShot.CenterRotation = fireAngle;
+        Debug.Log("new fire angle is " + fireAngle);
+        circleShot.TriggerAutoFire = true;
+        firing = true;
+    }
+
+
     IEnumerator Wait(float sec)
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for some seconds.
         yield return new WaitForSeconds(sec);
@@ -118,8 +148,6 @@ public class Boss1Script : MonoBehaviour
 
         Debug.Log("I am about to fall");
         goingDown = true;
-        //After we have waited some seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     void GoUp()
@@ -130,9 +158,7 @@ public class Boss1Script : MonoBehaviour
         target = bossPos.position + new Vector3(0, 50, 0);
         Debug.Log("target position" + target);
         direction = (target - (Vector2)bossPos.position);
-        Debug.Log("nonnormal direction: " + direction);
         direction = direction.normalized;
-        Debug.Log("normal direction: " + direction);
     }
 
     void FallDown()
@@ -153,7 +179,7 @@ public class Boss1Script : MonoBehaviour
         hitbox.isTrigger = false;
         count = 0;
         isJumping = false;
-        spread.TriggerAutoFire = true;
+        landingShot.TriggerAutoFire = true;
     }
 
 }
