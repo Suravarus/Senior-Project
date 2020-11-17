@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Combat;
 namespace Loot
 {
 
@@ -10,6 +11,7 @@ namespace Loot
         // Arrays for items or Weapons
         public Item[] Items;
         public Weapon[] Weapons;
+        public Ammo ammo;
 
         // Drop Rates for ItemRarity in percentage
         [Header("Spawn Rates")]
@@ -22,6 +24,8 @@ namespace Loot
         [Tooltip("% chance that an item is spawned")]
         [Range(0, 100)]
         public int itemChance;
+        [Tooltip("Check box if ammo should be spawned")]
+        public bool ammoChance;
 
         public bool getUniqueItem()
         {
@@ -49,40 +53,49 @@ namespace Loot
 
         public void Spawn()
         {
-            bool isWeapon =  getUniqueItem();
-            Item item = null;
-            Weapon weapon = null;
-
-            switch (isWeapon)
+            if (ammoChance == false)
             {
-                case false:
-                    // SELECT a random Item from the Items Array
-                    item = this.Items[Random.Range(0, Items.Length)];
-                    Debug.Log("Augment spawned");
-                    break;
+                bool isWeapon = getUniqueItem();
+                Item item = null;
+                Weapon weapon = null;
 
-                case true:
-                    // SELECT a random Item from the uncommon Items
-                    weapon = this.Weapons[Random.Range(0, Weapons.Length)];
-                    // SPAWN Item
-                    Debug.Log("Weapon spawned");
-                    break;
+                switch (isWeapon)
+                {
+                    case false:
+                        // SELECT a random Item from the Items Array
+                        item = this.Items[Random.Range(0, Items.Length)];
+                        Debug.Log("Augment spawned");
+                        break;
 
-                default:
-                    Debug.Log("No item spawned");
-                    break;
+                    case true:
+                        // SELECT a random Item from the uncommon Items
+                        weapon = this.Weapons[Random.Range(0, Weapons.Length)];
+                        // SPAWN Item
+                        Debug.Log("Weapon spawned");
+                        break;
+
+                    default:
+                        Debug.Log("No item spawned");
+                        break;
+                }
+
+
+                // Spawn Item
+                if (item != null)
+                {
+                    Instantiate(item, this.transform.position, Quaternion.identity);
+                    //item.transform.localScale = new Vector3(4, 4, 1);
+                }
+
+                if (weapon != null)
+                {
+                    Instantiate(weapon, this.transform.position, Quaternion.identity);
+                    //item.transform.localScale = new Vector3(4, 4, 1);
+                }
             }
-
-            // Spawn Item
-            if (item != null)
+            else
             {
-                Instantiate(item, this.transform.position, Quaternion.identity);
-                //item.transform.localScale = new Vector3(4, 4, 1);
-            }
-
-            if (weapon != null)
-            {
-                Instantiate(weapon, this.transform.position, Quaternion.identity);
+                Instantiate(ammo, this.transform.position, Quaternion.identity);
                 //item.transform.localScale = new Vector3(4, 4, 1);
             }
         }

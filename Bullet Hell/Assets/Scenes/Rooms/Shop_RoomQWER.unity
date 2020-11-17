@@ -170,9 +170,11 @@ MonoBehaviour:
   - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
   Weapons:
   - {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+  ammo: {fileID: 0}
   weaponChance: 0
   augmentChance: 0
   itemChance: 0
+  ammoChance: 0
 --- !u!1 &48870336
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,11 +522,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
+  Items:
+  - {fileID: -9030610074576481877, guid: c80f142c924a962439b1fcad0695d836, type: 3}
   Weapons: []
+  ammo: {fileID: 0}
   weaponChance: 0
   augmentChance: 0
-  itemChance: 0
+  itemChance: 100
+  ammoChance: 0
 --- !u!1 &1311464241
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,11 +573,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
+  Items:
+  - {fileID: 2920971009008511653, guid: ea03bba4f72e7c3479838f5df33135b5, type: 3}
   Weapons: []
+  ammo: {fileID: 0}
   weaponChance: 0
   augmentChance: 0
-  itemChance: 0
+  itemChance: 100
+  ammoChance: 0
 --- !u!1 &1654613106
 GameObject:
   m_ObjectHideFlags: 0
@@ -10639,6 +10647,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items: []
   Weapons: []
+  ammo: {fileID: 0}
   weaponChance: 0
   augmentChance: 0
   itemChance: 0
+  ammoChance: 1

@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     // ------ UNITY EDITOR -----------------------------//
     [Header("Development")]
     public Boolean drawGizmo = false;
+    [Header("General")]
+    public int price;
     [Header("Ammo")]
     public GameObject weaponAmmo;
     public Transform ammoSpawnPoint;

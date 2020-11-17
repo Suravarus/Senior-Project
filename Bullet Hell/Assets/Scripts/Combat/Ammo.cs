@@ -12,6 +12,9 @@ namespace Combat
         [Tooltip("In-game description for this item. Will be stored as it was typed. Has a character-limit.")]
         public String _InGameDescription = "";
 
+        [Header("General")]
+        public int price;
+
         [Header("Movement")]
         public float speed = 5f;
 
