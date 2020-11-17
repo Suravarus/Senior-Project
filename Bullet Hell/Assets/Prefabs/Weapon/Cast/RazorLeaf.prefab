@@ -53,7 +53,9 @@ MonoBehaviour:
   bulletSpeed: 10
   rateOfFire: 1
   range: 4
+  range: 2
   infAmmo: 1
+  ammo: 10
   shootingAnimator: {fileID: 0}
   flipEnabled: 0
 --- !u!212 &800762962836146413
