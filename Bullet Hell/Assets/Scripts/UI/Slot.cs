@@ -14,7 +14,6 @@ namespace UI
 
         private Image IconImage { get; set; }
         private TextMeshProUGUI TextMesh { get; set; }
-        private int _pIndex = -1;
         private int Index { get; set; }
 
         public bool ShowIcon { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
@@ -43,15 +42,29 @@ namespace UI
 
         public void SetIcon(Sprite sprite, Vector2 scalling)
         {
-            if (sprite != null)
-                this.IconImage.sprite = sprite;
+            this.IconImage.gameObject.SetActive(true);
+            this.IconImage.sprite = sprite;
             this.IconImage.gameObject.GetComponent<RectTransform>().localScale = scalling;
+        }
+
+        public void HideIcon()
+        {
+            this.IconImage.gameObject.SetActive(false);
         }
 
         public void SetIndex(int i)
         {
             this.Index = i;
-            this.TextMesh.SetText(this.Index.ToString());
+        }
+
+        public void SetText(string s)
+        {
+            this.TextMesh.SetText(s);
+        }
+
+        public void SetText(KeyCode k)
+        {
+            this.TextMesh.SetText(k.ToString().ToUpper());  
         }
     }
 }
