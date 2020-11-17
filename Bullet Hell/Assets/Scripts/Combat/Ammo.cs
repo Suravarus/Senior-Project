@@ -108,7 +108,7 @@ namespace Combat
                 }
             }catch (Exception ex)
             {
-                Debug.LogWarning(ex.Message);
+                Debug.LogWarning(ex.Message + "\n" + ex.StackTrace);
                 Destroy(this.gameObject);
             }
         }
