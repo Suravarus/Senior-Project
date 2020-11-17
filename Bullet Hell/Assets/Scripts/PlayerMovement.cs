@@ -57,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
         this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
 
         // WEAPON-BAR LISTENERS
-        this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.AssignWeaponSlot(0);
-        this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.AssignWeaponSlot(1);
-        this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.AssignWeaponSlot(2);
+        this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
+        this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.EquipWeaponAt(1);
+        this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
     }
 
     //inputs are taken once per frame

@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 1674013031453330696}
   _textMesh: {fileID: 4817217220143850596}
+  _indicatorPanel: {fileID: 4817217218919081015}
   _index: 3
 --- !u!1 &4817217218919081009
 GameObject:
@@ -290,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10.2, y: -9.8}
+  m_AnchoredPosition: {x: -10.200012, y: -9.8}
   m_SizeDelta: {x: 81.641785, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4817217220143850603

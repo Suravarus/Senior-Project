@@ -83,9 +83,20 @@ namespace Combat.UI
             return this.WeaponSlots.Length;
         }
 
-        public void AssignWeaponSlot(int i)
+        public void EquipWeaponAt(int i)
         {
             this.Wielder.GetQuarterMaster().AssignWeaponAt(i);
+            this.SetActive(i);
+        }
+
+        private void SetActive(int index)
+        {
+            for (int i = 0; i < this.WeaponSlots.Length; i++)
+            {
+                var s = this.WeaponSlots[i];
+                if (i != index) s.Active = false;
+                else s.Active = true;
+            }
         }
     }
 }

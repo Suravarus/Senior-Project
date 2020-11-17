@@ -9,15 +9,29 @@ namespace UI
         // UNITY EDITOR -----------------------//
         public Image _icon;
         public TextMeshProUGUI _textMesh;
+        public Image _indicatorPanel;
         public int _index = 0;
+        public Color ActiveColor;
+        public Color InactiveColor;
         // -----------------------------------//
 
         private Image IconImage { get; set; }
+        private Image IndicatorPanel { get; set; }
         private TextMeshProUGUI TextMesh { get; set; }
         private int Index { get; set; }
 
         public bool ShowIcon { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public bool Active { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public bool Active 
+        {
+            set
+            {
+                if (value == true)
+                    this.IndicatorPanel.color = this.ActiveColor;
+                else
+                    this.IndicatorPanel.color = this.InactiveColor;
+            }
+            get { return this.IndicatorPanel.color == this.ActiveColor; }
+        }
 
         public void Awake()
         {
@@ -33,6 +47,10 @@ namespace UI
             else
                 throw new MissingComponentException(
                     $"{typeof(SpriteRenderer)} has not been set in {nameof(this._textMesh)} field.");
+            if (this._indicatorPanel != null)
+                this.IndicatorPanel = this._indicatorPanel;
+            else
+                throw new MissingFieldException(nameof(this._indicatorPanel));
         }
 
         public int GetIndex()
