@@ -10,21 +10,24 @@ namespace Combat.UI
         // UNITY EDITOR ----------//
         public Slot[] _weaponSlots;
         public Slot _ammoSlot;
+        public WeaponWielder _weaponWielder;
         // ----------------------//
         private Slot[] WeaponSlots { get; set; }
         private Slot AmmoSlot { get; set; }
+        private WeaponWielder Wielder { get; set; }
         /// <summary>
         /// If set, this delegate will be called at the end of 
         /// WeaponBarUI.Start().
         /// </summary>
         public delegate void PostStartFunction(WeaponBarUI w);
-        public PostStartFunction PostStart; 
+        public PostStartFunction PostStart;
         
 
         public void Awake()
         {
             this.WeaponSlots = this._weaponSlots;
             this.AmmoSlot = this._ammoSlot;
+            this.Wielder = this._weaponWielder;
         }
 
         public void Start()
@@ -78,6 +81,11 @@ namespace Combat.UI
         public int WeaponSlotCount()
         {
             return this.WeaponSlots.Length;
+        }
+
+        public void AssignWeaponSlot(int i)
+        {
+            this.Wielder.GetQuarterMaster().AssignWeaponAt(i);
         }
     }
 }

@@ -117,6 +117,71 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "WeaponBar",
+            "id": "6944fa41-921d-442e-b61e-a41ab326ba9e",
+            "actions": [
+                {
+                    "name": "Cast_1",
+                    "type": "Button",
+                    "id": "b0c65a32-ec46-47e5-9b28-0b77a1cdc21e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cast_2",
+                    "type": "Button",
+                    "id": "950b9659-8b5d-479d-91e2-0464dc4c3738",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cast_3",
+                    "type": "Button",
+                    "id": "01755fe2-4ffe-4b80-9cc2-c237545dfbc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4157c4b-4039-447a-adb5-ec9f5a7fdef5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "597e8bb6-45f8-4e4c-886c-8f5db7b278d5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29be4adf-0e1c-4a64-80d0-11257e046a20",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

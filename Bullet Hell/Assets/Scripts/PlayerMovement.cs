@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Input;
 using Combat;
+using Combat.UI;
 
 
 [RequireComponent(typeof(WeaponWielder))]
@@ -11,29 +12,27 @@ public class PlayerMovement : MonoBehaviour
 {
     // UNITY EDITOR ----------------------------//
     public float speed = 1;
+    public WeaponBarUI _weaponBarUI;
     // ----------------------------------------//
 
     private WeaponWielder Wielder;
+    private WeaponBarUI WeaponBar { get; set; }
     private Rigidbody2D rb;
     private GameControls Keybindings { get; set; }
     Vector2 Direction { get; set; }
     Vector2 CursorScreenPosition { get; set; }
     Boolean ShootingPressed { get; set; }
 
-    public void Awake()
+    void Awake()
     {
+        // INITIALIZATIONS
         this.Direction = Vector2.zero;
         this.CursorScreenPosition = Vector2.zero;
-
         this.Keybindings = new GameControls();
-        this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
-        this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
-        this.Keybindings.Combat.Shoot.performed += ctx => 
-        {
-            ShootingPressed = ctx.ReadValueAsButton();
-        };
+        this.WeaponBar = this._weaponBarUI;
 
-        // CHECK for Combatant Component
+
+        // GET COMPONENTS
         var cb = this.GetComponent<WeaponWielder>();
         if (cb != null)
         {
@@ -45,6 +44,22 @@ public class PlayerMovement : MonoBehaviour
             throw new MissingReferenceException(
                 $"GameObject {this.gameObject.name} is missing component {new Combatant().GetType().Name}");
         }
+
+        if (this.WeaponBar == null)
+            throw new MissingFieldException(nameof(this._weaponBarUI));
+    }
+
+    void Start()
+    {
+        // MOVEMENT LISTENERS
+        this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
+        this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
+        this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
+
+        // WEAPON-BAR LISTENERS
+        this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.AssignWeaponSlot(0);
+        this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.AssignWeaponSlot(1);
+        this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.AssignWeaponSlot(2);
     }
 
     //inputs are taken once per frame

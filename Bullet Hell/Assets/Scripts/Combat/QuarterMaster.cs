@@ -82,7 +82,7 @@ namespace Combat
             if (this.Arsenal.Count > 0)
             {
                 this.AssignedIndex = 0;
-                this.ActivateWeapon(this.AssignedWeapon());
+                this.ActivateWeapon(this.GetAssignedWeapon());
             }
 
             if (abilityBar != null)
@@ -95,7 +95,7 @@ namespace Combat
                 {
                     w.SetWeapons(this);
                     // incase UISlot was not set before
-                    this.AssignedWeapon().UIAmmoSlot = w.GetAmmoSlot();
+                    this.GetAssignedWeapon().UIAmmoSlot = w.GetAmmoSlot();
                 };
             }
         }
@@ -121,7 +121,7 @@ namespace Combat
             }    
         }
         
-        public Weapon AssignedWeapon()
+        public Weapon GetAssignedWeapon()
         {
             if (this.AssignedIndex > -1 && this.Arsenal.Count > 0)
                 return this.Arsenal[this.AssignedIndex];
@@ -141,18 +141,25 @@ namespace Combat
                 // IF Arsenal is full and wielder is not disarmed
                 if (this.FullArsenal && !this.Wielder.Disarmed())
                 {
-                    this.AssignedWeapon().wielder = null;
-                    DropWeaponAt(this.AssignedWeapon(), weapon.transform.position);
+                    this.GetAssignedWeapon().wielder = null;
+                    DropWeaponAt(this.GetAssignedWeapon(), weapon.transform.position);
                     this.Arsenal[this.AssignedIndex] = weapon;
                     ActivateWeapon(weapon);
 
-                } else if (!this.Wielder.Disarmed()) // Arsenal not full and Wielder is not disarmed
+                } else 
                 {
-                    var nullIndex = this.Arsenal.IndexOf(null);
-                    DeactivateWeapon(this.AssignedWeapon());
-                    SwapWeapon(this.AssignedIndex, nullIndex);
-                    this.Arsenal[this.AssignedIndex] = weapon;
-                    this.ActivateWeapon(weapon);
+                    if (!this.Wielder.Disarmed()) // Arsenal not full and Wielder is not disarmed
+                    {
+                        var nullIndex = this.Arsenal.IndexOf(null);
+                        DeactivateWeapon(this.GetAssignedWeapon());
+                        SwapWeapon(this.AssignedIndex, nullIndex);
+                        this.Arsenal[this.AssignedIndex] = weapon;
+                        this.ActivateWeapon(weapon);
+                    } else
+                    {
+                        this.Arsenal[this.AssignedIndex] = weapon;
+                        this.ActivateWeapon(weapon);
+                    }
                 }
 
                 if (!this.FullArsenal || !this.Wielder.Disarmed())
@@ -203,11 +210,32 @@ namespace Combat
 
         private void DeactivateWeapon(Weapon w)
         {
-            w.gameObject.SetActive(false);
-            w.UIAmmoSlot = null;
+            if (this.Arsenal[this.AssignedIndex] != null)
+            {
+                w.gameObject.SetActive(false);
+                w.UIAmmoSlot = null;
+            }
         }
         
-
+        public void AssignWeaponAt(int i)
+        {
+            if (i != this.AssignedIndex)
+            {
+                if (i < Combatant.MAX_WEAPONS) 
+                {
+                    DeactivateWeapon(GetAssignedWeapon());
+                    this.AssignedIndex = i;
+                    if (this.Arsenal[i] != null)
+                        ActivateWeapon(this.GetAssignedWeapon());
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException(
+                        $"Tried to assign weapon-index:{i} which is beyond capacity: {Combatant.MAX_WEAPONS}");
+                }
+            } 
+            
+        }
         public Weapon[] GetArsenal()
         {
             return this.Arsenal.ToArray();
