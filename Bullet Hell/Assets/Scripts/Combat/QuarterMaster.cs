@@ -13,7 +13,7 @@ namespace Combat
     public class QuarterMaster
     {
         private WeaponWielder Wielder { get; set; }
-        private int EquippedIndex { get { return 0; } }
+        private int AssignedIndex { get; set; }
         private List<Weapon> _arsenal;
         /// <summary>
         /// List of weapons the Combatant can use at any time.
@@ -66,17 +66,24 @@ namespace Combat
             this.Wielder = wielder;
             this.Wrapper = weaponWrapper;
             this.Arsenal = new List<Weapon>(Combatant.MAX_WEAPONS);
-
             foreach (Weapon w in weapons)
             {
                 if (w != null)
                 {
-                    AddToArsenal(w);
+                    w.wielder = this.Wielder;
+                    this.Arsenal.Add(w);
                 }
                     
             }
 
-            this.ActivateFirstWeapon();
+            while (this.Arsenal.Count < this.Arsenal.Capacity)
+                this.Arsenal.Add(null);
+
+            if (this.Arsenal.Count > 0)
+            {
+                this.AssignedIndex = 0;
+                this.ActivateWeapon(this.AssignedWeapon());
+            }
 
             if (abilityBar != null)
             {
@@ -105,13 +112,16 @@ namespace Combat
         {
             get
             {
-                return this.Arsenal.Count == Combatant.MAX_WEAPONS;
+                return this.Arsenal.Count >= Combatant.MAX_WEAPONS && !this.Arsenal.Contains(null);
             }    
         }
         
-        public Weapon FirstWeapon()
+        public Weapon AssignedWeapon()
         {
-            return this.Arsenal[this.EquippedIndex];
+            if (this.AssignedIndex > -1 && this.Arsenal.Count > 0)
+                return this.Arsenal[this.AssignedIndex];
+
+            return null;
         }
         /// <summary>
         /// Adds the given weapon to inventory and equips it.
@@ -123,18 +133,28 @@ namespace Combat
         {
             if (!this.Arsenal.Contains(weapon))
             {
-                if (this.FullArsenal)
+                // IF Arsenal is full and wielder is not disarmed
+                if (this.FullArsenal && !this.Wielder.Disarmed())
                 {
-                    DropEquipped(weapon.transform.position);
-                } else
+                    this.AssignedWeapon().wielder = null;
+                    DropWeaponAt(this.AssignedWeapon(), weapon.transform.position);
+                    this.Arsenal[this.AssignedIndex] = weapon;
+                    ActivateWeapon(weapon);
+
+                } else if (!this.Wielder.Disarmed()) // Arsenal not full and Wielder is not disarmed
                 {
-                    DeactivateFirstWeapon();
+                    var nullIndex = this.Arsenal.IndexOf(null);
+                    DeactivateWeapon(this.AssignedWeapon());
+                    SwapWeapon(this.AssignedIndex, nullIndex);
+                    this.Arsenal[this.AssignedIndex] = weapon;
+                    this.ActivateWeapon(weapon);
                 }
-                weapon.wielder = this.Wielder;
-                this.Arsenal.Add(weapon);
-                SwapWeapon(this.EquippedIndex, this.Arsenal.Count - 1);
-                ActivateFirstWeapon();
-                this.WeaponBar.SetWeapons(this);
+
+                if (!this.FullArsenal || !this.Wielder.Disarmed())
+                {
+                    weapon.wielder = this.Wielder;
+                    this.WeaponBar.SetWeapons(this);
+                }
             } else
             {
                 throw new Exception(
@@ -142,31 +162,26 @@ namespace Combat
             }
         }
 
-        private void AddToArsenal(Weapon w)
+        private void DropWeaponAt(Weapon weapon, Vector2 position)
         {
-            w.wielder = this.Wielder;
-            this.Arsenal.Add(w);
-        }
-
-        private void DropEquipped(Vector2 position)
-        {
-            this.FirstWeapon().wielder = null;
-            this.FirstWeapon().transform.position = position;
-            this.Arsenal.RemoveAt(this.EquippedIndex);
+            weapon.transform.SetParent(null);
+            weapon.transform.position = position;
+            weapon.UIAmmoSlot = null;
+            weapon.GetComponent<CircleCollider2D>().enabled = true;
         }
 
         /// <summary>
         /// Set's the ranged weapon as the weapon pointed to by the index.
         /// </summary>
-        private void ActivateFirstWeapon()
+        private void ActivateWeapon(Weapon w)
         {
-            this.FirstWeapon().gameObject.SetActive(true);
-            this.Wrapper.WrapWeapon(this.FirstWeapon());
+            w.gameObject.SetActive(true);
+            this.Wrapper.WrapWeapon(w);
             this.Wrapper.CalibrateWeapon();
 
             if (this.HasWeaponBar())
             {
-                this.FirstWeapon().UIAmmoSlot = this.WeaponBar.GetAmmoSlot();
+                w.UIAmmoSlot = this.WeaponBar.GetAmmoSlot();
             }
         }
 
@@ -181,16 +196,12 @@ namespace Combat
             }
         }
 
-        /// <summary>
-        /// Deactivates RangedWeapon and set's it to null.
-        /// Return false if the combatant was disarmed.
-        /// </summary>
-        /// <returns></returns>
-        private void DeactivateFirstWeapon()
+        private void DeactivateWeapon(Weapon w)
         {
-            this.Arsenal[this.EquippedIndex].gameObject.SetActive(false);
-            this.Arsenal[this.EquippedIndex].UIAmmoSlot = null;
+            w.gameObject.SetActive(false);
+            w.UIAmmoSlot = null;
         }
+        
 
         public Weapon[] GetArsenal()
         {

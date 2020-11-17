@@ -25,7 +25,7 @@ namespace Combat
 
         public Weapon RangedWeapon
         {
-            get { return this.GetQuarterMaster().FirstWeapon(); }
+            get { return this.GetQuarterMaster().AssignedWeapon(); }
         }
 
         public int RangedDamage
