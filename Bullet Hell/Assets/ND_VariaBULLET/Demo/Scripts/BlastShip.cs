@@ -10,7 +10,8 @@ namespace ND_VariaBULLET.Demo
     {
         protected override void Update()
         {
-            trigger = Input.GetKeyDown(KeyCode.Z);
+            // FIXME - VARIADemo
+            //trigger = Input.GetKeyDown(KeyCode.Z);
             base.Update();
         }
     }

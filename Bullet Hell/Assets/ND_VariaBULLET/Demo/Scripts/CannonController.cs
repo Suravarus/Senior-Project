@@ -19,10 +19,11 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                controller.Pitch -= Speed;
-            else if (Input.GetKey(KeyCode.DownArrow))
-                controller.Pitch += Speed;
+            // FIXME - VARIADemo
+            //if (Input.GetKey(KeyCode.UpArrow))
+            //    controller.Pitch -= Speed;
+            //else if (Input.GetKey(KeyCode.DownArrow))
+            //    controller.Pitch += Speed;
 
             if (controller.Pitch < limit * -1)
                 controller.Pitch = limit * -1;

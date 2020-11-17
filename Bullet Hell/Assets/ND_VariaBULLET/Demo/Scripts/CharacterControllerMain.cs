@@ -63,21 +63,21 @@ namespace ND_VariaBULLET.Demo
         {
             Vector3 move = new Vector3();
 
-            if (!IgnoreXInput)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                    move.x = Speed * -1;
-                else if (Input.GetKey(KeyCode.RightArrow))
-                    move.x = Speed;
-            }
+            //if (!IgnoreXInput)
+            //{
+            //    if (Input.GetKey(KeyCode.LeftArrow))
+            //        move.x = Speed * -1;
+            //    else if (Input.GetKey(KeyCode.RightArrow))
+            //        move.x = Speed;
+            //}
 
-            if (!IgnoreYInput)
-            {
-                if (Input.GetKey(KeyCode.DownArrow))
-                    move.y = Speed * -1;
-                else if (Input.GetKey(KeyCode.UpArrow))
-                    move.y = Speed;
-            }
+            //if (!IgnoreYInput)
+            //{
+            //    if (Input.GetKey(KeyCode.DownArrow))
+            //        move.y = Speed * -1;
+            //    else if (Input.GetKey(KeyCode.UpArrow))
+            //        move.y = Speed;
+            //}
 
             return move;
         }

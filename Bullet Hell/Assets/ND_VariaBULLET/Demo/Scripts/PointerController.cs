@@ -24,20 +24,21 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow))
-                controller.ParentRotation += Speed;
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow))
-                controller.ParentRotation -= Speed;
+            // FIXME VARIADemo
+            //if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow))
+            //    controller.ParentRotation += Speed;
+            //else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow))
+            //    controller.ParentRotation -= Speed;
 
-            if (controller.ParentRotation < limit * -1)
-                controller.ParentRotation = limit * -1;
-            else if (controller.ParentRotation > limit)
-                controller.ParentRotation = limit;
+            //if (controller.ParentRotation < limit * -1)
+            //    controller.ParentRotation = limit * -1;
+            //else if (controller.ParentRotation > limit)
+            //    controller.ParentRotation = limit;
 
-            if (!reLoader.isReady) return;
+            //if (!reLoader.isReady) return;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                controller.TriggerAutoFire = true;
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //    controller.TriggerAutoFire = true;
 
             point.SpriteOverride = reLoader.BallAvailable;
         }

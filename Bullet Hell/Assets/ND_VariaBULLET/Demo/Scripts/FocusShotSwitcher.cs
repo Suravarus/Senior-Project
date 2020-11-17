@@ -22,10 +22,10 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKeyDown(switchButton))
-                toggle = !toggle;
+            //if (Input.GetKeyDown(switchButton))
+            //    toggle = !toggle;
 
-            charControl.Speed = toggle ? (int)(originalSpeed * .7f) : originalSpeed;
+            //charControl.Speed = toggle ? (int)(originalSpeed * .7f) : originalSpeed;
         }
     }
 }

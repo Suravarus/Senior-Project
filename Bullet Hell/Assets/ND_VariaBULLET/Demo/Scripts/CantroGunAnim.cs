@@ -19,24 +19,24 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                rend.sprite = Frames[1];
-                Controller.Pitch = 45;
-                Controller.SpreadYAxis = 0.8f;
-            }              
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                rend.sprite = Frames[2];
-                Controller.Pitch = -45;
-                Controller.SpreadYAxis = -1;
-            }                
-            else
-            {
-                rend.sprite = Frames[0];
-                Controller.Pitch = 0;
-                Controller.SpreadYAxis = 0;
-            }
+            //if (Input.GetKey(KeyCode.UpArrow))
+            //{
+            //    rend.sprite = Frames[1];
+            //    Controller.Pitch = 45;
+            //    Controller.SpreadYAxis = 0.8f;
+            //}              
+            //else if (Input.GetKey(KeyCode.DownArrow))
+            //{
+            //    rend.sprite = Frames[2];
+            //    Controller.Pitch = -45;
+            //    Controller.SpreadYAxis = -1;
+            //}                
+            //else
+            //{
+            //    rend.sprite = Frames[0];
+            //    Controller.Pitch = 0;
+            //    Controller.SpreadYAxis = 0;
+            //}
                 
         }
     }

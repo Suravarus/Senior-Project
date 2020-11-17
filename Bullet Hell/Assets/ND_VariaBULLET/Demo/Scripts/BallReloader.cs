@@ -33,12 +33,13 @@ namespace ND_VariaBULLET.Demo
 
             if (isReady)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    accumulator = 0;
-                    isReady = false;
-                    BallAvailable = rend.sprite = getRandomBall();
-                }
+                // FIXME - VARIADemo
+                //if (Input.GetKeyDown(KeyCode.Space))
+                //{
+                //    accumulator = 0;
+                //    isReady = false;
+                //    BallAvailable = rend.sprite = getRandomBall();
+                //}
             }
                 
             yPos = Mathf.Lerp(start, end, accumulator);

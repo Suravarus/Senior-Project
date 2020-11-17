@@ -21,16 +21,16 @@ namespace ND_VariaBULLET.Demo
 
         private void LateUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                difficulty = (difficulty >= upperLimit) ? upperLimit : difficulty + increment;
-                GlobalShotManager.Instance.SpeedScale = difficulty;
-            }               
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                difficulty = (difficulty <= lowerLimit) ? lowerLimit : difficulty - increment;
-                GlobalShotManager.Instance.SpeedScale = difficulty;
-            }               
+            //if (Input.GetKeyDown(KeyCode.UpArrow))
+            //{
+            //    difficulty = (difficulty >= upperLimit) ? upperLimit : difficulty + increment;
+            //    GlobalShotManager.Instance.SpeedScale = difficulty;
+            //}               
+            //else if (Input.GetKeyDown(KeyCode.DownArrow))
+            //{
+            //    difficulty = (difficulty <= lowerLimit) ? lowerLimit : difficulty - increment;
+            //    GlobalShotManager.Instance.SpeedScale = difficulty;
+            //}               
         }
     }
 }
