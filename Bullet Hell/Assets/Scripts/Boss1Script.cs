@@ -45,7 +45,7 @@ public class Boss1Script : MonoBehaviour
     }
 
     // Update is called 50 times per second
-    void FixedUpdate()
+void FixedUpdate()
     {
         if(bossPhase == 1 && bossInfo.Health <= (bossInfo.MaxHealth / 2))
         {
@@ -59,7 +59,20 @@ public class Boss1Script : MonoBehaviour
             circleShot.TriggerAutoFire = false;
             firing = false;
         }
+        else
+        {
+            Vector2 temp = new Vector2(player.position.x - bossPos.position.x, player.position.y - bossPos.position.y).normalized;
 
+            if (temp.x < 0)
+            {
+                fireAngle = 360 - (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg * -1);
+            }
+            else
+            {
+                fireAngle = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg;
+            }
+            circleShot.CenterRotation = fireAngle;
+        }
 
         if (isJumping)
         {
@@ -119,18 +132,8 @@ public class Boss1Script : MonoBehaviour
 
     void Shoot()
     {
-        Vector2 temp = new Vector2(player.position.x - bossPos.position.x, player.position.y - bossPos.position.y).normalized;
-        
-        if(temp.x < 0)
-        {
-            fireAngle = 360 - (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg * -1);
-        }
-        else
-        {
-            fireAngle = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg;
-        }
-        circleShot.CenterRotation = fireAngle;
-        Debug.Log("new fire angle is " + fireAngle);
+
+        Debug.Log("new fire angle is " + fireAngle + " " + circleShot.CenterRotation);
         circleShot.TriggerAutoFire = true;
         firing = true;
     }
