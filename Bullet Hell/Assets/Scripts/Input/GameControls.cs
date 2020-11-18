@@ -35,6 +35,14 @@ namespace Input
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""03318f20-4fc3-4d57-bae2-e72fa46299c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -101,6 +109,17 @@ namespace Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CursorPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7e4e91f-74a1-4c24-b6df-543879cb0ee6"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -205,6 +224,7 @@ namespace Input
             m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
             m_Movement_Direction = m_Movement.FindAction("Direction", throwIfNotFound: true);
             m_Movement_CursorPosition = m_Movement.FindAction("CursorPosition", throwIfNotFound: true);
+            m_Movement_Dash = m_Movement.FindAction("Dash", throwIfNotFound: true);
             // Combat
             m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
             m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
@@ -264,12 +284,14 @@ namespace Input
         private IMovementActions m_MovementActionsCallbackInterface;
         private readonly InputAction m_Movement_Direction;
         private readonly InputAction m_Movement_CursorPosition;
+        private readonly InputAction m_Movement_Dash;
         public struct MovementActions
         {
             private @GameControls m_Wrapper;
             public MovementActions(@GameControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Direction => m_Wrapper.m_Movement_Direction;
             public InputAction @CursorPosition => m_Wrapper.m_Movement_CursorPosition;
+            public InputAction @Dash => m_Wrapper.m_Movement_Dash;
             public InputActionMap Get() { return m_Wrapper.m_Movement; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -285,6 +307,9 @@ namespace Input
                     @CursorPosition.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnCursorPosition;
                     @CursorPosition.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnCursorPosition;
                     @CursorPosition.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnCursorPosition;
+                    @Dash.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
+                    @Dash.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
+                    @Dash.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
                 }
                 m_Wrapper.m_MovementActionsCallbackInterface = instance;
                 if (instance != null)
@@ -295,6 +320,9 @@ namespace Input
                     @CursorPosition.started += instance.OnCursorPosition;
                     @CursorPosition.performed += instance.OnCursorPosition;
                     @CursorPosition.canceled += instance.OnCursorPosition;
+                    @Dash.started += instance.OnDash;
+                    @Dash.performed += instance.OnDash;
+                    @Dash.canceled += instance.OnDash;
                 }
             }
         }
@@ -385,6 +413,7 @@ namespace Input
         {
             void OnDirection(InputAction.CallbackContext context);
             void OnCursorPosition(InputAction.CallbackContext context);
+            void OnDash(InputAction.CallbackContext context);
         }
         public interface ICombatActions
         {

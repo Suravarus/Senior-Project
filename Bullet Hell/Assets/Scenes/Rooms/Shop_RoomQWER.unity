@@ -163,18 +163,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 40182006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items:
+  commonItems:
   - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
-  Weapons:
+  uncommonItems: []
+  rareItems: []
+  weapons:
   - {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-  ammo: {fileID: 0}
-  weaponChance: 0
-  augmentChance: 0
-  itemChance: 0
-  ammoChance: 0
+  uniqueItem: 1
+  shopSpawn: 1
+  itemDropRate: 100
+  common: 0
+  uncommon: 0
+  rare: 0
+  weaponChance: 100
 --- !u!1 &48870336
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 165428540}
-  - component: {fileID: 165428541}
+  - component: {fileID: 165428542}
   m_Layer: 0
   m_Name: Health_Spawn
   m_TagString: Untagged
@@ -510,7 +514,7 @@ Transform:
   m_Father: {fileID: 1680390749}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &165428541
+--- !u!114 &165428542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -519,17 +523,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 165428539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items:
+  commonItems:
   - {fileID: -9030610074576481877, guid: c80f142c924a962439b1fcad0695d836, type: 3}
-  Weapons: []
-  ammo: {fileID: 0}
+  uncommonItems: []
+  rareItems: []
+  weapons: []
+  uniqueItem: 0
+  shopSpawn: 1
+  itemDropRate: 100
+  common: 100
+  uncommon: 0
+  rare: 0
   weaponChance: 0
-  augmentChance: 0
-  itemChance: 100
-  ammoChance: 0
 --- !u!1 &1311464241
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,17 +578,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311464241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items:
+  commonItems:
   - {fileID: 2920971009008511653, guid: ea03bba4f72e7c3479838f5df33135b5, type: 3}
-  Weapons: []
-  ammo: {fileID: 0}
+  uncommonItems: []
+  rareItems: []
+  weapons: []
+  uniqueItem: 0
+  shopSpawn: 1
+  itemDropRate: 100
+  common: 100
+  uncommon: 0
+  rare: 0
   weaponChance: 0
-  augmentChance: 0
-  itemChance: 100
-  ammoChance: 0
 --- !u!1 &1654613106
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680390748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.16405, y: 62.250744, z: -99.63385}
+  m_LocalPosition: {x: 46.16405, y: 62.250744, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 40182007}
@@ -10642,13 +10654,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2129315055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b3b6f70331375449b36288050e1f7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
-  Weapons: []
-  ammo: {fileID: 0}
+  commonItems:
+  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  uncommonItems: []
+  rareItems: []
+  weapons: []
+  uniqueItem: 0
+  shopSpawn: 1
+  itemDropRate: 100
+  common: 100
+  uncommon: 0
+  rare: 0
   weaponChance: 0
-  augmentChance: 0
-  itemChance: 0
-  ammoChance: 1

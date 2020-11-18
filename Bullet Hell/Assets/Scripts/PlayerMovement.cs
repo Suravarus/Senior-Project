@@ -137,6 +137,9 @@ public class PlayerMovement : MonoBehaviour
                         speed = dash_strength * 0.4f * temp_speed;
                     }
                     break;
+                default:
+                    this.move_state = MoveState.Move;
+                    break;
 
             }
 
