@@ -14,11 +14,10 @@ public class PlayerMovement : MonoBehaviour
     // UNITY EDITOR ----------------------------//
     [Tooltip("units per second")]
     public float speed = 1;
-    public WeaponBarUI _weaponBarUI;
     // ----------------------------------------//
 
     private WeaponWielder Wielder;
-    private WeaponBarUI WeaponBar { get; set; }
+    private WeaponBarUI WeaponBar { get => this.Wielder.weaponBarUI; }
     private Rigidbody2D rb;
     private GameControls Keybindings { get; set; }
     Vector2 Direction { get; set; }
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         this.Direction = Vector2.zero;
         this.CursorScreenPosition = Vector2.zero;
         this.Keybindings = new GameControls();
-        this.WeaponBar = this._weaponBarUI;
 
 
         // GET COMPONENTS
@@ -39,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (cb != null)
         {
             this.Wielder = cb;
+            this.Wielder.weaponBarUI.Wielder = this.Wielder;
             this.rb = this.Wielder.GetComponent<Rigidbody2D>();
         }
         else
@@ -47,12 +46,6 @@ public class PlayerMovement : MonoBehaviour
                 $"GameObject {this.gameObject.name} is missing component {new Combatant().GetType().Name}");
         }
 
-        if (this.WeaponBar == null)
-            throw new MissingFieldException(nameof(this._weaponBarUI));
-    }
-
-    void Start()
-    {
         // WRITE Weaponbar Bindings
         this.WeaponBar.PostStart.Add(wbar => {
             string[] binds = new string[3];
@@ -63,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
             wbar.SetKeyBinds(binds);
         });
+    }
+
+    void Start()
+    {
+        
         // MOVEMENT LISTENERS
         this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
         this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
@@ -74,33 +72,6 @@ public class PlayerMovement : MonoBehaviour
         this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
     }
 
-    //inputs are taken once per frame
-    public void Update()
-    {
-        //float x = Input.GetAxisRaw("Horizontal");
-        //float y = Input.GetAxisRaw("Vertical");
-        ////slow down if neither are 0, sqrt2 movement in both directions. 
-        ////0.70710678118 is sqrt(2) / 2
-        //if (x != 0 && y != 0)
-        //{
-        //    direction.x = x;
-        //    direction.y = y;
-        //    if (direction.magnitude > 1)
-        //        direction = direction.normalized;
-        //}
-        //else
-        //{
-        //    direction.x = x;
-        //    direction.y = y;
-        //}
-    }
-
-    // ALGORITHM:
-    //     MOVE player
-    //     GET mouse position
-    //     AIM weapon toward mouse location
-    //     CALL puppetMaster
-    //     SHOOT weapon if righ-click is clicked
     public void FixedUpdate()
     {
         if (this.Wielder.IsAlive())

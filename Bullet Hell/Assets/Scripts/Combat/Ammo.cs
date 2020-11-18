@@ -5,6 +5,7 @@ using Utilities;
 
 namespace Combat
 {
+    [RequireComponent(typeof(CapsuleCollider2D))]
     public class Ammo : MonoBehaviour
     {
         [Tooltip("In-game name for this item. Will be stored in lower-case. Has a character-limit.")]
@@ -57,6 +58,7 @@ namespace Combat
             this.GetComponent<SpriteRenderer>().sortingOrder = 2;
             this.startingPosition = this.transform.position;
             this.rigidBody2D.velocity = this.transform.up * speed;
+            this.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
             // SET GameInfo
             this.GameInfo = new GameInfo(this._InGameName, this._InGameDescription);
@@ -87,29 +89,23 @@ namespace Combat
         void OnTriggerEnter2D(Collider2D other)
         {
             // GET enemy combatant from the collisionInfo
-            try
+            var isWeapon = other.GetComponent<Weapon>() != null;
+            var isAmmo = other.GetComponent<Ammo>() != null;
+            if (!isWeapon && !isAmmo)
             {
-                if (other.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID())
+                var collisionCombatant = other.GetComponent<Combatant>();
+                var isOtherCombatant = collisionCombatant != null
+                    && collisionCombatant.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID();
+                var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.weapon.wielder.EnemyTag;
+
+                // IF the other collider is not a Combatant, or it's an enemy Combatant
+                if (collisionCombatant == null || isEnemyCombatant)
                 {
-                    var collidedWithAmmo = other.GetComponent<Ammo>() != null;
-                    var collidedWithWeapon = other.GetComponent<Weapon>() != null;
-                    if (!collidedWithAmmo && !collidedWithWeapon)
-                    {
-                        var collisionCombatant = other.GetComponent<Combatant>();
-                        var isEnemyCombatant = collisionCombatant.tag == this.weapon.wielder.EnemyTag;
-                        // IF the other collider is not a Combatant, or it's an enemy Combatant
-                        if (isEnemyCombatant)
-                        {
-                            // Report the collision to the Combatant that shot the ammo.
-                            this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
-                        }
-                        Destroy(this.gameObject);
-                    }
+                    // Report the collision to the Combatant that shot the ammo.
+                    this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                    // Destroy this gameobject.
+                    Destroy(this.gameObject);
                 }
-            }catch (Exception ex)
-            {
-                Debug.LogWarning(ex.Message + "\n" + ex.StackTrace);
-                Destroy(this.gameObject);
             }
         }
     }

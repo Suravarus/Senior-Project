@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Combat;
@@ -9,7 +9,13 @@ namespace Loot
     {
         public List<Item> inven;
         public int gold = 0;
-        public CurrencyUI CurrencyUI;
+        public CurrencyUI currencyUI;
+
+        private void Start()
+        {
+            if (this.currencyUI == null)
+                throw new MissingFieldException(nameof(this.currencyUI));
+        }
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -38,7 +44,7 @@ namespace Loot
             if (other.CompareTag("Coins"))
             {
                 gold += 10;
-                CurrencyUI.SetAmount(gold);
+                currencyUI.SetAmount(gold);
                 Destroy(other.gameObject);
             }
 

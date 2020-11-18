@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 using UI;
@@ -14,7 +15,7 @@ namespace Combat.UI
         // ----------------------//
         private Slot[] WeaponSlots { get; set; }
         private Slot AmmoSlot { get; set; }
-        private WeaponWielder Wielder { get; set; }
+        public WeaponWielder Wielder { get; set; }
         /// <summary>
         /// If set, this delegate will be called at the end of 
         /// WeaponBarUI.Start().
@@ -33,6 +34,7 @@ namespace Combat.UI
         public void Start()
         {
             
+
             for (int i = 0; i < this.WeaponSlots.Length; i++)
             {
                 var slot = this.WeaponSlots[i];
@@ -44,6 +46,13 @@ namespace Combat.UI
 
             foreach (PostStartFunction f in this.PostStart)
                 f.Invoke(this);
+
+            if (this.WeaponSlots == null)
+                throw new MissingFieldException(nameof(this._weaponSlots));
+            if (this.AmmoSlot == null)
+                throw new MissingFieldException(nameof(this._ammoSlot));
+            if (this.Wielder == null)
+                throw new MissingFieldException(nameof(this._weaponWielder));
         }
 
         public Slot GetAmmoSlot()

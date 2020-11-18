@@ -217,10 +217,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 8662528435744650322}
   startingWeapon: {fileID: 4181886735398306605}
+  weaponBarUI: {fileID: 0}
   passive: 0
   infinitAmmo: 1
   speed: 5
   nextWaypointDistance: 1
+  collideWithCombatants: 0
 --- !u!114 &7886357035765756201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,19 +378,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_RootOrder
@@ -404,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9077590212597520675, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95c59674bdd78c445afa8f462fb9049a, type: 3}

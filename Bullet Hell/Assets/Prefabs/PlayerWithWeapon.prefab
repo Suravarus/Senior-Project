@@ -169,8 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d245f7a5d30fa8943aa5c63681d91689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  _weaponBarUI: {fileID: 0}
+  speed: 5
 --- !u!70 &420755244860776867
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -254,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inven: []
   gold: 0
-  CurrencyUI: {fileID: 0}
+  currencyUI: {fileID: 0}
 --- !u!1 &1972830389010620516
 GameObject:
   m_ObjectHideFlags: 0

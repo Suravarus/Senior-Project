@@ -88,11 +88,13 @@ namespace Combat
             if (abilityBar != null)
             {
                 this.WeaponBar = abilityBar;
+                this.WeaponBar.Wielder = this.Wielder;
                 this.WeaponBar.SetWeapons(this);
                 // SET post-start function for WeaponBar in case
                 // it still has not completed it's Start() method.
                 this.WeaponBar.PostStart.Add((WeaponBarUI w) =>
                 {
+                    w.Wielder = this.Wielder;
                     w.SetWeapons(this);
                     // incase UISlot was not set before
                     this.GetAssignedWeapon().UIAmmoSlot = w.GetAmmoSlot();
