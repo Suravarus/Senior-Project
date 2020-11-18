@@ -1,11 +1,12 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 using Input;
 using Combat;
 using Combat.UI;
+using Loot;
 
 
 [RequireComponent(typeof(WeaponWielder))]
@@ -30,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 Direction { get; set; }
     Vector2 CursorScreenPosition { get; set; }
     Boolean ShootingPressed { get; set; }
-    public bool Fkey = false;
 
     public enum MoveState
     {
@@ -78,13 +78,12 @@ public class PlayerMovement : MonoBehaviour
         // MOVEMENT LISTENERS
         this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
         this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
-        this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
         this.Keybindings.Movement.Dash.performed += ctx =>
         {
             var pressedDash = ctx.ReadValueAsButton();
             Debug.Log($"dash {pressedDash}");
             //dashing
-            if (pressedDash)
+            if (this.move_state == MoveState.Move)
             {
                 this.move_state = MoveState.Dash;
                 dash_timer_temp = dash_timer;
@@ -92,26 +91,42 @@ public class PlayerMovement : MonoBehaviour
                 speed = speed * dash_strength;
             }
         };
-        
+        this.Keybindings.Movement.Interact.performed += ctx =>
+        {
+            var collider = this.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                List<Collider2D> cds = new List<Collider2D>();
+                Debug.Log(collider.OverlapCollider(new ContactFilter2D().NoFilter(), cds));
+                foreach (Collider2D c in cds)
+                {
+                    Debug.Log(c.name);
+                }
+                if (cds.Count > 0)
+                    this.GetComponent<Pickup>().PickupLoot(cds[0]);
+            }
+        };
+
+        // COMBAT LISTENERS
+        this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
+
         // WEAPON-BAR LISTENERS
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
         this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.EquipWeaponAt(1);
         this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
-
-        this.Keybindings.Movement.Interacts.performed += ctx => Fkey = true;
-
+        
     }
 
     public void FixedUpdate()
     {
         if (this.Wielder.IsAlive())
         {
+            // MOVE player 
+            this.rb.velocity = this.Direction * this.speed;
 
             switch (this.move_state)
             {
                 case MoveState.Move:
-                    // MOVE player 
-                    this.rb.velocity = this.Direction * this.speed;
                     // get mouse position
                     Vector3 target = Camera.main.ScreenToWorldPoint(CursorScreenPosition);
                     // maintain the same z-value
@@ -141,13 +156,7 @@ public class PlayerMovement : MonoBehaviour
                         speed = dash_strength * 0.4f * temp_speed;
                     }
                     break;
-                default:
-                    this.move_state = MoveState.Move;
-                    break;
-
-            }
-
-            
+            } 
         }
     }
 
