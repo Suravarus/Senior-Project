@@ -17,42 +17,36 @@ namespace Loot
                 throw new MissingFieldException(nameof(this.currencyUI));
         }
 
-        void OnTriggerEnter2D(Collider2D other)
+        public void PickupLoot(Collider2D lootCollider)
         {
-            if (other.CompareTag("Items"))
+            if (lootCollider.CompareTag("Items"))
             {
                 
                 //Item itemType = other.gameObject.GetComponent<itemType>().type;
                 //inven.Add(itemType);
                
-                Destroy(other.gameObject);
+                Destroy(lootCollider.gameObject);
             }
 
-            if (other.GetComponent<Weapon>() != null)
+            if (lootCollider.GetComponent<Weapon>() != null)
             {
-                var weapon = other.GetComponent<Weapon>();
+                var weapon = lootCollider.GetComponent<Weapon>();
                 weapon.gameObject.GetComponent<CircleCollider2D>().enabled = false;
                 this.GetComponent<WeaponWielder>().GetQuarterMaster().PickupWeapon(weapon);
             }
 
-            if (other.CompareTag("Regen"))
+            if (lootCollider.CompareTag("Regen"))
             {
-                other.GetComponent<Combatant>().Health += 300;
-                Destroy(other.gameObject);
+                lootCollider.GetComponent<Combatant>().Health += 300;
+                Destroy(lootCollider.gameObject);
             }
 
-            if (other.CompareTag("Coins"))
+            if (lootCollider.CompareTag("Coins"))
             {
                 gold += 10;
                 currencyUI.SetAmount(gold);
-                Destroy(other.gameObject);
+                Destroy(lootCollider.gameObject);
             }
-
-            //if (other.CompareTag("Ammo"))
-            //{
-            //     += 10;
-            //    Destroy(other.gameObject);
-            //}
         }
        
     }
