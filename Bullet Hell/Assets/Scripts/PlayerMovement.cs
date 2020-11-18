@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 Direction { get; set; }
     Vector2 CursorScreenPosition { get; set; }
     Boolean ShootingPressed { get; set; }
+    public bool Fkey = false;
 
     public enum MoveState
     {
@@ -96,6 +97,9 @@ public class PlayerMovement : MonoBehaviour
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
         this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.EquipWeaponAt(1);
         this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
+
+        this.Keybindings.Movement.Interacts.performed += ctx => Fkey = true;
+
     }
 
     public void FixedUpdate()

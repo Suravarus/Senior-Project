@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Combat;
 using UI;
+using System.Collections;
 namespace Loot
 {
     public class Pickup : MonoBehaviour
@@ -10,7 +11,6 @@ namespace Loot
         public List<Item> inven;
         public int gold = 0;
         public CurrencyUI currencyUI;
-
         private void Start()
         {
             if (this.currencyUI == null)
@@ -48,6 +48,6 @@ namespace Loot
                 Destroy(lootCollider.gameObject);
             }
         }
-       
+        
     }
 }
