@@ -5,6 +5,7 @@ namespace Loot
     [RequireComponent(typeof(CircleCollider2D))]
     class PickupRadius : MonoBehaviour
     {
+        public bool inShop = false;
         private CircleCollider2D Collider2D { get; set; }
         public void Awake()
         {
