@@ -38,7 +38,7 @@ namespace Input
                 },
                 {
                     ""name"": ""Dash"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""03318f20-4fc3-4d57-bae2-e72fa46299c7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
