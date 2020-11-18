@@ -268,16 +268,16 @@ namespace Combat.AI
             }
         }
 
-        public override void TakeDamage(WeaponWielder attacker)
+        public override void TakeDamage(Ammo a)
         {
-            base.TakeDamage(attacker);
+            base.TakeDamage(a);
 
             // IF not fighting the aggressor
             if (this.CurrentTarget == null 
-                || this.CurrentTarget.GetInstanceID() != attacker.GetInstanceID())
+                || this.CurrentTarget.GetInstanceID() != a.weapon.wielder.GetInstanceID())
             {
                 // TARGET the aggressor
-                this.CurrentTarget = attacker;
+                this.CurrentTarget = a.weapon.wielder;
                 Debug.Log($"{this.gameObject.name} charge {this.GetComponent<ShooterAI>().chargeAtTheTarget}");
             }
         }
