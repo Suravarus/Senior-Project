@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interacts",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "534dfd8e-72ca-4195-9d04-93b04cb88e00",
                     "expectedControlType": "Button",
@@ -123,7 +123,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interacts",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -45,7 +45,7 @@ namespace Input
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interacts"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""534dfd8e-72ca-4195-9d04-93b04cb88e00"",
                     ""expectedControlType"": ""Button"",
@@ -138,7 +138,7 @@ namespace Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interacts"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -244,7 +244,7 @@ namespace Input
             m_Movement_Direction = m_Movement.FindAction("Direction", throwIfNotFound: true);
             m_Movement_CursorPosition = m_Movement.FindAction("CursorPosition", throwIfNotFound: true);
             m_Movement_Dash = m_Movement.FindAction("Dash", throwIfNotFound: true);
-            m_Movement_Interacts = m_Movement.FindAction("Interacts", throwIfNotFound: true);
+            m_Movement_Interact = m_Movement.FindAction("Interact", throwIfNotFound: true);
             // Combat
             m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
             m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
@@ -305,7 +305,7 @@ namespace Input
         private readonly InputAction m_Movement_Direction;
         private readonly InputAction m_Movement_CursorPosition;
         private readonly InputAction m_Movement_Dash;
-        private readonly InputAction m_Movement_Interacts;
+        private readonly InputAction m_Movement_Interact;
         public struct MovementActions
         {
             private @GameControls m_Wrapper;
@@ -313,7 +313,7 @@ namespace Input
             public InputAction @Direction => m_Wrapper.m_Movement_Direction;
             public InputAction @CursorPosition => m_Wrapper.m_Movement_CursorPosition;
             public InputAction @Dash => m_Wrapper.m_Movement_Dash;
-            public InputAction @Interacts => m_Wrapper.m_Movement_Interacts;
+            public InputAction @Interact => m_Wrapper.m_Movement_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Movement; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -332,9 +332,9 @@ namespace Input
                     @Dash.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
                     @Dash.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
                     @Dash.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnDash;
-                    @Interacts.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteracts;
-                    @Interacts.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteracts;
-                    @Interacts.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteracts;
+                    @Interact.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
                 }
                 m_Wrapper.m_MovementActionsCallbackInterface = instance;
                 if (instance != null)
@@ -348,9 +348,9 @@ namespace Input
                     @Dash.started += instance.OnDash;
                     @Dash.performed += instance.OnDash;
                     @Dash.canceled += instance.OnDash;
-                    @Interacts.started += instance.OnInteracts;
-                    @Interacts.performed += instance.OnInteracts;
-                    @Interacts.canceled += instance.OnInteracts;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
                 }
             }
         }
@@ -442,7 +442,7 @@ namespace Input
             void OnDirection(InputAction.CallbackContext context);
             void OnCursorPosition(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
-            void OnInteracts(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
         public interface ICombatActions
         {
