@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013866697872}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ae20a9ca45fb214d814984e8304a34a, type: 3}
   m_Name: 
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   RandomStartRotation: 1
   rotationSpeed: 0
   rotationSpeedRange: 0
-  RotationDirection: 0
+  RotationDirection: 1
   DissipateDelay: 0
   DissipateSpeed: 0
   ColorShift: []
