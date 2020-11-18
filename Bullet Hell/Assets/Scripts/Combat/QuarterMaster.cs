@@ -191,6 +191,11 @@ namespace Combat
         /// </summary>
         private void ActivateWeapon(Weapon w)
         {
+            var lootRadius = w.GetComponent<Collider2D>();
+            if (lootRadius != null)
+                lootRadius.enabled = false;
+            else
+                Debug.LogWarning($"weapon {w.gameObject.name} should have a lootRadius collider");
             w.gameObject.SetActive(true);
             this.Wrapper.WrapWeapon(w);
             this.Wrapper.CalibrateWeapon();
