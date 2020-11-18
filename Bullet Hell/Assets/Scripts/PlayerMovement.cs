@@ -1,125 +1,153 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+using Input;
 using Combat;
+using Combat.UI;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Combatant))]
+
+[RequireComponent(typeof(WeaponWielder))]
 public class PlayerMovement : MonoBehaviour
 {
     // UNITY EDITOR ----------------------------//
-    public float speed = 1f;
     public float dash_strength = 2f;
     public float dash_timer = 0.4f;
-    public String move_state = "move";
+    public MoveState move_state = MoveState.Move;
     // ----------------------------------------//
 
     public float dash_timer_temp = 0;
     private float temp_speed = 0;
-    private Combatant combatant;
+    [Tooltip("units per second")]
+    public float speed = 1;
+    // ----------------------------------------//
+
+    private WeaponWielder Wielder;
+    private WeaponBarUI WeaponBar { get => this.Wielder.weaponBarUI; }
     private Rigidbody2D rb;
-    Vector2 direction;
-    
+    private GameControls Keybindings { get; set; }
+    Vector2 Direction { get; set; }
+    Vector2 CursorScreenPosition { get; set; }
+    Boolean ShootingPressed { get; set; }
+
+    public enum MoveState
+    {
+        Move,
+        Dash
+    }
 
     void Awake()
     {
-        // CHECK for Combatant Component
-        var cb = this.GetComponent<Combatant>();
+        // INITIALIZATIONS
+        this.Direction = Vector2.zero;
+        this.CursorScreenPosition = Vector2.zero;
+        this.Keybindings = new GameControls();
+
+
+        // GET COMPONENTS
+        var cb = this.GetComponent<WeaponWielder>();
         if (cb != null)
         {
-            this.combatant = cb;
-            this.rb = this.combatant.GetComponent<Rigidbody2D>();
+            this.Wielder = cb;
+            this.Wielder.weaponBarUI.Wielder = this.Wielder;
+            this.rb = this.Wielder.GetComponent<Rigidbody2D>();
         }
         else
         {
             throw new MissingReferenceException(
                 $"GameObject {this.gameObject.name} is missing component {new Combatant().GetType().Name}");
         }
+
+        // WRITE Weaponbar Bindings
+        this.WeaponBar.PostStart.Add(wbar => {
+            string[] binds = new string[3];
+
+            binds[0] = this.Keybindings.WeaponBar.Cast_1.bindings.ToArray()[0].ToDisplayString();
+            binds[1] = this.Keybindings.WeaponBar.Cast_2.bindings.ToArray()[0].ToDisplayString();
+            binds[2] = this.Keybindings.WeaponBar.Cast_3.bindings.ToArray()[0].ToDisplayString();
+
+            wbar.SetKeyBinds(binds);
+        });
     }
 
-    //inputs are taken once per frame
-    void Update()
-    {
-
-        //move_state controls if we can move
-        switch (move_state)
-        {
-            case "move":
-                //normal movement
-                float x = Input.GetAxisRaw("Horizontal");
-                float y = Input.GetAxisRaw("Vertical");
-                //slow down if neither are 0, sqrt2 movement in both directions. 
-                //0.70710678118 is sqrt(2) / 2
-                if (x != 0 && y != 0)
-                {
-                    direction.x = x;
-                    direction.y = y;
-                    if (direction.magnitude > 1)
-                        direction = direction.normalized;
-                }
-                else
-                {
-                    direction.x = x;
-                    direction.y = y;
-                }
-
-                //dashing
-                if (Input.GetKeyDown(KeyCode.LeftShift) && (x!=0 || y!=0))
-                {
-                    move_state = "dash";
-                    dash_timer_temp = dash_timer;
-                    temp_speed = speed;
-                    speed = speed * dash_strength;
-                }
-                break;
-
-            case "dash":
-                //no inputs, countdown timer
-                dash_timer_temp = dash_timer_temp - Time.deltaTime;
-                if (dash_timer_temp < 0) {
-                    //return to normal movement
-                    move_state = "move";
-                    speed = temp_speed;
-                } else if (dash_timer_temp < dash_timer / 4) {
-                    //slow down for end of dash 
-                    speed = dash_strength * 0.4f * temp_speed;
-                }
-                break;
-            default:
-                move_state = "move";
-                break;
-        }
-        
-    }
-
-    // ALGORITHM:
-    //     MOVE player
-    //     GET mouse position
-    //     AIM weapon toward mouse location
-    //     CALL puppetMaster
-    //     SHOOT weapon if righ-click is clicked
-    void FixedUpdate()
+    void Start()
     {
         
-        if (this.combatant.IsAlive() && !this.combatant.Disarmed())
+        // MOVEMENT LISTENERS
+        this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
+        this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
+        this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
+        this.Keybindings.Movement.Dash.performed += ctx =>
         {
-            // MOVE player 
-            this.rb.velocity = this.direction * this.speed;
-            //this.rb.MovePosition(
-            //    this.rb.position + this.movement * this.speed * Time.fixedDeltaTime);
-            // get mouse position
-            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // maintain the same z-value
-            target.z = this.combatant.RangedWeapon.transform.position.z;
-            // AIM weapon toward mouse location
-            this.combatant.AimRangedWeapon(target);
-            // CALL puppetMaster
-            // Shoot weapon if RIGHT-CLICK is CLICKED
-            if (Input.GetKey(KeyCode.Mouse1))
+            var pressedDash = ctx.ReadValueAsButton();
+            Debug.Log($"dash {pressedDash}");
+            //dashing
+            if (pressedDash)
             {
-                this.combatant.ShootRangedWeapon();
+                this.move_state = MoveState.Dash;
+                dash_timer_temp = dash_timer;
+                temp_speed = speed;
+                speed = speed * dash_strength;
             }
+        };
+        
+        // WEAPON-BAR LISTENERS
+        this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
+        this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.EquipWeaponAt(1);
+        this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
+    }
+
+    public void FixedUpdate()
+    {
+        if (this.Wielder.IsAlive())
+        {
+
+            switch (this.move_state)
+            {
+                case MoveState.Move:
+                    // MOVE player 
+                    this.rb.velocity = this.Direction * this.speed;
+                    // get mouse position
+                    Vector3 target = Camera.main.ScreenToWorldPoint(CursorScreenPosition);
+                    // maintain the same z-value
+                    target.z = this.Wielder.GetWeaponWrapper().transform.position.z;
+
+                    // AIM weapon toward mouse location
+                    this.Wielder.AimWeapon(target);
+                    // Shoot weapon if player pressed shooting button
+                    if (this.ShootingPressed)
+                    {
+                        this.Wielder.ShootWeapon();
+                    }
+                    break;
+
+                case MoveState.Dash:
+                    //no inputs, countdown timer
+                    dash_timer_temp = dash_timer_temp - Time.deltaTime;
+                    if (dash_timer_temp < 0)
+                    {
+                        //return to normal movement
+                        move_state = MoveState.Move;
+                        speed = temp_speed;
+                    }
+                    else if (dash_timer_temp < dash_timer / 4)
+                    {
+                        //slow down for end of dash 
+                        speed = dash_strength * 0.4f * temp_speed;
+                    }
+                    break;
+
+            }
+
+            
         }
     }
+
+    void OnEnable() { this.Keybindings.Enable(); }
+    void OnDisable() { if (this.Keybindings != null) this.Keybindings.Disable(); }
+
+    public Vector2 GetDirection() { return this.Direction; }
+    public Vector2 GetCursorPosition() { return this.CursorScreenPosition; }
+    public Boolean BtnShootPressed() { return this.ShootingPressed; }
 }

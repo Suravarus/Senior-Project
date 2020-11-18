@@ -10,13 +10,13 @@ namespace ND_VariaBULLET.Demo
     {
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                anim.Reset(0);
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //    anim.Reset(0);
 
-            if (Input.GetKey(KeyCode.Space))
-                anim.Animate(frameSkip);
-            else
-                rend.sprite = null;
+            //if (Input.GetKey(KeyCode.Space))
+            //    anim.Animate(frameSkip);
+            //else
+            //    rend.sprite = null;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Combat.UI
         public enum TextStyle {
             Number,
             Percent,
+            Detailed,
             Hidden
         }
 
@@ -26,7 +27,8 @@ namespace Combat.UI
             Background,
             Filler,
             Frame,
-            Text
+            Amount,
+            Percent
         }
 
         private int _currentHealth = 0;
@@ -62,7 +64,8 @@ namespace Combat.UI
 
         private Boolean NeedsUpdate { set; get; }
         private Image Slider;
-        private TextMeshProUGUI TextMeshProUGUI;
+        private TextMeshProUGUI TextMeshAmount;
+        private TextMeshProUGUI TextMeshPercent;
         // Check for gameobjects
         void Start()
         {
@@ -76,9 +79,12 @@ namespace Combat.UI
             // set slider
             var slider = this.transform.Find(ChildName.Filler.ToString());
             this.Slider = slider.GetComponent<Image>();
-            // set text mesh
-            var text = this.transform.Find(ChildName.Text.ToString());
-            this.TextMeshProUGUI = text.GetComponent<TextMeshProUGUI>();
+            // set amt text mesh
+            var text = this.transform.Find(ChildName.Amount.ToString());
+            this.TextMeshAmount = text.GetComponent<TextMeshProUGUI>();
+            // set percent text mesh
+            var pct = this.transform.Find(ChildName.Percent.ToString());
+            this.TextMeshPercent = pct.GetComponent<TextMeshProUGUI>();
         }
 
         void FixedUpdate()
@@ -130,14 +136,21 @@ namespace Combat.UI
             switch (this.showTextAs)
             {
                 case TextStyle.Number:
-                    this.TextMeshProUGUI.SetText($"{this.CurrentHealth}/{this.MaxHealth}");
+                    this.TextMeshPercent.SetText("");
+                    this.TextMeshAmount.SetText($"{this.CurrentHealth}/{this.MaxHealth}");
                     break;
                 case TextStyle.Percent:
+                    this.TextMeshAmount.SetText("");
                     int pct = (int)Math.Round(this.GetHealthAsDecimal() * 100, 0);
-                    this.TextMeshProUGUI.SetText($"{pct} %");
+                    this.TextMeshPercent.SetText($"{pct} %");
+                    break;
+                case TextStyle.Detailed:
+                    this.TextMeshAmount.SetText($"{this.CurrentHealth}");
+                    int percent = (int)Math.Round(this.GetHealthAsDecimal() * 100, 0);
+                    this.TextMeshPercent.SetText($"{percent}%");
                     break;
                 default:
-                    this.TextMeshProUGUI.SetText("");
+                    this.TextMeshAmount.SetText("");
                     break;
 
             }
@@ -146,7 +159,7 @@ namespace Combat.UI
                 if (this.destroyOnDeath)
                     Destroy(this.gameObject);
                 else if (this.showTextAs != TextStyle.Hidden)
-                    this.TextMeshProUGUI.SetText("DEAD");
+                    this.TextMeshAmount.SetText("DEAD");
             }
             
         }

@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &100264496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2066058635692855518, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
+  m_PrefabInstance: {fileID: 1443285947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5643a7cf6dd53409d3cc8315f5d2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136146575
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +200,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &176288534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2009010292, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
+  m_PrefabInstance: {fileID: 1443285947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43e6befa4867b4699a35f0d69073d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &220056095
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,9 +362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 852157549}
   mobs:
-  - {fileID: 5669170425978868488, guid: b568050f0f69a204388fd8bf07465604, type: 3}
-  - {fileID: 7534560155660660265, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
-  - {fileID: 4570616855359894702, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
+  - {fileID: 1947997390263388705, guid: b568050f0f69a204388fd8bf07465604, type: 3}
+  - {fileID: 3904682936931913953, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
+  - {fileID: 8252004040100609672, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
   EnemyLimit: 5
   xMapMin: -10
   xMapMax: 10
@@ -2877,6 +2899,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1998842602, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: CurrencyUI
+      value: 
+      objectReference: {fileID: 100264496}
+    - target: {fileID: 1998842602, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: currencyUI
+      value: 
+      objectReference: {fileID: 100264496}
     - target: {fileID: 786394176794595521, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
       propertyPath: m_Name
       value: PlayerWithWeapon
@@ -2929,7 +2959,19 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 786394176794595534, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: _weaponBarUI
+      value: 
+      objectReference: {fileID: 176288534}
     - target: {fileID: 6903635801494056286, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: HealthUI
+      value: 
+      objectReference: {fileID: 437688502}
+    - target: {fileID: 7023341392679994166, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
+      propertyPath: weaponBarUI
+      value: 
+      objectReference: {fileID: 176288534}
+    - target: {fileID: 7023341392679994166, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}
       propertyPath: HealthUI
       value: 
       objectReference: {fileID: 437688502}
@@ -3123,10 +3165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7082992555039087765, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 7082992555039087766, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3215,10 +3253,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1975175831}
-    - target: {fileID: 7082992555039087767, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7082992555039087786, guid: fed8f07b038be36449aac8bdd0253943, type: 3}
       propertyPath: m_Name
       value: UI Canvas

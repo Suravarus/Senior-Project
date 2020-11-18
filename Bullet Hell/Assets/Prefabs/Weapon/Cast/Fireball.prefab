@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 188560495310502460}
   - component: {fileID: 188560495310502461}
   m_Layer: 0
-  m_Name: Invisible
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188560495310502458}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9, y: -4, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 6858242880664343929}
@@ -45,11 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAmmo: {fileID: 0}
+  drawGizmo: 0
+  weaponAmmo: {fileID: 8035906373920960763, guid: f2fd5b0a359fe2e4fa0b97153cd5e70e, type: 3}
+  ammoSpawnPoint: {fileID: 6858242880664343929}
+  wielder: {fileID: 0}
   baseDamage: 1
-  bulletSpeed: 10
+  bulletSpeed: 8
   rateOfFire: 1
   range: 4
+  infAmmo: 1
+  ammo: 10
+  shootingAnimator: {fileID: 0}
+  flipEnabled: 0
 --- !u!212 &188560495310502461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -95,7 +102,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.19, y: 0.1}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -124,10 +131,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094009916233312760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 188560495310502459}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

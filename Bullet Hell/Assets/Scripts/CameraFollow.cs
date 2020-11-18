@@ -18,7 +18,8 @@ public class CameraFollow : MonoBehaviour
     //LateUpdates occurrs directly after Update
     void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        if (target != null)
+            transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
         ////Set bound
         //transform.position = new Vector3

@@ -45,7 +45,7 @@ namespace ND_VariaBULLET
 
         private bool isPresetChangeTriggered()
         {
-            if ((!Input.GetKeyDown(buttonSwitch) && !triggerSwitch) || !delayTimer.Flag) return false;
+            // if ((!Input.GetKeyDown(buttonSwitch) && !triggerSwitch) || !delayTimer.Flag) return false;
 
             destroyCurrent();
 

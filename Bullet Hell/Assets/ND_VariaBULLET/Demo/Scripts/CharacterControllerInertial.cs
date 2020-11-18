@@ -30,13 +30,13 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow))
-                controller.ParentRotation += Speed;
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow))
-                controller.ParentRotation -= Speed;
+            //if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow))
+            //    controller.ParentRotation += Speed;
+            //else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow))
+            //    controller.ParentRotation -= Speed;
 
-            if (Input.GetKeyDown(KeyCode.Z))
-                blast = true;
+            //if (Input.GetKeyDown(KeyCode.Z))
+            //    blast = true;
         }
     }
 }

@@ -20,19 +20,19 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (!Input.GetMouseButtonDown(0))
-                return;
+            //if (!Input.GetMouseButtonDown(0))
+            //    return;
 
-            mouseInput = GlobalShotManager.Instance.MainCam.ScreenToWorldPoint(Input.mousePosition);
-            center = transform.position;
+            //mouseInput = GlobalShotManager.Instance.MainCam.ScreenToWorldPoint(Input.mousePosition);
+            //center = transform.position;
 
-            bool buttonClicked = (mouseInput.x >= center.x - edge.x && mouseInput.x <= center.x + edge.x && mouseInput.y >= center.y - edge.y && mouseInput.y <= center.y + edge.y);
+            //bool buttonClicked = (mouseInput.x >= center.x - edge.x && mouseInput.x <= center.x + edge.x && mouseInput.y >= center.y - edge.y && mouseInput.y <= center.y + edge.y);
 
-            if (!buttonClicked)
-                return;
+            //if (!buttonClicked)
+            //    return;
 
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            //Scene scene = SceneManager.GetActiveScene();
+            //SceneManager.LoadScene(scene.name);
         }
     }
 }

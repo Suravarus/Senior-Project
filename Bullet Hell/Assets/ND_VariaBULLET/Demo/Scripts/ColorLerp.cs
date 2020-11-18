@@ -41,20 +41,20 @@ namespace ND_VariaBULLET.Demo
 
         private void CommandedColorChange()
         {
-            if (trigger)
-                timer.RunOnce(Speed);
-            else if (Input.GetKey(CommandKey))
-                { trigger = true; rend.color = To; }
+            //if (trigger)
+            //    timer.RunOnce(Speed);
+            //else if (Input.GetKey(CommandKey))
+            //    { trigger = true; rend.color = To; }
 
-            if (timer.Flag)
-            {
-                if (Input.GetKey(CommandKey))
-                    return;
+            //if (timer.Flag)
+            //{
+            //    if (Input.GetKey(CommandKey))
+            //        return;
 
-                timer.Reset();
-                trigger = false;
-                rend.color = From;
-            }
+            //    timer.Reset();
+            //    trigger = false;
+            //    rend.color = From;
+            //}
         }
 
         private void ConstantColorChange()

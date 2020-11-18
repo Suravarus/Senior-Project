@@ -27,11 +27,12 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKeyDown(buttonSwitch))
-            {
-                index++;
-                firingScript.Shot = presetPrefabs[index];
-            }
+            // FIXME VARIADemo
+            //if (Input.GetKeyDown(buttonSwitch))
+            //{
+            //    index++;
+            //    firingScript.Shot = presetPrefabs[index];
+            //}
                 
         }
     }

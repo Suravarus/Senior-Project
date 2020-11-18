@@ -10,6 +10,8 @@ namespace Combat
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class Combatant : MonoBehaviour, ICombatant
     {
+        public static int MAX_WEAPONS { get { return 3; } }
+
         [Header("Combat")]
         // UnityEditor properties ---------------------------------------------
         [Tooltip("The tag associated with game objects to which this character should do damage.")]
@@ -21,61 +23,16 @@ namespace Combat
         [Header("Animation")]
         public Animator animator;
         // ---------------------------------------------------------------------
-        
+        public String EnemyTag { 
+            set { this._enemyTag = value; } 
+            get { return this._enemyTag; }
+        }
         public enum BodyPart
         {
             Head,
             Chest
         }
-
-        public PuppetMaster Puppeteer { set; get; }
-
-        /// <summary>
-        /// When passing in a value, this accessor makes sure that the Tag has
-        /// been defined in the UnityEditor.
-        /// </summary>
-        /// <exception cref="MissingFieldException">Cannot set to empty or null string.</exception>
-        /// <exception cref="Exception">The passed in value is not a valid tag that has been defined in Unity.</exception>
-        public string EnemyTag
-        {
-            set
-            {
-                this._enemyTag = value;
-
-                // FIXME this code won't build. commenting out for now
-                // ----------------------------------------------------------
-                // // CHECK that the tag is defined
-                // bool valid = false;
-                //foreach (String t in UnityEditorInternal.InternalEditorUtility.tags)
-                //{
-                //    if (value.Equals(t))
-                //        valid = true;
-                //}
-                //if (!valid)
-                //{
-                //    // THROW err if value is empty
-                //    if (String.IsNullOrEmpty(value))
-                //        throw new MissingFieldException(this.GetType().Name, nameof(this.EnemyTag));
-
-                //    // THROW err if not a valid tag.
-                //    throw new Exception($"Value \'{value}\' is not a valid tag.");
-                //}
-                // ----------------------------------------------------------------
-
-            }
-
-            get { return this._enemyTag; }
-        }
-
-        [Tooltip("Child object that will be used to position ranged weapons.")]
-        public GameObject rangedWeaponWrapper;
-
-        private Weapon _rangedWeapon;
-        public Weapon RangedWeapon
-        {
-            set { this._rangedWeapon = value; }
-            get { return this._rangedWeapon; }
-        }
+        
 
         /// <summary>
         /// Current player health.
@@ -143,16 +100,6 @@ namespace Combat
             }
         }
 
-        public int RangedDamage
-        {
-            get
-            {
-                var total = this.RangedWeapon.baseDamage;
-                total += this.RangedWeapon.WeaponAmmo.GetComponent<Ammo>().damage;
-                return total;
-            }
-        }
-
         // ---------- Monobehaviour code --------------
 
         // ALGORITHM:
@@ -175,21 +122,6 @@ namespace Combat
                 throw err;
             }
 
-            // CHECK for WeaponWrapper
-            if (this.rangedWeaponWrapper != null)
-            {
-                // SET RangedWeapon if it exists
-                var wp = this.rangedWeaponWrapper.GetComponentInChildren<Weapon>();
-                if (wp != null)
-                {
-                    this.RangedWeapon = wp;
-                }
-            }
-            else // THROW ERR for missing weaponWrapper.
-            {
-                throw new MissingFieldException(this.GetType().Name, nameof(this.rangedWeaponWrapper));
-            }
-
             // SET Combat parameters - data will be validated by accessors.
             this.EnemyTag = this._enemyTag;
             this.MaxHealth = this._maxHealth;
@@ -207,47 +139,10 @@ namespace Combat
                     $"{nameof(this.HealthUI)} has not been set for {this.GetType()} component in {this.gameObject.name}");
             if (this.animator == null)
                 this.animator = this.GetComponent<Animator>();
-            if (this.animator != null)
-                this.Puppeteer = new PuppetMaster(this.animator, this);
         }
-
         public virtual void Update()
         {
-            if (this.Puppeteer != null)
-                this.Puppeteer.PullTheStrings();
-        }
-
-        public virtual void FixedUpdate()
-        {
-            if (!this.IsAlive() && this.enabled)
-            {
-                Debug.LogWarning(this.gameObject.name + " DIE!");
-                this.Die();
-            }
-        }
-
-
-        /// <summary>
-        /// Aims the ranged weapon at the specified target position.
-        /// </summary>
-        /// <param name="targetPosition">The point in world-space at which the target is at.</param>
-        public void AimRangedWeapon(Vector3 targetPosition)
-        {
-            // TODO COMBAT-TEAM[1] - Will there ever be a STATE in which the Player is Disarmed?
-            Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform);
-        }
-
-        /// <summary>
-        /// Shoots the RangedWeapon. The weapon's rate of fire is taken into account.
-        /// </summary>
-        public Boolean ShootRangedWeapon()
-        {
-            if (!this.Disarmed())
-            {
-                this.RangedWeapon.RequestWeaponFire();
-                return true;
-            }
-            return false;
+            return;
         }
 
         /// <summary>
@@ -260,42 +155,40 @@ namespace Combat
         }
 
         /// <summary>
-        /// Returns TRUE if this Combatant has no weapon equipped.
-        /// </summary>
-        /// <returns></returns>
-        public Boolean Disarmed()
-        {
-            return this.RangedWeapon == null;
-        }
-
-        /// <summary>
         /// Method that determines how the object takes damage.
         /// </summary>
         /// <param name="damage">Damage to be received</param>
-        public virtual void TakeDamage(Combatant attacker)
+        public virtual void TakeDamage(WeaponWielder attacker)
         {
             this.Health -= attacker.RangedDamage;
             if (this.HealthUI != null) // TODO [UI] combatants will require Healthbar in future.
                 this.HealthUI.UpdateValues(this);
+            if (this.Health == 0)
+                this.Die();
+        }
+
+        /// <summary>
+        /// This method gets called before the destruction of this object.
+        /// </summary>
+        public virtual void OnDie()
+        {
+            this.enabled = false;
+            this.GetComponent<Rigidbody2D>().Sleep();
+            this.GetComponent<Collider2D>().enabled = false;
+            // IF has ItemDrop component
+            if (this.GetComponent<ItemDrop>() != null)
+                this.GetComponent<ItemDrop>().Spawn(); // CALL ItemDrop
         }
 
         /// <summary>
         /// Default behaviour is to destroy the gameobject.
         /// <list type="bullet"><item>Should override</item></list>
         /// </summary>
-        public virtual void Die()
+        public void Die()
         {
-            this.enabled = false;
-            // create new death object
-            var deathSprite = Resources.Load<Sprite>("Sprites/Skull");
-            this.GetComponent<SpriteRenderer>().sprite = deathSprite;
-            this.RangedWeapon.gameObject.SetActive(false);
-            this.transform.localScale = new Vector3(5, 5, 1);
-            this.GetComponent<Rigidbody2D>().Sleep();
-            this.GetComponent<Collider2D>().enabled = false;
-            // IF has ItemDrop component
-            if (this.GetComponent<ItemDrop>() != null)
-                this.GetComponent<ItemDrop>().Spawn(); // CALL ItemDrop
+            this.OnDie();
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -304,12 +197,12 @@ namespace Combat
             {
                 var ammo = other.gameObject.GetComponent<Ammo>();
                 bool rangedAttack = (ammo != null
-                    && ammo.ammoOwner.IsAlive()
-                    && ammo.ammoOwner.tag == this.EnemyTag);
+                    && ammo.weapon.wielder.IsAlive()
+                    && ammo.weapon.wielder.tag == this.EnemyTag);
 
                 if (rangedAttack)
                 {
-                    this.TakeDamage(ammo.ammoOwner);
+                    this.TakeDamage(ammo.weapon.wielder);
                 }
             }
         }
@@ -346,11 +239,6 @@ namespace Combat
             {
                 return this.transform;
             }
-        }
-
-        public virtual void OnAmmoCollision(int instanceID)
-        {
-            return;
         }
     }
 }

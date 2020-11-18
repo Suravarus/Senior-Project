@@ -19,15 +19,16 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                controller.ParentRotation += Speed;
-            else if (Input.GetKey(KeyCode.DownArrow))
-                controller.ParentRotation -= Speed;
+            // FIXME - VariaDemo
+            //if (Input.GetKey(KeyCode.UpArrow))
+            //    controller.ParentRotation += Speed;
+            //else if (Input.GetKey(KeyCode.DownArrow))
+            //    controller.ParentRotation -= Speed;
 
-            if (controller.ParentRotation < limit.y)
-                controller.ParentRotation = (int)limit.y;
-            else if (controller.ParentRotation > limit.x)
-                controller.ParentRotation = (int)limit.x;
+            //if (controller.ParentRotation < limit.y)
+            //    controller.ParentRotation = (int)limit.y;
+            //else if (controller.ParentRotation > limit.x)
+            //    controller.ParentRotation = (int)limit.x;
         }
     }
 }

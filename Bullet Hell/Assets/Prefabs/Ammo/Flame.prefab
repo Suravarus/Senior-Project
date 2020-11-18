@@ -202,10 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _InGameName: corrupted flame
-  _InGameDescription: Adds 0.5 rangedDamage.
-  speed: 15
-  damage: 10
-  ammoOwner: {fileID: 0}
+  _InGameDescription: Adds 2 rangedDamage.
+  speed: 20
+  damage: 2
   weapon: {fileID: 0}
 --- !u!70 &5872211060125573620
 CapsuleCollider2D:

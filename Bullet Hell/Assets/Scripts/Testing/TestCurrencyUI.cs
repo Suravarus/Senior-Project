@@ -29,12 +29,13 @@ namespace Testing
                 this.started = true;
             }
                 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                this.CurrencyUI.SetAmount(this.CurrencyUI.GetAmount() + 1);
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
-                this.CurrencyUI.SetAmount(this.CurrencyUI.GetAmount() - 1);
+            // FIXME - LOW PRIORITY - NEW INPUT SYSTEM
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    this.CurrencyUI.SetAmount(this.CurrencyUI.GetAmount() + 1);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Q))
+            //    this.CurrencyUI.SetAmount(this.CurrencyUI.GetAmount() - 1);
         }
     }
 }

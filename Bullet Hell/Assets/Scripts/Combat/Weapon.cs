@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 
 using Combat;
+using UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Weapon : MonoBehaviour
     [Header("Ammo")]
     public GameObject weaponAmmo;
     public Transform ammoSpawnPoint;
-    public Combatant weaponOwner;
+    public WeaponWielder wielder;
     public int baseDamage;
     public float bulletSpeed;
     [Header("Combat")]
@@ -31,13 +32,15 @@ public class Weapon : MonoBehaviour
     [Header("Animation")]
     [Tooltip("Animator this script interacts with in order to trigger a shooting animation. Can be NULL.")]
     public Animator shootingAnimator;
+    [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
+    public Boolean flipEnabled = false;
     // ------------------------------------------------//
 
-    // will keep track of the last time this weapon 'fired'
-    // private float LastFiredDeltaTime { get; set; }
-    // private float TimeOfFireRequest { get; set; }
+    /// <summary>
+    /// Returns TRUE if this weapon has been flipped.
+    /// </summary>
+    private bool Flipped { get; set; }
     private float TimeSinceFireRequest { get; set; }
-    // private float ScheduledTimeOfFire { get; set; }
     private bool WaitingToFire { get; set; }
     private float FireDelay 
     {
@@ -60,10 +63,27 @@ public class Weapon : MonoBehaviour
         get { return this.weaponAmmo; }
     }
 
-    
-    void Awake()
+    public Slot UIAmmoSlot 
     {
-        weaponOwner = this.GetComponentInParent<Combatant>();
+        set
+        {
+            this._uiAmmoSlot = value;
+            if (this._uiAmmoSlot != null)
+            {
+                if (!this.infAmmo)
+                    this._uiAmmoSlot.SetText(this.ammo.ToString());
+                else
+                    this._uiAmmoSlot.SetText("---");
+            }
+        }
+
+        get => this._uiAmmoSlot;
+    }
+
+    private Slot _uiAmmoSlot;
+
+    public void Awake()
+    {
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
         {
@@ -79,7 +99,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Start()
     {
         this.shootingAnimator = this.GetComponent<Animator>();
     }
@@ -95,7 +115,7 @@ public class Weapon : MonoBehaviour
     //     SUBTRACT elapsed time from FireDelay
     //     IF FireDelay is 0:
     //       SET WaitingToFire = FALSE
-    void Update()
+    public void Update()
     {
         // IF the weapon is waiting to fire:
         if (this.WaitingToFire)
@@ -148,17 +168,23 @@ public class Weapon : MonoBehaviour
 
                 // shoot the 'ammo' straight ahead
                 if (this.bulletSpeed > 0)
-                    a.speed = this.bulletSpeed + 10;
+                    a.speed = this.bulletSpeed;
                 if (this.baseDamage > 0)
                     a.damage = this.baseDamage;
 
-                a.ammoOwner = this.GetComponentInParent<Combatant>();
                 a.weapon = this;
 
                 var st = this.transform.GetChild(0);
 
                 Instantiate(a, st.position, st.rotation);
 
+                if (this.UIAmmoSlot != null)
+                {   // FIXME similar to assignment code in UIAmmoSlot
+                    if (!infAmmo)
+                        this.UIAmmoSlot.SetText(this.ammo.ToString());
+                    else
+                        this.UIAmmoSlot.SetText("---");
+                } 
             }
             catch (Exception ex)
             {
@@ -166,11 +192,7 @@ public class Weapon : MonoBehaviour
                 "Weapon.Fire() - has Ammo been set?", ex);
             }
         }
-        else
-        {
-            //if there is no ammo, make a poof sound?
-
-        }
+        // TODO give player some feedback when out of ammo
     }
     
     /// <summary>
@@ -188,6 +210,24 @@ public class Weapon : MonoBehaviour
     private Transform GetAmmoSpawnPoint()
     {
         return this.transform.GetChild(0);
+    }
+
+    public bool IsFlipped()
+    {
+        return this.Flipped;
+    }
+
+    public void Flip()
+    {
+        if (!this.Flipped)
+        {
+            this.Flipped = true;
+            this.transform.Rotate(Vector2.right, 180);
+        } else
+        {
+            this.Flipped = false;
+            this.transform.Rotate(Vector2.right, 180);
+        }
     }
 
     public Boolean LineOfSight(Combatant c, Combatant.BodyPart bodyPart)

@@ -16,10 +16,12 @@ namespace Combat.Animation
         /// <summary>
         /// The Combatant that will be animated by this PuppetMaster.
         /// </summary>
-        public Combatant Puppet { get; set; }
+        public WeaponWielder Puppet { get; set; }
+        Boolean PuppetIsPlayer 
+        { get => this.Puppet.GetComponent<PlayerMovement>() != null; }
 
         private Animator CharacterAnimator { get; set; }
-        public PuppetMaster(Animator animator, Combatant puppet)
+        public PuppetMaster(Animator animator, WeaponWielder puppet)
         {
             this.CharacterAnimator = animator;
             this.Puppet = puppet;
@@ -34,10 +36,12 @@ namespace Combat.Animation
             if (this.Puppet.IsAlive())
             {
                 // DETERMINE if player is moving.
-                var vel = this.Puppet.GetComponent<Rigidbody2D>().GetPointVelocity(this.Puppet.transform.position);
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
                 // CALCULATE the vector from the puppet's weapon to it's chest
-                var v = this.Puppet.RangedWeapon.transform.position - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
+                var target = (!this.Puppet.Disarmed()
+                    ? this.Puppet.RangedWeapon.transform.position
+                    : Camera.main.ScreenToWorldPoint(this.Puppet.GetComponent<PlayerMovement>().GetCursorPosition()));
+                var v = target - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
                 v = v.normalized;
                 // CALCULATE the direction the weapon is facing
                 var direction = PhysicsTool.DirectionFromHorizontal(v);
@@ -80,7 +84,8 @@ namespace Combat.Animation
                             break;
                     }
                 }
-            } else
+            }
+            else
             {
                 this.CharacterAnimator.StopPlayback();
                 this.CharacterAnimator.enabled = false;

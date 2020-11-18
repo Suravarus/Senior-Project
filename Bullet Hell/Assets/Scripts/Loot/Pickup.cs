@@ -1,31 +1,38 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Combat;
+using UI;
 namespace Loot
 {
     public class Pickup : MonoBehaviour
     {
         public List<Item> inven;
         public int gold = 0;
-        public string weapname;
-        
-        //private Inventory inventory;
-        // Start is called before the first frame update
-        //private void Start()
-        //{
-        //    inventory = GameObject.FindGameObjectsWithTag("Player").GetComponent<Inventory>();
-        //}
+        public CurrencyUI currencyUI;
+
+        private void Start()
+        {
+            if (this.currencyUI == null)
+                throw new MissingFieldException(nameof(this.currencyUI));
+        }
 
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Items"))
             {
-                weapname = other.gameObject.name.ToString();
+                
                 //Item itemType = other.gameObject.GetComponent<itemType>().type;
                 //inven.Add(itemType);
-                Debug.Log(weapname);
+               
                 Destroy(other.gameObject);
+            }
+
+            if (other.GetComponent<Weapon>() != null)
+            {
+                var weapon = other.GetComponent<Weapon>();
+                weapon.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                this.GetComponent<WeaponWielder>().GetQuarterMaster().PickupWeapon(weapon);
             }
 
             if (other.CompareTag("Regen"))
@@ -37,6 +44,7 @@ namespace Loot
             if (other.CompareTag("Coins"))
             {
                 gold += 10;
+                currencyUI.SetAmount(gold);
                 Destroy(other.gameObject);
             }
 
@@ -46,5 +54,6 @@ namespace Loot
             //    Destroy(other.gameObject);
             //}
         }
+       
     }
 }

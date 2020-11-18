@@ -64,10 +64,11 @@ namespace ND_VariaBULLET
 
         protected override bool ButtonPress()
         {
-            if (Input.GetKeyDown(controller.CommandKey))
-                return false;
+            //if (Input.GetKeyDown(controller.CommandKey))
+            //    return false;
 
-            return Input.GetKey(controller.CommandKey);
+            //return Input.GetKey(controller.CommandKey);
+            return false;
         }
 
         protected override bool ButtonPressAutoHold()

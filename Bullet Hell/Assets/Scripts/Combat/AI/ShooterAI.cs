@@ -4,7 +4,7 @@ using Pathfinding;
 
 namespace Combat.AI
 {
-    [Obsolete("This component will soon be merged with AICombatant and will no longer be accessible.")]
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Seeker))]
     public class ShooterAI : MonoBehaviour
@@ -24,7 +24,6 @@ namespace Combat.AI
         public Boolean chargeAtTheTarget = false;
         Path path;
         int currentWaypoint = 0;
-        bool reachedEndOfPath = false;
 
         private float _minDist = 1;
 
@@ -97,27 +96,25 @@ namespace Combat.AI
         void FixedUpdate()
         {
             if (this.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static 
-                && this.GetComponent<AICombatant>().IsAlive())
+                && this.GetComponent<AIWeaponWielder>() != null
+                && this.GetComponent<AIWeaponWielder>().IsAlive())
             {
                 if (path == null)
                 {
                     return;
                 }
 
-                if (!this.GetComponent<AICombatant>().InCombat()
+                if (!this.GetComponent<AIWeaponWielder>().InCombat()
                     || currentWaypoint >= path.vectorPath.Count-1)
                 {
-                    reachedEndOfPath = true;
                     return;
                 }
                 else
                 {
-                    this.reachedEndOfPath = false;
 
-                    // calculations
-                    var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
+                    // CALCULATIONS
+                    // var distanceFromWaypoint = Vector2.Distance(this.path.vectorPath[this.currentWaypoint], this.transform.position);
                     var distanceFromTarget = Vector2.Distance(this.target.transform.position, this.transform.position);
-
                     // check if too close to target
                     if (distanceFromTarget < this.MinDist)
                     {

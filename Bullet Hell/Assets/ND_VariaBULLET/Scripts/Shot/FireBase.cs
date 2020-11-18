@@ -91,7 +91,8 @@ namespace ND_VariaBULLET
         protected abstract bool ButtonPress();
         protected virtual bool ButtonPressAutoHold()
         {
-            return AutoHoldTemplate(Input.GetKeyDown(controller.CommandKey));
+            return false;
+            //return AutoHoldTemplate(Input.GetKeyDown(controller.CommandKey));
         }
         protected abstract bool AutoFire();
         protected virtual bool AutoFireAutoHold()

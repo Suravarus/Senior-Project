@@ -1,0 +1,188 @@
+{
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "d3a56e3d-3992-456d-b2bf-e73a243987bd",
+            "actions": [
+                {
+                    "name": "Direction",
+                    "type": "PassThrough",
+                    "id": "f0bb05eb-2e67-499d-a01c-0d11b2bbb84f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CursorPosition",
+                    "type": "PassThrough",
+                    "id": "f569326c-41aa-461e-9418-c204e3628563",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2DVector",
+                    "id": "08f91d0b-b129-40c9-a114-e40570878f5e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "e00e46ca-05d2-4ab4-88da-78b7fb1b0344",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "77565bb7-0138-4cb5-be90-7292da90bdb1",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "9a19fe95-5a36-438f-acbd-3422eb89ad4d",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "32f55e5f-40b3-433e-95c6-7b587d1706d4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "386c6889-9778-4415-9c7f-309ecac2ec57",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Combat",
+            "id": "59ab8bb2-6ec8-4d2c-80a2-f7503ceb246a",
+            "actions": [
+                {
+                    "name": "Shoot",
+                    "type": "PassThrough",
+                    "id": "0f0b3f69-8db1-4b79-b362-8fdc7f3f1de4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "47d07dac-cb1b-4e5b-9c82-80095e0eeb5f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "WeaponBar",
+            "id": "6944fa41-921d-442e-b61e-a41ab326ba9e",
+            "actions": [
+                {
+                    "name": "Cast_1",
+                    "type": "Button",
+                    "id": "b0c65a32-ec46-47e5-9b28-0b77a1cdc21e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cast_2",
+                    "type": "Button",
+                    "id": "950b9659-8b5d-479d-91e2-0464dc4c3738",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cast_3",
+                    "type": "Button",
+                    "id": "01755fe2-4ffe-4b80-9cc2-c237545dfbc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4157c4b-4039-447a-adb5-ec9f5a7fdef5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "597e8bb6-45f8-4e4c-886c-8f5db7b278d5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29be4adf-0e1c-4a64-80d0-11257e046a20",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -25,25 +25,25 @@ namespace ND_VariaBULLET.Demo
 
         void Update()
         {
-            if (Input.GetKeyDown(button))
-                toggle = !toggle;
+            //if (Input.GetKeyDown(button))
+            //    toggle = !toggle;
 
-            if (toggle)
-            {
-                GlobalShotManager.Instance.SpeedScale = Mathf.Lerp(
-                    GlobalShotManager.Instance.SpeedScale,
-                    SlowestSpeed,
-                    Time.deltaTime * TransitionSpeed
-                );
-            }
-            else
-            {
-                GlobalShotManager.Instance.SpeedScale = Mathf.Lerp(
-                    GlobalShotManager.Instance.SpeedScale,
-                    normalSpeed,
-                    Time.deltaTime * TransitionSpeed
-                );
-            }
+            //if (toggle)
+            //{
+            //    GlobalShotManager.Instance.SpeedScale = Mathf.Lerp(
+            //        GlobalShotManager.Instance.SpeedScale,
+            //        SlowestSpeed,
+            //        Time.deltaTime * TransitionSpeed
+            //    );
+            //}
+            //else
+            //{
+            //    GlobalShotManager.Instance.SpeedScale = Mathf.Lerp(
+            //        GlobalShotManager.Instance.SpeedScale,
+            //        normalSpeed,
+            //        Time.deltaTime * TransitionSpeed
+            //    );
+            //}
         }
     }
 }
