@@ -6,6 +6,9 @@ using Combat.UI;
 
 namespace Combat
 {
+    /// <summary>
+    /// Sub-class of Combatant. This is a Combatant that uses weapons.
+    /// </summary>
     public class WeaponWielder : Combatant, IWeaponWielder
     {
 
@@ -28,15 +31,6 @@ namespace Combat
             get { return this.GetQuarterMaster().GetAssignedWeapon(); }
         }
 
-        public int RangedDamage
-        {
-            get
-            {
-                var total = this.RangedWeapon.baseDamage;
-                total += this.RangedWeapon.WeaponAmmo.GetComponent<Ammo>().damage;
-                return total;
-            }
-        }
         public override void Start()
         {
             base.Start();

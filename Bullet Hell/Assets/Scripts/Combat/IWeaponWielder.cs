@@ -1,18 +1,56 @@
-﻿namespace Combat
+﻿using UnityEngine;
+
+using Combat.Animation;
+namespace Combat
 {
     public interface IWeaponWielder
     {
-        int RangedDamage { get; }
+        /// <summary>
+        /// The Weapon that is currently equipped, if any.
+        /// </summary>
         Weapon RangedWeapon { get; }
-
-        void Awake();
-        void Die();
-        bool Disarmed();
+        /// <summary>
+        /// The PuppetMaster that handles combat animations for this
+        /// Wielder.
+        /// </summary>
+        PuppetMaster Puppeteer { set; get; }
+        /// <summary>
+        /// The QuarterMaster assigned to this Wielder.
+        /// </summary>
+        /// <returns></returns>
         QuarterMaster GetQuarterMaster();
+        /// <summary>
+        /// Component in the transform that is used
+        /// to position the weapons used by this Wielder.
+        /// </summary>
+        /// <returns></returns>
         WeaponWrapper GetWeaponWrapper();
+        /// <summary>
+        /// Immediately kills this Wielder.
+        /// </summary>
+        void Die();
+        /// <summary>
+        /// Returns true if there is no weapon equipped.
+        /// </summary>
+        /// <returns></returns>
+        bool Disarmed();
+        /// <summary>
+        /// Fires the equipped weapon.
+        /// </summary>
+        /// <returns></returns>
         bool ShootWeapon();
-        void Start();
-        void Update();
+        /// <summary>
+        /// Rotates the WeaponWrapper in such a way
+        /// that the weapon is aiming towards the
+        /// given target vector in WorldSpace
+        /// </summary>
+        /// <param name="target">Point in WorldSpace</param>
+        void AimWeapon(Vector3 target);
+        /// <summary>
+        /// Method that should get called when a bullet fired from this
+        /// Wielder's weapon collides with something.
+        /// </summary>
+        /// <param name="id"></param>
         void OnAmmoCollision(int id);
     }
 }

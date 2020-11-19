@@ -6,9 +6,9 @@ using Combat.UI;
 namespace Combat
 {
     /// <summary>
-    /// Handles the arsenal of weapons for Combatant. 
-    /// The Combatant will always be given the first weapon in the arsenal.
-    /// Also communitcates with the AbilityBar if that component is attached.
+    /// Handles the arsenal of weapons for WeaponWielder. 
+    /// Also communitcates with the WeaponBarUI component if
+    /// it is set via QuarterMaster.WeaponBar.
     /// </summary>
     public class QuarterMaster
     {
