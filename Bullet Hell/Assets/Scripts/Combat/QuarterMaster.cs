@@ -10,7 +10,7 @@ namespace Combat
     /// Also communitcates with the WeaponBarUI component if
     /// it is set via QuarterMaster.WeaponBar.
     /// </summary>
-    public class QuarterMaster
+    public class QuarterMaster : IQuarterMaster
     {
         private WeaponWielder Wielder { get; set; }
         private int AssignedIndex { get; set; }
@@ -39,7 +39,8 @@ namespace Combat
                 if (this._arsenal.Capacity == Combatant.MAX_WEAPONS)
                 {
                     return this._arsenal;
-                } else
+                }
+                else
                 {
                     throw new ArgumentOutOfRangeException(
                         nameof(this.Arsenal),
@@ -51,15 +52,15 @@ namespace Combat
         private WeaponWrapper Wrapper { get; set; }
 
         private WeaponBarUI WeaponBar { get; set; }
-       
+
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="combatant"></param>
-        /// <param name="weapons"></param>
-        public QuarterMaster(WeaponWielder wielder, 
-            Weapon[] weapons, 
+        /// <param name="wielder"></param>
+        /// <param name="weapons">MAX 3</param>
+        public QuarterMaster(WeaponWielder wielder,
+            Weapon[] weapons,
             WeaponWrapper weaponWrapper,
             WeaponBarUI abilityBar = null)
         {
@@ -73,7 +74,7 @@ namespace Combat
                     w.wielder = this.Wielder;
                     this.Arsenal.Add(w);
                 }
-                    
+
             }
 
             while (this.Arsenal.Count < this.Arsenal.Capacity)
@@ -107,7 +108,7 @@ namespace Combat
             return this.WeaponBar != null;
         }
 
-        public WeaponWrapper GetWeaponWrapper() 
+        public WeaponWrapper GetWeaponWrapper()
         {
             return this.Wrapper;
         }
@@ -115,14 +116,14 @@ namespace Combat
         /// <summary>
         /// Returns TRUE if there is no space for additional weapons.
         /// </summary>
-        private Boolean FullArsenal 
+        private Boolean FullArsenal
         {
             get
             {
                 return this.Arsenal.Count >= Combatant.MAX_WEAPONS && !this.Arsenal.Contains(null);
-            }    
+            }
         }
-        
+
         public Weapon GetAssignedWeapon()
         {
             if (this.AssignedIndex > -1 && this.Arsenal.Count > 0)
@@ -148,7 +149,8 @@ namespace Combat
                     this.Arsenal[this.AssignedIndex] = weapon;
                     ActivateWeapon(weapon);
 
-                } else 
+                }
+                else
                 {
                     if (!this.Wielder.Disarmed()) // Arsenal not full and Wielder is not disarmed
                     {
@@ -157,7 +159,8 @@ namespace Combat
                         SwapWeapon(this.AssignedIndex, nullIndex);
                         this.Arsenal[this.AssignedIndex] = weapon;
                         this.ActivateWeapon(weapon);
-                    } else
+                    }
+                    else
                     {
                         this.Arsenal[this.AssignedIndex] = weapon;
                         this.ActivateWeapon(weapon);
@@ -169,7 +172,8 @@ namespace Combat
                     weapon.wielder = this.Wielder;
                     this.WeaponBar.SetWeapons(this);
                 }
-            } else
+            }
+            else
             {
                 throw new Exception(
                             $"Trying to pick up a weapon that is already in the {this.Wielder.GetType()}'s Arsenal.");
@@ -181,7 +185,7 @@ namespace Combat
             weapon.transform.SetParent(null);
             weapon.transform.position = position;
             weapon.UIAmmoSlot = null;
-            
+
             var collider = weapon.GetComponent<Collider2D>();
             if (collider != null) collider.enabled = true;
         }
@@ -225,12 +229,12 @@ namespace Combat
                 w.UIAmmoSlot = null;
             }
         }
-        
+
         public void AssignWeaponAt(int i)
         {
             if (i != this.AssignedIndex)
             {
-                if (i < Combatant.MAX_WEAPONS) 
+                if (i < Combatant.MAX_WEAPONS)
                 {
                     DeactivateWeapon(GetAssignedWeapon());
                     this.AssignedIndex = i;
@@ -242,8 +246,8 @@ namespace Combat
                     throw new IndexOutOfRangeException(
                         $"Tried to assign weapon-index:{i} which is beyond capacity: {Combatant.MAX_WEAPONS}");
                 }
-            } 
-            
+            }
+
         }
         public Weapon[] GetArsenal()
         {
