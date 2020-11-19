@@ -8,15 +8,17 @@ namespace Utilities
     /// </summary>
     public class GameInfo
     {
-        public static readonly int DESCRIPTION_CHAR_LIMIT = 50;
-        public static readonly int NAME_CHAR_LIMIT = 20;
+        // PROPERTIES
         private String _lowercaseName; // ex. Thunder Arrow
         private String _description;
-        
+
+        // ACCESSORS
+        public static int DESCRIPTION_CHAR_LIMIT => 50;
+        public static int NAME_CHAR_LIMIT => 20;
         /// <summary>
         /// The lowercase name of the gameObject.
         /// </summary>
-        public String LowercaseName
+        private String LowercaseName
         {
             set
             {
@@ -29,12 +31,12 @@ namespace Utilities
 
             get { return this._lowercaseName; }
         }
-
+        private float Price { get; set; }
         /// <summary>
         /// Description of this item. Should be a short sentence that 
         /// adheres to the character-limit.
         /// </summary>
-        public String Description
+        private String Description
         {
             set
             {
@@ -61,10 +63,29 @@ namespace Utilities
             get { return this._description; }
         }
 
-        public GameInfo(String name, String description)
+        public GameInfo(String name
+            , String description
+            , float price)
         {
             this.LowercaseName = name;
             this.Description = description;
+            this.Price = price;
         }
+
+        /// <summary>
+        /// The name of this item in lower-case.
+        /// </summary>
+        /// <returns></returns>
+        public string GetLowercaseName() => this.LowercaseName;
+        /// <summary>
+        /// A short sentence that describes this item.
+        /// </summary>
+        /// <returns></returns>
+        public string GetDescription() => this.Description;
+        /// <summary>
+        /// What this item will cost in shops.
+        /// </summary>
+        /// <returns></returns>
+        public float GetPrice() => this.Price;
     }
 }

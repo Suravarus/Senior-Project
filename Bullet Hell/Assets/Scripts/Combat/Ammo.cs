@@ -64,7 +64,7 @@ namespace Combat
             this.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
             // SET GameInfo
-            this.GameInfo = new GameInfo(this._InGameName, this._InGameDescription);
+            this.GameInfo = new GameInfo(this._InGameName, this._InGameDescription, this.price);
             this._InGameName = null;
             this._InGameDescription = null;
         }
