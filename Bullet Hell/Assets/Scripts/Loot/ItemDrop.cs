@@ -172,7 +172,7 @@ namespace Loot
                 {
                     if (shopSpawn == true)
                     {
-                        item.GetComponent<PickupRadius>().inShop = true;
+                        item.inShop = true;
                     }
                     //var vector = new Vector3(this.transform.position.x, this.transform.position.y, 1);
                     Instantiate(item, this.transform.position, this.transform.rotation);
@@ -183,7 +183,7 @@ namespace Loot
                 {
                     if (shopSpawn == true)
                     {
-                        weapon.GetComponent<PickupRadius>().inShop = true;
+                        weapon.inShop = true;
                     }
                     Instantiate(weapon, this.transform.position, this.transform.rotation);
                     weapon.transform.localScale = new Vector3(3, 3, 1);

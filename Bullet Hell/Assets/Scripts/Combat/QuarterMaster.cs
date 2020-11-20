@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Combat.UI;
+using Loot;
 namespace Combat
 {
     /// <summary>
@@ -141,6 +142,10 @@ namespace Combat
         {
             if (!this.Arsenal.Contains(weapon))
             {
+                if (weapon.inShop == true)
+                {
+                    this.Wielder.GetComponent<Pickup>().gold -= weapon.price;
+                }
                 // IF Arsenal is full and wielder is not disarmed
                 if (this.FullArsenal && !this.Wielder.Disarmed())
                 {
