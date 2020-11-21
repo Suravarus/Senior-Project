@@ -193,7 +193,7 @@ void FixedUpdate()
         //This is where we would show some animation 
         //suggesting the boss is falling at the player
         Vector3 temp = new Vector3(this.player.position.x, this.player.position.y, 1);
-        GameObject redIndicator = Resources.Load<GameObject>("Prefabs/Indicator/Red Indicator");
+        GameObject redIndicator = Resources.Load<GameObject>("Prefabs/Indicators/Red Indicator");
         fallingIndicator = Instantiate(redIndicator, temp, Quaternion.identity);
     }
 
@@ -207,6 +207,7 @@ void FixedUpdate()
         count = 0;
         isJumping = false;
         landingShot.TriggerAutoFire = true;
+        Destroy(fallingIndicator);
     }
 
 }

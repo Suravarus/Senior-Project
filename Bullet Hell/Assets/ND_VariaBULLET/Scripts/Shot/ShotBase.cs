@@ -63,6 +63,7 @@ namespace ND_VariaBULLET
             poolOrDestroyTriggered = false;
 
             transform.parent = Emitter;
+            transform.gameObject.layer = Emitter.gameObject.layer;
             transform.localPosition = new Vector2(ExitPoint, 0);
                      
             if (InheritStartRotation) //fix for case where parent sprite is flipped

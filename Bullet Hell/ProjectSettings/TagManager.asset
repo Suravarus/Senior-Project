@@ -26,8 +26,8 @@ TagManager:
   - Camera
   - Player
   - Enemy
-  - ND_PlayerBullet
-  - ND_EnemyBullet
+  - ND_Player Bullet
+  - ND_Enemy Bullet
   - ND_SelfColliding
   - ND_UserBullet1
   - ND_UserBullet2

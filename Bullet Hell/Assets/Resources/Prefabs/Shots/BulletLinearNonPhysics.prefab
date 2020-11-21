@@ -127,6 +127,7 @@ MonoBehaviour:
   ColliderFlux: 0
   CollisionList:
   - Player
+  - Obstacles
   Explosion: 
   ParentExplosion: 0
   ExplosionRotation: 0
