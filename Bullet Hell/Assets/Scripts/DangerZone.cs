@@ -26,7 +26,7 @@ public class DangerZone : MonoBehaviour
         {
             danger.GetComponent<CompositeCollider2D>().isTrigger = true;
             // KILL player
-            collision.GetComponent<Combatant>().Health = 0;
+            collision.GetComponent<Combatant>().Die();
             
             Debug.Log("Entered");
         }
