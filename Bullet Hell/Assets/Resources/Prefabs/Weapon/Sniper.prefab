@@ -52,10 +52,10 @@ MonoBehaviour:
   weaponAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
   ammoSpawnPoint: {fileID: 2343148408109575670}
   wielder: {fileID: 0}
-  baseDamage: 5
+  baseDamage: 10
   bulletSpeed: 6
-  rateOfFire: 10
-  range: 5
+  rateOfFire: 1
+  range: 20
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 2104525736100852452}

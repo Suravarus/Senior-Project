@@ -214,10 +214,18 @@ MonoBehaviour:
   _enemyTag: Player
   _health: 50
   _maxHealth: 50
+  shieldPowerUp: 0
   HealthUI: {fileID: 5317647475158934223}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 6933080155954550088}
   startingWeapon: {fileID: 5959262762207633352}
+  rateOfFirePowerUp: 0
+  rateOfFireTimerStrength: 2
+  rateOfFireTimer: 8
+  rateOfFireTimerTemp: 0
+  piercingPowerUp: 0
+  piercingTimer: 10
+  piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
   passive: 0
   infinitAmmo: 1
@@ -254,15 +262,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonItems:
-  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
-  uncommonItems:
-  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
-  rareItems:
-  - {fileID: 7273175709685091764, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  - {fileID: -3671069243730374986, guid: 5196fbbdea65cc94fba652b03c62a77e, type: 3}
+  - {fileID: -9030610074576481877, guid: bf0ba44a39165614e926941044c27274, type: 3}
+  uncommonItems: []
+  rareItems: []
+  weapons: []
+  uniqueItem: 0
+  shopSpawn: 0
   itemDropRate: 100
-  common: 60
-  uncommon: 30
-  rare: 10
+  common: 100
+  uncommon: 0
+  rare: 0
+  weaponChance: 0
 --- !u!1001 &3973933879884062932
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10019
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10029
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10019
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
   ShotRate: 14
   PauseRate: 100
   PauseLength: 30
-  ShotOverlap: 1
+  ShotOverlap: -1
   _poolingEnabled: 1
   AutoPool: 0
   AutoPoolOverride: 0
@@ -422,7 +422,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10009
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -663,7 +663,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10039
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -873,7 +873,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10049
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -990,7 +990,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10029
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -1169,7 +1169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10009
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -1286,7 +1286,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10019
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -1403,7 +1403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1423791725
   m_SortingLayer: 6
-  m_SortingOrder: 10039
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -1581,9 +1581,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -520023571
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1423791725
+  m_SortingLayer: 6
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0028a729cfda88245aba79c93755b4e5, type: 3}
   m_Color: {r: 0.51, g: 1, b: 1, a: 0.51}
   m_FlipX: 0
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   LocalPitch: 0
   customIndicator: {fileID: 0}
   Shot: {fileID: 1000014247797322, guid: ad45d603e9acecc429722cd17ec205fb, type: 3}
-  ShotSpeed: 4
+  ShotSpeed: 7
   LocalOffset: 0
   controller: {fileID: 0}
   OnStoppedFiring:
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   ShotRate: 100
   PauseRate: 100
   PauseLength: 80
-  ShotOverlap: 1
+  ShotOverlap: -1
   _poolingEnabled: 1
   AutoPool: 0
   AutoPoolOverride: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 5698693304317549789}
   m_Layer: 14
   m_Name: Jumping Mole
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1788,7 +1788,7 @@ Transform:
   m_GameObject: {fileID: 5698693304317549786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.14, y: 1.33, z: 147.3757}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 5698693306299467068}
   - {fileID: 8242611538767344784}
@@ -1925,8 +1925,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043d421832766a34d9afa9ffc01d2979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingInterval: 100
+  lowerJumpingInterval: 500
+  upperJumpingInterval: 1300
   landingShot: {fileID: 5656751163934524840}
   circleShot: {fileID: 5294480493256053284}
+  mainShot: {fileID: 3128995240089057641}
 --- !u!114 &5698693304317549730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,6 +1946,7 @@ MonoBehaviour:
   _enemyTag: Player
   _health: 100
   _maxHealth: 100
+  shieldPowerUp: 0
   HealthUI: {fileID: 693632007789284319}
   animator: {fileID: 0}
 --- !u!114 &5698693304317549789
@@ -2074,10 +2079,10 @@ MonoBehaviour:
   TriggerDelay: 10
   EmitterAmount: 1
   DefaultEmitter: 0
-  sortLayer: 0
+  sortLayer: 1
   PointScale: 0.2
   pointDisplay: 0
-  ExitPointOffset: 1
+  ExitPointOffset: 5
   ParentRotation: 0
   Pitch: 0
   UniDirectionPitch: 0
@@ -2204,7 +2209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: ExitPointOffset
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: ParentRotation
