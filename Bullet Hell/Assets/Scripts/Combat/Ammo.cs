@@ -22,6 +22,7 @@ namespace Combat
         [Header("Combat")]
         [Tooltip("This damage will be added to the damage of the weapon uses this ammo.")]
         public int damage = 0;
+        public Boolean piercingPowerUp = false;
 
         public Weapon weapon;
 
@@ -107,7 +108,7 @@ namespace Combat
                     // Report the collision to the Combatant that shot the ammo.
                     this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
                     // Destroy this gameobject.
-                    Destroy(this.gameObject);
+                    if(!piercingPowerUp)    Destroy(this.gameObject);
                 }
             }
         }
