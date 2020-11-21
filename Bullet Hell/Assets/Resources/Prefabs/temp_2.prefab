@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8992329155939103932}
   - component: {fileID: 2075900597}
   m_Layer: 0
-  m_Name: protypeOne
+  m_Name: temp_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 8992329155939103922}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 2412683568030260209}
   m_Father: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmo: 0
+  price: 0
   weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
   ammoSpawnPoint: {fileID: 2412683568030260209}
   wielder: {fileID: 0}
@@ -86,7 +87,7 @@ MonoBehaviour:
   rateOfFire: 2
   range: 4
   infAmmo: 0
-  ammo: 10
+  ammo: 15
   shootingAnimator: {fileID: 0}
   flipEnabled: 1
 --- !u!212 &8992329155939103925
@@ -129,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5be25f42eb831e44c8ce3cbaa6d3afa5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0fcf57833d4d4654cad7130add5f8d99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
