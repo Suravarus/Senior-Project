@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 7638484586805804672}
   - component: {fileID: 3904682936931913953}
   - component: {fileID: 7886357035765756201}
+  - component: {fileID: 2020686769189804320}
   m_Layer: 0
   m_Name: PossesedAncient_v2
   m_TagString: enemy
@@ -213,10 +214,18 @@ MonoBehaviour:
   _enemyTag: Player
   _health: 50
   _maxHealth: 50
+  shieldPowerUp: 0
   HealthUI: {fileID: 3758321781111701029}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 8662528435744650322}
   startingWeapon: {fileID: 4181886735398306605}
+  rateOfFirePowerUp: 0
+  rateOfFireTimerStrength: 2
+  rateOfFireTimer: 8
+  rateOfFireTimerTemp: 0
+  piercingPowerUp: 0
+  piercingTimer: 10
+  piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
   passive: 0
   infinitAmmo: 1
@@ -240,6 +249,31 @@ MonoBehaviour:
   acceleration: 4.921
   target: {fileID: 0}
   chargeAtTheTarget: 0
+--- !u!114 &2020686769189804320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312442298162353738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f902fd7a655d684f9cb2f1ddc146ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonItems:
+  - {fileID: -3671069243730374986, guid: 5196fbbdea65cc94fba652b03c62a77e, type: 3}
+  - {fileID: -9030610074576481877, guid: bf0ba44a39165614e926941044c27274, type: 3}
+  uncommonItems: []
+  rareItems: []
+  weapons: []
+  uniqueItem: 0
+  shopSpawn: 0
+  itemDropRate: 75
+  common: 100
+  uncommon: 0
+  rare: 0
+  weaponChance: 0
 --- !u!1001 &5386892585874652222
 PrefabInstance:
   m_ObjectHideFlags: 0
