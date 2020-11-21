@@ -114,7 +114,12 @@ public class PlayerMovement : MonoBehaviour
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
         this.Keybindings.WeaponBar.Cast_2.performed += ctx => this.WeaponBar.EquipWeaponAt(1);
         this.Keybindings.WeaponBar.Cast_3.performed += ctx => this.WeaponBar.EquipWeaponAt(2);
-        
+
+        // SETTINGS LISTENERS
+        this.Keybindings.Settings.Pause_Menu.performed += ctx =>
+        {
+            GameObject.FindObjectOfType<PauseMenu>().TogglePauseMenu();
+        };
     }
 
     public void FixedUpdate()

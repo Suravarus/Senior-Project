@@ -47,6 +47,12 @@ namespace Loot
                 currencyUI.SetAmount(gold);
                 Destroy(lootCollider.gameObject);
             }
+
+            if (lootCollider.GetComponent<Chest>() != null)
+            {
+                lootCollider.GetComponent<Chest>().OpenChest();
+            }
+
         }
         
     }

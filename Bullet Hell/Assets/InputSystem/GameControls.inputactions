@@ -220,6 +220,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Settings",
+            "id": "df5e1f92-4034-4e8d-86f8-570baaaecb1b",
+            "actions": [
+                {
+                    "name": "Pause_Menu",
+                    "type": "Button",
+                    "id": "76fd43ff-7ed9-46cf-a17c-65b20f658df8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc759eb2-bcf4-46a1-9b5a-ab5ea59da4fb",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause_Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

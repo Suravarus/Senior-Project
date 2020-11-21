@@ -11,22 +11,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
 
     // Update is called once per frame
-    void Update()
+    public void TogglePauseMenu()
     {
         // FIXME - NEW INPUT SYSTEM
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    if (GameIsPaused)
-        //    {
-        //        Resume();
-        //    }
-        //    else
-        //    {
-        //        Pause();
-        //    }
-        //}
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
     }
-    
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
