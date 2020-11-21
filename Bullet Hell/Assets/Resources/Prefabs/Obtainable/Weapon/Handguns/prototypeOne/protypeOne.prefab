@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3056850538035893459
+--- !u!1 &7158937322614908784
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7515988958706509906}
+  - component: {fileID: 2412683568030260209}
   m_Layer: 0
   m_Name: ammoSpawn
   m_TagString: Untagged
@@ -16,21 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7515988958706509906
+--- !u!4 &2412683568030260209
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3056850538035893459}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 7158937322614908784}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.143, y: 0.009, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3890707071394072336}
+  m_Father: {fileID: 8992329155939103923}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3890707071394072337
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1 &8992329155939103922
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,62 +38,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3890707071394072336}
-  - component: {fileID: 3890707071394072343}
-  - component: {fileID: 3890707071394072342}
-  - component: {fileID: -3072932017284768729}
-  - component: {fileID: 628612440997351373}
+  - component: {fileID: 8992329155939103923}
+  - component: {fileID: 8992329155939103924}
+  - component: {fileID: 8992329155939103925}
+  - component: {fileID: 8992329155939103932}
+  - component: {fileID: 2075900597}
   m_Layer: 0
-  m_Name: Bow
-  m_TagString: Items
+  m_Name: protypeOne
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3890707071394072336
+--- !u!4 &8992329155939103923
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890707071394072337}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_GameObject: {fileID: 8992329155939103922}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
-  - {fileID: 7515988958706509906}
+  - {fileID: 2412683568030260209}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3890707071394072343
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &8992329155939103924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890707071394072337}
+  m_GameObject: {fileID: 8992329155939103922}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmo: 0
-  weaponAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
-  ammoSpawnPoint: {fileID: 0}
-  weaponOwner: {fileID: 0}
+  price: 0
+  weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
+  ammoSpawnPoint: {fileID: 2412683568030260209}
+  wielder: {fileID: 0}
   baseDamage: 1
-  bulletSpeed: 10
-  rateOfFire: 1
+  bulletSpeed: 20
+  rateOfFire: 2
   range: 4
   infAmmo: 0
+  ammo: 10
   shootingAnimator: {fileID: 0}
---- !u!212 &3890707071394072342
+  flipEnabled: 1
+--- !u!212 &8992329155939103925
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890707071394072337}
+  m_GameObject: {fileID: 8992329155939103922}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -127,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0e7d17abd277c5149a42037ffaad0b62, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5be25f42eb831e44c8ce3cbaa6d3afa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,26 +141,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3072932017284768729
-MonoBehaviour:
+--- !u!95 &8992329155939103932
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890707071394072337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5e782b07064894ada5bc5b1e978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item_Rarity: 0
---- !u!61 &628612440997351373
-BoxCollider2D:
+  m_GameObject: {fileID: 8992329155939103922}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f0db1faad755234a814d17530376d67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2075900597
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890707071394072337}
+  m_GameObject: {fileID: 8992329155939103922}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -165,15 +174,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19, y: 0.1}
-    newSize: {x: 0.19, y: 0.1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19, y: 0.1}
-  m_EdgeRadius: 0
+  m_Radius: 0.3
