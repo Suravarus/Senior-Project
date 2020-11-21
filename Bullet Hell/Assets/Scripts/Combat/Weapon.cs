@@ -26,6 +26,13 @@ public class Weapon : MonoBehaviour
     private float _fireDelay;
     public bool infAmmo = false;
     public int ammo = 10;
+    public Boolean rateOfFirePowerUp = false;
+    public float rateOfFireTimerStrength = 2f;
+    public float rateOfFireTimer = 8f;
+    public float rateOfFireTimerTemp = 0f;
+    public Boolean piercingPowerUp = false;
+    public float piercingTimer = 10f;
+    public float piercingTimerTemp = 0f;
 
     /// <summary>
     /// The Animator component for the shooting animation. Can be NULL.
@@ -121,8 +128,17 @@ public class Weapon : MonoBehaviour
         // IF the weapon is waiting to fire:
         if (this.WaitingToFire)
         {
-            // UPDATE elapsed time since the last shot was fired
-            this.TimeSinceFireRequest += Time.deltaTime - this.TimeSinceFireRequest;
+            // UPDATE elapsed time since the last shot was fired (increate rate if we have the power up)
+            if (rateOfFireTimerTemp > 0)
+            {
+                this.TimeSinceFireRequest += (Time.deltaTime * rateOfFireTimerStrength) - this.TimeSinceFireRequest;
+            }
+            else
+            {
+                this.TimeSinceFireRequest += Time.deltaTime - this.TimeSinceFireRequest;
+            }
+
+
             // SUBTRACT elapsed time from FireDelay
             this.FireDelay -= this.TimeSinceFireRequest;
             // IF FireDelay is 0:
@@ -132,6 +148,14 @@ public class Weapon : MonoBehaviour
                 this.WaitingToFire = false;
             }
         }
+
+        //RateOfFire power up
+        if (rateOfFirePowerUp) rateOfFireTimerTemp = rateOfFireTimer; rateOfFirePowerUp = false;
+        if (rateOfFireTimerTemp > 0) rateOfFireTimerTemp = rateOfFireTimerTemp - Time.deltaTime;
+        
+        //piercing power up
+        if (piercingPowerUp) piercingTimerTemp = piercingTimer; piercingPowerUp = false;
+        if (piercingTimerTemp > 0) piercingTimerTemp = piercingTimerTemp - Time.deltaTime;
     }
 
     /// <summary>
@@ -172,7 +196,10 @@ public class Weapon : MonoBehaviour
                     a.speed = this.bulletSpeed;
                 if (this.baseDamage > 0)
                     a.damage = this.baseDamage;
-
+                if (piercingTimerTemp > 0)
+                    a.piercingPowerUp = true;
+                else
+                    a.piercingPowerUp = false;
                 a.weapon = this;
 
                 var st = this.transform.GetChild(0);
@@ -268,4 +295,5 @@ public class Weapon : MonoBehaviour
 
         return los;
     }
+
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 212000010333916982}
   - component: {fileID: 58000011060788636}
   - component: {fileID: 114000011034832334}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BulletLinearNonPhysics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,8 +126,8 @@ MonoBehaviour:
   sortOrder: 0
   ColliderFlux: 0
   CollisionList:
-  - 
-  - 
+  - Player
+  - Obstacles
   Explosion: 
   ParentExplosion: 0
   ExplosionRotation: 0
