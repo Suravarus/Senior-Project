@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7087875195955197986}
   - component: {fileID: 2104525736100852452}
   m_Layer: 0
-  m_Name: Machinegun
+  m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c6a4d7d54d96f9946b58e87b7b2ed8e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c04a2a88214c1d14db2f828581e90a65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 4471668854306967277}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63c96dc74ede8e74188ed7cfa84c1f00, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b6898e1559275f45b21eee377af2c31, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
