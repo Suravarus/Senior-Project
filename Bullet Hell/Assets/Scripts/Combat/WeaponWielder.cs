@@ -16,6 +16,16 @@ namespace Combat
         [Tooltip("Child object that will be used to position ranged weapons.")]
         public WeaponWrapper rangedWeaponWrapper;
         public Weapon startingWeapon;
+
+        [Header("Powerups")]
+        public Boolean rateOfFirePowerUp = false;
+        public float rateOfFireTimerStrength = 2f;
+        public float rateOfFireTimer = 8f;
+        public float rateOfFireTimerTemp = 0f;
+        public Boolean piercingPowerUp = false;
+        public float piercingTimer = 10f;
+        public float piercingTimerTemp = 0f;
+
         [Tooltip("This should only be set for the Player.")]
         public WeaponBarUI weaponBarUI = null;
 
@@ -66,7 +76,14 @@ namespace Combat
 
             if (this.Puppeteer != null)
                 this.Puppeteer.PullTheStrings();
-            
+
+            //RateOfFire power up
+            if (rateOfFirePowerUp) rateOfFireTimerTemp = rateOfFireTimer; rateOfFirePowerUp = false;
+            if (rateOfFireTimerTemp > 0) rateOfFireTimerTemp = rateOfFireTimerTemp - Time.deltaTime;
+
+            //piercing power up
+            if (piercingPowerUp) piercingTimerTemp = piercingTimer; piercingPowerUp = false;
+            if (piercingTimerTemp > 0) piercingTimerTemp = piercingTimerTemp - Time.deltaTime;
         }
 
         void OnDestroy()
