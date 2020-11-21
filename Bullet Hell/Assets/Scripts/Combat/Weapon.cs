@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     [Header("Development")]
     public Boolean drawGizmo = false;
     [Header("General")]
+    public bool inShop = false;
     public int price;
     [Header("Ammo")]
     public GameObject weaponAmmo;

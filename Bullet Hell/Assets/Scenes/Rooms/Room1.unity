@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &423557366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,7 +1409,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 18
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2145,8 +2145,8 @@ Tilemap:
     m_Data: {fileID: -6419999111262848172, guid: a43a996d7df9fbe4d8f6a15a00e6b9f7, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: 5094737752361063794, guid: a43a996d7df9fbe4d8f6a15a00e6b9f7, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 8568345338566072419, guid: cc758c584257df2438b0fbb563be0229, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: -931493284425913039, guid: a43a996d7df9fbe4d8f6a15a00e6b9f7, type: 3}
   - m_RefCount: 9
@@ -2285,16 +2285,26 @@ CompositeCollider2D:
         Y: -145000000
       - X: 205000000
         Y: -145000000
-    - - X: 77500000
-        Y: -38125000
-      - X: 78125000
-        Y: -35000000
-      - X: 75000000
-        Y: -35000000
-      - X: 75000000
-        Y: -40000000
-      - X: 75625000
-        Y: -40000000
+    - - X: 75625057
+        Y: -40000085
+      - X: 77500081
+        Y: -38125060
+      - X: 77500095
+        Y: -38125034
+      - X: 78125107
+        Y: -34999973
+      - X: 78125047
+        Y: -34999900
+      - X: 74999959
+        Y: -34999900
+      - X: 74999900
+        Y: -34999959
+      - X: 74999900
+        Y: -40000041
+      - X: 74999959
+        Y: -40000100
+      - X: 75625020
+        Y: -40000100
   m_CompositePaths:
     m_Paths:
     - - {x: 20.499971, y: -14.5}
@@ -2313,11 +2323,11 @@ CompositeCollider2D:
       - {x: -1.5000395, y: 13.5}
       - {x: -18.5, y: 13.499971}
       - {x: -18.499971, y: -14.5}
-    - - {x: 7.5624895, y: -4}
-      - {x: 7.750002, y: -3.8124924}
-      - {x: 7.8124623, y: -3.5}
-      - {x: 7.5, y: -3.5000293}
-      - {x: 7.5000296, y: -4}
+    - - {x: 7.5624914, y: -4.00001}
+      - {x: 7.7500114, y: -3.812496}
+      - {x: 7.812467, y: -3.49999}
+      - {x: 7.4999905, y: -3.5000253}
+      - {x: 7.5000257, y: -4.00001}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &740486914
@@ -12959,6 +12969,7 @@ GameObject:
   - component: {fileID: 2039118145}
   - component: {fileID: 2039118144}
   - component: {fileID: 2039118143}
+  - component: {fileID: 2039118147}
   m_Layer: 0
   m_Name: chest_1
   m_TagString: Untagged
@@ -12979,7 +12990,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0059149265, y: 0.013308644}
+  m_Offset: {x: 0.022652924, y: 0.05330372}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12990,7 +13001,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29604346, y: 0.29308617}
+  m_Size: {x: 0.8712094, y: 0.7844528}
   m_EdgeRadius: 0
 --- !u!114 &2039118144
 MonoBehaviour:
@@ -13005,6 +13016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chest: {fileID: 8502561781473637786, guid: 58b05b6ff6904b044a65db6136e0b85f, type: 3}
+  dropType: 0
 --- !u!212 &2039118145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13064,12 +13076,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039118142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.8, y: 1.12, z: 0}
+  m_LocalPosition: {x: 0.86, y: -2.04, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2039118147
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039118142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0017031655, y: 0.0056906883}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.12082733, y: 0.11025204}
+  m_EdgeRadius: 0
 --- !u!4 &2110770717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 786394176794595533, guid: 8b2dab918e1ea0b47bd909d828da940f, type: 3}

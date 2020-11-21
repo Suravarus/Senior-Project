@@ -235,6 +235,33 @@ namespace Input
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Settings"",
+            ""id"": ""df5e1f92-4034-4e8d-86f8-570baaaecb1b"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause_Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""76fd43ff-7ed9-46cf-a17c-65b20f658df8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cc759eb2-bcf4-46a1-9b5a-ab5ea59da4fb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause_Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -253,6 +280,9 @@ namespace Input
             m_WeaponBar_Cast_1 = m_WeaponBar.FindAction("Cast_1", throwIfNotFound: true);
             m_WeaponBar_Cast_2 = m_WeaponBar.FindAction("Cast_2", throwIfNotFound: true);
             m_WeaponBar_Cast_3 = m_WeaponBar.FindAction("Cast_3", throwIfNotFound: true);
+            // Settings
+            m_Settings = asset.FindActionMap("Settings", throwIfNotFound: true);
+            m_Settings_Pause_Menu = m_Settings.FindAction("Pause_Menu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -437,6 +467,39 @@ namespace Input
             }
         }
         public WeaponBarActions @WeaponBar => new WeaponBarActions(this);
+
+        // Settings
+        private readonly InputActionMap m_Settings;
+        private ISettingsActions m_SettingsActionsCallbackInterface;
+        private readonly InputAction m_Settings_Pause_Menu;
+        public struct SettingsActions
+        {
+            private @GameControls m_Wrapper;
+            public SettingsActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Pause_Menu => m_Wrapper.m_Settings_Pause_Menu;
+            public InputActionMap Get() { return m_Wrapper.m_Settings; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(SettingsActions set) { return set.Get(); }
+            public void SetCallbacks(ISettingsActions instance)
+            {
+                if (m_Wrapper.m_SettingsActionsCallbackInterface != null)
+                {
+                    @Pause_Menu.started -= m_Wrapper.m_SettingsActionsCallbackInterface.OnPause_Menu;
+                    @Pause_Menu.performed -= m_Wrapper.m_SettingsActionsCallbackInterface.OnPause_Menu;
+                    @Pause_Menu.canceled -= m_Wrapper.m_SettingsActionsCallbackInterface.OnPause_Menu;
+                }
+                m_Wrapper.m_SettingsActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Pause_Menu.started += instance.OnPause_Menu;
+                    @Pause_Menu.performed += instance.OnPause_Menu;
+                    @Pause_Menu.canceled += instance.OnPause_Menu;
+                }
+            }
+        }
+        public SettingsActions @Settings => new SettingsActions(this);
         public interface IMovementActions
         {
             void OnDirection(InputAction.CallbackContext context);
@@ -453,6 +516,10 @@ namespace Input
             void OnCast_1(InputAction.CallbackContext context);
             void OnCast_2(InputAction.CallbackContext context);
             void OnCast_3(InputAction.CallbackContext context);
+        }
+        public interface ISettingsActions
+        {
+            void OnPause_Menu(InputAction.CallbackContext context);
         }
     }
 }
