@@ -183,7 +183,9 @@ namespace Loot
                 {
                     if (shopSpawn == true)
                     {
-                        weapon.inShop = true;
+                        // FIXME [VENDOR] weapon.inShop does not exist - @JC
+                        // the shop should keep track of its inventory.
+                        // weapon.inShop = true;
                     }
                     Instantiate(weapon, this.transform.position, this.transform.rotation);
                     weapon.transform.localScale = new Vector3(3, 3, 1);

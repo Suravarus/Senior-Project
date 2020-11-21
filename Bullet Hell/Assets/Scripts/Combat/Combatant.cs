@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 using Combat.UI;
 using Loot;
-using Combat.Animation;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -101,6 +101,9 @@ namespace Combat
             }
         }
 
+        public delegate void OnDeathF(Combatant combatant);
+        public List<OnDeathF> OnDeath;
+
         // ---------- Monobehaviour code --------------
 
         // ALGORITHM:
@@ -127,6 +130,7 @@ namespace Combat
             this.EnemyTag = this._enemyTag;
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
+            this.OnDeath = new List<OnDeathF>();
         }
 
         public virtual void Start()
@@ -159,9 +163,9 @@ namespace Combat
         /// Method that determines how the object takes damage.
         /// </summary>
         /// <param name="damage">Damage to be received</param>
-        public virtual void TakeDamage(Ammo a)
+        public virtual void TakeDamage(IAmmo a)
         {
-            this.Health -= a.damage + a.weapon.baseDamage;
+            this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
             if (this.HealthUI != null) // TODO [UI] combatants will require Healthbar in future.
                 this.HealthUI.UpdateValues(this);
             if (this.Health == 0)
@@ -199,10 +203,11 @@ namespace Combat
                 var ammo = other.gameObject.GetComponent<Ammo>();
                 bool rangedAttack = (ammo != null
                     && ammo.weapon.wielder.IsAlive()
-                    && ammo.weapon.wielder.tag == this.EnemyTag);
+                    && ammo.weapon.wielder.CompareTag(this.EnemyTag));
 
                 if (rangedAttack)
                 {
+                    Debug.LogWarning(ammo.name);
                     if (!shieldPowerUp) this.TakeDamage(ammo);
                     else shieldPowerUp = false;
                 }

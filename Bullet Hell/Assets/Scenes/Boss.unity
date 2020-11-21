@@ -1213,6 +1213,10 @@ PrefabInstance:
       propertyPath: ExitPointOffset
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 5656751163934524840, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
+      propertyPath: FireCommand
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5698693304317549786, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
       propertyPath: m_TagString
       value: Enemy

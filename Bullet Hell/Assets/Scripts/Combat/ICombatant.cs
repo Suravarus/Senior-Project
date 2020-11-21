@@ -13,6 +13,6 @@ namespace Combat
         void Die();
         Transform GetBodyTransform(Combatant.BodyPart bodyPart);
         bool IsAlive();
-        void TakeDamage(Ammo a);
+        void TakeDamage(IAmmo a);
     }
 }

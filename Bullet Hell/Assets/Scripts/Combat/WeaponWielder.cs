@@ -125,6 +125,11 @@ namespace Combat
         {
             return;
         }
+
+        public GameObject GetGameObject()
+        {
+            return this.gameObject;
+        }
         
     }
 }

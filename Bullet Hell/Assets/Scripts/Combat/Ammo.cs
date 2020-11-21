@@ -5,16 +5,11 @@ using Utilities;
 
 namespace Combat
 {
-    [RequireComponent(typeof(CapsuleCollider2D))]
-    public class Ammo : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public class Ammo : CompGameInfo, IAmmo
     {
-        [Tooltip("In-game name for this item. Will be stored in lower-case. Has a character-limit.")]
-        public String _InGameName = "";
-        [Tooltip("In-game description for this item. Will be stored as it was typed. Has a character-limit.")]
-        public String _InGameDescription = "";
-
-        [Header("General")]
-        public int price;
+        [Header("VariaBullet2D")]
+        public bool isVariaPrefab = false;
 
         [Header("Movement")]
         public float speed = 5f;
@@ -26,19 +21,24 @@ namespace Combat
 
         public Weapon weapon;
 
-        public GameInfo GameInfo { get; set; }
-
         private Rigidbody2D rigidBody2D;
         private Vector3 startingPosition;
-        
+
+        // ACCESSORS
+        public float Speed { get => this.speed; set => this.speed = value; }
+        public float Damage { get => this.damage; set => this.damage = Mathf.RoundToInt(value); }
+        public IWeapon Weapon { get => this.weapon; }
+        public IWeaponWielder Shooter { get; set; }
+
 
         // ALGORITHM:
         //    IF the rgb2d component exists:
         //        POINT to component
         //    ELSE:
         //        THROW error
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             // IF has rgb2d component -> SET rgb2d
             // ELSE -> throw error
             if (this.GetComponent<Rigidbody2D>() != null)
@@ -50,7 +50,7 @@ namespace Combat
                     $"Missing component: {new Rigidbody2D().GetType().Name}");
             }
 
-            // TODO COMBAT-TEAM[2] check that all properties have been set.
+            this.Shooter = this.weapon.wielder;
         }
 
         // ALGORITHM:
@@ -59,15 +59,14 @@ namespace Combat
         // - SET GameInfo
         void Start()
         {
-            this.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            this.startingPosition = this.transform.position;
-            this.rigidBody2D.velocity = this.transform.up * speed;
-            this.GetComponent<CapsuleCollider2D>().isTrigger = true;
-
-            // SET GameInfo
-            this.GameInfo = new GameInfo(this._InGameName, this._InGameDescription, this.price);
-            this._InGameName = null;
-            this._InGameDescription = null;
+            if (!this.isVariaPrefab)
+            {
+                this.GetComponent<Collider2D>().isTrigger = true;
+                this.startingPosition = this.transform.position;
+                this.rigidBody2D.velocity = this.transform.up * speed;
+            }
+            if (this.startingPosition == null)
+                this.startingPosition = this.transform.position;
         }
 
         // ALGORITHM:
@@ -75,7 +74,7 @@ namespace Combat
         // -   DESTROY this gameObject.
         private void FixedUpdate()
         {
-            if ((this.transform.position - this.startingPosition).magnitude > this.weapon.range)
+            if (!this.isVariaPrefab && (this.transform.position - this.startingPosition).magnitude > this.weapon.range)
             {
                 Destroy(this.gameObject);
             }
@@ -100,17 +99,23 @@ namespace Combat
                 var collisionCombatant = other.GetComponent<Combatant>();
                 var isOtherCombatant = collisionCombatant != null
                     && collisionCombatant.gameObject.GetInstanceID() != this.weapon.wielder.gameObject.GetInstanceID();
-                var isEnemyCombatant = isOtherCombatant && collisionCombatant.tag == this.weapon.wielder.EnemyTag;
+                var isEnemyCombatant = isOtherCombatant && collisionCombatant.CompareTag(this.weapon.wielder.EnemyTag);
 
                 // IF the other collider is not a Combatant, or it's an enemy Combatant
                 if (collisionCombatant == null || isEnemyCombatant)
                 {
                     // Report the collision to the Combatant that shot the ammo.
-                    this.weapon.wielder.SendMessage(nameof(IWeaponWielder.OnAmmoCollision), other.gameObject.GetInstanceID(), SendMessageOptions.DontRequireReceiver);
+                    if (this.Shooter != null)
+                    this.Shooter.OnAmmoCollision(other.gameObject.GetInstanceID());
                     // Destroy this gameobject.
-                    if(!piercingPowerUp)    Destroy(this.gameObject);
+                    if(!this.isVariaPrefab && !piercingPowerUp)    Destroy(this.gameObject);
                 }
             }
+        }
+
+        public Vector3 GetStartingPosition()
+        {
+            return this.startingPosition;
         }
     }
 }

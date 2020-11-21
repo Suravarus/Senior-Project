@@ -7,6 +7,8 @@
 using UnityEngine;
 using System.Collections;
 
+using Combat;
+
 namespace ND_VariaBULLET
 {
     public class ShotCollisionDamage : ShotCollision, IShotCollidable
@@ -14,8 +16,8 @@ namespace ND_VariaBULLET
         [Tooltip("Sets the name of the explosion prefab to be instantiated when HP = 0.")]
         public string DeathExplosion;
 
-        [Tooltip("Health Points. Reduces according to incoming IDamager.DMG value upon collision.")]
-        public float HP = 10;
+        //[Tooltip("Health Points. Reduces according to incoming IDamager.DMG value upon collision.")]
+        //public float HP = 10;
 
         [Range(0.1f, 8f)]
         [Tooltip("Changes the size of the last explosion (when HP = 0).")]
@@ -33,36 +35,18 @@ namespace ND_VariaBULLET
         private Color NormalColor;
         private SpriteRenderer rend;
 
+        // ACCESSORS
+        public Combatant Combatant { get; set; }
+
+        void Awake()
+        {
+            this.Combatant = this.GetComponent<Combatant>();
+            if (this.Combatant == null)
+                throw new MissingComponentException($"{this.name} is missing component: {typeof(Combatant)}");
+        }
         void Start()
         {
-            rend = GetComponent<SpriteRenderer>();
-            NormalColor = rend.color;
-        }
-
-        public new IEnumerator OnLaserCollision(CollisionArgs sender)
-        {
-            if (CollisionFilter.collisionAccepted(sender.gameObject.layer, CollisionList))
-            {
-                setDamage(sender.damage);
-                CollisionFilter.setExplosion(LaserExplosion, ParentExplosion, this.transform, new Vector2(sender.point.x, sender.point.y), 0, this);
-                yield return setFlicker();
-            }
-        }
-
-        public new IEnumerator OnCollisionEnter2D(Collision2D collision)
-        {
-            if (CollisionFilter.collisionAccepted(collision.gameObject.layer, CollisionList))
-            {
-                setDamage(collision.gameObject.GetComponent<IDamager>().DMG);
-                CollisionFilter.setExplosion(BulletExplosion, ParentExplosion, this.transform, collision.contacts[0].point, 0, this);
-                yield return setFlicker();
-            }
-        }
-
-        protected void setDamage(float damage)
-        {
-            HP -= damage;
-            if (HP <= 0)
+            this.Combatant.OnDeath.Add((Combatant c) =>
             {
                 if (DeathExplosion != "")
                 {
@@ -73,9 +57,41 @@ namespace ND_VariaBULLET
                     finalExplode.transform.parent = null;
                     finalExplode.transform.localScale = new Vector2(finalExplode.transform.localScale.x * FinalExplodeFactor, finalExplode.transform.localScale.y * FinalExplodeFactor);
                 }
+            });
+            rend = GetComponent<SpriteRenderer>();
+            NormalColor = rend.color;
+        }
 
-                Destroy(this.gameObject);
+        public new IEnumerator OnLaserCollision(CollisionArgs sender)
+        {
+            if (CollisionFilter.collisionAccepted(sender.gameObject.layer, CollisionList))
+            {
+                setDamage(sender);
+                CollisionFilter.setExplosion(LaserExplosion, ParentExplosion, this.transform, new Vector2(sender.point.x, sender.point.y), 0, this);
+                yield return setFlicker();
             }
+        }
+
+        public new IEnumerator OnCollisionEnter2D(Collision2D collision)
+        {
+            if (CollisionFilter.collisionAccepted(collision.gameObject.layer, CollisionList))
+            {
+                setDamage(collision);
+                CollisionFilter.setExplosion(BulletExplosion, ParentExplosion, this.transform, collision.contacts[0].point, 0, this);
+                yield return setFlicker();
+            }
+        }
+
+        protected virtual void setDamage(Collision2D collision)
+        {
+            this.Combatant.TakeDamage(
+                collision.gameObject.GetComponent<IAmmo>());
+        }
+
+        protected virtual void setDamage(CollisionArgs collisionArgs)
+        {
+            this.Combatant.TakeDamage(
+                collisionArgs.gameObject.GetComponent<IAmmo>());
         }
 
         protected IEnumerator setFlicker()

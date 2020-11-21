@@ -13,6 +13,8 @@ namespace Utilities
         public string __itemName = "";
         [TextArea(1, 2)]
         public string __itemDescription = "";
+        [Header("Vendor")]
+        public bool __saleable = false;
         [Min(0)]
         public float __itemPrice;
         // ACCESSORS
@@ -23,7 +25,8 @@ namespace Utilities
             this.Info = new GameInfo(
                 this.__itemName, 
                 this.__itemDescription, 
-                this.__itemPrice);
+                this.__itemPrice,
+                this.__saleable);
         }
 
         /// <summary>

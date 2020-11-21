@@ -5,7 +5,7 @@
 
 namespace ND_VariaBULLET
 {
-    interface IDamager
+    public interface IDamager
     {
         float DMG { get; }
     }

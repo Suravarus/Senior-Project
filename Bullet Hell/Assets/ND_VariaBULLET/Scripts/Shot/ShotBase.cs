@@ -6,11 +6,13 @@
 
 using UnityEngine;
 using System;
-using Combat.Varia;
+
+using Combat;
+using Utilities;
 
 namespace ND_VariaBULLET
 {
-    public class ShotBase : MonoBehaviour, IDamager
+    public class ShotBase : CompGameInfo, IDamager, IAmmo
     {
         public bool PoolBank { get; set; }
 
@@ -58,7 +60,12 @@ namespace ND_VariaBULLET
         protected SpriteRenderer rend;
         private bool poolOrDestroyTriggered;
 
-        public VWeapon VariaWeapon { get; set; }
+        public Weapon CombatWeapon { get; set; }
+        public float Speed { get => this.ShotSpeed; set => this.ShotSpeed = value; }
+        public float Damage { get => this.DamagePerHit; set => this.DamagePerHit = value; }
+        public IWeapon Weapon { get; set; }
+        public IWeaponWielder Shooter { get; set; }
+        private Vector3 StartingPosition { get; set; }
 
         public virtual void InitialSet()
         {
@@ -85,13 +92,15 @@ namespace ND_VariaBULLET
 
             rend = GetComponent<SpriteRenderer>();
             setSprite(rend);
-            this.VariaWeapon = ShotBase.GetController(this.Emitter.transform);
-            if (this.VariaWeapon != null)
-                Debug.LogWarning($"{this.gameObject.name} found controller {this.VariaWeapon.gameObject.name}");
+            this.CombatWeapon = ShotBase.GetWeaponComponent(this.Emitter.transform);
+            if (this.CombatWeapon == null)
+                throw new NullReferenceException($"Unable to find weapon component.");
+            this.Shooter = this.CombatWeapon.wielder;
         }
 
         public virtual void Start()
         {
+            this.StartingPosition = this.transform.position;
             //NOT IMPLEMENTED
             //Use InitialSet as default Start/Constructor unless external dependency requires Start()
         }
@@ -230,19 +239,24 @@ namespace ND_VariaBULLET
             poolOrDestroyTriggered = true;
         }
 
-        private static VWeapon GetController(Transform em)
+        private static Weapon GetWeaponComponent(Transform em)
         {
             var sb = em.GetComponent<ShotBase>();
-            var wp = em.transform.GetComponent<VWeapon>();
+            var wp = em.transform.GetComponent<Weapon>();
 
             if (sb != null)
-                return ShotBase.GetController(sb.Emitter.transform);
+                return ShotBase.GetWeaponComponent(sb.Emitter.transform);
             if (wp != null)
                 return wp;
             if (em.transform.parent == null)
                 return null;
-            return ShotBase.GetController(em.transform.parent);
+            return ShotBase.GetWeaponComponent(em.transform.parent);
 
+        }
+
+        public Vector3 GetStartingPosition()
+        {
+            return this.StartingPosition;
         }
     }
 }

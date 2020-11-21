@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6627338467485328819}
   - component: {fileID: 7278388351785383040}
   m_Layer: 11
-  m_Name: Bullet
+  m_Name: Sphere_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e42ea7eab39fd5f4f9369caa43c74899, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,11 +118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _InGameName: basic arrow
-  _InGameDescription: Adds 1 ranged damage.
-  speed: 30
+  __itemName: Death Pellet
+  __itemDescription: Adds 1 damage.
+  __saleable: 1
+  __itemPrice: 5
+  isVariaPrefab: 0
+  speed: 2
   damage: 1
-  ammoOwner: {fileID: 0}
+  piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &7278388351785383040
 CapsuleCollider2D:

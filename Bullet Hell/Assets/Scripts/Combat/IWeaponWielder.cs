@@ -25,6 +25,7 @@ namespace Combat
         /// </summary>
         /// <returns></returns>
         WeaponWrapper GetWeaponWrapper();
+        int GetInstanceID();
         /// <summary>
         /// Immediately kills this Wielder.
         /// </summary>
@@ -52,5 +53,10 @@ namespace Combat
         /// </summary>
         /// <param name="id"></param>
         void OnAmmoCollision(int id);
+        /// <summary>
+        /// The gameobject associated with this object.
+        /// </summary>
+        /// <returns>The gameobject associated with this object.</returns>
+        GameObject GetGameObject();
     }
 }

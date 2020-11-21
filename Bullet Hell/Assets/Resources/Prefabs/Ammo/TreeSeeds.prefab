@@ -118,10 +118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _InGameName: sharp leaves
-  _InGameDescription: adds 0 ranged damage.
+  __itemName: Razor Leaves
+  __itemDescription: Adds 0 damage.
+  __saleable: 0
+  __itemPrice: 0
+  isVariaPrefab: 0
   speed: 20
   damage: 0
+  piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &3705344645713474526
 CapsuleCollider2D:

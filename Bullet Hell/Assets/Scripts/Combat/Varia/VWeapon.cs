@@ -1,49 +1,54 @@
 ﻿
 using System;
 using UnityEngine;
+using ND_VariaBULLET;
 
 using UI;
 using Utilities;
 
 namespace Combat.Varia
 {
-    public class VWeapon : MonoBehaviour, IWeapon
+    public class VWeapon : CompGameInfo, IWeapon
     {
         // UNITY EDITOR ----------------------//
-        [Header("General")]
-        [TextArea(1, 1)]
-        public string __weaponName = "";
-        [TextArea(1,2)]
-        public string __weaponDescription = "";
-        [Min(0)]
-        public float __price;
-        [Header("Ammo")]
-        public IAmmo __weaponAmmo;
-        public Transform __ammoSpawnPoint;
+        [Header("Combat")]
+        public Transform __gunBarrel;
+        [HideInInspector]
         public WeaponWielder __wielder;
         public int __baseDamage;
         public bool __infAmmo = false;
         [Min(0)]
         public int __ammoCount = 0;
-        [Header("Combat")]
         public float __range = 3f;
         [Header("Animation")]
         [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
         public bool __flipEnabled = false;
         // -----------------------------------//
-
+        // PROPERTIES
+        private bool _triggerPulled = false;
         // ACCESSORS
-        private GameInfo Info { get; set; }
         private float Range { get; set; }
         private float BaseDamage { get; set; }
+        public BasePattern[] Controllers { get; set; }
         private bool FlipEnabled { get; set; }
         private bool Flipped { get; set; }
         public Slot UIAmmoSlot { get; set; }
         public bool InfiniteAmmo { get; set; }
         public int AmmoCount { get; set; }
-        public IAmmo WeaponAmmo { get; set; }
+        public IAmmo WeaponIAmmo { get; set; }
         public Animator ShootingAnimator { get; set; }
         public WeaponWielder Wielder { get; set; }
+        private bool TriggerPulled 
+        {
+            get => this._triggerPulled;
+            set
+            {
+                if (value == true)
+                    this.TimeSinceTriggerPull = 0f;
+                this._triggerPulled = true;
+            }
+        }
+        private float TimeSinceTriggerPull { get; set; }
         // METHODS
         public void Flip()
         {
@@ -60,8 +65,6 @@ namespace Combat.Varia
 
         public float GetBaseDamage() => this.BaseDamage;
 
-        public GameInfo GetGameInfo() => this.Info;
-
         public float GetRange() => this.Range;
 
         public bool InRange(Vector3 target)
@@ -75,33 +78,41 @@ namespace Combat.Varia
         // FIXME VI - needs implementation
         public void RequestWeaponFire()
         {
-            throw new System.NotImplementedException();
+            foreach(BasePattern bp in this.Controllers)
+            {
+                bp.TriggerAutoFire = true;
+            }
+            this.TriggerPulled = true;
+        }
+        private void Shoot()
+        {
+            
         }
 
         // MONOBEHAVIOR
-        void Awake()
+        protected override void Awake()
         {
-            // initilizations
-            this.Info = new GameInfo(
-                this.__weaponName,
-                this.__weaponDescription,
-                this.__price);
+            base.Awake();
+            // initializations
             this.Range = this.__range;
             this.BaseDamage = this.__baseDamage;
+            this.Controllers = this.transform.GetComponentsInChildren<BasePattern>();
+            if (this.Controllers.Length < 1)
+                throw new MissingComponentException(
+                    $"{this.GetType()} has no controllers <{typeof(BasePattern)}>");      
             this.FlipEnabled = this.__flipEnabled;
             this.Flipped = false;
             this.UIAmmoSlot = null;
             this.InfiniteAmmo = this.__infAmmo;
             this.AmmoCount = this.__ammoCount;
-            this.WeaponAmmo = this.__weaponAmmo;
-            if (this.WeaponAmmo == null)
-                throw new MissingFieldException(
-                    nameof(this.WeaponAmmo));
             this.ShootingAnimator = this.GetComponent<Animator>();
-            if (this.ShootingAnimator == null)
-                throw new MissingFieldException(
-                    nameof(this.ShootingAnimator));
             this.Wielder = this.__wielder;
+        }
+
+        void FixedUpdate()
+        {
+            //if (this.WeaponController.TriggerAutoFire == true)
+            //    this.WeaponController.TriggerAutoFire = false;
         }
     }
 }

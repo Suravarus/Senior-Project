@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9162511028535559087}
   - component: {fileID: 7087875195955197986}
   - component: {fileID: 2104525736100852452}
+  - component: {fileID: 2781436638167577450}
   m_Layer: 0
   m_Name: Machinegun
   m_TagString: Untagged
@@ -47,17 +48,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmo: 0
-  inShop: 0
-  price: 0
-  weaponAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
+  inShop: 1
+  price: 500
+  weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
   ammoSpawnPoint: {fileID: 2343148408109575670}
   wielder: {fileID: 0}
   baseDamage: 5
   bulletSpeed: 6
   rateOfFire: 10
   range: 5
-  infAmmo: 1
-  ammo: 10
+  infAmmo: 0
+  ammo: 200
+  rateOfFirePowerUp: 0
+  rateOfFireTimerStrength: 2
+  rateOfFireTimer: 8
+  rateOfFireTimerTemp: 0
+  piercingPowerUp: 0
+  piercingTimer: 10
+  piercingTimerTemp: 0
   shootingAnimator: {fileID: 2104525736100852452}
   flipEnabled: 1
 --- !u!212 &7087875195955197986
@@ -99,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c6a4d7d54d96f9946b58e87b7b2ed8e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,6 +138,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2781436638167577450
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471668854306967277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.60000014
 --- !u!1 &7043272639279945785
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,10 +177,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7043272639279945785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.441, y: -0.085, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 6416308500654034746}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

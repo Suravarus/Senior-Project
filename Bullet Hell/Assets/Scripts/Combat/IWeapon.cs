@@ -24,7 +24,7 @@ namespace Combat
         /// <summary>
         /// The ammo prefab that this weapon is to fire.
         /// </summary>
-        IAmmo WeaponAmmo { get; set; }
+        IAmmo WeaponIAmmo { get; }
         Animator ShootingAnimator { get; set; }
         /// <summary>
         /// The WeaponWielder that is currently using 

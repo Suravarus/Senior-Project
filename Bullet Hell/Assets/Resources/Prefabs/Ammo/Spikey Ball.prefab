@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4688398247245253909}
   - component: {fileID: 9217610321880063014}
   m_Layer: 11
-  m_Name: Spikey Ball 1
+  m_Name: Spikey Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,11 +118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _InGameName: sharp leaves
-  _InGameDescription: adds 0 ranged damage.
+  __itemName: Un-chained Mace
+  __itemDescription: Adds 10 damage.
+  __saleable: 0
+  __itemPrice: 0
+  isVariaPrefab: 0
   speed: 5
-  damage: 20
-  ammoOwner: {fileID: 0}
+  damage: 10
+  piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &9217610321880063014
 CapsuleCollider2D:

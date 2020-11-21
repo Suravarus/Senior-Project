@@ -201,10 +201,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd6864b21f9c2f42a6aa31021ea798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _InGameName: corrupted flame
-  _InGameDescription: Adds 2 rangedDamage.
+  __itemName: Flame Ball
+  __itemDescription: Adds 1 damage.
+  __saleable: 0
+  __itemPrice: 0
+  isVariaPrefab: 0
   speed: 20
   damage: 2
+  piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &5872211060125573620
 CapsuleCollider2D:

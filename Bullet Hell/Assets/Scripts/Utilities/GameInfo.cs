@@ -15,6 +15,7 @@ namespace Utilities
         // ACCESSORS
         public static int DESCRIPTION_CHAR_LIMIT => 50;
         public static int NAME_CHAR_LIMIT => 20;
+        private bool Saleable { get; set; }
         /// <summary>
         /// The lowercase name of the gameObject.
         /// </summary>
@@ -63,12 +64,22 @@ namespace Utilities
             get { return this._description; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Name of this item <code>GameInfo.NAME_CHAR_LIMIT</code></param>
+        /// <param name="description">Short, one-sentence, description of this item.
+        /// <code>GameInfo.DESCRIPTION_CHAR_LIMIT</code>
+        /// </param>
+        /// <param name="price"></param>
+        /// <param name="canSell"></param>
         public GameInfo(String name
             , String description
-            , float price)
+            , float price = 0f, bool canSell = false)
         {
             this.LowercaseName = name;
             this.Description = description;
+            this.Saleable = canSell;
             this.Price = price;
         }
 
@@ -83,9 +94,15 @@ namespace Utilities
         /// <returns></returns>
         public string GetDescription() => this.Description;
         /// <summary>
-        /// What this item will cost in shops.
+        /// What this item will cost in shops. Returns NULL if 
+        /// this item cannot be sold
         /// </summary>
         /// <returns></returns>
-        public float GetPrice() => this.Price;
+        public float? GetPrice() => this.Saleable ? this.Price : (float?)null;
+        /// <summary>
+        /// Returns TRUE if this item can be sold.
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSell() => this.Saleable;
     }
 }

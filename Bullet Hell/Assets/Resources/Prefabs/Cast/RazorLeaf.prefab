@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __itemName: RazorLeaf Spell
+  __itemDescription: Conjure sharp leaves to throw at enemies.
+  __saleable: 0
+  __itemPrice: 0
   drawGizmo: 0
-  weaponAmmo: {fileID: 979262230771606225, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
+  weaponAmmo: {fileID: 979262230771606253, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
   ammoSpawnPoint: {fileID: 5055788378387810486}
   wielder: {fileID: 0}
   baseDamage: 5
@@ -55,6 +59,13 @@ MonoBehaviour:
   range: 4
   infAmmo: 1
   ammo: 10
+  rateOfFirePowerUp: 0
+  rateOfFireTimerStrength: 2
+  rateOfFireTimer: 8
+  rateOfFireTimerTemp: 0
+  piercingPowerUp: 0
+  piercingTimer: 10
+  piercingTimerTemp: 0
   shootingAnimator: {fileID: 0}
   flipEnabled: 0
 --- !u!212 &800762962836146413

@@ -3,18 +3,16 @@ using UnityEngine;
 using System;
 
 using Combat;
+using Utilities;
 using UI;
 
-public class Weapon : MonoBehaviour
+public class Weapon : CompGameInfo, IWeapon
 {
     // ------ UNITY EDITOR -----------------------------//
     [Header("Development")]
     public Boolean drawGizmo = false;
-    [Header("General")]
-    public bool inShop = false;
-    public int price;
     [Header("Ammo")]
-    public GameObject weaponAmmo;
+    public Ammo weaponAmmo;
     public Transform ammoSpawnPoint;
     public WeaponWielder wielder;
     public int baseDamage;
@@ -65,7 +63,7 @@ public class Weapon : MonoBehaviour
             return this._fireDelay;
         }
     }
-    public GameObject WeaponAmmo
+    public Ammo AmmoPrefab
     {
         set { this.weaponAmmo = value; }
         get { return this.weaponAmmo; }
@@ -88,9 +86,20 @@ public class Weapon : MonoBehaviour
         get => this._uiAmmoSlot;
     }
 
+    public bool InfiniteAmmo 
+    { get => this.infAmmo; set => this.infAmmo = value; }
+    public int AmmoCount 
+    { get => this.ammo; set => this.ammo = value; }
+    public IAmmo WeaponIAmmo 
+    { get => this.weaponAmmo; }
+    public Animator ShootingAnimator 
+    { get => this.shootingAnimator; set => this.shootingAnimator = value; }
+    public WeaponWielder Wielder 
+    { get => this.wielder; set => this.wielder = value; }
+
     private Slot _uiAmmoSlot;
 
-    public void Awake()
+    protected override void Awake()
     {
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
@@ -188,7 +197,7 @@ public class Weapon : MonoBehaviour
                     // PLAY shooting animation based on rateOfFire
                     this.shootingAnimator.Play("Shooting", -1, 1f / this.rateOfFire - 0.25f);
                 }
-                var a = this.WeaponAmmo.GetComponent<Ammo>();
+                var a = this.AmmoPrefab;
                 if(infAmmo == false) ammo = ammo - 1;
 
                 // shoot the 'ammo' straight ahead
@@ -201,6 +210,7 @@ public class Weapon : MonoBehaviour
                 else
                     a.piercingPowerUp = false;
                 a.weapon = this;
+                a.Shooter = this.wielder;
 
                 var st = this.transform.GetChild(0);
 
@@ -296,4 +306,13 @@ public class Weapon : MonoBehaviour
         return los;
     }
 
+    public float GetRange()
+    {
+        return this.range;
+    }
+
+    public float GetBaseDamage()
+    {
+        return this.baseDamage;
+    }
 }
