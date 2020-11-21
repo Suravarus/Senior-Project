@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using System;
+using Combat.Varia;
 
 namespace ND_VariaBULLET
 {
@@ -57,6 +58,8 @@ namespace ND_VariaBULLET
         protected SpriteRenderer rend;
         private bool poolOrDestroyTriggered;
 
+        public VWeapon VariaWeapon { get; set; }
+
         public virtual void InitialSet()
         {
             eventCounter.Reset();
@@ -71,7 +74,8 @@ namespace ND_VariaBULLET
                 if (Emitter.transform.lossyScale.x > 0)
                     transform.rotation = Emitter.rotation;
                 else
-                    transform.rotation = Quaternion.AngleAxis(Mathf.Abs(Emitter.rotation.eulerAngles.z) - 180, Vector3.forward);
+                    transform.rotation = Quaternion.AngleAxis(
+                        Mathf.Abs(Emitter.rotation.eulerAngles.z) - 180, Vector3.forward);
             }
 
             if (ParentToEmitter == ParentType.whileShotHeld)
@@ -81,12 +85,15 @@ namespace ND_VariaBULLET
 
             rend = GetComponent<SpriteRenderer>();
             setSprite(rend);
+            this.VariaWeapon = ShotBase.GetController(this.Emitter.transform);
+            if (this.VariaWeapon != null)
+                Debug.LogWarning($"{this.gameObject.name} found controller {this.VariaWeapon.gameObject.name}");
         }
 
         public virtual void Start()
         {
             //NOT IMPLEMENTED
-            //Use InitialSet as default Start/Constructor unless external dependency requires Start()  
+            //Use InitialSet as default Start/Constructor unless external dependency requires Start()
         }
 
         public virtual void Update()
@@ -221,6 +228,21 @@ namespace ND_VariaBULLET
             Destroy(gO);
             GlobalShotManager.Instance.ActiveBullets--;
             poolOrDestroyTriggered = true;
+        }
+
+        private static VWeapon GetController(Transform em)
+        {
+            var sb = em.GetComponent<ShotBase>();
+            var wp = em.transform.GetComponent<VWeapon>();
+
+            if (sb != null)
+                return ShotBase.GetController(sb.Emitter.transform);
+            if (wp != null)
+                return wp;
+            if (em.transform.parent == null)
+                return null;
+            return ShotBase.GetController(em.transform.parent);
+
         }
     }
 }
