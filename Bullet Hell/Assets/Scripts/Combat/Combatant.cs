@@ -18,6 +18,7 @@ namespace Combat
         public string _enemyTag = "";
         public int _health = 1;
         public int _maxHealth = 10;
+        public Boolean shieldPowerUp = false;
         [Header("UI")]
         public HealthBar HealthUI;
         [Header("Animation")]
@@ -202,7 +203,8 @@ namespace Combat
 
                 if (rangedAttack)
                 {
-                    this.TakeDamage(ammo);
+                    if (!shieldPowerUp) this.TakeDamage(ammo);
+                    else shieldPowerUp = false;
                 }
             }
         }
