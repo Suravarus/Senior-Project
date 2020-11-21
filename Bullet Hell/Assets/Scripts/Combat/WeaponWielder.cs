@@ -9,6 +9,7 @@ namespace Combat
     /// <summary>
     /// Sub-class of Combatant. This is a Combatant that uses weapons.
     /// </summary>
+    [System.Serializable]
     public class WeaponWielder : Combatant, IWeaponWielder
     {
 
@@ -142,6 +143,28 @@ namespace Combat
         {
             return;
         }
+
+        public void SavePlayer()
+        {
+            SaveSystem.SavePlayer(this);
+        }
         
+        public void LoadPlayer()
+        {
+            PlayerData data = SaveSystem.LoadPlayer();
+
+
+            Vector3 position;
+            position.x = data.position[0];
+            position.y = data.position[1];
+            position.z = data.position[2];
+
+           // arsenal = player.GetQuarterMaster().GetArsenal();
+            //ammo[0] = arsenal[0].ammo;
+            //ammo[1] = arsenal[1].ammo;
+            //ammo[2] = arsenal[2].ammo;
+
+            //floorNumber = 1;
+        }
     }
 }
