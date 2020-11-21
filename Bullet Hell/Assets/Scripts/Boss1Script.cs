@@ -15,8 +15,23 @@ public class Boss1Script : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D hitbox;
     Combatant bossInfo;
+
+    [Header("Projectiles")]
+
+    [Tooltip("Number of frames between shooting at the player.")]
+    public int shootingInterval = 100;
+
+    [Tooltip("Minimum number of frames between landing and jumping again.")]
+    public int lowerJumpingInterval = 500;
+
+    [Tooltip("Maximum number of framess between landing and jumping again.")]
+    public int upperJumpingInterval = 1300;
+
+
+    [Header("Shot types")]
     public SpreadPattern landingShot;
     public SpreadPattern circleShot;
+
 
     private bool isJumping = false;
     private int bossPhase = 1;
@@ -29,6 +44,7 @@ public class Boss1Script : MonoBehaviour
     private bool isDead = false;
     private bool firing = false;
     private float fireAngle = 0.0f;
+    private GameObject fallingIndicator;
 
     private int count;
 
@@ -59,20 +75,7 @@ void FixedUpdate()
             circleShot.TriggerAutoFire = false;
             firing = false;
         }
-        else
-        {
-            Vector2 temp = new Vector2(player.position.x - bossPos.position.x, player.position.y - bossPos.position.y).normalized;
 
-            if (temp.x < 0)
-            {
-                fireAngle = 360 - (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg * -1);
-            }
-            else
-            {
-                fireAngle = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg;
-            }
-            circleShot.CenterRotation = fireAngle;
-        }
 
         if (isJumping)
         {
@@ -102,15 +105,18 @@ void FixedUpdate()
         }
         else
         {
-            
             count++;
-            if(count % 100 == 0)
+            if(count % shootingInterval == shootingInterval-1)
             {
-                Shoot();
+                Aim(circleShot);
             }
-            if(count > 500)
+            else if(count % shootingInterval == 0)
             {
-                if ((UnityEngine.Random.Range(0f, 1000f) <= count % 150) || count == 1300) //variable amount of time to jump
+                Shoot(circleShot);
+            }
+            if(count > lowerJumpingInterval)
+            {
+                if ((UnityEngine.Random.Range(0f, 1000f) <= count % 150) || count >= upperJumpingInterval) //variable amount of time to jump
                     Jump();
             }
             else if(count == 1)
@@ -130,23 +136,36 @@ void FixedUpdate()
         }
     }
 
-    void Shoot()
+    //Fire at current angle for given SpreadPattern
+    void Shoot(SpreadPattern shooting)
     {
-
-        Debug.Log("new fire angle is " + fireAngle + " " + circleShot.CenterRotation);
-        circleShot.TriggerAutoFire = true;
+        Debug.Log("fire angle for " + shooting + " is " + shooting.CenterRotation);
+        shooting.TriggerAutoFire = true;
         firing = true;
     }
 
+    //Aim given SpreadPattern to the current player location
+    void Aim(SpreadPattern shooting)
+    {
+        Vector2 temp = new Vector2(player.position.x - bossPos.position.x, player.position.y - bossPos.position.y).normalized;
+
+        if (temp.x < 0)
+        {
+            fireAngle = 360 - (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg * -1);
+        }
+        else
+        {
+            fireAngle = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg;
+        }
+        shooting.CenterRotation = fireAngle;
+    }
 
     IEnumerator Wait(float sec)
     {
 
         //yield on a new YieldInstruction that waits for some seconds.
         yield return new WaitForSeconds(sec);
-
         FallDown();
-
         yield return new WaitForSeconds(sec * .25f);
 
         Debug.Log("I am about to fall");
@@ -173,7 +192,12 @@ void FixedUpdate()
         direction = (target - (Vector2)bossPos.position).normalized;
         //This is where we would show some animation 
         //suggesting the boss is falling at the player
+        Vector3 temp = new Vector3(this.player.position.x, this.player.position.y, 1);
+        GameObject redIndicator = Resources.Load<GameObject>("Prefabs/Indicator/Red Indicator");
+        fallingIndicator = Instantiate(redIndicator, temp, Quaternion.identity);
     }
+
+
 
     void Landing()
     {

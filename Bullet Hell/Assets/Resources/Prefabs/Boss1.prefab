@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 147823359}
   - component: {fileID: 147823361}
   - component: {fileID: 147823360}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 194890113}
   - component: {fileID: 194890115}
   - component: {fileID: 194890114}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 343228843}
   - component: {fileID: 343228845}
   - component: {fileID: 343228844}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 449363629}
   - component: {fileID: 449363631}
   - component: {fileID: 449363630}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 566778774}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 638882185}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 654499922}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752654992}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 839837489}
   - component: {fileID: 839837491}
   - component: {fileID: 839837490}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849056013}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 892545086}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053352757}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 1377482853}
   - component: {fileID: 1377482855}
   - component: {fileID: 1377482854}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 1423564457}
   - component: {fileID: 1423564459}
   - component: {fileID: 1423564458}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1598779743}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1651109906}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 1665808878}
   - component: {fileID: 1665808880}
   - component: {fileID: 1665808879}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 1778272677}
   - component: {fileID: 1778272679}
   - component: {fileID: 1778272678}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 2078359866}
   - component: {fileID: 2078359868}
   - component: {fileID: 2078359867}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087859174}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3904887107094914049}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Emitter(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1523,7 +1523,7 @@ GameObject:
   - component: {fileID: 1796548425124468803}
   - component: {fileID: 3128995240089057641}
   - component: {fileID: 5845062277862037900}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1734,7 +1734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536728904223942126}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,7 +1944,6 @@ MonoBehaviour:
   _maxHealth: 100
   HealthUI: {fileID: 693632007789284319}
   animator: {fileID: 0}
-  rangedWeaponWrapper: {fileID: 5698693306299467067}
 --- !u!114 &5698693304317549789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,7 +2030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5355378697114943676}
   - component: {fileID: 5294480493256053284}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2105,11 +2104,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011154708926, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1000013902785618, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4000011465702616, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_LocalPosition.x
