@@ -142,10 +142,6 @@ namespace Combat
         {
             if (!this.Arsenal.Contains(weapon))
             {
-                if (weapon.GetGameInfo().CanSell())
-                {
-                    this.Wielder.GetComponent<Pickup>().gold -= (int)weapon.GetGameInfo().GetPrice();
-                }
                 // IF Arsenal is full and wielder is not disarmed
                 if (this.FullArsenal && !this.Wielder.Disarmed())
                 {
