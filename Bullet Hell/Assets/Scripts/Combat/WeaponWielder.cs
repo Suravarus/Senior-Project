@@ -74,10 +74,10 @@ namespace Combat
             var bullets = FindObjectsOfType<Ammo>();
             foreach(var b in bullets)
             {
+                // FIXME - Combat - use b.Shooter instead of b.weapon.wielder
                 if (b != null 
-                    && b.weapon != null 
-                    && b.weapon.wielder != null 
-                    && b.weapon.wielder.gameObject.GetInstanceID() == this.gameObject.GetInstanceID())
+                    && b.Shooter != null 
+                    && b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
                     Destroy(b.gameObject);
             }
         }
