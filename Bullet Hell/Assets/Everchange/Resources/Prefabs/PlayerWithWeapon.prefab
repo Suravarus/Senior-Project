@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 1016034445464567451}
   - component: {fileID: 7023341392679994166}
   - component: {fileID: 1998842602}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerWithWeapon
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d245f7a5d30fa8943aa5c63681d91689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dash_strength: 2
+  dash_timer: 0.4
+  move_state: 0
+  dash_timer_temp: 0
   speed: 5
 --- !u!70 &420755244860776867
 CapsuleCollider2D:
@@ -234,10 +238,18 @@ MonoBehaviour:
   _enemyTag: enemy
   _health: 200
   _maxHealth: 200
+  shieldPowerUp: 0
   HealthUI: {fileID: 0}
   animator: {fileID: 1428033195}
   rangedWeaponWrapper: {fileID: 134744568231600571}
   startingWeapon: {fileID: 7378092279696690728}
+  rateOfFirePowerUp: 0
+  rateOfFireTimerStrength: 2
+  rateOfFireTimer: 8
+  rateOfFireTimerTemp: 0
+  piercingPowerUp: 0
+  piercingTimer: 10
+  piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
 --- !u!114 &1998842602
 MonoBehaviour:
