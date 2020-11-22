@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 1742209741}
   - component: {fileID: 1742209740}
   - component: {fileID: 1742209739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742209737}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -10006,7 +10006,7 @@ GameObject:
   - component: {fileID: 1937637698}
   - component: {fileID: 1937637697}
   - component: {fileID: 1937637696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TilemapObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
