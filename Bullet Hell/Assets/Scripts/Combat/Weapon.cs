@@ -202,7 +202,7 @@ public class Weapon : CompGameInfo, IWeapon
 
                 // shoot the 'ammo' straight ahead
                 if (this.bulletSpeed > 0)
-                    a.speed = this.bulletSpeed;
+                    a.Speed = this.bulletSpeed;
                 if (this.baseDamage > 0)
                     a.damage = this.baseDamage;
                 if (piercingTimerTemp > 0)

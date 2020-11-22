@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+
         // MOVEMENT LISTENERS
         this.Keybindings.Movement.Direction.performed += ctx => this.Direction = ctx.ReadValue<Vector2>();
         this.Keybindings.Movement.CursorPosition.performed += ctx => this.CursorScreenPosition = ctx.ReadValue<Vector2>();
@@ -98,17 +98,30 @@ public class PlayerMovement : MonoBehaviour
             {
                 List<Collider2D> cds = new List<Collider2D>();
                 Debug.Log(collider.OverlapCollider(new ContactFilter2D().NoFilter(), cds));
-                foreach (Collider2D c in cds)
+                
+                for (int i = 0; i < cds.Count; i++)
                 {
-                    Debug.Log(c.name);
+                    var weapon = cds[i].GetComponent<Weapon>();
+                    //var storeItem = cds[i].GetComponent<StoreItem>();
+
+                    if (weapon != null)
+                    {
+                        this.GetComponent<Pickup>().PickupLoot(cds[i]);
+                    } 
+                    //else if (storeItem != null)
+                    //{
+                    //    storeItem.buy(player);
+                    //}
                 }
-                if (cds.Count > 0)
-                    this.GetComponent<Pickup>().PickupLoot(cds[0]);
             }
         };
 
         // COMBAT LISTENERS
-        this.Keybindings.Combat.Shoot.performed += ctx => ShootingPressed = ctx.ReadValueAsButton();
+        this.Keybindings.Combat.Shoot.performed += ctx => 
+        {
+            ShootingPressed = ctx.ReadValueAsButton();
+
+        };
 
         // WEAPON-BAR LISTENERS
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
