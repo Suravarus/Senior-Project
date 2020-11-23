@@ -7,6 +7,6 @@ namespace Loot
     public class itemType : MonoBehaviour
     {
         // Start is called before the first frame update
-        public Item type;
+        public GameItem type;
     }
 }

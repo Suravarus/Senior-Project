@@ -8,7 +8,7 @@ namespace Combat
         /// <summary>
         /// The Weapon that is currently equipped, if any.
         /// </summary>
-        Weapon RangedWeapon { get; }
+        IWeapon RangedWeapon { get; }
         /// <summary>
         /// The PuppetMaster that handles combat animations for this
         /// Wielder.

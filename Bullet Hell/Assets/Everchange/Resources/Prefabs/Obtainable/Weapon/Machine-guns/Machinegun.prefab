@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &17151063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17151064}
+  m_Layer: 0
+  m_Name: GunBarrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17151064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17151063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.401, y: -0.087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6416308500654034746}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &313974045388665919
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,9 +187,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6416308500654034746}
-  - component: {fileID: 9162511028535559087}
   - component: {fileID: 7087875195955197986}
   - component: {fileID: 2104525736100852452}
+  - component: {fileID: 1852243682}
   m_Layer: 0
   m_Name: Machinegun
   m_TagString: Untagged
@@ -179,35 +209,10 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 3788909372445762457}
+  - {fileID: 17151064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9162511028535559087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4471668854306967277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawGizmo: 0
-  inShop: 0
-  price: 0
-  weaponAmmo: {fileID: 1336329747428619619, guid: 1c9b6250ea89aa14393a54f9970e85a6, type: 3}
-  ammoSpawnPoint: {fileID: 0}
-  wielder: {fileID: 0}
-  baseDamage: 5
-  bulletSpeed: 6
-  rateOfFire: 10
-  range: 20
-  infAmmo: 1
-  ammo: 10
-  shootingAnimator: {fileID: 2104525736100852452}
-  flipEnabled: 1
 --- !u!212 &7087875195955197986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -278,6 +283,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1852243682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471668854306967277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02e8a37df364624798ab4adf657beef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: Peace Maker
+  __itemDescription: A powerful weapon that ends all disagreements.
+  __saleable: 0
+  __itemPrice: 800
+  inShop: 0
+  Item_Rarity: 1
+  __classID: 0
+  __gunBarrel: {fileID: 17151064}
+  __wielder: {fileID: 0}
+  __baseDamage: 0
+  __infAmmo: 0
+  __ammoCount: 200
+  __range: 3
+  __flipEnabled: 0
 --- !u!1001 &3790585040539590465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: TriggerAutoFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: PointScale

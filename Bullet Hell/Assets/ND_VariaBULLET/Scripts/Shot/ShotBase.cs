@@ -96,11 +96,11 @@ namespace ND_VariaBULLET
             if (this.CombatWeapon == null)
                 throw new NullReferenceException($"Unable to find weapon component.");
             this.Shooter = this.CombatWeapon.Wielder;
+            this.StartingPosition = this.transform.position;
         }
 
         public virtual void Start()
         {
-            this.StartingPosition = this.transform.position;
             //NOT IMPLEMENTED
             //Use InitialSet as default Start/Constructor unless external dependency requires Start()
         }

@@ -39,7 +39,7 @@ namespace Combat.Animation
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
                 // CALCULATE the vector from the puppet's weapon to it's chest
                 var target = (!this.Puppet.Disarmed()
-                    ? this.Puppet.RangedWeapon.transform.position
+                    ? this.Puppet.RangedWeapon.GetGameObject().transform.position
                     : Camera.main.ScreenToWorldPoint(this.Puppet.GetComponent<PlayerMovement>().GetCursorPosition()));
                 var v = target - this.Puppet.GetBodyTransform(Combatant.BodyPart.Chest).position;
                 v = v.normalized;

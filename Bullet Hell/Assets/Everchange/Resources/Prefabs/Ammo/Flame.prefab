@@ -202,12 +202,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __itemName: Flame Ball
-  __itemDescription: Adds 1 damage.
+  __itemDescription: Spell regeant.
   __saleable: 0
   __itemPrice: 0
   isVariaPrefab: 0
-  speed: 20
-  damage: 2
+  speed: 8
+  damage: 1
   piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &5872211060125573620

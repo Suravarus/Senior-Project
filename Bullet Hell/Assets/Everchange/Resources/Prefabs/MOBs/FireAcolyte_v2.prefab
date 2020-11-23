@@ -215,7 +215,7 @@ MonoBehaviour:
   _health: 50
   _maxHealth: 50
   shieldPowerUp: 0
-  HealthUI: {fileID: 5317647475158934223}
+  __healthBar: {fileID: 5317647475158934223}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 6933080155954550088}
   startingWeapon: {fileID: 5959262762207633352}
@@ -454,6 +454,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: weaponAmmo
+      value: 
+      objectReference: {fileID: 8035906373920960711, guid: f2fd5b0a359fe2e4fa0b97153cd5e70e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
 --- !u!4 &5959262762207633359 stripped

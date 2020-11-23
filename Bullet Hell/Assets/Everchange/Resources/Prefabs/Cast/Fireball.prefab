@@ -46,9 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __itemName: Cast Fireball
-  __itemDescription: set target on fire.
+  __itemDescription: Cast fire at the target.
   __saleable: 0
   __itemPrice: 0
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 0
   drawGizmo: 0
   weaponAmmo: {fileID: 0}
   ammoSpawnPoint: {fileID: 6858242880664343929}
@@ -59,13 +62,6 @@ MonoBehaviour:
   range: 4
   infAmmo: 1
   ammo: 10
-  rateOfFirePowerUp: 0
-  rateOfFireTimerStrength: 2
-  rateOfFireTimer: 8
-  rateOfFireTimerTemp: 0
-  piercingPowerUp: 0
-  piercingTimer: 10
-  piercingTimerTemp: 0
   shootingAnimator: {fileID: 0}
   flipEnabled: 0
 --- !u!212 &188560495310502461

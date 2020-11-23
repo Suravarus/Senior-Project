@@ -9,13 +9,13 @@ namespace Combat
         /// the the QuarterMaster's arsenal (inventory).
         /// </summary>
         /// <returns></returns>
-        Weapon[] GetArsenal();
+        IWeapon[] GetArsenal();
         /// <summary>
         /// Returns the weapon that is in the assigned index of 
         /// the arsenal. Can be NULL.
         /// </summary>
         /// <returns></returns>
-        Weapon GetAssignedWeapon();
+        IWeapon GetAssignedWeapon();
         /// <summary>
         /// The WeaponWrapper of the Wielder
         /// </summary>
@@ -36,6 +36,6 @@ namespace Combat
         /// Pickups up a new weapon and adds it to the arsenal (inventory).
         /// </summary>
         /// <param name="weapon"></param>
-        void PickupWeapon(Weapon weapon);
+        void PickupWeapon(IWeapon weapon);
     }
 }

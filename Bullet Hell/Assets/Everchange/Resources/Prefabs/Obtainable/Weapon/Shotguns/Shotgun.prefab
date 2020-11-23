@@ -1491,6 +1491,9 @@ GameObject:
   - component: {fileID: 3199785353093337859}
   - component: {fileID: 1671281542516433947}
   - component: {fileID: -2240889493403733111}
+  - component: {fileID: 2044974328275912479}
+  - component: {fileID: 6679380035283648261}
+  - component: {fileID: 5130888279785480562}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -1506,13 +1509,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5431950712907551444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4868562398109350313}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1671281542516433947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1552,7 +1555,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10030
   m_Sprite: {fileID: 21300000, guid: f4e6f3a93f5c17a4b86b5014666bf36e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1572,7 +1575,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5431950712907551444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 17a5ce3bfcc0bb0409c885cb6150c01d, type: 2}
   m_CullingMode: 0
@@ -1583,6 +1586,61 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2044974328275912479
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431950712907551444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15, y: -0.15}
+  serializedVersion: 2
+  m_Radius: 0.2
+--- !u!114 &6679380035283648261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431950712907551444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0
+--- !u!114 &5130888279785480562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431950712907551444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02e8a37df364624798ab4adf657beef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: Doom Bringer
+  __itemDescription: A powerful short-range weapon.
+  __saleable: 1
+  __itemPrice: 200
+  inShop: 0
+  Item_Rarity: 1
+  __classID: 0
+  __gunBarrel: {fileID: 0}
+  __wielder: {fileID: 0}
+  __baseDamage: 50
+  __infAmmo: 0
+  __ammoCount: 20
+  __range: 2
+  __flipEnabled: 1
 --- !u!1001 &4872523479387407729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,11 +1654,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011465702616, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.303
+      value: 0.288
       objectReference: {fileID: 0}
     - target: {fileID: 4000011465702616, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.114
+      value: -0.125
       objectReference: {fileID: 0}
     - target: {fileID: 4000011465702616, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1672,7 +1730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: TriggerAutoFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: FireCommand

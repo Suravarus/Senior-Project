@@ -45,15 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __itemName: Deadman's Mace
+  __itemDescription: Hurl a big mace at the target.
+  __saleable: 0
+  __itemPrice: 0
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 0
   drawGizmo: 0
-  weaponAmmo: {fileID: 4688398247245253929, guid: 881af8e213238b547bd5dd949362d984, type: 3}
+  weaponAmmo: {fileID: 0}
   ammoSpawnPoint: {fileID: 5834989789016567834}
   wielder: {fileID: 0}
   baseDamage: 1
   bulletSpeed: 10
   rateOfFire: 1
   range: 4
-  range: 100
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6416308500654034746}
   - component: {fileID: 7087875195955197986}
   - component: {fileID: 2104525736100852452}
+  - component: {fileID: 108709050}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -103,6 +104,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &108709050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471668854306967277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02e8a37df364624798ab4adf657beef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: asdf
+  __itemDescription: asdfasdf
+  __saleable: 0
+  __itemPrice: 0
+  __gunBarrel: {fileID: 0}
+  __wielder: {fileID: 0}
+  __baseDamage: 0
+  __infAmmo: 0
+  __ammoCount: 0
+  __range: 3
+  __flipEnabled: 0
 --- !u!1 &5276612810765030664
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,8 +225,8 @@ MonoBehaviour:
   makeNodeOnly: 0
   LocalPitch: 0
   customIndicator: {fileID: 0}
-  Shot: {fileID: 1000012992948024, guid: 318b3152c1412d94a8223143ea7a7f20, type: 3}
-  ShotSpeed: 30
+  Shot: {fileID: 1000010161334016, guid: dfa492438880f9e4c90eb54ee2453e91, type: 3}
+  ShotSpeed: 100
   LocalOffset: 0
   controller: {fileID: 0}
   OnStoppedFiring:
@@ -212,7 +236,7 @@ MonoBehaviour:
   SpriteOverride: {fileID: 0}
   ParentToEmitter: 0
   IgnoreGlobalRateScale: 0
-  ShotRate: 14
+  ShotRate: 50
   PauseRate: 100
   PauseLength: 30
   ShotOverlap: 1
@@ -332,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012688441186, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}
       propertyPath: TriggerAutoFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5a70f9bf23cff40b76aa2464691e73, type: 3}

@@ -1,14 +1,11 @@
-﻿
-using System;
-using UnityEngine;
+﻿using Loot;
 using ND_VariaBULLET;
-
 using UI;
-using Utilities;
+using UnityEngine;
 
 namespace Combat.Varia
 {
-    public class VWeapon : CompGameInfo, IWeapon
+    public class VWeapon : GameItem, IWeapon
     {
         // UNITY EDITOR ----------------------//
         [Header("Combat")]
@@ -21,11 +18,13 @@ namespace Combat.Varia
         public int __ammoCount = 0;
         public float __range = 3f;
         [Header("Animation")]
+        [Header("Animation")]
         [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
         public bool __flipEnabled = false;
         // -----------------------------------//
         // PROPERTIES
-        private bool _triggerPulled = false;
+        // PROPERTIES
+        private int _ammoCount;
         // ACCESSORS
         private float Range { get; set; }
         private float BaseDamage { get; set; }
@@ -34,21 +33,21 @@ namespace Combat.Varia
         private bool Flipped { get; set; }
         public Slot UIAmmoSlot { get; set; }
         public bool InfiniteAmmo { get; set; }
-        public int AmmoCount { get; set; }
+        public int AmmoCount
+        {
+            set
+            {
+                this._ammoCount = value;
+                if (this.UIAmmoSlot != null)
+                    UpdateAmmoSlot();
+            }
+            get => this._ammoCount;
+        }
         public IAmmo WeaponIAmmo { get; set; }
         public Animator ShootingAnimator { get; set; }
         public WeaponWielder Wielder { get; set; }
-        private bool TriggerPulled 
-        {
-            get => this._triggerPulled;
-            set
-            {
-                if (value == true)
-                    this.TimeSinceTriggerPull = 0f;
-                this._triggerPulled = true;
-            }
-        }
-        private float TimeSinceTriggerPull { get; set; }
+        private bool TriggerPulled { get; set; }
+        private float TriggerDownFrameCount { get; set; }
         // METHODS
         public void Flip()
         {
@@ -56,7 +55,8 @@ namespace Combat.Varia
             {
                 this.Flipped = true;
                 this.transform.Rotate(Vector2.right, 180);
-            } else
+            }
+            else
             {
                 this.Flipped = false;
                 this.transform.Rotate(Vector2.right, 180);
@@ -78,17 +78,36 @@ namespace Combat.Varia
         // FIXME VI - needs implementation
         public void RequestWeaponFire()
         {
-            foreach(BasePattern bp in this.Controllers)
+            if (this.AmmoCount > 0)
             {
-                bp.TriggerAutoFire = true;
+                foreach (BasePattern bp in this.Controllers)
+                {
+                    bp.TriggerAutoFire = true;
+                }
+                this.TriggerPulled = true;
+                this.TriggerDownFrameCount = 0;
             }
-            this.TriggerPulled = true;
-        }
-        private void Shoot()
-        {
-            
         }
 
+        public void StopFiring()
+        {
+            foreach (BasePattern bp in this.Controllers)
+            {
+                bp.TriggerAutoFire = false;
+            }
+            this.TriggerPulled = false;
+        }
+
+        private void UpdateAmmoSlot()
+        {
+            if (!this.InfiniteAmmo)
+                this.UIAmmoSlot.SetText($"{this.AmmoCount:D3}");
+            else
+                this.UIAmmoSlot.SetText("INF");
+        }
+
+        public GameObject GetGameObject() => this.gameObject;
+        public bool RequiresFlip() => this.FlipEnabled;
         // MONOBEHAVIOR
         protected override void Awake()
         {
@@ -99,7 +118,7 @@ namespace Combat.Varia
             this.Controllers = this.transform.GetComponentsInChildren<BasePattern>();
             if (this.Controllers.Length < 1)
                 throw new MissingComponentException(
-                    $"{this.GetType()} has no controllers <{typeof(BasePattern)}>");      
+                    $"{this.GetType()} has no controllers <{typeof(BasePattern)}>");
             this.FlipEnabled = this.__flipEnabled;
             this.Flipped = false;
             this.UIAmmoSlot = null;
@@ -109,10 +128,20 @@ namespace Combat.Varia
             this.Wielder = this.__wielder;
         }
 
-        void FixedUpdate()
+        protected virtual void Update()
         {
-            //if (this.WeaponController.TriggerAutoFire == true)
-            //    this.WeaponController.TriggerAutoFire = false;
+            if (this.TriggerPulled)
+            {
+                if (this.TriggerDownFrameCount < 1)
+                {
+                    this.TriggerDownFrameCount += 1;
+                }
+                else
+                {
+                    this.AmmoCount -= 1;
+                    StopFiring();
+                }
+            }
         }
     }
 }

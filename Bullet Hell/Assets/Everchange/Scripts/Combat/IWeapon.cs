@@ -31,7 +31,12 @@ namespace Combat
         /// this weapon.
         /// </summary>
         WeaponWielder Wielder { get; set; }
-
+        /// <summary>
+        /// Returns TRUE if the weapon has to be flipped. This is used by
+        /// the weapon wrapper.
+        /// </summary>
+        /// <returns></returns>
+        bool RequiresFlip();
         /// <summary>
         /// Flips the weapon on the X-Axis
         /// </summary>
@@ -68,5 +73,11 @@ namespace Combat
         /// The damage that this weapon does regardless of Ammo
         /// </summary>
         float GetBaseDamage();
+        /// <summary>
+        /// The gameObject associated with this
+        /// component.
+        /// </summary>
+        /// <returns></returns>
+        GameObject GetGameObject();
     }
 }

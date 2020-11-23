@@ -7,9 +7,9 @@ namespace Loot
     public class ItemDrop : MonoBehaviour
     {
         // Array for items
-        public Item[] commonItems; // if shop spawn, put augments in commonItems
-        public Item[] uncommonItems;
-        public Item[] rareItems;
+        public GameItem[] commonItems; // if shop spawn, put augments in commonItems
+        public GameItem[] uncommonItems;
+        public GameItem[] rareItems;
         public Weapon[] weapons;
         public bool uniqueItem;
         public bool shopSpawn = false;
@@ -43,7 +43,7 @@ namespace Loot
 
         }
 
-        public Item.Rarity getRarity()
+        public GameItem.Rarity getRarity()
         {
             // roll for item rarity
             int rarityRoll = Random.Range(1, 100);
@@ -51,17 +51,17 @@ namespace Loot
             {
                 //test = GetComponent<Item>().testing;
                 Debug.Log("Number rolled:" + rarityRoll + "\nCommon item rolled" );
-                return Item.Rarity.common;
+                return GameItem.Rarity.common;
             }
             else if (rarityRoll > common + uncommon && rarityRoll <= 100 - rare)
             {
                 Debug.Log("Number rolled:" + rarityRoll + "\nUncommon item rolled");
-                return Item.Rarity.uncommon;
+                return GameItem.Rarity.uncommon;
             }
             else
             {
                 Debug.Log("Number rolled:" + rarityRoll + "\nRare item rolled");
-                return Item.Rarity.rare;
+                return GameItem.Rarity.rare;
             }
         }
 
@@ -98,7 +98,7 @@ namespace Loot
             //SELECT which item will drop if dropItem is true
             if (dropItem == true)
             {
-                Item item = null;
+                GameItem item = null;
                 Weapon weapon = null;
                 
                 // For shop spawns
@@ -135,11 +135,11 @@ namespace Loot
                         Debug.Log("Need to set the rates for drops, default set to 65/30/5 for this run");                        
                     }
 
-                    Item.Rarity rarity = getRarity();
+                    GameItem.Rarity rarity = getRarity();
 
                     switch (rarity)
                     {
-                        case Item.Rarity.common:
+                        case GameItem.Rarity.common:
                             // SELECT a random Item from the common Items
                             item = this.commonItems[Random.Range(0, commonItems.Length)];
                             // SPAWN Item
@@ -147,7 +147,7 @@ namespace Loot
                             break;
 
 
-                        case Item.Rarity.uncommon:
+                        case GameItem.Rarity.uncommon:
                             // SELECT a random Item from the uncommon Items
                             item = this.uncommonItems[Random.Range(0, uncommonItems.Length)];
                             // SPAWN Item
@@ -155,7 +155,7 @@ namespace Loot
                             break;
 
 
-                        case Item.Rarity.rare:
+                        case GameItem.Rarity.rare:
                             // SELECT a random Item from the rare Items
                             item = this.rareItems[Random.Range(0, rareItems.Length)];
                             // SPAWN Item

@@ -37,7 +37,7 @@ namespace Combat
         }
         public PuppetMaster Puppeteer { set; get; }
 
-        public Weapon RangedWeapon
+        public IWeapon RangedWeapon
         {
             get { return this.GetQuarterMaster().GetAssignedWeapon(); }
         }
@@ -92,10 +92,11 @@ namespace Combat
             var bullets = FindObjectsOfType<Ammo>();
             foreach(var b in bullets)
             {
-                // FIXME - Combat - use b.Shooter instead of b.weapon.wielder
+                // FIXME - Combat - causing null ref error on scene close
                 if (b != null
                     && b.Shooter != null
-                    && b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
+                    && b.Shooter.GetGameObject() != null &&
+                    b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
                     Destroy(b.gameObject);
             }
         }
@@ -111,7 +112,6 @@ namespace Combat
         /// <param name="targetPosition">The point in world-space at which the target is at.</param>
         public void AimWeapon(Vector3 targetPosition)
         {
-            // TODO COMBAT-TEAM[1] - Will there ever be a STATE in which the Player is Disarmed?
             Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform);
         }
 
@@ -136,7 +136,7 @@ namespace Combat
         public override void OnDie()
         {
             base.OnDie();
-            this.RangedWeapon.gameObject.SetActive(false);
+            this.RangedWeapon.GetGameObject().SetActive(false);
         }
 
         public virtual void OnAmmoCollision(int id)

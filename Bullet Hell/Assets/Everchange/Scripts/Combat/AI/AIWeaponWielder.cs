@@ -36,7 +36,7 @@ namespace Combat.AI
         {
             base.Start(); // call base class start method.
             // SET infiniteAmmo
-            this.RangedWeapon.infAmmo = this.infinitAmmo;
+            this.RangedWeapon.InfiniteAmmo = this.infinitAmmo;
             if (!this.collideWithCombatants)
             {
                 var Combatants = GameObject.FindObjectsOfType<Combatant>();
@@ -57,9 +57,9 @@ namespace Combat.AI
             Debug.Log($"{this.gameObject.name} disarmed: {this.Disarmed()}");
             if (!this.Disarmed())
             {
-                this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.range * .75f;
+                this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.GetRange() * .75f;
                 Debug.Log($"{this.gameObject.name} min: {this.GetComponent<ShooterAI>().MinDist}");
-                this.GetComponent<ShooterAI>().MaxDist = this.RangedWeapon.range;
+                this.GetComponent<ShooterAI>().MaxDist = this.RangedWeapon.GetRange();
             }
             else
             {

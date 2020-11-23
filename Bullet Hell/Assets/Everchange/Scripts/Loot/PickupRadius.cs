@@ -6,11 +6,12 @@ namespace Loot
     class PickupRadius : MonoBehaviour
     {
         public bool inShop = false;
-        private CircleCollider2D Collider2D { get; set; }
+        private CircleCollider2D pickupCollider { get; set; }
         public void Awake()
         {
-            if (!this.Collider2D.isTrigger)
-                this.Collider2D.isTrigger = true;
+            this.pickupCollider = this.GetComponent<CircleCollider2D>();
+            if (!this.pickupCollider.isTrigger)
+                this.pickupCollider.isTrigger = true;
         }
 
         public void OnTriggerStay2D()

@@ -215,7 +215,7 @@ MonoBehaviour:
   _health: 100
   _maxHealth: 100
   shieldPowerUp: 0
-  HealthUI: {fileID: 8485369463663962361}
+  __healthBar: {fileID: 8485369463663962361}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 5426101736023786258}
   startingWeapon: {fileID: 4725200644900063036}
@@ -462,6 +462,18 @@ PrefabInstance:
       propertyPath: rateOfFire
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: __itemName
+      value: Death Mace Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: __itemDescription
+      value: conjures a mace of death.
+      objectReference: {fileID: 0}
+    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: weaponAmmo
+      value: 
+      objectReference: {fileID: 4688398247245253909, guid: 881af8e213238b547bd5dd949362d984, type: 3}
     - target: {fileID: 5834989789016567834, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.7071068

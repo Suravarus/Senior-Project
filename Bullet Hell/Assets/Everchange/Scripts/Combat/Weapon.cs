@@ -3,10 +3,11 @@ using UnityEngine;
 using System;
 
 using Combat;
+using Loot;
 using Utilities;
 using UI;
 
-public class Weapon : CompGameInfo, IWeapon
+public class Weapon : GameItem, IWeapon
 {
     // ------ UNITY EDITOR -----------------------------//
     [Header("Development")]
@@ -32,7 +33,7 @@ public class Weapon : CompGameInfo, IWeapon
     [Tooltip("Animator this script interacts with in order to trigger a shooting animation. Can be NULL.")]
     public Animator shootingAnimator;
     [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
-    public Boolean flipEnabled = false;
+    public Boolean _requiresFlip = false;
     // ------------------------------------------------//
 
     /// <summary>
@@ -204,9 +205,9 @@ public class Weapon : CompGameInfo, IWeapon
                 if (this.UIAmmoSlot != null)
                 {   // FIXME similar to assignment code in UIAmmoSlot
                     if (!infAmmo)
-                        this.UIAmmoSlot.SetText(this.ammo.ToString());
+                        this.UIAmmoSlot.SetText($"{this.AmmoCount:D3}");
                     else
-                        this.UIAmmoSlot.SetText("---");
+                        this.UIAmmoSlot.SetText("INF");
                 } 
             }
             catch (Exception ex)
@@ -252,6 +253,9 @@ public class Weapon : CompGameInfo, IWeapon
             this.transform.Rotate(Vector2.right, 180);
         }
     }
+
+    public bool RequiresFlip() => this._requiresFlip;
+    public GameObject GetGameObject() => this.gameObject;
 
     public Boolean LineOfSight(Combatant c, Combatant.BodyPart bodyPart)
     {

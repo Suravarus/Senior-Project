@@ -7,7 +7,7 @@ using Loot;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(CapsuleCollider2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class Combatant : MonoBehaviour, ICombatant
     {
         public static int MAX_WEAPONS { get { return 3; } }
@@ -20,7 +20,7 @@ namespace Combat
         public int _maxHealth = 10;
         public Boolean shieldPowerUp = false;
         [Header("UI")]
-        public HealthBar HealthUI;
+        public HealthBar __healthBar;
         [Header("Animation")]
         public Animator animator;
         // ---------------------------------------------------------------------
@@ -88,13 +88,13 @@ namespace Combat
             get { return this._magicArmor; }
         }
 
-        private CapsuleCollider2D _capsuleCollider2D;
-        private CapsuleCollider2D CapsuleCollider2D
+        private Collider2D _collider;
+        private Collider2D Collider
         {
             set
             {
                 if (!value.isTrigger)
-                    this._capsuleCollider2D = value;
+                    this._collider = value;
                 else
                     throw new Exception($"The {new CapsuleCollider2D().GetType().Name}"
                         + $" for the {this.gameObject.name} gameobject must be set to FALSE.");
@@ -103,6 +103,7 @@ namespace Combat
 
         public delegate void OnDeathF(Combatant combatant);
         public List<OnDeathF> OnDeath;
+        public HealthBar CombatHealthBar { get; set; }
 
         // ---------- Monobehaviour code --------------
 
@@ -114,15 +115,15 @@ namespace Combat
         public virtual void Awake()
         {
             // CHECK for Collider2D Component -----------------
-            var collider = this.GetComponent<CapsuleCollider2D>();
+            var collider = this.GetComponent<Collider2D>();
             if (collider != null)
             {
-                this.CapsuleCollider2D = collider;
+                this.Collider = collider;
             }
             else // IF Collider component does not exist -> THROW ERR
             {
                 var err = new MissingComponentException(
-                    $"Missing component: {new CapsuleCollider2D().GetType().Name}");
+                    $"Missing component: {new Collider2D().GetType().Name}");
                 throw err;
             }
 
@@ -131,17 +132,21 @@ namespace Combat
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.OnDeath = new List<OnDeathF>();
+            this.CombatHealthBar = this.__healthBar;
+            if (this.CombatHealthBar == null)
+                throw new MissingFieldException(
+                    $"{this.name} - {nameof(this.__healthBar)}");
         }
 
         public virtual void Start()
         {
             // TODO [UI] All combatants will require Healthbar in future.
             // update health bar
-            if (this.HealthUI != null)
-                this.HealthUI.UpdateValues(this);
+            if (this.__healthBar != null)
+                this.__healthBar.UpdateValues(this);
             else
                 throw new NullReferenceException(
-                    $"{nameof(this.HealthUI)} has not been set for {this.GetType()} component in {this.gameObject.name}");
+                    $"{nameof(this.__healthBar)} has not been set for {this.GetType()} component in {this.gameObject.name}");
             if (this.animator == null)
                 this.animator = this.GetComponent<Animator>();
         }
@@ -166,8 +171,8 @@ namespace Combat
         public virtual void TakeDamage(IAmmo a)
         {
             this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
-            if (this.HealthUI != null) // TODO [UI] combatants will require Healthbar in future.
-                this.HealthUI.UpdateValues(this);
+            if (this.__healthBar != null) // TODO [UI] combatants will require Healthbar in future.
+                this.__healthBar.UpdateValues(this);
             if (this.Health == 0)
                 this.Die();
         }

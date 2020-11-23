@@ -98,21 +98,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 List<Collider2D> cds = new List<Collider2D>();
                 Debug.Log(collider.OverlapCollider(new ContactFilter2D().NoFilter(), cds));
-                
-                for (int i = 0; i < cds.Count; i++)
-                {
-                    var weapon = cds[i].GetComponent<Weapon>();
-                    //var storeItem = cds[i].GetComponent<StoreItem>();
 
-                    if (weapon != null)
-                    {
-                        this.GetComponent<Pickup>().PickupLoot(cds[i]);
-                    } 
-                    //else if (storeItem != null)
-                    //{
-                    //    storeItem.buy(player);
-                    //}
-                }
+                if (cds.Count > 0) this.GetComponent<Looter>().PickupLoot(cds[0]);
             }
         };
 

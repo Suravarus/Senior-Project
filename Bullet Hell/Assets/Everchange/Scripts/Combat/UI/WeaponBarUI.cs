@@ -70,7 +70,7 @@ namespace Combat.UI
                     if (arsenal[i] != null)
                     {
                         var s = this.WeaponSlots[i];
-                        var weaponRenderer = arsenal[i].gameObject.GetComponent<SpriteRenderer>();
+                        var weaponRenderer = arsenal[i].GetGameObject().GetComponent<SpriteRenderer>();
                         s.SetIcon(weaponRenderer.sprite, weaponRenderer.transform.lossyScale);
                         s.SetIndex(i);
                         s.SetText((i + 1).ToString());

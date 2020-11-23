@@ -15,11 +15,11 @@ namespace Combat
     {
         private WeaponWielder Wielder { get; set; }
         private int AssignedIndex { get; set; }
-        private List<Weapon> _arsenal;
+        private List<IWeapon> _arsenal;
         /// <summary>
         /// List of weapons the Combatant can use at any time.
         /// </summary>
-        private List<Weapon> Arsenal
+        private List<IWeapon> Arsenal
         {
             set
             {
@@ -61,13 +61,13 @@ namespace Combat
         /// <param name="wielder"></param>
         /// <param name="weapons">MAX 3</param>
         public QuarterMaster(WeaponWielder wielder,
-            Weapon[] weapons,
+            IWeapon[] weapons,
             WeaponWrapper weaponWrapper,
             WeaponBarUI abilityBar = null)
         {
             this.Wielder = wielder;
             this.Wrapper = weaponWrapper;
-            this.Arsenal = new List<Weapon>(Combatant.MAX_WEAPONS);
+            this.Arsenal = new List<IWeapon>(Combatant.MAX_WEAPONS);
             foreach (Weapon w in weapons)
             {
                 if (w != null)
@@ -125,7 +125,7 @@ namespace Combat
             }
         }
 
-        public Weapon GetAssignedWeapon()
+        public IWeapon GetAssignedWeapon()
         {
             if (this.AssignedIndex > -1 && this.Arsenal.Count > 0)
                 return this.Arsenal[this.AssignedIndex];
@@ -138,15 +138,15 @@ namespace Combat
         /// and replaced by the given weapon.
         /// </summary>
         /// <param name="weapon"></param>
-        public void PickupWeapon(Weapon weapon)
+        public void PickupWeapon(IWeapon weapon)
         {
             if (!this.Arsenal.Contains(weapon))
             {
                 // IF Arsenal is full and wielder is not disarmed
                 if (this.FullArsenal && !this.Wielder.Disarmed())
                 {
-                    this.GetAssignedWeapon().wielder = null;
-                    DropWeaponAt(this.GetAssignedWeapon(), weapon.transform.position);
+                    this.GetAssignedWeapon().Wielder = null;
+                    DropWeaponAt(this.GetAssignedWeapon(), weapon.GetGameObject().transform.position);
                     this.Arsenal[this.AssignedIndex] = weapon;
                     ActivateWeapon(weapon);
 
@@ -170,7 +170,7 @@ namespace Combat
 
                 if (!this.FullArsenal || !this.Wielder.Disarmed())
                 {
-                    weapon.wielder = this.Wielder;
+                    weapon.Wielder = this.Wielder;
                     this.WeaponBar.SetWeapons(this);
                 }
             }
@@ -181,27 +181,27 @@ namespace Combat
             }
         }
 
-        private void DropWeaponAt(Weapon weapon, Vector2 position)
+        private void DropWeaponAt(IWeapon weapon, Vector2 position)
         {
-            weapon.transform.SetParent(null);
-            weapon.transform.position = position;
+            weapon.GetGameObject().transform.SetParent(null);
+            weapon.GetGameObject().transform.position = position;
             weapon.UIAmmoSlot = null;
 
-            var collider = weapon.GetComponent<Collider2D>();
+            var collider = weapon.GetGameObject().GetComponent<Collider2D>();
             if (collider != null) collider.enabled = true;
         }
 
         /// <summary>
         /// Set's the ranged weapon as the weapon pointed to by the index.
         /// </summary>
-        private void ActivateWeapon(Weapon w)
+        private void ActivateWeapon(IWeapon w)
         {
-            var lootRadius = w.GetComponent<Collider2D>();
+            var lootRadius = w.GetGameObject().GetComponent<Collider2D>();
             if (lootRadius != null)
                 lootRadius.enabled = false;
             else
-                Debug.LogWarning($"weapon {w.gameObject.name} should have a lootRadius collider");
-            w.gameObject.SetActive(true);
+                Debug.LogWarning($"weapon {w.GetGameObject().name} should have a lootRadius collider");
+            w.GetGameObject().SetActive(true);
             this.Wrapper.WrapWeapon(w);
             this.Wrapper.CalibrateWeapon();
 
@@ -222,11 +222,11 @@ namespace Combat
             }
         }
 
-        private void DeactivateWeapon(Weapon w)
+        private void DeactivateWeapon(IWeapon w)
         {
             if (this.Arsenal[this.AssignedIndex] != null)
             {
-                w.gameObject.SetActive(false);
+                w.GetGameObject().SetActive(false);
                 w.UIAmmoSlot = null;
             }
         }
@@ -250,7 +250,7 @@ namespace Combat
             }
 
         }
-        public Weapon[] GetArsenal()
+        public IWeapon[] GetArsenal()
         {
             return this.Arsenal.ToArray();
         }

@@ -47,9 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __itemName: crude mistress
+  __itemDescription: ---
+  __saleable: 0
+  __itemPrice: 0
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 0
   drawGizmo: 0
-  price: 0
-  weaponAmmo: {fileID: 6627338467485328783, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
+  weaponAmmo: {fileID: 0}
   ammoSpawnPoint: {fileID: 1934036744767000279}
   wielder: {fileID: 0}
   baseDamage: 10
@@ -59,7 +65,7 @@ MonoBehaviour:
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 5145271836151194010}
-  flipEnabled: 1
+  _requiresFlip: 0
 --- !u!212 &5145271836151194003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 5145271836151194004}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f0db1faad755234a814d17530376d67, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
