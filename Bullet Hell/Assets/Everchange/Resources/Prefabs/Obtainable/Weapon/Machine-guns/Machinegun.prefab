@@ -190,6 +190,8 @@ GameObject:
   - component: {fileID: 7087875195955197986}
   - component: {fileID: 2104525736100852452}
   - component: {fileID: 1852243682}
+  - component: {fileID: 359763925}
+  - component: {fileID: 359763924}
   m_Layer: 0
   m_Name: Machinegun
   m_TagString: Untagged
@@ -309,6 +311,35 @@ MonoBehaviour:
   __ammoCount: 200
   __range: 3
   __flipEnabled: 0
+--- !u!58 &359763925
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471668854306967277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.3
+--- !u!114 &359763924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471668854306967277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0
 --- !u!1001 &3790585040539590465
 PrefabInstance:
   m_ObjectHideFlags: 0
