@@ -66,11 +66,19 @@ namespace Combat
             // position weapon
             this.WrappedWeapon.GetGameObject()
                 .transform.position = this.InitialWeaponPosition;
-            this.WrappedWeapon.GetGameObject()
+            this.WrappedWeapon.GetGunBarrel().transform.position = new Vector2(
+                this.transform.position.x,
+                this.WrappedWeapon.GetGunBarrel().transform.position.y);
+            this.WrappedWeapon.GetGunBarrel()
                 .transform.SetParent(this.transform);
-            if (this.WrappedWeapon.IsFlipped())
+            if (this.WrappedWeapon.RequiresFlip() && this.WrappedWeapon.IsFlipped())
                 this.WrappedWeapon.Flip();
-            this.WrappedWeapon.GetGameObject()
+            //Combatant.RotateTo(
+            //    new Vector3(
+            //        this.transform.position.x,
+            //        this.transform.position.y + 1000),
+            //    this.WrappedWeapon.GetGunBarrel().transform);
+            this.WrappedWeapon.GetGunBarrel()
                 .transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
