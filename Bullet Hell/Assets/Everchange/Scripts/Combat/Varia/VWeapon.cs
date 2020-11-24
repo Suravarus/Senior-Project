@@ -48,18 +48,27 @@ namespace Combat.Varia
         public WeaponWielder Wielder { get; set; }
         private bool TriggerPulled { get; set; }
         private float TriggerDownFrameCount { get; set; }
+        private bool FlippedControllers { get; set; }
         // METHODS
         public void Flip()
         {
             if (!this.Flipped)
             {
                 this.Flipped = true;
-                this.transform.Rotate(Vector2.right, 180);
+                this.GetGunBarrel().transform.Rotate(Vector2.right, 180f);
+                for(int i = 0; i < this.transform.childCount; i++)
+                {
+                    this.transform.GetChild(i).transform.Rotate(Vector2.right, 180f);
+                }
             }
             else
             {
                 this.Flipped = false;
-                this.transform.Rotate(Vector2.right, 180);
+                this.GetGunBarrel().transform.Rotate(Vector2.right, 180f);
+                for (int i = 0; i < this.transform.childCount; i++)
+                {
+                    this.transform.GetChild(i).transform.Rotate(Vector2.right, 180f);
+                }
             }
         }
 
@@ -78,7 +87,7 @@ namespace Combat.Varia
         // FIXME VI - needs implementation
         public void RequestWeaponFire()
         {
-            if (this.AmmoCount > 0)
+            if (this.InfiniteAmmo || this.AmmoCount > 0)
             {
                 foreach (BasePattern bp in this.Controllers)
                 {
@@ -108,6 +117,7 @@ namespace Combat.Varia
 
         public GameObject GetGameObject() => this.gameObject;
         public bool RequiresFlip() => this.FlipEnabled;
+        public GameObject GetGunBarrel() => this.gameObject.transform.parent.gameObject;
         // MONOBEHAVIOR
         protected override void Awake()
         {
@@ -126,6 +136,7 @@ namespace Combat.Varia
             this.AmmoCount = this.__ammoCount;
             this.ShootingAnimator = this.GetComponent<Animator>();
             this.Wielder = this.__wielder;
+            this.FlippedControllers = this.Flipped;
         }
 
         protected virtual void Update()
@@ -141,6 +152,11 @@ namespace Combat.Varia
                     this.AmmoCount -= 1;
                     StopFiring();
                 }
+            }
+            
+            if (this.GetGunBarrel().transform.parent != null)
+            {
+                this.Controllers[0].Pitch = this.transform.rotation.z;
             }
         }
     }

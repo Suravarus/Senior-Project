@@ -79,5 +79,6 @@ namespace Combat
         /// </summary>
         /// <returns></returns>
         GameObject GetGameObject();
+        GameObject GetGunBarrel();
     }
 }

@@ -304,4 +304,6 @@ public class Weapon : GameItem, IWeapon
     {
         return this.baseDamage;
     }
+
+    public GameObject GetGunBarrel() => this.gameObject;
 }
