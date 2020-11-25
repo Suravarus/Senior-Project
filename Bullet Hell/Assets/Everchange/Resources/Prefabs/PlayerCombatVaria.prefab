@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8984449444413092574}
   - component: {fileID: 1122876864888820426}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,8 @@ GameObject:
   - component: {fileID: 23179931375734250}
   - component: {fileID: 8015312492380385351}
   - component: {fileID: 1030189583398836635}
-  m_Layer: 0
+  - component: {fileID: 1410104939}
+  m_Layer: 13
   m_Name: PlayerCombatVaria
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -242,7 +243,7 @@ MonoBehaviour:
   __healthBar: {fileID: 0}
   animator: {fileID: 333867401150948273}
   rangedWeaponWrapper: {fileID: 1122876864888820426}
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 5523117105201254369}
   rateOfFirePowerUp: 0
   rateOfFireTimerStrength: 2
   rateOfFireTimer: 8
@@ -264,6 +265,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyUI: {fileID: 0}
+--- !u!114 &1410104939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333867401150948272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e499963cb47ff564bad07a0b64f6b263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionList:
+  - ND_EnemyBullet
+  - Default
+  LaserExplosion: 
+  BulletExplosion: 
+  ParentExplosion: 1
+  DeathExplosion: 
+  FinalExplodeFactor: 2
+  DamageFlicker: 1
+  FlickerDuration: 6
+  DamageColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1216794667275061726
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2425521432581481407}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1164274039151228549}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,9 +355,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984449444413092574}
     m_Modifications:
+    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: weaponAmmo
+      value: 
+      objectReference: {fileID: 6627338467485328819, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
+    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: _requiresFlip
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194004, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_Name
       value: pistol_crude_mistress
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145271836151194004, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -383,6 +419,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f8f8d65305931154ab37b90a32890940, type: 2}
+    - target: {fileID: 6410066274293985878, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
 --- !u!4 &5523117105201254374 stripped
@@ -390,3 +430,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
   m_PrefabInstance: {fileID: 847134985624923763}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5523117105201254369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
+  m_PrefabInstance: {fileID: 847134985624923763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
