@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9146443317367442606}
   - component: {fileID: 4090006881702710366}
   - component: {fileID: 6567132996722579612}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 8132509549411793249}
   - component: {fileID: 1380627169517174395}
   - component: {fileID: 1571574110584032250}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 8075637554789972663}
   - component: {fileID: 5523621839999037036}
   - component: {fileID: 3253565747251376414}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Filler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 6216603858542744332}
   - component: {fileID: 5832755953276487125}
   - component: {fileID: 1776712361568128336}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RazorLeaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747478261031268754}
   - component: {fileID: 6331495518165607942}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4469285622859050297}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ammoSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,8 @@ GameObject:
   - component: {fileID: 3122443236785312220}
   - component: {fileID: 6658613262580286545}
   - component: {fileID: 1425091614127910572}
-  m_Layer: 0
+  - component: {fileID: 1755073439}
+  m_Layer: 14
   m_Name: PossesedAncient_v2
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -755,6 +756,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1755073439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956956204253629672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e499963cb47ff564bad07a0b64f6b263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionList:
+  - ND_PlayerBullet
+  LaserExplosion: 
+  BulletExplosion: 
+  ParentExplosion: 1
+  DeathExplosion: 
+  FinalExplodeFactor: 2
+  DamageFlicker: 1
+  FlickerDuration: 5
+  DamageColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7150313415885168400
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +789,7 @@ GameObject:
   - component: {fileID: 2159861745171072654}
   - component: {fileID: 8052931381067293595}
   - component: {fileID: 1604524700501826054}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2681495273079694736}
   - component: {fileID: 797123059821196714}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +978,7 @@ GameObject:
   - component: {fileID: 7484907408600950085}
   - component: {fileID: 860683541072377114}
   - component: {fileID: 4880880810328488259}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1054,7 @@ GameObject:
   - component: {fileID: 5696742601200238935}
   - component: {fileID: 7131071552868220638}
   - component: {fileID: 2307285219268282432}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: canvas_healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

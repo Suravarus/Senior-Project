@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6135978828062512034}
   - component: {fileID: 5426101736023786258}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,8 @@ GameObject:
   - component: {fileID: 5293613830069688691}
   - component: {fileID: -8517471217745400475}
   - component: {fileID: 1792313703}
-  m_Layer: 0
+  - component: {fileID: 126753100}
+  m_Layer: 14
   m_Name: Turret Enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -295,6 +296,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &126753100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712118777339864071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e499963cb47ff564bad07a0b64f6b263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionList:
+  - ND_PlayerBullet
+  LaserExplosion: 
+  BulletExplosion: 
+  ParentExplosion: 1
+  DeathExplosion: 
+  FinalExplodeFactor: 2
+  DamageFlicker: 1
+  FlickerDuration: 5
+  DamageColor: {r: 0.5660378, g: 0.008009953, b: 0.008009953, a: 0}
 --- !u!1001 &803960061500844770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,9 +413,37 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2362017213774791083, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700208359551309114, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622541893610036847, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622874476387643011, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624112490920119075, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624138211228340571, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8301879870286695534, guid: 931180ee1ecde7643814304931b55691, type: 3}
       propertyPath: m_Name
       value: canvas_healthbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301879870286695534, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931180ee1ecde7643814304931b55691, type: 3}
@@ -467,10 +518,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeyBall
       objectReference: {fileID: 0}
+    - target: {fileID: 957776989926973273, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
       propertyPath: wielder
       value: 
       objectReference: {fileID: 8252004040100609672}
+    - target: {fileID: 1357898169903467675, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
 --- !u!4 &4725200644900063035 stripped
