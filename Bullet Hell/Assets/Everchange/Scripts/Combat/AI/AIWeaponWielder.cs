@@ -6,7 +6,7 @@ using Combat;
 namespace Combat.AI
 {
     [RequireComponent(typeof(Pathfinding.Seeker))]
-    [RequireComponent(typeof(Combat.AI.ShooterAI))]
+    [RequireComponent(typeof(ShooterAI))]
     public class AIWeaponWielder : WeaponWielder
     {
         // UnityEditor FIELDS -----------------------------------

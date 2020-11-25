@@ -37,6 +37,7 @@ namespace Combat.Animation
             {
                 // DETERMINE if player is moving.
                 Boolean puppetIsMoving = this.Puppet.GetComponent<Rigidbody2D>().velocity.magnitude > 0;
+                // FIXME using mouse-cursor for AI puppet master
                 // CALCULATE the vector from the puppet's weapon to it's chest
                 var target = (!this.Puppet.Disarmed()
                     ? this.Puppet.RangedWeapon.GetGameObject().transform.position
@@ -52,36 +53,46 @@ namespace Combat.Animation
                     switch (direction)
                     {
                         case PhysicsTool.Direction.Down:
-                            this.CharacterAnimator.Play(RunningStateName.RunDown.ToString());
+                            SetState(AnimationState.RunDown);
                             break;
                         case PhysicsTool.Direction.Up:
-                            this.CharacterAnimator.Play(RunningStateName.RunUp.ToString());
+                            SetState(AnimationState.RunUp);
                             break;
                         case PhysicsTool.Direction.Left:
-                            this.CharacterAnimator.Play(RunningStateName.RunLeft.ToString());
+                            SetState(AnimationState.RunLeft);
                             break;
                         case PhysicsTool.Direction.Right:
-                            this.CharacterAnimator.Play(RunningStateName.RunRight.ToString());
+                            SetState(AnimationState.RunRight);
                             break;
                     }
                 }
                 else // ELSE
                 {
                     // SET idle animation based on direction
-                    switch (direction)
+                    var ai = this.Puppet.GetComponent<AI.AIWeaponWielder>();
+                    if (ai != null && !ai.InCombat())
                     {
-                        case PhysicsTool.Direction.Down:
-                            this.CharacterAnimator.Play(IdleStateName.IdleDown.ToString());
-                            break;
-                        case PhysicsTool.Direction.Left:
-                            this.CharacterAnimator.Play(IdleStateName.IdleLeft.ToString());
-                            break;
-                        case PhysicsTool.Direction.Up:
-                            this.CharacterAnimator.Play(IdleStateName.IdleUp.ToString());
-                            break;
-                        case PhysicsTool.Direction.Right:
-                            this.CharacterAnimator.Play(IdleStateName.IdleRight.ToString());
-                            break;
+                        SetState(AnimationState.Idle);
+                    } else
+                    {
+                        switch (direction)
+                        {
+                            case PhysicsTool.Direction.Down:
+                                SetState(AnimationState.IdleDown);
+                                break;
+                            case PhysicsTool.Direction.Left:
+                                SetState(AnimationState.IdleLeft);
+                                break;
+                            case PhysicsTool.Direction.Up:
+                                SetState(AnimationState.IdleUp);
+                                break;
+                            case PhysicsTool.Direction.Right:
+                                SetState(AnimationState.IdleRight);
+                                break;
+                            default:
+                                SetState(AnimationState.Idle);
+                                break;
+                        }
                     }
                 }
             }
@@ -89,6 +100,26 @@ namespace Combat.Animation
             {
                 this.CharacterAnimator.StopPlayback();
                 this.CharacterAnimator.enabled = false;
+            }
+        }
+
+        private void SetState(AnimationState nextState)
+        {
+            var IsIdle = this.CharacterAnimator.GetBool("IsIdle");
+            var speed = !this.PuppetIsPlayer ? this.Puppet.GetComponent<AI.AIWeaponWielder>().speed : 12f;
+
+            if (!IsIdle && nextState == AnimationState.Idle)
+            {
+                this.CharacterAnimator.SetBool("IsIdle", true);
+                this.CharacterAnimator.StopPlayback();
+                this.CharacterAnimator.speed = .2f;
+                this.CharacterAnimator.Play(AnimationState.Idle.ToString(), 0);
+            } else if (!this.CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName(nextState.ToString()))
+            {
+                this.CharacterAnimator.SetBool("IsIdle", false);
+                this.CharacterAnimator.StopPlayback();
+                this.CharacterAnimator.speed = 0.08f * speed;
+                this.CharacterAnimator.Play(nextState.ToString());
             }
         }
     }

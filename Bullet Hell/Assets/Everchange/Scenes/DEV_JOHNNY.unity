@@ -1770,7 +1770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712118777339864071, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ddddd4a999a2ff4a87d39549baa3e26, type: 3}
@@ -2155,10 +2155,6 @@ PrefabInstance:
     - target: {fileID: 6956956204253629672, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
       propertyPath: m_Name
       value: PossesedAncient_v2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6956956204253629672, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7150124671049844150, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
       propertyPath: m_LocalPosition.x
