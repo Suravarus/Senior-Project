@@ -119,7 +119,7 @@ namespace Combat.Animation
                 this.CharacterAnimator.SetBool("IsIdle", false);
                 this.CharacterAnimator.StopPlayback();
                 this.CharacterAnimator.speed = 0.08f * speed;
-                this.CharacterAnimator.Play(nextState.ToString());
+                this.CharacterAnimator.Play(nextState.ToString(), 0);
             }
         }
     }

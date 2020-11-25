@@ -9,8 +9,14 @@ namespace Combat.AI
     [RequireComponent(typeof(ShooterAI))]
     public class AIWeaponWielder : WeaponWielder
     {
+        public enum AIType
+        {
+            Humanoid,
+            Turret
+        }
         // UnityEditor FIELDS -----------------------------------
         [Header("Behavior Parameters")]
+        public AIType Type;
         [Tooltip("Should this AI only attack if provoked?.")]
         public Boolean passive = false;
         [Tooltip("If TRUE(default), this combatant will never run out of ammo.")]
@@ -223,6 +229,8 @@ namespace Combat.AI
         public Boolean Engage(Combatant enemy)
         {
             Boolean shotsFired = false;
+            // AIM at target
+            this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
             // movement stuff
             this.GetComponent<ShooterAI>().target = enemy.GetBodyTransform(Combatant.BodyPart.Chest);
             
@@ -232,7 +240,6 @@ namespace Combat.AI
                 // DONT charge at target
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
                 // SHOOT target 
-                this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
                 this.ShootWeapon();
             } else // ELSE
             {
@@ -240,6 +247,14 @@ namespace Combat.AI
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
             }
             return shotsFired;
+        }
+
+        public override bool ShootWeapon()
+        {
+             var shot = base.ShootWeapon();
+            if (this.Type == AIType.Turret && shot) 
+                this.GetComponent<Animator>().Play("Shoot",0);
+            return shot;
         }
 
         /// <summary>
