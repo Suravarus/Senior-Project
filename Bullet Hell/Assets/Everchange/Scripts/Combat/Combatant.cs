@@ -171,10 +171,10 @@ namespace Combat
         public virtual void TakeDamage(IAmmo a)
         {
             this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
-            if (this.__healthBar != null) // TODO [UI] combatants will require Healthbar in future.
-                this.__healthBar.UpdateValues(this);
-            if (this.Health == 0)
-                this.Die();
+
+            this.CombatHealthBar.UpdateValues(this);
+
+            if (!this.IsAlive()) this.Die();
         }
 
         /// <summary>
