@@ -60,7 +60,6 @@ namespace ND_VariaBULLET
         protected SpriteRenderer rend;
         private bool poolOrDestroyTriggered;
 
-        public IWeapon CombatWeapon { get; set; }
         public float Speed { get => this.ShotSpeed; set => this.ShotSpeed = value; }
         public float Damage { get => this.DamagePerHit; set => this.DamagePerHit = value; }
         public IWeapon Weapon { get; set; }
@@ -92,10 +91,10 @@ namespace ND_VariaBULLET
 
             rend = GetComponent<SpriteRenderer>();
             setSprite(rend);
-            this.CombatWeapon = ShotBase.GetWeaponComponent(this.Emitter.transform);
-            if (this.CombatWeapon == null)
+            this.Weapon = ShotBase.GetWeaponComponent(this.Emitter.transform);
+            if (this.Weapon == null)
                 throw new NullReferenceException($"Unable to find weapon component.");
-            this.Shooter = this.CombatWeapon.Wielder;
+            this.Shooter = this.Weapon.Wielder;
             this.StartingPosition = this.transform.position;
         }
 
