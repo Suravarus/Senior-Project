@@ -84,14 +84,21 @@ namespace ND_VariaBULLET
 
         protected virtual void setDamage(Collision2D collision)
         {
-            this.Combatant.TakeDamage(
+            var am = collision.gameObject.GetComponent<IAmmo>();
+            if (am != null)
+            {
+                this.Combatant.TakeDamage(
                 collision.gameObject.GetComponent<IAmmo>());
+            }
         }
 
         protected virtual void setDamage(CollisionArgs collisionArgs)
         {
-            this.Combatant.TakeDamage(
+            if (collisionArgs.gameObject.GetComponent<IAmmo>() != null)
+            {
+                this.Combatant.TakeDamage(
                 collisionArgs.gameObject.GetComponent<IAmmo>());
+            }
         }
 
         protected IEnumerator setFlicker()
