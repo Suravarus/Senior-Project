@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957776989926973273}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 3, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
@@ -45,25 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  __itemName: Deadman's Mace
-  __itemDescription: Hurl a big mace at the target.
+  __itemName: Death Mace Spell
+  __itemDescription: conjures a mace of death.
   __saleable: 0
   __itemPrice: 0
   inShop: 0
   Item_Rarity: 0
   __classID: 0
   drawGizmo: 0
-  weaponAmmo: {fileID: 0}
+  weaponAmmo: {fileID: 4688398247245253909, guid: 881af8e213238b547bd5dd949362d984, type: 3}
   ammoSpawnPoint: {fileID: 5834989789016567834}
   wielder: {fileID: 0}
-  baseDamage: 1
-  bulletSpeed: 10
+  baseDamage: 50
+  bulletSpeed: 3
   rateOfFire: 1
-  range: 4
+  range: 100
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 0}
-  flipEnabled: 0
+  _requiresFlip: 0
 --- !u!212 &957776989926973278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,10 +138,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357898169903467675}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 957776989926973272}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

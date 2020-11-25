@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 8252004040100609672}
   - component: {fileID: 5293613830069688691}
   - component: {fileID: -8517471217745400475}
+  - component: {fileID: 1792313703}
   m_Layer: 0
   m_Name: Turret Enemy
   m_TagString: enemy
@@ -227,6 +228,7 @@ MonoBehaviour:
   piercingTimer: 10
   piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
+  Type: 1
   passive: 0
   infinitAmmo: 1
   speed: 5
@@ -274,6 +276,25 @@ MonoBehaviour:
   uncommon: 0
   rare: 0
   weaponChance: 0
+--- !u!95 &1792313703
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712118777339864071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ca556954d5e3904a89ff31673d15881, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &803960061500844770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,45 +468,9 @@ PrefabInstance:
       value: SpikeyBall
       objectReference: {fileID: 0}
     - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: range
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
       propertyPath: wielder
       value: 
       objectReference: {fileID: 8252004040100609672}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: bulletSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: rateOfFire
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: __itemName
-      value: Death Mace Spell
-      objectReference: {fileID: 0}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: __itemDescription
-      value: conjures a mace of death.
-      objectReference: {fileID: 0}
-    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: weaponAmmo
-      value: 
-      objectReference: {fileID: 4688398247245253909, guid: 881af8e213238b547bd5dd949362d984, type: 3}
-    - target: {fileID: 5834989789016567834, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834989789016567834, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834989789016567834, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
 --- !u!4 &4725200644900063035 stripped

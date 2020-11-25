@@ -93,11 +93,18 @@ namespace Combat
             foreach(var b in bullets)
             {
                 // FIXME - Combat - causing null ref error on scene close
-                if (b != null
-                    && b.Shooter != null
-                    && b.Shooter.GetGameObject() != null &&
-                    b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
-                    Destroy(b.gameObject);
+                //if (b != null
+                //    && b.Shooter != null
+                //    && b.Shooter.GetGameObject() != null &&
+                //    b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
+                //    Destroy(b.gameObject);
+
+                try 
+                {
+                    if (b.Shooter.GetGameObject().GetInstanceID() == this.gameObject.GetInstanceID())
+                        Destroy(b);
+                }
+                catch(Exception ex) { Debug.LogWarning(ex.Message); }
             }
         }
 
@@ -118,7 +125,7 @@ namespace Combat
         /// <summary>
         /// Shoots the RangedWeapon. The weapon's rate of fire is taken into account.
         /// </summary>
-        public Boolean ShootWeapon()
+        public virtual Boolean ShootWeapon()
         {
             if (!this.Disarmed())
             {

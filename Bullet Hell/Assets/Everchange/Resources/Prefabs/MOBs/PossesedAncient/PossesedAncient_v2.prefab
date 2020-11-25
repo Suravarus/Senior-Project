@@ -293,8 +293,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7383083170659892440}
-  - component: {fileID: 4275442142961430537}
   - component: {fileID: 4978473589547769116}
+  - component: {fileID: 6216603858542744332}
+  - component: {fileID: 5832755953276487125}
+  - component: {fileID: 1776712361568128336}
   m_Layer: 0
   m_Name: RazorLeaf
   m_TagString: Untagged
@@ -317,37 +319,6 @@ Transform:
   m_Father: {fileID: 747478261031268754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &4275442142961430537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4541967181704674692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  __itemName: RazorLeaf Spell
-  __itemDescription: Conjure sharp leaves to throw at enemies.
-  __saleable: 0
-  __itemPrice: 0
-  inShop: 0
-  Item_Rarity: 0
-  __classID: 0
-  drawGizmo: 0
-  weaponAmmo: {fileID: 979262230771606253, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
-  ammoSpawnPoint: {fileID: 4469285622859050297}
-  wielder: {fileID: 0}
-  baseDamage: 5
-  bulletSpeed: 10
-  rateOfFire: 1
-  range: 4
-  infAmmo: 1
-  ammo: 10
-  shootingAnimator: {fileID: 0}
-  _requiresFlip: 0
 --- !u!212 &4978473589547769116
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -399,6 +370,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &6216603858542744332
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541967181704674692}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.123714045
+--- !u!114 &5832755953276487125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541967181704674692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0
+--- !u!114 &1776712361568128336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541967181704674692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d4afea73551d3449d4133952f8380b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: RazorLeaf Spell
+  __itemDescription: Conjure sharp leaves to throw at enemies.
+  __saleable: 0
+  __itemPrice: 0
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 0
+  drawGizmo: 0
+  weaponAmmo: {fileID: 979262230771606253, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
+  ammoSpawnPoint: {fileID: 0}
+  wielder: {fileID: 0}
+  baseDamage: 5
+  bulletSpeed: 10
+  rateOfFire: 1
+  range: 4
+  infAmmo: 1
+  ammo: 10
+  shootingAnimator: {fileID: 0}
+  _requiresFlip: 0
 --- !u!1 &5059337719063330802
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +679,7 @@ MonoBehaviour:
   __healthBar: {fileID: 797123059821196714}
   animator: {fileID: 0}
   rangedWeaponWrapper: {fileID: 6331495518165607942}
-  startingWeapon: {fileID: 4275442142961430537}
+  startingWeapon: {fileID: 1776712361568128336}
   rateOfFirePowerUp: 0
   rateOfFireTimerStrength: 2
   rateOfFireTimer: 8
@@ -657,6 +688,7 @@ MonoBehaviour:
   piercingTimer: 10
   piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
+  Type: 0
   passive: 0
   infinitAmmo: 1
   speed: 5
