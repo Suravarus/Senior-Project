@@ -212,7 +212,6 @@ namespace Combat
 
                 if (rangedAttack)
                 {
-                    Debug.LogWarning(ammo.name);
                     if (!shieldPowerUp) this.TakeDamage(ammo);
                     else shieldPowerUp = false;
                 }

@@ -72,7 +72,7 @@ namespace Combat.AI
                 this.GetComponent<ShooterAI>().MinDist = 1;
                 this.GetComponent<ShooterAI>().MaxDist = 1;
             }
-                
+            if (this.Type == AIType.Turret) this.Puppeteer.Active = false;
         }
 
         // ALGORITHM:
