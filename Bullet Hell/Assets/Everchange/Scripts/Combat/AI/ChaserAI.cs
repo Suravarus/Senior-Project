@@ -34,7 +34,7 @@ namespace Combat.AI
         {
             if (moving)
             {
-                if (seeker.IsDone())
+                if (seeker.IsDone() && target != null)
                 {
                     seeker.StartPath(rb.position, target.position, OnPathComplete);
                 }
@@ -58,7 +58,7 @@ namespace Combat.AI
                 if (path == null)
                     return;
 
-                if (!this.target.GetComponent<Combat.Combatant>().IsAlive()
+                if (this.target != null && !this.target.GetComponent<Combat.Combatant>().IsAlive()
                     || currentWaypoint >= path.vectorPath.Count)
                 {
                     reachedEndOfPath = true;
