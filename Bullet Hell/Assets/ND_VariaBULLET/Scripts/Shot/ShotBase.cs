@@ -66,6 +66,7 @@ namespace ND_VariaBULLET
         public IWeaponWielder Shooter { get; set; }
         private Vector3 StartingPosition { get; set; }
 
+        private Vector2 prev = Vector2.zero;
         public virtual void InitialSet()
         {
             eventCounter.Reset();
@@ -109,6 +110,25 @@ namespace ND_VariaBULLET
             OnOutBounds();
             scale = (IgnoreGlobalSpeedScale) ? 1 : GlobalShotManager.Instance.SpeedScale;
             scaledSpeed = ShotSpeed * scale;
+        }
+
+        public virtual void FixedUpdate()
+        {
+            //This code is meant to prevent bullets from skipping past colliders they're meant to interact with.
+            //if (prev != Vector2.zero)
+            //{
+            //    RaycastHit2D[] results = new RaycastHit2D[1];
+            //    int mask1 = 1 << LayerMask.NameToLayer("Enemy");
+            //    int mask2 = 1 << LayerMask.NameToLayer("Obstacles");
+            //    int combinedMask = mask1 | mask2;
+            //    if (0 < Physics2D.LinecastNonAlloc(prev, transform.position, results, combinedMask))
+            //    {
+            //        Debug.Log("Repool or destroy " + results[0].collider);
+
+            //        RePoolOrDestroy();
+            //    }
+            //}
+            //prev = transform.position;
         }
 
         protected virtual void setSprite(SpriteRenderer sr)

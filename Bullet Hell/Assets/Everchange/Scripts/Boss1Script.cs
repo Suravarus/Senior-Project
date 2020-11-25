@@ -42,7 +42,8 @@ public class Boss1Script : MonoBehaviour
     private bool goingDown = false;
     private Vector2 target;
     private Vector2 direction;
-    private bool isDead = false;
+    Vector2 roomCenter;
+    private bool bulletHellPhase = false;
     private float fireAngle = 0.0f;
     private GameObject shadow;
     private bool shadowFollowing = false;
@@ -59,22 +60,26 @@ public class Boss1Script : MonoBehaviour
         bossPos = GetComponent<Transform>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = bossPos.position;
+        roomCenter = bossPos.position;
     }
 
     // Update is called 50 times per second
 void FixedUpdate()
     {
-        if(bossPhase == 1 && bossInfo.Health <= (bossInfo.MaxHealth / 2))
+        if(bossPhase == 1 && bossInfo.Health <= (bossInfo.MaxHealth / 2) && !isJumping)
         {
             bossPhase = 2;
             jumpTime /= 2;
             jumpSpeed *= 2;
+            landingShot.setFirstEmitterSpeed(15);
+            landingShot.cloneFirstEmitter();
         }
         if (shadowFollowing)
         {
-            shadow.transform.position = Vector2.MoveTowards(shadow.transform.position, player.position, jumpSpeed * Time.deltaTime);
-            //new Vector3(player.position.x - shadow.transform.position.x, 
-            //player.position.y - shadow.transform.position.y, 0).normalized * jumpSpeed * Time.deltaTime;
+            if (bossPhase == 1)
+                shadow.transform.position = Vector2.MoveTowards(shadow.transform.position, player.position, jumpSpeed * Time.deltaTime);
+            else
+                shadow.transform.position = Vector2.MoveTowards(shadow.transform.position, roomCenter, jumpSpeed * Time.deltaTime);
         }
         if (isJumping)
         {
@@ -83,10 +88,10 @@ void FixedUpdate()
                 rb.MovePosition(rb.position + direction * jumpSpeed * Time.fixedDeltaTime);
                 if (!shadowFollowing && (target.y - bossPos.position.y) < 20)
                     shadowFollowing = true;
-                if(target.y <= bossPos.position.y) //reached apex of jump
+                if (target.y <= bossPos.position.y) //reached apex of jump
                 {
                     goingUp = false;
-                    Debug.Log(target.y + " : rising : " + bossPos.position.y );
+                    Debug.Log(target.y + " : rising : " + bossPos.position.y);
                     StartCoroutine(Wait(jumpTime));
                 }
             }
@@ -98,32 +103,33 @@ void FixedUpdate()
                     Debug.Log(target.y + " : falling : " + bossPos.position.y);
                     rb.position = new Vector2(rb.position.x, target.y);
                 }
-                if(rb.position.y == target.y)
+                if (rb.position.y == target.y)
                 {
                     Landing();
                 }
             }
         }
-        else
+        else if (!bulletHellPhase)
         {
             count++;
-            if(count % shootingInterval == shootingInterval-1)
+            if (count % shootingInterval == shootingInterval - 1)
             {
                 Aim(circleShot);
             }
-            else if(count % shootingInterval == 0)
+            else if (count % shootingInterval == 0)
             {
                 mainShot.InstantiateShot();
             }
-            if(count > lowerJumpingInterval)
+            if (count > lowerJumpingInterval)
             {
                 if ((UnityEngine.Random.Range(0f, 1000f) <= count % 150) || count >= upperJumpingInterval) //variable amount of time to jump
                     Jump();
             }
-            else if(count == 1)
+            else if (count == 1)
                 landingShot.TriggerAutoFire = false;
         }
-
+        else
+            Hell();
     }
 
     //Jump
@@ -174,6 +180,8 @@ void FixedUpdate()
 
     void GoUp()
     {
+        if (bossPhase > 1)
+            bulletHellPhase = true;
         movement.moving = false;
         hitbox.isTrigger = true;
         goingUp = true;
@@ -192,23 +200,47 @@ void FixedUpdate()
     {
         goingUp = false;
         goingDown = true;
-        target = player.position; //players location
+        if (!bulletHellPhase)
+            target = player.position; //players location
+        else
+            target = roomCenter;
         Debug.Log("target position " + target + "boss pos " + bossPos.position);
         direction = (target - (Vector2)bossPos.position).normalized;
         shadowFollowing = false;
     }
 
-
-
     void Landing()
     {
         goingDown = false;
-        movement.moving = true;
         hitbox.isTrigger = false;
         count = 0;
         isJumping = false;
-        Shoot(landingShot);
         Destroy(shadow);
+        if (!bulletHellPhase)
+        {
+            movement.moving = true;
+            Shoot(landingShot);
+        }
     }
+
+    void Hell()
+    {
+        count++;
+        landingShot.TriggerAutoFire = true;
+        if (landingShot.CenterRotation > 180)
+            landingShot.CenterRotation -= 355;
+        else
+            landingShot.CenterRotation += 5;
+
+
+        if(count >= 500)
+        {
+            count = 0;
+            bulletHellPhase = false;
+            movement.moving = true;
+
+        }
+    }
+
 
 }

@@ -44,7 +44,7 @@ namespace ND_VariaBULLET
         public static bool IsOutBounds(Transform transform)
         {
             Vector3 tmpPos = GlobalShotManager.Instance.MainCam.WorldToScreenPoint(transform.position);
-            Vector2 padding = GlobalShotManager.Instance.OutBoundsRange;
+            Vector2 padding = GlobalShotManager.Instance.OutBoundsRange * 4;
 
             if (tmpPos.x < 0 - padding.x || tmpPos.x > Screen.width + padding.x || tmpPos.y < 0 - padding.y || tmpPos.y > Screen.height + padding.y)
                 return true;

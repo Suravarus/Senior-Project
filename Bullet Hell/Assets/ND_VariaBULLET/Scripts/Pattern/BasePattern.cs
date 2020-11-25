@@ -374,6 +374,12 @@ namespace ND_VariaBULLET
                 copyProcess(scriptToClone as FireExpanding);
         }
 
+        public void setFirstEmitterSpeed(int speed)
+        {
+            FireBase targ = Emitters[0].transform.GetChild(0).gameObject.GetComponent<FireBase>();
+            targ.ShotSpeed = speed;
+        }
+
         public void ResetEmitters()
         {
             foreach (GameObject emitter in Emitters)

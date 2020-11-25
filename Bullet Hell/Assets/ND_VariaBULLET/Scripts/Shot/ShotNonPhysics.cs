@@ -13,7 +13,12 @@ namespace ND_VariaBULLET
         public override void Update()
         {
             base.Update();
+        }
+
+        public override void FixedUpdate()
+        {
             movement();
+            base.FixedUpdate();
         }
 
         private void movement()
