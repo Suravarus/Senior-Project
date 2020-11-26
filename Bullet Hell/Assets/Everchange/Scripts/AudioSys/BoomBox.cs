@@ -81,7 +81,6 @@ namespace AudioSys
         // MONOBEHAVIOUR
         void Awake()
         {
-            DontDestroyOnLoad(this);
             this.Speaker = this.GetComponent<AudioSource>();
             if (this.Speaker == null)
                 throw new MissingComponentException(typeof(AudioSource).ToString());

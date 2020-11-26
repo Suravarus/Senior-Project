@@ -20,6 +20,7 @@ namespace AudioSys
         // MONOBEHAVIOUR
         void Awake()
         {
+            DontDestroyOnLoad(this);
             this.PlayerBoomBox = this.__boomBox;
             this.AmbientMusic = this.__ambientMusic;
         }
