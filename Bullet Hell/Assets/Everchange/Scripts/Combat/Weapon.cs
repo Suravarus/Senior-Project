@@ -181,7 +181,7 @@ public class Weapon : GameItem, IWeapon
                 if (this.shootingAnimator != null)
                 {
                     // PLAY shooting animation based on rateOfFire
-                    this.shootingAnimator.Play("Shooting", -1, 1f / this.rateOfFire - 0.25f);
+                    this.shootingAnimator.Play("Shooting", 0, 1f / this.rateOfFire - 0.25f);
                 }
                 var a = this.AmmoPrefab;
                 if(infAmmo == false) ammo = ammo - 1;
