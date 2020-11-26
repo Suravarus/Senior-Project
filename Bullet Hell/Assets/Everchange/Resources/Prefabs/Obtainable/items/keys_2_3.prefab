@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5885519092036935831}
   - component: {fileID: 4505211657360815008}
-  - component: {fileID: 2920971009008511653}
   - component: {fileID: -2226066692380561960}
   - component: {fileID: -1301745402226749414}
+  - component: {fileID: 4064223097162246417}
   m_Layer: 0
   m_Name: keys_2_3
   m_TagString: Untagged
@@ -85,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2920971009008511653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5e782b07064894ada5bc5b1e978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item_Rarity: 0
 --- !u!58 &-2226066692380561960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +114,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inShop: 0
+--- !u!114 &4064223097162246417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543515909663150062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e73d42f08ebee544aad645b55de5425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: Common Key
+  __itemDescription: Can be used to open common-chests. It's not that common.
+  __saleable: 1
+  __itemPrice: 200
+  inShop: 0
+  Item_Rarity: 1
+  __classID: 2
