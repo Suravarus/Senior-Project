@@ -10,13 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7083490808426550889}
   - component: {fileID: 5836489306357819921}
-  - component: {fileID: 7273175709685091764}
-<<<<<<< HEAD
-  - component: {fileID: -967115923071297258}
-=======
   - component: {fileID: 5140500331625016122}
   - component: {fileID: -1009439581689978261}
->>>>>>> a7a3175e350088877c6edba36804ad81a7fef256
+  - component: {fileID: 3169639170030125685}
   m_Layer: 0
   m_Name: coin
   m_TagString: Coins
@@ -89,24 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7273175709685091764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8575753168786640138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5e782b07064894ada5bc5b1e978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item_Rarity: 0
-<<<<<<< HEAD
---- !u!58 &-967115923071297258
-=======
 --- !u!58 &5140500331625016122
->>>>>>> a7a3175e350088877c6edba36804ad81a7fef256
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +101,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
-<<<<<<< HEAD
-=======
 --- !u!114 &-1009439581689978261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,4 +114,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inShop: 0
->>>>>>> a7a3175e350088877c6edba36804ad81a7fef256
+--- !u!114 &3169639170030125685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575753168786640138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e73d42f08ebee544aad645b55de5425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: Aspiration
+  __itemDescription: Aspirations can be traded with lost merchants.
+  __saleable: 0
+  __itemPrice: 1
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 1
