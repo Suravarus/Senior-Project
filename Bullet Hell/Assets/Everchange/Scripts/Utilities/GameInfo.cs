@@ -13,7 +13,7 @@ namespace Utilities
         private String _description;
 
         // ACCESSORS
-        public static int DESCRIPTION_CHAR_LIMIT => 50;
+        public static int DESCRIPTION_CHAR_LIMIT => 100;
         public static int NAME_CHAR_LIMIT => 20;
         private bool Saleable { get; set; }
         /// <summary>

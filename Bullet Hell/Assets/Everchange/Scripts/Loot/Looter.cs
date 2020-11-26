@@ -8,22 +8,13 @@ namespace Loot
 {
     public class Looter : MonoBehaviour
     {
-        public Rigidbody2D rb;
-        public WeaponWielder wielder;
-        public AugmentItem augmentItem;
-
-        private int gold = 0;
+        // PROPERTIES
+        private WeaponWielder Wielder { get; set; }
+        public int Gold = 0;
         public CurrencyUI currencyUI;
-        private void Start()
-        {
-            if (this.currencyUI == null)
-                throw new MissingFieldException(nameof(this.currencyUI));
-        }
-
-        public void Awake()
-        {
-            wielder = this.GetComponent<WeaponWielder>();
-        }
+        // ACCESSORS
+        private Rigidbody2D RigidBody { get; set; }
+        // METHODS
         public void PickupLoot(Collider2D lootCollider)
         {
             var loot = lootCollider.GetComponent<GameItem>();
@@ -45,8 +36,8 @@ namespace Loot
                         Destroy(lootCollider.gameObject);
                         break;
                     case GameItem.ItemClass.Currency:
-                        gold += 10;
-                        currencyUI.SetAmount(gold);
+                        Gold += 10;
+                        currencyUI.SetAmount(Gold);
                         Destroy(lootCollider.gameObject);
                         break;
                     case GameItem.ItemClass.Chest:
@@ -56,16 +47,26 @@ namespace Loot
                         var Augment = loot.GetComponent<AugmentItem>();
                         Debug.Log("Augment is " + Augment);
                         if (Augment.augmentType == AugmentItem.Augment.shield)
-                            wielder.shieldPowerUp = true;
+                            Wielder.shieldPowerUp = true;
                         if (Augment.augmentType == AugmentItem.Augment.rateOfFire)
-                            wielder.rateOfFirePowerUp = true;
+                            Wielder.rateOfFirePowerUp = true;
                         if (Augment.augmentType == AugmentItem.Augment.piercing)
-                            wielder.piercingPowerUp = true;
+                            Wielder.piercingPowerUp = true;
                         Destroy(lootCollider.gameObject);
                         break;  
                 }
             }
         }
         
+        // MONOBEHAVIOUR
+        public void Awake()
+        {
+            Wielder = this.GetComponent<WeaponWielder>();
+        }
+        private void Start()
+        {
+            if (this.currencyUI == null)
+                throw new MissingFieldException(nameof(this.currencyUI));
+        }
     }
 }
