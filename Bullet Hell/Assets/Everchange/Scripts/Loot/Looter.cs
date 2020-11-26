@@ -8,6 +8,9 @@ namespace Loot
 {
     public class Looter : MonoBehaviour
     {
+        public WeaponWielder wielder;
+        public AugmentItem augmentItem;
+
         private int gold = 0;
         public CurrencyUI currencyUI;
         private void Start()
@@ -21,6 +24,7 @@ namespace Loot
             var loot = lootCollider.GetComponent<GameItem>();
             if (loot != null)
             {
+                Debug.Log(loot.GetClassID() + " " + loot.gameObject.name);
                 switch (loot.GetClassID())
                 {
                     case GameItem.ItemClass.Weapon:
@@ -43,6 +47,16 @@ namespace Loot
                     case GameItem.ItemClass.Chest:
                         lootCollider.GetComponent<Chest>().OpenChest();
                         break;
+                    case GameItem.ItemClass.Augment:
+                        Debug.Log("Augment is " + augmentItem.augmentType);
+                        if (augmentItem.augmentType == AugmentItem.Augment.shield)
+                            wielder.shieldPowerUp = true;
+                        if (augmentItem.augmentType == AugmentItem.Augment.rateOfFire)
+                            wielder.rateOfFirePowerUp = true;
+                        if (augmentItem.augmentType == AugmentItem.Augment.piercing)
+                            wielder.piercingPowerUp = true;
+                        Destroy(lootCollider.gameObject);
+                        break;  
                 }
             }
         }
