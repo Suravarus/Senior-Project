@@ -93,6 +93,7 @@ public class Weapon : GameItem, IWeapon
 
     protected override void Awake()
     {
+        base.Awake();
         // check that fire rate has not been set to negative.
         if (this.rateOfFire <= 0f)
         {
