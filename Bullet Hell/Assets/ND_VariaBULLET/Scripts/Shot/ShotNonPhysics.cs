@@ -9,15 +9,16 @@ namespace ND_VariaBULLET
     public class ShotNonPhysics : ShotBaseColorizable
     {
         private Vector2 move;
+        private float distanceTraveled = 0;
 
         public override void Update()
         {
+            movement();
             base.Update();
         }
 
         public override void FixedUpdate()
         {
-            movement();
             base.FixedUpdate();
         }
 
@@ -27,6 +28,19 @@ namespace ND_VariaBULLET
             move.y = scaledSpeed * Time.deltaTime * Trajectory.y;
 
             transform.position += new Vector3(move.x, move.y, 0);
+            if (!checkDistance())
+            {
+                this.distanceTraveled = 0;
+                RePoolOrDestroy();
+            }
+        }
+
+        private bool checkDistance()
+        {
+            this.distanceTraveled += move.magnitude;
+            if (distanceTraveled < maxDistance)
+                return true;
+            return false;
         }
     }
 }

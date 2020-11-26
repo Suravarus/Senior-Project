@@ -30,6 +30,11 @@ namespace ND_VariaBULLET
         public float DamagePerHit = 1;
         public float DMG { get { return DamagePerHit; } }
 
+        [Range(5, 100)]
+        [Tooltip("Maximum distance the bullet can travel before being destroyed.")]
+        public int maxDistance = 15;
+
+
         [Tooltip("Sets this shot rotation intitially to that of its emitter.")]
         public bool InheritStartRotation = true;
 
@@ -124,7 +129,6 @@ namespace ND_VariaBULLET
             //    if (0 < Physics2D.LinecastNonAlloc(prev, transform.position, results, combinedMask))
             //    {
             //        Debug.Log("Repool or destroy " + results[0].collider);
-
             //        RePoolOrDestroy();
             //    }
             //}

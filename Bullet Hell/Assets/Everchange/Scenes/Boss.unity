@@ -392,10 +392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2088689235889537102, guid: 1855e13a9476bff42adbd38c79e4d94f, type: 3}
-      propertyPath: ExitPointOffset
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3022861624316777525, guid: 1855e13a9476bff42adbd38c79e4d94f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.5
@@ -593,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333867401150948284, guid: 2251568f693d4284fbab47a956fd8e8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 333867401150948284, guid: 2251568f693d4284fbab47a956fd8e8d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -916,7 +912,6 @@ GameObject:
   - component: {fileID: 1232236720}
   - component: {fileID: 1232236719}
   - component: {fileID: 1232236722}
-  - component: {fileID: 1232236721}
   m_Layer: 8
   m_Name: LeftWall
   m_TagString: Untagged
@@ -1015,22 +1010,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1232236721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232236717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f2ea562f5799340a36d90b8ec5e67c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionList: []
-  LaserExplosion: 
-  BulletExplosion: 
-  ParentExplosion: 1
 --- !u!50 &1232236722
 Rigidbody2D:
   serializedVersion: 4
@@ -1064,6 +1043,7 @@ GameObject:
   - component: {fileID: 1892208968}
   - component: {fileID: 1892208967}
   - component: {fileID: 1892208970}
+  - component: {fileID: 1892208971}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1149,6 +1129,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 991340752}
+--- !u!114 &1892208971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892208966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &5698693304287685856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,7 +1193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5698693306068954447, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5698693306068954448, guid: af892e459e314a2499f2a07b7a1a049d, type: 3}
       propertyPath: m_LocalPosition.x
