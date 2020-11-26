@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8998694013779310561}
   - component: {fileID: 4480484628391127937}
-  - component: {fileID: -9030610074576481877}
   - component: {fileID: -1968181523769024911}
   - component: {fileID: -9069389064982820410}
+  - component: {fileID: 460804985250438901}
   m_Layer: 0
   m_Name: hearts-1
   m_TagString: Untagged
@@ -85,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9030610074576481877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8741565108420698108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5e782b07064894ada5bc5b1e978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item_Rarity: 0
 --- !u!58 &-1968181523769024911
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +113,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inShop: 0
+--- !u!114 &460804985250438901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741565108420698108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e73d42f08ebee544aad645b55de5425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  __itemName: Life Fragment
+  __itemDescription: A fragment left behind by fallen enemies. It now serves to make
+    you strong.
+  __saleable: 1
+  __itemPrice: 25
+  inShop: 0
+  Item_Rarity: 0
+  __classID: 2
