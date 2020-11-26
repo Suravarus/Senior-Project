@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 1018385478467568017}
   - component: {fileID: 1018385478467568022}
   - component: {fileID: 1018385478467568023}
-  - component: {fileID: 1018385478467568020}
   - component: {fileID: 1018385478467568021}
   m_Layer: 0
   m_Name: protypeOne
@@ -147,25 +146,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1018385478467568020
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018385478467568026}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ca433a0028ba15489e2430482e9fe32, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &1018385478467568021
 CircleCollider2D:
   m_ObjectHideFlags: 0
