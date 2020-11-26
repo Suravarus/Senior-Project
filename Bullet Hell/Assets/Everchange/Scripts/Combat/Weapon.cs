@@ -70,10 +70,7 @@ public class Weapon : GameItem, IWeapon
             this._uiAmmoSlot = value;
             if (this._uiAmmoSlot != null)
             {
-                if (!this.infAmmo)
-                    this._uiAmmoSlot.SetText(this.ammo.ToString());
-                else
-                    this._uiAmmoSlot.SetText("---");
+                Weapon.UpdateAmmoSlot(this, this._uiAmmoSlot);
             }
         }
 
@@ -203,12 +200,7 @@ public class Weapon : GameItem, IWeapon
                 Instantiate(a, st.position, st.rotation);
 
                 if (this.UIAmmoSlot != null)
-                {   // FIXME similar to assignment code in UIAmmoSlot
-                    if (!infAmmo)
-                        this.UIAmmoSlot.SetText($"{this.AmmoCount:D3}");
-                    else
-                        this.UIAmmoSlot.SetText("INF");
-                } 
+                    Weapon.UpdateAmmoSlot(this, this.UIAmmoSlot);
             }
             catch (Exception ex)
             {
@@ -293,6 +285,18 @@ public class Weapon : GameItem, IWeapon
         }
 
         return los;
+    }
+    /// <summary>
+    /// Sets the text in the given Slot s based on the given Weapon w.
+    /// </summary>
+    /// <param name="w">Weapon whose info will be shown in the Slot</param>
+    /// <param name="s">Slot to be updated</param>
+    private static void UpdateAmmoSlot(Weapon w, Slot s)
+    {
+        if (w.InfiniteAmmo)
+            s.SetText("INF");
+        else
+            s.SetText($"{w.AmmoCount:D3}");
     }
 
     public float GetRange()
