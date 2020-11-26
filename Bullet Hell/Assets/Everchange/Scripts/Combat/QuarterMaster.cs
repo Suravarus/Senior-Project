@@ -172,6 +172,8 @@ namespace Combat
                 {
                     weapon.Wielder = this.Wielder;
                     this.WeaponBar.SetWeapons(this);
+                    if (weapon.GetSpeaker() != null)
+                        weapon.GetSpeaker().PlaySound(Audio.WeaponSounds.Sounds.Pickup);
                 }
             }
             else
@@ -183,6 +185,8 @@ namespace Combat
 
         private void DropWeaponAt(IWeapon weapon, Vector2 position)
         {
+            if (weapon.GetSpeaker() != null)
+                weapon.GetSpeaker().PlaySound(Audio.WeaponSounds.Sounds.Drop);
             weapon.GetGameObject().transform.SetParent(null);
             weapon.GetGameObject().transform.position = position;
             weapon.UIAmmoSlot = null;
