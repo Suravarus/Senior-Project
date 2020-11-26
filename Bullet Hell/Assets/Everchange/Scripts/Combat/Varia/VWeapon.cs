@@ -1,7 +1,9 @@
-﻿using Loot;
+﻿using UnityEngine;
 using ND_VariaBULLET;
+
 using UI;
-using UnityEngine;
+using Loot;
+using Combat.Audio;
 
 namespace Combat.Varia
 {
@@ -49,6 +51,7 @@ namespace Combat.Varia
         private bool TriggerPulled { get; set; }
         private float TriggerDownFrameCount { get; set; }
         private bool FlippedControllers { get; set; }
+        private WeaponSounds Speaker { get; set; }
         // METHODS
         public void Flip()
         {
@@ -89,6 +92,8 @@ namespace Combat.Varia
         {
             if (this.InfiniteAmmo || this.AmmoCount > 0)
             {
+                if (this.Speaker != null)
+                    this.Speaker.PlaySound(WeaponSounds.Sounds.Shot);
                 foreach (BasePattern bp in this.Controllers)
                 {
                     bp.TriggerAutoFire = true;
@@ -118,6 +123,7 @@ namespace Combat.Varia
         public GameObject GetGameObject() => this.gameObject;
         public bool RequiresFlip() => this.FlipEnabled;
         public GameObject GetGunBarrel() => this.gameObject.transform.parent.gameObject;
+        public WeaponSounds GetSpeaker() => this.Speaker;
         // MONOBEHAVIOR
         protected override void Awake()
         {
@@ -137,6 +143,7 @@ namespace Combat.Varia
             this.ShootingAnimator = this.GetComponent<Animator>();
             this.Wielder = this.__wielder;
             this.FlippedControllers = this.Flipped;
+            this.Speaker = this.GetComponent<WeaponSounds>();
         }
 
         protected virtual void Update()

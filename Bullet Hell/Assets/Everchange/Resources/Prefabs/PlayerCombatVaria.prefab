@@ -405,6 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2124e576ec90a044beb799b87996648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  wielder: {fileID: 0}
+  augmentItem: {fileID: 0}
   currencyUI: {fileID: 0}
 --- !u!114 &1410104939
 MonoBehaviour:
@@ -496,21 +499,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984449444413092574}
     m_Modifications:
-    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-      propertyPath: weaponAmmo
-      value: 
-      objectReference: {fileID: 6627338467485328819, guid: 3a0c3b1f41766664bb5b3fbd96b27d81, type: 3}
-    - target: {fileID: 5145271836151194002, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-      propertyPath: _requiresFlip
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194004, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_Name
       value: pistol_crude_mistress
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145271836151194004, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-      propertyPath: m_Layer
-      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -555,14 +546,6 @@ PrefabInstance:
     - target: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145271836151194010, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f8f8d65305931154ab37b90a32890940, type: 2}
-    - target: {fileID: 6410066274293985878, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
-      propertyPath: m_Layer
-      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c775ada529dff9499cd02324d32045c, type: 3}

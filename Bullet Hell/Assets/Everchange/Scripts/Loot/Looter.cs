@@ -8,6 +8,10 @@ namespace Loot
 {
     public class Looter : MonoBehaviour
     {
+        public Rigidbody2D rb;
+        public WeaponWielder wielder;
+        public AugmentItem augmentItem;
+
         private int gold = 0;
         public CurrencyUI currencyUI;
         private void Start()
@@ -16,11 +20,16 @@ namespace Loot
                 throw new MissingFieldException(nameof(this.currencyUI));
         }
 
+        public void Awake()
+        {
+            wielder = this.GetComponent<WeaponWielder>();
+        }
         public void PickupLoot(Collider2D lootCollider)
         {
             var loot = lootCollider.GetComponent<GameItem>();
             if (loot != null)
             {
+                Debug.Log(loot.GetClassID() + " " + loot.gameObject.name);
                 switch (loot.GetClassID())
                 {
                     case GameItem.ItemClass.Weapon:
@@ -43,6 +52,17 @@ namespace Loot
                     case GameItem.ItemClass.Chest:
                         lootCollider.GetComponent<Chest>().OpenChest();
                         break;
+                    case GameItem.ItemClass.Augment:
+                        var Augment = loot.GetComponent<AugmentItem>();
+                        Debug.Log("Augment is " + Augment);
+                        if (Augment.augmentType == AugmentItem.Augment.shield)
+                            wielder.shieldPowerUp = true;
+                        if (Augment.augmentType == AugmentItem.Augment.rateOfFire)
+                            wielder.rateOfFirePowerUp = true;
+                        if (Augment.augmentType == AugmentItem.Augment.piercing)
+                            wielder.piercingPowerUp = true;
+                        Destroy(lootCollider.gameObject);
+                        break;  
                 }
             }
         }

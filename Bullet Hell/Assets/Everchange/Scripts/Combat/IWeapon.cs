@@ -1,6 +1,7 @@
 ﻿using UI;
 using Utilities;
 using UnityEngine;
+using Combat.Audio;
 
 namespace Combat
 {
@@ -80,5 +81,10 @@ namespace Combat
         /// <returns></returns>
         GameObject GetGameObject();
         GameObject GetGunBarrel();
+        /// <summary>
+        /// The WeaponSounds component associated with this object.
+        /// </summary>
+        /// <returns></returns>
+        WeaponSounds GetSpeaker();
     }
 }
