@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183ffc8eb5fd78a4a8be688085fc0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickerPerSeconds: 5
-  flickerAmount: 1
+  flickerPerSeconds: 10
+  flickerAmount: 0.25
   light2D: {fileID: 1483907024659605682}
 --- !u!1 &1483907024724330369
 GameObject:
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_ShadowGroup: 0
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
+  m_CastsShadows: 0
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000a1ae47ec7d0b5220
   m_ShapePath:
@@ -333,4 +333,4 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: -382296
+  m_InstanceId: 78128
