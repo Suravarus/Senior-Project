@@ -62,7 +62,6 @@ public class Weapon : GameItem, IWeapon
         set { this.weaponAmmo = value; }
         get { return this.weaponAmmo; }
     }
-
     public Slot UIAmmoSlot 
     {
         set
@@ -90,6 +89,8 @@ public class Weapon : GameItem, IWeapon
 
     private Slot _uiAmmoSlot;
 
+    private AudioSource ShotSound { get; set; }
+
     protected override void Awake()
     {
         // check that fire rate has not been set to negative.
@@ -104,7 +105,7 @@ public class Weapon : GameItem, IWeapon
         // set initial parameters.
         this.TimeSinceFireRequest = 0f;
         this.WaitingToFire = false;
-
+        this.ShotSound = this.GetComponent<AudioSource>();
     }
 
     public void Start()
@@ -179,6 +180,9 @@ public class Weapon : GameItem, IWeapon
                 {
                     // PLAY shooting animation based on rateOfFire
                     this.shootingAnimator.Play("Shooting", 0, 1f / this.rateOfFire - 0.25f);
+                    // PLAY shooting sound
+                    if (this.ShotSound != null)
+                        this.ShotSound.Play();
                 }
                 var a = this.AmmoPrefab;
                 if(infAmmo == false) ammo = ammo - 1;
