@@ -2313,7 +2313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022861624316777530, guid: 1855e13a9476bff42adbd38c79e4d94f, type: 3}
       propertyPath: m_Name
-      value: GunBarrel
+      value: PeaceMaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1855e13a9476bff42adbd38c79e4d94f, type: 3}
