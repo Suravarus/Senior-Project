@@ -405,9 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2124e576ec90a044beb799b87996648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  wielder: {fileID: 0}
-  augmentItem: {fileID: 0}
+  Gold: 0
   currencyUI: {fileID: 0}
 --- !u!114 &1410104939
 MonoBehaviour:
@@ -423,7 +421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionList:
   - ND_EnemyBullet
-  - Default
   LaserExplosion: 
   BulletExplosion: 
   ParentExplosion: 1

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8779235151206128661}
   - component: {fileID: 6933080155954550088}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,9 +60,10 @@ GameObject:
   - component: {fileID: 1947997390263388705}
   - component: {fileID: -5051725881224634116}
   - component: {fileID: 3245948081376226287}
-  m_Layer: 0
+  - component: {fileID: 1692544634}
+  m_Layer: 14
   m_Name: FireAcolyte_v2
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +228,7 @@ MonoBehaviour:
   piercingTimer: 10
   piercingTimerTemp: 0
   weaponBarUI: {fileID: 0}
+  Type: 0
   passive: 0
   infinitAmmo: 1
   speed: 5
@@ -274,6 +276,28 @@ MonoBehaviour:
   uncommon: 0
   rare: 0
   weaponChance: 0
+--- !u!114 &1692544634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681907991325052283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e499963cb47ff564bad07a0b64f6b263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionList:
+  - ND_PlayerBullet
+  LaserExplosion: 
+  BulletExplosion: 
+  ParentExplosion: 1
+  DeathExplosion: 
+  FinalExplodeFactor: 2
+  DamageFlicker: 0
+  FlickerDuration: 6
+  DamageColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &3973933879884062932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,9 +401,37 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2362017213774791083, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700208359551309114, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622541893610036847, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622874476387643011, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624112490920119075, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624138211228340571, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8301879870286695534, guid: 931180ee1ecde7643814304931b55691, type: 3}
       propertyPath: m_Name
       value: canvas_healthbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301879870286695534, guid: 931180ee1ecde7643814304931b55691, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931180ee1ecde7643814304931b55691, type: 3}
@@ -409,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 188560495310502458, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
       propertyPath: m_Name
       value: Fireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502458, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 188560495310502459, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,6 +514,10 @@ PrefabInstance:
       propertyPath: weaponAmmo
       value: 
       objectReference: {fileID: 8035906373920960711, guid: f2fd5b0a359fe2e4fa0b97153cd5e70e, type: 3}
+    - target: {fileID: 2094009916233312760, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
 --- !u!4 &5959262762207633359 stripped
