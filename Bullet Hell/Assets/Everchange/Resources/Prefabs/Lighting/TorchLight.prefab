@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1483907024212897617}
   - component: {fileID: 1483907024212897630}
   - component: {fileID: 1483907024212897631}
-  m_Layer: 8
+  m_Layer: 1
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1483907024406077482}
-  m_Layer: 8
+  m_Layer: 1
   m_Name: TorchLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1483907024659605683}
   - component: {fileID: 1483907024659605682}
   - component: {fileID: 1483907024659605680}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.44182846, b: 0.06132078, a: 1}
   m_Intensity: 0.2
   m_LightVolumeOpacity: 1
-  m_ApplyToSortingLayers: 00000000a1ae47ec7d0b5220
+  m_ApplyToSortingLayers: 0000000061d767bfa5b04fffbb658b9593a922abc33afef5897d8933278c118337352c91b55590db59123d7105f5684eef10b777e117a7d6bf0795b2
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 1
   m_LightOrder: 100
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1483907024724330382}
   - component: {fileID: 1483907024724330383}
   - component: {fileID: 1483907024724330380}
-  m_Layer: 8
+  m_Layer: 1
   m_Name: pedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,4 +333,4 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 78128
+  m_InstanceId: -83474
