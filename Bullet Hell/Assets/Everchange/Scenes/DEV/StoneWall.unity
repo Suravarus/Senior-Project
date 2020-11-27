@@ -249,9 +249,77 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneWall-SpriteShapeController
       objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].position.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].position.y
+      value: -0.7667267
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[2].position.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[2].height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[2].corner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[2].m_CornerMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].leftTangent.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920835, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_Spline.m_ControlPoints.Array.data[1].rightTangent.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
       propertyPath: m_DynamicOccludee
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Center.z
+      value: -0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.z
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Center.y
+      value: -0.034232736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599481765995920860, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.y
+      value: 1.0357673
       objectReference: {fileID: 0}
     - target: {fileID: 2599481765995920861, guid: 14952345f6b7b5042aa0a9fe765e0986, type: 3}
       propertyPath: m_LocalPosition.x

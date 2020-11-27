@@ -471,30 +471,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 382565284780535782, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __cardinalPosition
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084936143754819046, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __cardinalPosition
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084936143754819046, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __openOnCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031435286527691, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.21087807
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031435286527691, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6758734
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031435286527693, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7041031435760759462, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -582,86 +558,6 @@ PrefabInstance:
     - target: {fileID: 7041031435760759481, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
       propertyPath: m_Name
       value: Floor_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031436063651332, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031436420495145, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: roomType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031436420495145, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __hallLeft
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041031436420495145, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __hallTop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7705839156228870451, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804222089064600773, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.27626485
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804222089064600773, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6545254
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291424189998864336, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __openOnCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291424189998864336, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __cardinalPosition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736865630637066, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736865630637066, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.954
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736865630637066, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1584945
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866004767821, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866004767821, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866004767821, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2384267
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866046252851, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866046252851, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330736866046252852, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107500448618609978, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145087031500209630, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
-      propertyPath: __openOnCollision
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8df0557aab0f0249901ad1b87ebee9d, type: 3}
