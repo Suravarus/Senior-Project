@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace ProcGen
+namespace Structures
 {
     public interface IRoom
     {
@@ -11,7 +11,7 @@ namespace ProcGen
         /// Array of doors for this room.
         /// </summary>
         /// <returns></returns>
-        IDoor[] GetDoors();
+        RoomWall[] GetWalls();
         /// <summary>
         /// Returns the gameObject associated with
         /// this room.
