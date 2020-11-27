@@ -8,7 +8,7 @@ namespace Combat.Audio
     {
         public enum Sounds
         {
-            Shot, Pickup, Drop
+            Shot, Pickup, Drop, NoAmmo
         }
 
         // Unity Editor
@@ -21,6 +21,7 @@ namespace Combat.Audio
         private AudioClip ShotSound { get; set; }
         private AudioClip PickupSound { get; set; }
         private AudioClip DropSound { get; set; }
+        private AudioClip NoAmmoSound { get; set; }
         private AudioSource Speaker { get; set; }
 
         // METHODS
@@ -43,6 +44,11 @@ namespace Combat.Audio
                     this.Speaker.clip = this.DropSound;
                     this.Speaker.Play();
                     break;
+                case Sounds.NoAmmo:
+                    this.Speaker.Stop();
+                    this.Speaker.clip = this.NoAmmoSound;
+                    this.Speaker.Play();
+                    break;
             }
         }
 
@@ -59,6 +65,9 @@ namespace Combat.Audio
             this.DropSound = this.__dropSound;
             if (this.DropSound == null)
                 throw new MissingFieldException(nameof(this.__dropSound));
+            this.NoAmmoSound = this.__noAmmo;
+            if (this.NoAmmoSound == null)
+                throw new MissingFieldException(nameof(this.__noAmmo));
             this.Speaker = this.GetComponent<AudioSource>();
             if (this.Speaker == null)
                 throw new MissingComponentException(typeof(AudioSource).ToString());

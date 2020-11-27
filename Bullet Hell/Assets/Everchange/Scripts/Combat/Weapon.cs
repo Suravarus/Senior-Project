@@ -212,8 +212,10 @@ public class Weapon : GameItem, IWeapon
                 throw new Exception(
                 "Weapon.Fire() - has Ammo been set?", ex);
             }
+        } else if (this.Speaker != null)
+        {
+            this.Speaker.PlaySound(WeaponSounds.Sounds.NoAmmo);
         }
-        // TODO give player some feedback when out of ammo
     }
     
     /// <summary>
