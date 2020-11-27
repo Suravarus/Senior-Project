@@ -3295,10 +3295,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1410104939, guid: 2251568f693d4284fbab47a956fd8e8d, type: 3}
-      propertyPath: CollisionList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 333867401150948272, guid: 2251568f693d4284fbab47a956fd8e8d, type: 3}
       propertyPath: m_Name
       value: PlayerCombatVaria
