@@ -315,7 +315,7 @@ MonoBehaviour:
   dash_timer: 0.4
   move_state: 0
   dash_timer_temp: 0
-  speed: 5
+  speed: 8
 --- !u!70 &836866190439043794
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -378,8 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Enemy
-  _health: 200
-  _maxHealth: 200
+  _health: 100
+  _maxHealth: 100
   shieldPowerUp: 0
   __healthBar: {fileID: 0}
   animator: {fileID: 333867401150948273}

@@ -156,7 +156,7 @@ MonoBehaviour:
   __classID: 0
   __gunBarrel: {fileID: 0}
   __wielder: {fileID: 0}
-  __baseDamage: 8
+  __baseDamage: 10
   __infAmmo: 0
   __ammoCount: 50
   __range: 6

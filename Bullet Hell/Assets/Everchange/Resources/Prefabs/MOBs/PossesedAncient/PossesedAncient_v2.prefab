@@ -423,9 +423,9 @@ MonoBehaviour:
   ammoSpawnPoint: {fileID: 0}
   wielder: {fileID: 0}
   baseDamage: 10
-  bulletSpeed: 7
+  bulletSpeed: 11
   rateOfFire: 1.25
-  range: 6
+  range: 8
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 0}
@@ -692,6 +692,7 @@ MonoBehaviour:
   weaponBarUI: {fileID: 0}
   Type: 0
   passive: 0
+  __aggroRange: 0
   infinitAmmo: 1
   speed: 5
   nextWaypointDistance: 1
