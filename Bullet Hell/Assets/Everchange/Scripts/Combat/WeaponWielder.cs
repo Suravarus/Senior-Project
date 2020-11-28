@@ -12,7 +12,10 @@ namespace Combat
     [System.Serializable]
     public class WeaponWielder : Combatant, IWeaponWielder
     {
-
+        [Header("Animation")]
+        [Tooltip("If TRUE, the sprite and animator components must be on the " 
+            +"WeaponWrapper and only the Idle and RunUp animations will be used.")]
+        public bool __spriteOnWrapper = false;
         [Header("Weapons")]
         [Tooltip("Child object that will be used to position ranged weapons.")]
         public WeaponWrapper rangedWeaponWrapper;
@@ -67,8 +70,14 @@ namespace Combat
                 throw new MissingFieldException(this.GetType().Name, nameof(this.rangedWeaponWrapper));
             }
 
-            if (this.animator != null)
-                this.Puppeteer = new PuppetMaster(this.animator, this);
+            if (!this.__spriteOnWrapper && this.animator != null)
+                this.Puppeteer = new PuppetMaster(this.animator, this, this.__spriteOnWrapper);
+            else if (this.__spriteOnWrapper)
+            {
+                this.animator = this.GetWeaponWrapper().GetComponent<Animator>();
+                if (this.animator != null)
+                    this.Puppeteer = new PuppetMaster(this.animator, this, this.__spriteOnWrapper);
+            }
         }
 
         public override void Update()

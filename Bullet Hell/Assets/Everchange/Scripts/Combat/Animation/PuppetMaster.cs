@@ -23,12 +23,14 @@ namespace Combat.Animation
         { get => this.Puppet.GetComponent<PlayerMovement>() != null; }
 
         private Animator CharacterAnimator { get; set; }
+        private bool SpriteOnWrapper { get; set; }
         public bool Active { get; set; }
-        public PuppetMaster(Animator animator, WeaponWielder puppet)
+        public PuppetMaster(Animator animator, WeaponWielder puppet, bool spriteOnWrapper = false)
         {
             this.CharacterAnimator = animator;
             this.Puppet = puppet;
             this.Active = true;
+            this.SpriteOnWrapper = spriteOnWrapper;
         }
 
         /// <summary>
@@ -56,27 +58,33 @@ namespace Combat.Animation
                     if (puppetIsMoving)
                     {
                         // SET run animation based on direction
-                        switch (direction)
+                        if (!this.SpriteOnWrapper)
                         {
-                            case PhysicsTool.Direction.Down:
-                                SetState(AnimationState.RunDown);
-                                break;
-                            case PhysicsTool.Direction.Up:
-                                SetState(AnimationState.RunUp);
-                                break;
-                            case PhysicsTool.Direction.Left:
-                                SetState(AnimationState.RunLeft);
-                                break;
-                            case PhysicsTool.Direction.Right:
-                                SetState(AnimationState.RunRight);
-                                break;
+                            switch (direction)
+                            {
+                                case PhysicsTool.Direction.Down:
+                                    SetState(AnimationState.RunDown);
+                                    break;
+                                case PhysicsTool.Direction.Up:
+                                    SetState(AnimationState.RunUp);
+                                    break;
+                                case PhysicsTool.Direction.Left:
+                                    SetState(AnimationState.RunLeft);
+                                    break;
+                                case PhysicsTool.Direction.Right:
+                                    SetState(AnimationState.RunRight);
+                                    break;
+                            }
+                        } else
+                        {
+                            SetState(AnimationState.RunUp);
                         }
                     }
                     else // ELSE
                     {
                         // SET idle animation based on direction
                         var ai = this.Puppet.GetComponent<AI.AIWeaponWielder>();
-                        if (ai != null && !ai.InCombat())
+                        if (ai != null && !ai.InCombat() || this.SpriteOnWrapper)
                         {
                             SetState(AnimationState.Idle);
                         }
