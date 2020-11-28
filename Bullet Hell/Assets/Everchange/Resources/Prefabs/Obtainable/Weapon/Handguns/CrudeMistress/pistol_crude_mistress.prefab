@@ -63,7 +63,7 @@ MonoBehaviour:
   baseDamage: 10
   bulletSpeed: 8
   rateOfFire: 2
-  range: 4
+  range: 8
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 5145271836151194010}
