@@ -102,6 +102,7 @@ namespace ND_VariaBULLET
                 throw new NullReferenceException($"Unable to find weapon component.");
             this.Shooter = this.Weapon.Wielder;
             this.StartingPosition = this.transform.position;
+            this.maxDistance = Mathf.RoundToInt(this.Weapon.GetRange());
         }
 
         public virtual void Start()
