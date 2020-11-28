@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using ND_VariaBULLET;
 
 using UI;
@@ -19,6 +20,7 @@ namespace Combat.Varia
         [Min(0)]
         public int __ammoCount = 0;
         public float __range = 3f;
+        public int __fireRate = 1;
         [Header("Animation")]
         [Header("Animation")]
         [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
@@ -28,7 +30,7 @@ namespace Combat.Varia
         // PROPERTIES
         private int _ammoCount;
         // ACCESSORS
-        private float Range { get; set; }
+        public float Range { get; set; }
         private float BaseDamage { get; set; }
         public BasePattern[] Controllers { get; set; }
         private bool FlipEnabled { get; set; }
@@ -52,6 +54,7 @@ namespace Combat.Varia
         private float TriggerDownFrameCount { get; set; }
         private bool FlippedControllers { get; set; }
         private WeaponSounds Speaker { get; set; }
+        private List<FireBullet> Emitters { get; set; }
         // METHODS
         public void Flip()
         {
@@ -94,9 +97,14 @@ namespace Combat.Varia
             {
                 if (this.Speaker != null)
                     this.Speaker.PlaySound(WeaponSounds.Sounds.Shot);
-                foreach (BasePattern bp in this.Controllers)
+                //foreach (BasePattern bp in this.Controllers)
+                //{
+                //    bp.TriggerAutoFire = true;
+                //}
+                
+                foreach (FireBullet fb in this.Emitters)
                 {
-                    bp.TriggerAutoFire = true;
+                    fb.InstantiateShot();
                 }
                 this.TriggerPulled = true;
                 this.TriggerDownFrameCount = 0;
@@ -105,10 +113,10 @@ namespace Combat.Varia
 
         public void StopFiring()
         {
-            foreach (BasePattern bp in this.Controllers)
-            {
-                bp.TriggerAutoFire = false;
-            }
+            //foreach (BasePattern bp in this.Controllers)
+            //{
+            //    bp.TriggerAutoFire = false;
+            //}
             this.TriggerPulled = false;
         }
 
@@ -144,6 +152,13 @@ namespace Combat.Varia
             this.Wielder = this.__wielder;
             this.FlippedControllers = this.Flipped;
             this.Speaker = this.GetComponent<WeaponSounds>();
+            this.Emitters = new List<FireBullet>();
+            // populate emitters list
+            foreach(BasePattern bp in this.Controllers)
+            {
+                var fblist = bp.GetComponentsInChildren<FireBullet>();
+                this.Emitters.AddRange(fblist);
+            }
         }
 
         protected virtual void Update()
