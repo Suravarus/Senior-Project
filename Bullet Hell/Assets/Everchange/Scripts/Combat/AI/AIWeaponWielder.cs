@@ -19,18 +19,25 @@ namespace Combat.AI
         public AIType Type;
         [Tooltip("Should this AI only attack if provoked?.")]
         public Boolean passive = false;
+        [Tooltip("If 0, then 2x weapon-range will be used.")]
+        [Min(0)]
+        public int __aggroRange = 0;
         [Tooltip("If TRUE(default), this combatant will never run out of ammo.")]
         public Boolean infinitAmmo = true;
         [Tooltip("Speed at which this AI should move.")]
         public float speed = 5f;
         [Header("Movement AI")]
         public int nextWaypointDistance;
+        [Tooltip("Degrees of inaccuracy")]
+        [Min(0)]
+        public float inAccuracy = 0f;
         [Header("Physics")]
         public bool collideWithCombatants = false;
         // ------------------------------------------------------
 
         private Combatant CurrentTarget { get; set; }
         private Boolean ScanInProgress { get; set; }
+        private int AggroRange { get; set; }
         private Combatant[] _enemyCombatantsArr;
         public Combatant[] EnemyCombatantsArr
         {
@@ -63,7 +70,7 @@ namespace Combat.AI
             Debug.Log($"{this.gameObject.name} disarmed: {this.Disarmed()}");
             if (!this.Disarmed())
             {
-                this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.GetRange() * .75f;
+                this.GetComponent<ShooterAI>().MinDist = this.RangedWeapon.GetRange() * .5f;
                 Debug.Log($"{this.gameObject.name} min: {this.GetComponent<ShooterAI>().MinDist}");
                 this.GetComponent<ShooterAI>().MaxDist = this.RangedWeapon.GetRange();
             }
@@ -73,6 +80,11 @@ namespace Combat.AI
                 this.GetComponent<ShooterAI>().MaxDist = 1;
             }
             if (this.Type == AIType.Turret) this.Puppeteer.Active = false;
+
+            if (this.__aggroRange <= 0)
+                this.AggroRange = 2 * Mathf.RoundToInt(this.RangedWeapon.GetRange());
+            else
+                this.AggroRange = this.__aggroRange;
         }
 
         // ALGORITHM:
@@ -80,9 +92,9 @@ namespace Combat.AI
         // -   SET nearest, within-weapon-range, enemy as current target
         // - ELSE:
         // -   AGGRO on currentTarget
-        public void FixedUpdate()
+        public override void Update()
         {
-
+            base.Update();
             if (!this.InCombat())
             {
                 this.Disengage();
@@ -205,7 +217,7 @@ namespace Combat.AI
                 this.CurrentTarget = null;
                 this.ScanForEnemies();
                 var n = this.NearestEnemy();
-                if (n != null && this.RangedWeapon.InRange(n.transform.position))
+                if (n != null && this.RangedWeapon.InRange(n.transform.position, this.AggroRange))
                     this.CurrentTarget = n;
 
                 return this.HasTarget();
@@ -230,7 +242,7 @@ namespace Combat.AI
         {
             Boolean shotsFired = false;
             // AIM at target
-            this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
+            this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position, this.inAccuracy);
             // movement stuff
             this.GetComponent<ShooterAI>().target = enemy.GetBodyTransform(Combatant.BodyPart.Chest);
             
@@ -246,6 +258,7 @@ namespace Combat.AI
                 // CHARGE at target
                 this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
             }
+            this.AimWeapon(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position);
             return shotsFired;
         }
 

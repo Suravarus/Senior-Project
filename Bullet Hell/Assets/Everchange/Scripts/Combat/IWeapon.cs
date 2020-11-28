@@ -51,8 +51,9 @@ namespace Combat
         /// Returns true if the target vector is within weapon range.
         /// </summary>
         /// <param name="target">Worldspace point</param>
+        /// <param name="aggroDistance">if set, this will be used instead of weapon range.</param>
         /// <returns></returns>
-        bool InRange(Vector3 target);
+        bool InRange(Vector3 target, float aggroDistance = 0f);
         /// <summary>
         /// Shoots the weapon only if all contraints are met.
         /// </summary>

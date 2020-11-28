@@ -87,7 +87,7 @@ namespace Combat
             }
             get { return this._magicArmor; }
         }
-
+        public bool Invulnurable { get; set; }
         private Collider2D _collider;
         private Collider2D Collider
         {
@@ -102,7 +102,9 @@ namespace Combat
         }
 
         public delegate void OnDeathF(Combatant combatant);
+        public delegate void OnTakeDamageF(Combatant c);
         public List<OnDeathF> OnDeath;
+        public List<OnTakeDamageF> OnTakeDamage;
         public HealthBar CombatHealthBar { get; set; }
 
         // ---------- Monobehaviour code --------------
@@ -132,6 +134,7 @@ namespace Combat
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.OnDeath = new List<OnDeathF>();
+            this.OnTakeDamage = new List<OnTakeDamageF>();
             this.CombatHealthBar = this.__healthBar;
             if (this.CombatHealthBar == null)
                 throw new MissingFieldException(
@@ -170,11 +173,16 @@ namespace Combat
         /// <param name="damage">Damage to be received</param>
         public virtual void TakeDamage(IAmmo a)
         {
-            this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
+            foreach (OnTakeDamageF f in this.OnTakeDamage)
+                f(this);
+            if (!this.Invulnurable)
+            {
+                this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
 
-            this.CombatHealthBar.UpdateValues(this);
+                this.CombatHealthBar.UpdateValues(this);
 
-            if (!this.IsAlive()) this.Die();
+                if (!this.IsAlive()) this.Die();
+            }
         }
 
         /// <summary>
@@ -225,12 +233,18 @@ namespace Combat
         /// <author>Umair - Combat Team</author>
         /// <param name="targetVector">Vector that points to the desired target</param>
         /// <param name="transform">The Transform of the object that is to be rotated</param>
-        public static void RotateTo(Vector3 targetVector, Transform transform)
+        public static void RotateTo(Vector3 targetVector, Transform transform, float inAccuracy = 0f)
         {
             // Update weapon postion based on player input by pointing towards mouse rotating around player
             Vector3 difference = targetVector - transform.position;
             difference.Normalize();
             float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90;
+            var absInaccuracy = Mathf.Abs(inAccuracy);
+            if (absInaccuracy != 0)
+            {
+                var offset = UnityEngine.Random.Range(-absInaccuracy, absInaccuracy);
+                rotationZ += offset;
+            }
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
         }
 

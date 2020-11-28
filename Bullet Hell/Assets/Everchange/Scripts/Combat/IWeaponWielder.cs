@@ -46,7 +46,7 @@ namespace Combat
         /// given target vector in WorldSpace
         /// </summary>
         /// <param name="target">Point in WorldSpace</param>
-        void AimWeapon(Vector3 target);
+        void AimWeapon(Vector3 target, float inAccuracy = 0f);
         /// <summary>
         /// Method that should get called when a bullet fired from this
         /// Wielder's weapon collides with something.

@@ -95,11 +95,12 @@ namespace Combat.Varia
 
         public float GetRange() => this.Range;
 
-        public bool InRange(Vector3 target)
+        public bool InRange(Vector3 target, float aggroDistance = 0f)
         {
-            return Vector3.Distance(
-                target,
-                this.transform.position) <= this.Range;
+            if (aggroDistance == 0f)
+                return Vector3.Distance(target
+                    , this.transform.position) <= this.Range;
+            return Vector3.Distance(target, this.transform.position) <= aggroDistance;
         }
 
         public bool IsFlipped() => this.Flipped;

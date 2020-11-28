@@ -422,10 +422,10 @@ MonoBehaviour:
   weaponAmmo: {fileID: 979262230771606253, guid: 162e83b19c2a2474ca886cd55b2561fa, type: 3}
   ammoSpawnPoint: {fileID: 0}
   wielder: {fileID: 0}
-  baseDamage: 5
-  bulletSpeed: 10
-  rateOfFire: 1
-  range: 4
+  baseDamage: 10
+  bulletSpeed: 11
+  rateOfFire: 1.25
+  range: 8
   infAmmo: 1
   ammo: 10
   shootingAnimator: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 1755073439}
   m_Layer: 14
   m_Name: PossesedAncient_v2
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -679,6 +679,7 @@ MonoBehaviour:
   shieldPowerUp: 0
   __healthBar: {fileID: 797123059821196714}
   animator: {fileID: 0}
+  __spriteOnWrapper: 0
   rangedWeaponWrapper: {fileID: 6331495518165607942}
   startingWeapon: {fileID: 1776712361568128336}
   rateOfFirePowerUp: 0
@@ -691,9 +692,11 @@ MonoBehaviour:
   weaponBarUI: {fileID: 0}
   Type: 0
   passive: 0
+  __aggroRange: 0
   infinitAmmo: 1
   speed: 5
   nextWaypointDistance: 1
+  inAccuracy: 15
   collideWithCombatants: 0
 --- !u!114 &3122443236785312220
 MonoBehaviour:

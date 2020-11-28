@@ -126,9 +126,9 @@ namespace Combat
         /// Aims the ranged weapon at the specified target position.
         /// </summary>
         /// <param name="targetPosition">The point in world-space at which the target is at.</param>
-        public void AimWeapon(Vector3 targetPosition)
+        public void AimWeapon(Vector3 targetPosition, float inAccuracy = 0f)
         {
-            Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform);
+            Combatant.RotateTo(targetPosition, this.rangedWeaponWrapper.transform, inAccuracy);
         }
 
         /// <summary>
