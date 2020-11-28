@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 Direction { get; set; }
     Vector2 CursorScreenPosition { get; set; }
     Boolean ShootingPressed { get; set; }
+    private bool TookDamage { get; set; }
 
     public enum MoveState
     {
@@ -109,6 +111,9 @@ public class PlayerMovement : MonoBehaviour
             ShootingPressed = ctx.ReadValueAsButton();
 
         };
+        this.Wielder.OnTakeDamage.Add(c => {
+            if (!this.TookDamage) this.TookDamage = true;
+        });
 
         // WEAPON-BAR LISTENERS
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
@@ -122,10 +127,26 @@ public class PlayerMovement : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Makes sure the player doesn't get flooded with damage.
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    IEnumerator InvulnurabilityCheck(Combatant c)
+    {
+        c.Invulnurable = true;
+        yield return new WaitForSeconds(.4f);
+        c.Invulnurable = false;
+        this.TookDamage = false;
+    }
+
     public void FixedUpdate()
     {
         if (this.Wielder.IsAlive())
         {
+            // iv check
+            if (this.TookDamage && this.Wielder.Invulnurable == false) 
+                StartCoroutine(InvulnurabilityCheck(this.Wielder));
             // MOVE player 
             this.rb.velocity = this.Direction * this.speed;
 

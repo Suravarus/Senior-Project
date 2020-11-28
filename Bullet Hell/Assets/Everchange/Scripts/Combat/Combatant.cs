@@ -87,7 +87,7 @@ namespace Combat
             }
             get { return this._magicArmor; }
         }
-
+        public bool Invulnurable { get; set; }
         private Collider2D _collider;
         private Collider2D Collider
         {
@@ -102,7 +102,9 @@ namespace Combat
         }
 
         public delegate void OnDeathF(Combatant combatant);
+        public delegate void OnTakeDamageF(Combatant c);
         public List<OnDeathF> OnDeath;
+        public List<OnTakeDamageF> OnTakeDamage;
         public HealthBar CombatHealthBar { get; set; }
 
         // ---------- Monobehaviour code --------------
@@ -132,6 +134,7 @@ namespace Combat
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.OnDeath = new List<OnDeathF>();
+            this.OnTakeDamage = new List<OnTakeDamageF>();
             this.CombatHealthBar = this.__healthBar;
             if (this.CombatHealthBar == null)
                 throw new MissingFieldException(
@@ -170,11 +173,16 @@ namespace Combat
         /// <param name="damage">Damage to be received</param>
         public virtual void TakeDamage(IAmmo a)
         {
-            this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
+            foreach (OnTakeDamageF f in this.OnTakeDamage)
+                f(this);
+            if (!this.Invulnurable)
+            {
+                this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
 
-            this.CombatHealthBar.UpdateValues(this);
+                this.CombatHealthBar.UpdateValues(this);
 
-            if (!this.IsAlive()) this.Die();
+                if (!this.IsAlive()) this.Die();
+            }
         }
 
         /// <summary>
