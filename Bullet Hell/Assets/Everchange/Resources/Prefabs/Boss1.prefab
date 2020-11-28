@@ -1788,7 +1788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5698693304317549786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 1.33, z: 147.3757}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 5698693306299467068}
@@ -2120,10 +2120,11 @@ MonoBehaviour:
   __classID: 0
   __gunBarrel: {fileID: 4502247555075780901}
   __wielder: {fileID: 0}
-  __baseDamage: 50
+  __baseDamage: 20
   __infAmmo: 1
   __ammoCount: 0
-  __range: 3
+  __range: 50
+  __fireRate: 1
   __flipEnabled: 0
 --- !u!114 &5698693304287685860
 MonoBehaviour:

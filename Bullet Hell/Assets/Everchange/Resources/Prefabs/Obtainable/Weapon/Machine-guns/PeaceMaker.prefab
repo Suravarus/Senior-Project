@@ -367,7 +367,7 @@ MonoBehaviour:
   LocalPitch: 0
   customIndicator: {fileID: 0}
   Shot: {fileID: 1000010161334016, guid: dfa492438880f9e4c90eb54ee2453e91, type: 3}
-  ShotSpeed: 30
+  ShotSpeed: 10
   LocalOffset: 0
   controller: {fileID: 0}
   OnStoppedFiring:

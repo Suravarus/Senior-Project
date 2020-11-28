@@ -34,6 +34,9 @@ namespace ND_VariaBULLET
         [Tooltip("Maximum distance the bullet can travel before being destroyed.")]
         public int maxDistance = 15;
 
+        //This is the distance the bullet has traveled so far.
+        protected float distanceTraveled = 0;
+
 
         [Tooltip("Sets this shot rotation intitially to that of its emitter.")]
         public bool InheritStartRotation = true;
@@ -214,6 +217,7 @@ namespace ND_VariaBULLET
 
         protected virtual void RePoolOrDestroy()
         {
+            distanceTraveled = 0;
             if (poolOrDestroyTriggered)
                 return;
 
