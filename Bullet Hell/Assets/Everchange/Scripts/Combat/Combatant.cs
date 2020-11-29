@@ -33,6 +33,12 @@ namespace Combat
             Head,
             Chest
         }
+        public enum CombatantState
+        {
+            Idle,
+            Running,
+            Dashing
+        }
         
 
         /// <summary>
@@ -106,6 +112,7 @@ namespace Combat
         public List<OnDeathF> OnDeath;
         public List<OnTakeDamageF> OnTakeDamage;
         public HealthBar CombatHealthBar { get; set; }
+        public CombatantState ActiveState { get; set; }
 
         // ---------- Monobehaviour code --------------
 

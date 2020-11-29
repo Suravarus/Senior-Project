@@ -54,6 +54,7 @@ namespace Combat.Animation
                     v = v.normalized;
                     // CALCULATE the direction the weapon is facing
                     var direction = PhysicsTool.DirectionFromHorizontal(v);
+                    var dashing = this.Puppet.ActiveState == Combatant.CombatantState.Dashing;
                     // IF player is moving
                     if (puppetIsMoving)
                     {
@@ -63,16 +64,28 @@ namespace Combat.Animation
                             switch (direction)
                             {
                                 case PhysicsTool.Direction.Down:
-                                    SetState(AnimationState.RunDown);
+                                    if (!dashing)
+                                        SetState(AnimationState.RunDown);
+                                    else
+                                        SetState(AnimationState.DashDown);
                                     break;
                                 case PhysicsTool.Direction.Up:
-                                    SetState(AnimationState.RunUp);
+                                    if (!dashing)
+                                        SetState(AnimationState.RunUp);
+                                    else
+                                        SetState(AnimationState.DashUp);
                                     break;
                                 case PhysicsTool.Direction.Left:
-                                    SetState(AnimationState.RunLeft);
+                                    if (!dashing)
+                                        SetState(AnimationState.RunLeft);
+                                    else
+                                        SetState(AnimationState.DashLeft);
                                     break;
                                 case PhysicsTool.Direction.Right:
-                                    SetState(AnimationState.RunRight);
+                                    if (!dashing)
+                                        SetState(AnimationState.RunRight);
+                                    else
+                                        SetState(AnimationState.DashRight);
                                     break;
                             }
                         } else

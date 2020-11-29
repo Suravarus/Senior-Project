@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             if (this.move_state == MoveState.Move)
             {
                 this.move_state = MoveState.Dash;
+                this.Wielder.ActiveState = Combatant.CombatantState.Dashing;
                 dash_timer_temp = dash_timer;
                 temp_speed = speed;
                 speed = speed * dash_strength;
@@ -176,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         //return to normal movement
                         move_state = MoveState.Move;
+                        this.Wielder.ActiveState = Combatant.CombatantState.Running;
                         speed = temp_speed;
                     }
                     else if (dash_timer_temp < dash_timer / 4)
