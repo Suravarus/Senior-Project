@@ -31,7 +31,7 @@ namespace Structures
         /// Returns TRUE if the gate was opened.
         /// </summary>
         /// <returns>was the gate opened?</returns>
-        bool OpenGate()
+        public bool OpenGate()
         {
             if (this.HasGate)
                 this.WallGate.Open();
