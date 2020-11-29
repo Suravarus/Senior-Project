@@ -10,7 +10,7 @@ namespace Loot
         public GameItem[] commonItems; // if shop spawn, put augments in commonItems
         public GameItem[] uncommonItems;
         public GameItem[] rareItems;
-        public Weapon[] weapons;
+        public GameObject[] weapons;
         public bool uniqueItem;
         public bool shopSpawn = false;
         //public string test;
@@ -99,7 +99,7 @@ namespace Loot
             if (dropItem == true)
             {
                 GameItem item = null;
-                Weapon weapon = null;
+                IWeapon weapon = null;
                 
                 // For shop spawns
                 if (uniqueItem == true)
@@ -115,7 +115,7 @@ namespace Loot
 
                     if (isWeapon == true)
                     {
-                        weapon = this.weapons[Random.Range(0, weapons.Length)];
+                        weapon = this.weapons[Random.Range(0, weapons.Length)].GetComponent<IWeapon>();
                     }
                     else
                     {
@@ -187,8 +187,8 @@ namespace Loot
                         // the shop should keep track of its inventory.
                         // weapon.inShop = true;
                     }
-                    Instantiate(weapon, this.transform.position, this.transform.rotation);
-                    weapon.transform.localScale = new Vector3(3, 3, 1);
+                    Instantiate(weapon.GetGameObject(), this.transform.position, this.transform.rotation);
+                    weapon.GetGameObject().transform.localScale = new Vector3(3, 3, 1);
                 }
                 else
                     Debug.Log("Nothing was dropped");
