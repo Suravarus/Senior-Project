@@ -12,6 +12,7 @@ namespace Combat
     [System.Serializable]
     public class WeaponWielder : Combatant, IWeaponWielder
     {
+        // Unity Editor
         [Header("Animation")]
         [Tooltip("If TRUE, the sprite and animator components must be on the " 
             +"WeaponWrapper and only the Idle and RunUp animations will be used.")]
