@@ -38,16 +38,21 @@ using UnityEngine;
         }
         public void OpenChest()
          {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount != 0)
+        {
+            Vector3 chestpos = this.transform.position;
+            Vector3 dropPos = new Vector3(chestpos.x, chestpos.y - 1);
+            var chestsize = this.transform.localScale;
+            Destroy(gameObject);
+            chest.transform.localScale = chestsize;
+            Instantiate(chest, chestpos, Quaternion.identity);
+            int randomItem = Random.Range(0, aPrefab.Length);
+            Instantiate(dropPool[randomItem], dropPos, Quaternion.identity);
+            Debug.Log("opened");
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount -= 1;
+        }
 
-                Vector3 chestpos = this.transform.position;
-                Vector3 dropPos = new Vector3(chestpos.x, chestpos.y - 1);
-                var chestsize = this.transform.localScale;
-                Destroy(gameObject);
-                chest.transform.localScale = chestsize;
-                Instantiate(chest, chestpos, Quaternion.identity);
-                int randomItem = Random.Range(0, aPrefab.Length);
-                Instantiate(dropPool[randomItem], dropPos, Quaternion.identity);
-            }
+    }
         }
     
 

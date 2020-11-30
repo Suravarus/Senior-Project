@@ -12,7 +12,9 @@ namespace Loot
         // PROPERTIES
         private WeaponWielder Wielder { get; set; }
         public int Gold = 0;
+        public int KeyCount = 1;
         public CurrencyUI currencyUI;
+        public CurrencyUI keyUI;
         // ACCESSORS
         private Rigidbody2D RigidBody { get; set; }
         // METHODS
@@ -43,6 +45,7 @@ namespace Loot
                         break;
                     case GameItem.ItemClass.Chest:
                         lootCollider.GetComponent<Chest>().OpenChest();
+                        keyUI.SetAmount(KeyCount);
                         break;
                     case GameItem.ItemClass.Augment:
                         var Augment = loot.GetComponent<AugmentItem>();
@@ -83,6 +86,11 @@ namespace Loot
         {
             if (this.currencyUI == null)
                 throw new MissingFieldException(nameof(this.currencyUI));
+            keyUI.SetAmount(KeyCount);
+        }
+        private void Update()
+        {
+            
         }
     }
 }
