@@ -94,7 +94,8 @@ namespace Combat
             // GET enemy combatant from the collisionInfo
             var isWeapon = other.GetComponent<Weapon>() != null;
             var isAmmo = other.GetComponent<Ammo>() != null;
-            if (!isWeapon && !isAmmo)
+            var isScanner = other.GetComponent<Structures.PlayerScanner>();
+            if (!isWeapon && !isAmmo && !isScanner)
             {
                 var collisionCombatant = other.GetComponent<Combatant>();
                 var isOtherCombatant = collisionCombatant != null
