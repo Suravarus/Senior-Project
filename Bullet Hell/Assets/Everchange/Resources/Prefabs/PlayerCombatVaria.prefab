@@ -315,7 +315,7 @@ MonoBehaviour:
   dash_timer: 0.4
   move_state: 0
   dash_timer_temp: 0
-  speed: 5
+  speed: 8
 --- !u!70 &836866190439043794
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -378,11 +378,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Enemy
-  _health: 200
-  _maxHealth: 200
+  _health: 100
+  _maxHealth: 100
   shieldPowerUp: 0
   __healthBar: {fileID: 0}
   animator: {fileID: 333867401150948273}
+  __spriteOnWrapper: 0
   rangedWeaponWrapper: {fileID: 1122876864888820426}
   startingWeapon: {fileID: 5523117105201254369}
   rateOfFirePowerUp: 0
@@ -502,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: 5145271836151194005, guid: 2c775ada529dff9499cd02324d32045c, type: 3}
       propertyPath: m_LocalPosition.y

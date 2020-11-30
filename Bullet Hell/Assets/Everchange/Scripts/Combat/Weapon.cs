@@ -191,8 +191,6 @@ public class Weapon : GameItem, IWeapon
                 // shoot the 'ammo' straight ahead
                 if (this.bulletSpeed > 0)
                     a.Speed = this.bulletSpeed;
-                if (this.baseDamage > 0)
-                    a.damage = this.baseDamage;
                 if (wielder.piercingTimerTemp > 0)
                     a.piercingPowerUp = true;
                 else
@@ -224,10 +222,12 @@ public class Weapon : GameItem, IWeapon
     /// </summary>
     /// <param name="target"></param>
     /// <returns></returns>
-    public Boolean InRange(Vector3 target)
+    public Boolean InRange(Vector3 target, float aggroDistance = 0f)
     {
-        return Vector3.Distance(target
-            , this.transform.position) <= this.range;
+        if (aggroDistance == 0f)
+            return Vector3.Distance(target
+                , this.transform.position) <= this.range;
+        return Vector3.Distance(target, this.transform.position) <= aggroDistance;
     }
 
     private Transform GetAmmoSpawnPoint()

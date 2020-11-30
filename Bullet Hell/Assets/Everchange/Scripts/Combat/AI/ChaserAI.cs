@@ -3,6 +3,8 @@ using Pathfinding;
 
 namespace Combat.AI
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Seeker))]
     public class ChaserAI : MonoBehaviour
     {
 

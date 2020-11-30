@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 126753100}
   m_Layer: 14
   m_Name: Turret Enemy
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: daf49cfd0a78ee940872125473fede84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   shieldPowerUp: 0
   __healthBar: {fileID: 8485369463663962361}
   animator: {fileID: 0}
+  __spriteOnWrapper: 0
   rangedWeaponWrapper: {fileID: 5426101736023786258}
   startingWeapon: {fileID: 4725200644900063036}
   rateOfFirePowerUp: 0
@@ -231,9 +232,11 @@ MonoBehaviour:
   weaponBarUI: {fileID: 0}
   Type: 1
   passive: 0
+  __aggroRange: 0
   infinitAmmo: 1
   speed: 5
   nextWaypointDistance: 0
+  inAccuracy: 5
   collideWithCombatants: 0
 --- !u!114 &5293613830069688691
 MonoBehaviour:
@@ -526,6 +529,14 @@ PrefabInstance:
       propertyPath: wielder
       value: 
       objectReference: {fileID: 8252004040100609672}
+    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: baseDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 957776989926973279, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
+      propertyPath: range
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1357898169903467675, guid: d806c8c23e75ddd468d080750ad39386, type: 3}
       propertyPath: m_Layer
       value: 14

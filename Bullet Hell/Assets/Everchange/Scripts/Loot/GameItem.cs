@@ -30,7 +30,12 @@ namespace Loot
             /// Has loot that the player can access once all requirements
             /// are met.
             /// </summary>
-            Chest
+            Chest,
+            /// <summary>
+            /// Player can stand in the portal to teleport to predetermined
+            /// areas.
+            /// </summary>
+            Portal
         }
         //public string testing;
         public enum Rarity

@@ -115,7 +115,7 @@ MonoBehaviour:
   ShotSpeed: 0
   IgnoreGlobalSpeedScale: 0
   ParentToEmitter: 0
-  DamagePerHit: 1
+  DamagePerHit: 0
   maxDistance: 15
   InheritStartRotation: 1
   scaledSpeed: 0

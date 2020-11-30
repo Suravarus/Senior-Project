@@ -127,11 +127,13 @@ MonoBehaviour:
   __classID: 0
   __gunBarrel: {fileID: 3022861624316777525}
   __wielder: {fileID: 0}
-  __baseDamage: 0
-  __infAmmo: 1
-  __ammoCount: 200
-  __range: 3
+  __baseDamage: 7
+  __infAmmo: 0
+  __ammoCount: 500
+  __range: 12
+  __fireRate: 10
   __flipEnabled: 1
+  shootingAnimator: {fileID: 0}
 --- !u!58 &3022861624659406776
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ MonoBehaviour:
   Destination: 2
   Behavior: 3
   InitialDelay: 0
-  From: 0
+  From: -10
   To: 10
   Speed: 150
   Ease: 0
@@ -365,7 +367,7 @@ MonoBehaviour:
   LocalPitch: 0
   customIndicator: {fileID: 0}
   Shot: {fileID: 1000010161334016, guid: dfa492438880f9e4c90eb54ee2453e91, type: 3}
-  ShotSpeed: 30
+  ShotSpeed: 10
   LocalOffset: 0
   controller: {fileID: 0}
   OnStoppedFiring:

@@ -124,7 +124,7 @@ MonoBehaviour:
   __itemPrice: 0
   isVariaPrefab: 0
   speed: 5
-  damage: 10
+  damage: 0
   piercingPowerUp: 0
   weapon: {fileID: 0}
 --- !u!70 &9217610321880063014

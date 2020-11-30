@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Combat;
 using UI;
+using UnityEngine.SceneManagement;
 
 namespace Loot
 {
@@ -53,7 +54,10 @@ namespace Loot
                         if (Augment.augmentType == AugmentItem.Augment.piercing)
                             Wielder.piercingPowerUp = true;
                         Destroy(lootCollider.gameObject);
-                        break;  
+                        break;
+                    case GameItem.ItemClass.Portal:
+                        SceneManager.LoadScene(2);
+                        break;
                 }
             }
         }

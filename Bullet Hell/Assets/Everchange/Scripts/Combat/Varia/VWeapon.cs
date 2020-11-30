@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using ND_VariaBULLET;
 
 using UI;
@@ -19,16 +21,21 @@ namespace Combat.Varia
         [Min(0)]
         public int __ammoCount = 0;
         public float __range = 3f;
-        [Header("Animation")]
+        [Tooltip("Bullets per second")]
+        [Range(0.01f,50)]
+        public float __fireRate = 1;
         [Header("Animation")]
         [Tooltip("Whether this weapon will have to be flipped depending on if it's facing left or right.")]
         public bool __flipEnabled = false;
+        [Tooltip("Animator this script interacts with in order to trigger a shooting animation. Can be NULL.")]
+        public Animator shootingAnimator;
         // -----------------------------------//
-        // PROPERTIES
+
         // PROPERTIES
         private int _ammoCount;
+        private float _fireDelay;
         // ACCESSORS
-        private float Range { get; set; }
+        public float Range { get; set; }
         private float BaseDamage { get; set; }
         public BasePattern[] Controllers { get; set; }
         private bool FlipEnabled { get; set; }
@@ -52,6 +59,15 @@ namespace Combat.Varia
         private float TriggerDownFrameCount { get; set; }
         private bool FlippedControllers { get; set; }
         private WeaponSounds Speaker { get; set; }
+        private List<FireBullet> Emitters { get; set; }
+        // fixme - new vweapon  code
+        private float FireDelay
+        {
+            get;set;
+        }
+        private float TimeSinceFireRequest { get; set; }
+        private bool WaitingToFire { get; set; }
+        private float FireRate { get; set; }
         // METHODS
         public void Flip()
         {
@@ -79,36 +95,74 @@ namespace Combat.Varia
 
         public float GetRange() => this.Range;
 
-        public bool InRange(Vector3 target)
+        public bool InRange(Vector3 target, float aggroDistance = 0f)
         {
-            return Vector3.Distance(
-                target,
-                this.transform.position) <= this.Range;
+            if (aggroDistance == 0f)
+                return Vector3.Distance(target
+                    , this.transform.position) <= this.Range;
+            return Vector3.Distance(target, this.transform.position) <= aggroDistance;
         }
 
         public bool IsFlipped() => this.Flipped;
         // FIXME VI - needs implementation
         public void RequestWeaponFire()
         {
+            if (!this.WaitingToFire)
+            {
+                this.WaitingToFire = true;
+                this.Shoot();
+                this.FireDelay = this.CalculateDelay() - this.FireDelay;
+                this.TimeSinceFireRequest = 0f;
+            }
+        }
+        private void Shoot()
+        {
             if (this.InfiniteAmmo || this.AmmoCount > 0)
             {
-                if (this.Speaker != null)
-                    this.Speaker.PlaySound(WeaponSounds.Sounds.Shot);
-                foreach (BasePattern bp in this.Controllers)
+                
+                try
                 {
-                    bp.TriggerAutoFire = true;
+                    // IF Animator component is attached
+                    if (this.shootingAnimator != null)
+                    {
+                        // PLAY shooting animation based on rateOfFire
+                        this.shootingAnimator.Play("Shooting", 0, 1f / this.FireRate - 0.25f);
+                    }
+                    // PLAY shooting sound
+                    if (this.Speaker != null)
+                        this.Speaker.PlaySound(WeaponSounds.Sounds.Shot);
+
+                    // instantiate bullets
+                    foreach (FireBullet fb in this.Emitters)
+                    {
+                        fb.InstantiateShot();
+                    }
+                    if (!this.InfiniteAmmo) this.AmmoCount -= 1;
+
+                    // update ammo ui if exists
+                    if (this.UIAmmoSlot != null)
+                        UpdateAmmoSlot();
+                } catch(Exception ex)
+                {
+                    throw new Exception(
+                        "Weapon.Fire() - has Ammo been set?", ex);
                 }
-                this.TriggerPulled = true;
-                this.TriggerDownFrameCount = 0;
+            } else if (this.Speaker != null)
+            {
+                this.Speaker.PlaySound(WeaponSounds.Sounds.NoAmmo);
             }
+        }
+        private float CalculateDelay()
+        {
+            return (1f / this.FireRate);
         }
 
         public void StopFiring()
         {
-            foreach (BasePattern bp in this.Controllers)
-            {
-                bp.TriggerAutoFire = false;
-            }
+            //foreach (BasePattern bp in this.Controllers)
+            //{
+            //    bp.TriggerAutoFire = false;
+            //}
             this.TriggerPulled = false;
         }
 
@@ -144,26 +198,52 @@ namespace Combat.Varia
             this.Wielder = this.__wielder;
             this.FlippedControllers = this.Flipped;
             this.Speaker = this.GetComponent<WeaponSounds>();
+            this.Emitters = new List<FireBullet>();
+            // populate emitters list
+            foreach(BasePattern bp in this.Controllers)
+            {
+                var fblist = bp.GetComponentsInChildren<FireBullet>();
+                this.Emitters.AddRange(fblist);
+            }
+            // calculate FireDelay based on rateOfFire
+            this.FireDelay = 0f;
+            this.FireRate = this.__fireRate;
+            // set initial parameters.
+            this.TimeSinceFireRequest = 0f;
+            this.WaitingToFire = false;
+            this.Speaker = this.GetComponent<WeaponSounds>();
         }
 
-        protected virtual void Update()
+        protected virtual void FixedUpdate()
         {
-            if (this.TriggerPulled)
-            {
-                if (this.TriggerDownFrameCount < 1)
-                {
-                    this.TriggerDownFrameCount += 1;
-                }
-                else
-                {
-                    this.AmmoCount -= 1;
-                    StopFiring();
-                }
-            }
             
             if (this.GetGunBarrel().transform.parent != null)
             {
                 this.Controllers[0].Pitch = this.transform.rotation.z;
+            }
+
+            // IF the weapon is waiting to fire:
+            if (this.WaitingToFire)
+            {
+                // UPDATE elapsed time since the last shot was fired (increate rate if we have the power up)
+                if (this.Wielder.rateOfFireTimerTemp > 0)
+                {
+                    this.TimeSinceFireRequest += (Time.deltaTime * this.Wielder.rateOfFireTimerStrength) - this.TimeSinceFireRequest;
+                }
+                else
+                {
+                    this.TimeSinceFireRequest += Time.deltaTime - this.TimeSinceFireRequest;
+                }
+
+
+                // SUBTRACT elapsed time from FireDelay
+                this.FireDelay -= this.TimeSinceFireRequest;
+                // IF FireDelay is 0:
+                if (this.FireDelay <= 0f)
+                {
+                    // SET WaitingToFire = FALSE
+                    this.WaitingToFire = false;
+                }
             }
         }
     }

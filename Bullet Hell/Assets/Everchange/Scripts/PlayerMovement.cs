@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 Direction { get; set; }
     Vector2 CursorScreenPosition { get; set; }
     Boolean ShootingPressed { get; set; }
+    private bool TookDamage { get; set; }
 
     public enum MoveState
     {
@@ -86,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             if (this.move_state == MoveState.Move)
             {
                 this.move_state = MoveState.Dash;
+                this.Wielder.ActiveState = Combatant.CombatantState.Dashing;
                 dash_timer_temp = dash_timer;
                 temp_speed = speed;
                 speed = speed * dash_strength;
@@ -109,6 +112,9 @@ public class PlayerMovement : MonoBehaviour
             ShootingPressed = ctx.ReadValueAsButton();
 
         };
+        this.Wielder.OnTakeDamage.Add(c => {
+            if (!this.TookDamage) this.TookDamage = true;
+        });
 
         // WEAPON-BAR LISTENERS
         this.Keybindings.WeaponBar.Cast_1.performed += ctx => this.WeaponBar.EquipWeaponAt(0);
@@ -122,10 +128,26 @@ public class PlayerMovement : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Makes sure the player doesn't get flooded with damage.
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    IEnumerator InvulnurabilityCheck(Combatant c)
+    {
+        c.Invulnurable = true;
+        yield return new WaitForSeconds(.4f);
+        c.Invulnurable = false;
+        this.TookDamage = false;
+    }
+
     public void FixedUpdate()
     {
         if (this.Wielder.IsAlive())
         {
+            // iv check
+            if (this.TookDamage && this.Wielder.Invulnurable == false) 
+                StartCoroutine(InvulnurabilityCheck(this.Wielder));
             // MOVE player 
             this.rb.velocity = this.Direction * this.speed;
 
@@ -155,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         //return to normal movement
                         move_state = MoveState.Move;
+                        this.Wielder.ActiveState = Combatant.CombatantState.Running;
                         speed = temp_speed;
                     }
                     else if (dash_timer_temp < dash_timer / 4)

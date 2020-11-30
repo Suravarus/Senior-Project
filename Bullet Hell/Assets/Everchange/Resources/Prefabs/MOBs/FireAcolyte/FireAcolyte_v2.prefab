@@ -121,9 +121,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -11554651
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 31b17986fa5b13f4f9b7403589287a19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -213,11 +213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Player
-  _health: 50
-  _maxHealth: 50
+  _health: 40
+  _maxHealth: 40
   shieldPowerUp: 0
   __healthBar: {fileID: 5317647475158934223}
   animator: {fileID: 0}
+  __spriteOnWrapper: 0
   rangedWeaponWrapper: {fileID: 6933080155954550088}
   startingWeapon: {fileID: 5959262762207633352}
   rateOfFirePowerUp: 0
@@ -230,9 +231,11 @@ MonoBehaviour:
   weaponBarUI: {fileID: 0}
   Type: 0
   passive: 0
+  __aggroRange: 0
   infinitAmmo: 1
-  speed: 5
-  nextWaypointDistance: 1
+  speed: 4
+  nextWaypointDistance: 3
+  inAccuracy: 8
   collideWithCombatants: 0
 --- !u!114 &-5051725881224634116
 MonoBehaviour:
@@ -514,6 +517,22 @@ PrefabInstance:
       propertyPath: weaponAmmo
       value: 
       objectReference: {fileID: 8035906373920960711, guid: f2fd5b0a359fe2e4fa0b97153cd5e70e, type: 3}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: baseDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: bulletSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: rateOfFire
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 188560495310502460, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
+      propertyPath: range
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2094009916233312760, guid: 6afaa8d2ce971664fb3e5f3c702f5a7b, type: 3}
       propertyPath: m_Layer
       value: 14
