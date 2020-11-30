@@ -32,7 +32,7 @@ namespace Utilities
 
             get { return this._lowercaseName; }
         }
-        private float Price { get; set; }
+        private int Price { get; set; }
         /// <summary>
         /// Description of this item. Should be a short sentence that 
         /// adheres to the character-limit.
@@ -75,7 +75,7 @@ namespace Utilities
         /// <param name="canSell"></param>
         public GameInfo(String name
             , String description
-            , float price = 0f, bool canSell = false)
+            , int price = 0, bool canSell = false)
         {
             this.LowercaseName = name;
             this.Description = description;

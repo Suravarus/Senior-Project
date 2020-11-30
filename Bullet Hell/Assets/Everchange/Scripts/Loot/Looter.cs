@@ -58,6 +58,18 @@ namespace Loot
                     case GameItem.ItemClass.Portal:
                         SceneManager.LoadScene(2);
                         break;
+                    case GameItem.ItemClass.ammo:
+                        var ammoDrop = loot.GetComponent<GameItem>();
+                        if (ammoDrop.inShop == true && Gold >= ammoDrop.__itemPrice)
+                        {
+                            Wielder.RangedWeapon.AmmoCount += 50;
+                            Gold -= ammoDrop.__itemPrice;
+                        }
+                        else
+                        {
+                            Debug.Log("Insufficient funds");
+                        }
+                        break;
                 }
             }
         }

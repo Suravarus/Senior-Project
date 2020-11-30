@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4543515909663150062
+--- !u!1 &6960266896132005438
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5885519092036935831}
-  - component: {fileID: 4505211657360815008}
-  - component: {fileID: -2226066692380561960}
-  - component: {fileID: -1301745402226749414}
-  - component: {fileID: 4064223097162246417}
+  - component: {fileID: 6960266896132005432}
+  - component: {fileID: 6960266896132005433}
+  - component: {fileID: 4971882716320101358}
+  - component: {fileID: -9187491955138807671}
+  - component: {fileID: 3512063890344829784}
   m_Layer: 0
-  m_Name: keys_2_3
-  m_TagString: Untagged
+  m_Name: ShotgunShell
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5885519092036935831
+--- !u!4 &6960266896132005432
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
+  m_GameObject: {fileID: 6960266896132005438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4505211657360815008
+--- !u!212 &6960266896132005433
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
+  m_GameObject: {fileID: 6960266896132005438}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,62 +74,63 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 9861477b3e088a140aea6beba7882cb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f2abf352097c5a4196021775f71ab2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.625, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-2226066692380561960
+--- !u!58 &4971882716320101358
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
+  m_GameObject: {fileID: 6960266896132005438}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
---- !u!114 &-1301745402226749414
+  m_Radius: 0.3125
+--- !u!114 &-9187491955138807671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
+  m_GameObject: {fileID: 6960266896132005438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inShop: 0
---- !u!114 &4064223097162246417
+--- !u!114 &3512063890344829784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4543515909663150062}
+  m_GameObject: {fileID: 6960266896132005438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e73d42f08ebee544aad645b55de5425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  __itemName: Common Key
-  __itemDescription: Can be used to open common-chests. It's not that common.
-  __saleable: 1
-  __itemPrice: 200
+  __itemName: Ammo
+  __itemDescription: Ammo that can be picked up by the player to add to a gun's current
+    ammo count.
+  __saleable: 0
+  __itemPrice: 60
   inShop: 0
-  Item_Rarity: 1
-  __classID: 6
+  Item_Rarity: 0
+  __classID: 7

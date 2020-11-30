@@ -35,7 +35,16 @@ namespace Loot
             /// Player can stand in the portal to teleport to predetermined
             /// areas.
             /// </summary>
-            Portal
+            Portal,
+            /// <summary>
+            /// Player can use keys to open chests. reduce total key count 
+            /// on use.
+            /// </summary>
+            key,
+            /// <summary>
+            /// Obtainable ammo to add to a gun's ammo count.
+            /// </summary>
+            ammo
         }
         //public string testing;
         public enum Rarity
