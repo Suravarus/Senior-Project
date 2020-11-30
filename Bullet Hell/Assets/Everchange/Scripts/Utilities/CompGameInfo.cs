@@ -16,7 +16,7 @@ namespace Utilities
         [Header("Vendor")]
         public bool __saleable = false;
         [Min(0)]
-        public float __itemPrice;
+        public int __itemPrice;
         // ACCESSORS
         private GameInfo Info { get; set; }
 

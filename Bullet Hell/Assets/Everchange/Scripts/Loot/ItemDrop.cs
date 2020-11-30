@@ -10,7 +10,7 @@ namespace Loot
         public GameItem[] commonItems; // if shop spawn, put augments in commonItems
         public GameItem[] uncommonItems;
         public GameItem[] rareItems;
-        public GameObject[] weapons;
+        public GameItem[] weapons;
         public bool uniqueItem;
         public bool shopSpawn = false;
         //public string test;
