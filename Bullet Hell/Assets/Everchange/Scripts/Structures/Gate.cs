@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using ProcGen;
 using Utilities;
 namespace Structures
 {
@@ -13,8 +12,12 @@ namespace Structures
         /// <summary>
         /// Should the gate open on player collision?
         /// </summary>
-        public bool OpenOnCollision { get; set; }
-        public CardinalDirection CardinalPosition { get; set; }
+        public bool OpenOnCollision 
+        { 
+            get => this.__openOnCollision; 
+            set => this.__openOnCollision = value; 
+        }
+        public CardinalDirection CardinalPosition { get => this.__cardinalPosition; set => this.__cardinalPosition = value; }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -44,8 +47,8 @@ namespace Structures
         // MONOBEHAVIOUR
         void Awake()
         {
-            this.OpenOnCollision = this.__openOnCollision;
-            this.CardinalPosition = this.__cardinalPosition;
+            //this.OpenOnCollision = this.__openOnCollision;
+            //this.CardinalPosition = this.__cardinalPosition;
         }
     }
 }

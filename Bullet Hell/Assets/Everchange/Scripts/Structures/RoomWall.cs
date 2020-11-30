@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace Structures
 {
+    /// <summary>
+    /// This component is used on the outermost walls of a room.
+    /// Will have a gate which can be opened or closed.
+    /// It will also have a cardinal postition indicating where it is in the room. (n, s, e, w)
+    /// </summary>
     public class RoomWall : MonoBehaviour
     {
         // Unity Editor
@@ -23,7 +28,11 @@ namespace Structures
         /// <summary>
         /// Cardinal position of this door. (i.e. N, S, E, W)
         /// </summary>
-        private CardinalDirection CardinalPosition { get; set; }
+        private CardinalDirection CardinalPosition 
+        { 
+            get => this.__cardinalPostion; 
+            set => this.__cardinalPostion = value; 
+        }
 
         // METHODS
         /// <summary>
@@ -42,12 +51,11 @@ namespace Structures
         /// </summary>
         /// <param name="openOnCollision">should the gate open on collision?</param>
         /// <returns>was the gate closed?</returns>
-        bool CloseGate(bool openOnCollision = false)
+        public void CloseGate(bool openOnCollision = false)
         {
-            if (this.HasGate)
-                this.WallGate.Close(openOnCollision);
-            return this.HasGate;
+            this.WallGate.Close(openOnCollision);
         }
+        public CardinalDirection GetCardinalPosition() => this.CardinalPosition;
         // MONOBEHAVIOUR
         private void Awake()
         {
@@ -55,6 +63,11 @@ namespace Structures
             if (this.WallGate == null)
                 throw new MissingMemberException($"missing child object {typeof(Gate)}");
             this.CardinalPosition = this.__cardinalPostion;
+            this.CardinalPosition = this.__cardinalPostion;
+            this.OpenOnCollision = this.__openOnPlayerCollision;
+
+            this.WallGate.CardinalPosition = this.CardinalPosition;
+            this.WallGate.OpenOnCollision = this.OpenOnCollision;
         }
     }
 }
