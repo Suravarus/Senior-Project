@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 8608261289060748028}
   - component: {fileID: 716809990296933393}
   - component: {fileID: 7027229908163628420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock-monument
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 475718882853976875}
   - component: {fileID: 2322187288578695017}
   - component: {fileID: 861143807552003312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tree-dried (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2170,7 +2170,7 @@ GameObject:
   - component: {fileID: 3913986850073576963}
   - component: {fileID: 7667602413907652634}
   - component: {fileID: 4293011613404636930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tree-dried
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3825,7 +3825,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336858039216082536}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3837,7 +3837,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &1249618114626303705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6014,7 +6014,7 @@ GameObject:
   - component: {fileID: 2258056631338101018}
   - component: {fileID: 1256769968200103}
   - component: {fileID: 7566051098040927836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tree-dried (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8293,7 +8293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9054435054813504301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8626,7 +8626,7 @@ GameObject:
   - component: {fileID: 2327207780400317692}
   - component: {fileID: 7402852923595657083}
   - component: {fileID: 2613234754420452165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tree-dried (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9044,7 +9044,7 @@ GameObject:
   - component: {fileID: 8207571446610710520}
   - component: {fileID: 5006132606037322541}
   - component: {fileID: 7019089519901279452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9136,7 +9136,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &7019089519901279452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9250,7 +9250,7 @@ GameObject:
   - component: {fileID: 8211018428509363548}
   - component: {fileID: 1637945320348385937}
   - component: {fileID: 1656928243056187447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9342,7 +9342,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &1656928243056187447
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11214,7 +11214,7 @@ GameObject:
   - component: {fileID: 5639336511849155914}
   - component: {fileID: 3895962476688233572}
   - component: {fileID: 641404160286495192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11306,7 +11306,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &641404160286495192
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15087,7 +15087,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7908275223266130049}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -15099,7 +15099,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &8439373490546894387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16338,7 +16338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1207009619509290948
 RectTransform:
   m_ObjectHideFlags: 0
