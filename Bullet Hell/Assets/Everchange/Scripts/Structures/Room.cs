@@ -86,9 +86,10 @@ namespace Structures
             if (this.DeathCount == this.AICount)
             {
                 Debug.Log($"rm: open gate");
-                if(UnityEngine.Random.Range(1,4) == 1)
+                if(UnityEngine.Random.Range(1,1) == 1)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount += 1;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>()._keyCount += 1;
+                    Debug.Log("rm key dropped");
                 }
                 // open the gates
                 this.OpenGates();

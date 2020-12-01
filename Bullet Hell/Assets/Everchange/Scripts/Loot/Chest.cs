@@ -38,7 +38,7 @@ using UnityEngine;
         }
         public void OpenChest()
          {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount != 0)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>()._keyCount != 0)
         {
             Vector3 chestpos = this.transform.position;
             Vector3 dropPos = new Vector3(chestpos.x, chestpos.y - 1);
@@ -49,7 +49,7 @@ using UnityEngine;
             int randomItem = Random.Range(0, aPrefab.Length);
             Instantiate(dropPool[randomItem], dropPos, Quaternion.identity);
             Debug.Log("opened");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount -= 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>()._keyCount -= 1;
         }
 
     }

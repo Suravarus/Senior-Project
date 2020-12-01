@@ -30,11 +30,6 @@ namespace UI
             this.RectTransform = this.GetComponent<RectTransform>();
         }
 
-        public void Start()
-        {
-            UpdateUI();
-        }
-
         public int GetAmount()
         {
             return this.Amount;
