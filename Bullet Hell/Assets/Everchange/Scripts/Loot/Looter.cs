@@ -155,7 +155,8 @@ namespace Loot
         {
             if (this.currencyUI == null)
                 throw new MissingFieldException(nameof(this.currencyUI));
-            keyUI.SetAmount(KeyCount);
+            try { keyUI.SetAmount(KeyCount); }
+            catch(Exception ex) { Debug.Log($"looter {ex.Message}"); }
         }
     }
 }
