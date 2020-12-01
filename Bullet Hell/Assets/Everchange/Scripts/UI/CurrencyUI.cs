@@ -32,7 +32,7 @@ namespace UI
 
         public void Start()
         {
-            this.SetAmount(0);
+            UpdateUI();
         }
 
         public int GetAmount()

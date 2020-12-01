@@ -25,10 +25,9 @@ namespace ProcGen
         private Room ActiveRoom { get; set; }
 
         // MONOBEHAVIOUR
-        private void Awake()
+        private void Start()
         {
             this.ActiveRoom = this.transform.GetChild(0).GetComponent<Room>();
-            this.ActiveRoom.RoomReady += (s, e) => SetRoomGates();
             this.ParentFloor = this.GetComponentInParent<Floor>();
             GameObject[] prefabs = new GameObject[0];
             // load prefabs
@@ -50,7 +49,7 @@ namespace ProcGen
                     prefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/Spawn");
                     break;
             }
-
+            bool setGates = true;
             if (prefabs.Length > 0 && (roomType == RoomType.Spawn || roomType == RoomType.Normal))
             {
                 int attempts = 0;
@@ -70,32 +69,34 @@ namespace ProcGen
                 {
                     this.ParentFloor.Rooms.Add(room);
                     Destroy(this.transform.GetChild(0).gameObject);
-                    Instantiate(room, this.transform.position, Quaternion.identity);
-                    this.ActiveRoom = room;
-                } else
-                {
-                    this.ActiveRoom = this.transform.GetChild(0).GetComponent<Room>();
+                    this.ActiveRoom = Instantiate(room, this.transform.position, Quaternion.identity);
+                    this.ActiveRoom.RoomReady += SetRoomGates;
+                    setGates = false;
+                    Debug.Log($"acn {this.ActiveRoom.name}");
                 }
             }
+            if (setGates)
+                SetRoomGates();
         }
-        private void Start()
-        {
-            SetRoomGates();
-        }
-        private void SetRoomGates()
+        private void SetRoomGates(object sender = null, EventArgs ea = null)
         {
             var walls = this.ActiveRoom.transform.GetComponentsInChildren<RoomWall>();
             Debug.Log($"dbc {this.ActiveRoom.name}: {walls.Length}");
-            foreach (RoomWall wall in walls)
+            
+            for (int i = 0; i < walls.Length; i++)
             {
+                var wall = walls[i];
                 wall.HasGate = false;
+                wall.OpenOnCollision = false;
 
                 if ((this.__hallTop && wall.GetCardinalPosition() == CardinalDirection.North)
                     || (this.__hallBottom && wall.GetCardinalPosition() == CardinalDirection.South)
                     || (this.__hallLeft && wall.GetCardinalPosition() == CardinalDirection.West)
                     || (this.__hallRight && wall.GetCardinalPosition() == CardinalDirection.East))
+                {
                     wall.HasGate = true;
-
+                    wall.OpenOnCollision = true;
+                }
                 Debug.Log($"db {this.ActiveRoom.name}: {wall.GetCardinalPosition()} GATE:{wall.HasGate}");
             }
         }

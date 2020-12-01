@@ -11,7 +11,7 @@ namespace Loot
     {
         // PROPERTIES
         private WeaponWielder Wielder { get; set; }
-        public int Gold = 0;
+        public int Gold;
         public CurrencyUI currencyUI;
         // ACCESSORS
         private Rigidbody2D RigidBody { get; set; }

@@ -203,6 +203,8 @@ namespace Combat
             // IF has ItemDrop component
             if (this.GetComponent<ItemDrop>() != null)
                 this.GetComponent<ItemDrop>().Spawn(); // CALL ItemDrop
+            foreach (OnDeathF f in this.OnDeath)
+                f.Invoke(this);
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace Structures
                 // add listener to mobs
                 this.AICount = 0;
                 this.DeathCount = 0;
-                foreach (AIWeaponWielder ai in this.MOBS.GetComponentsInChildren<AIWeaponWielder>())
+                foreach (AIWeaponWielder ai in this.MOBS.GetComponentsInChildren<AIWeaponWielder>(true))
                 {
                     this.AICount += 1;
                     ai.OnDeath.Add(c => OnAIDeath(c));
@@ -76,14 +76,16 @@ namespace Structures
                 rt.gameObject.SetActive(false);
         }
 
-        private void OnAIDeath(Combatant ai)
+        private void OnAIDeath(Combatant c)
         {
+            var ai = (Combatant)c;
             // update death-count
             this.DeathCount += 1;
+            Debug.Log($"rm ai {ai.name} is dead [{this.DeathCount}|{this.AICount}]");
             // IF all AI are dead
             if (this.DeathCount == this.AICount)
             {
-                Debug.LogError($"open gate");
+                Debug.Log($"rm: open gate");
                 // open the gates
                 this.OpenGates();
             }
@@ -111,35 +113,40 @@ namespace Structures
             this.RoomTriggers = new List<RoomTrigger>();
             this.GetComponentsInChildren(this.RoomTriggers);
             if (this.PlayerDetection != null)
-                this.PlayerDetection.PostStart += (s, e) => SetTriggers();
+                this.PlayerDetection.PostStart += SetTriggers;
             else
-                SetTriggers();
+                SetTriggers(this.PlayerDetection);
         }
 
-        private void SetTriggers()
+        private void Start()
         {
-            // IF room has triggers AND player is not in the room
-            if (this.RoomTriggers != null 
-                && this.PlayerDetection != null
-                && !this.PlayerDetection.PlayerCollision)
-            {
-                // ADD TRIGGER LISTENERS
-                foreach (RoomTrigger t in this.RoomTriggers)
-                {
-                    // TRIGGER runs this code when it is triggered by the player
-                    t.Triggered += (object sender, EventArgs e) => BeginCombat();
-                }
-            } else if (this.RoomTriggers != null)
-            {
-                // Deactivate triggers
-                foreach (RoomTrigger t in this.RoomTriggers)
-                {
-                    t.gameObject.SetActive(false);
-                }
-            }
             RoomReady?.Invoke(this, new EventArgs());
         }
 
-        
+        private void SetTriggers(object s = null, EventArgs ar = null)
+        {
+            if (s != null)
+            {
+                var playerScanner = (PlayerScanner)s;
+                // IF room has triggers AND player is not in the room
+                if (this.RoomTriggers != null && !playerScanner.PlayerCollision)
+                {
+                    // ADD TRIGGER LISTENERS
+                    foreach (RoomTrigger t in this.RoomTriggers)
+                    {
+                        // TRIGGER runs this code when it is triggered by the player
+                        t.Triggered += (object sender, EventArgs e) => BeginCombat();
+                    }
+                }
+                else if (this.RoomTriggers != null)
+                {
+                    // Deactivate triggers
+                    foreach (RoomTrigger t in this.RoomTriggers)
+                    {
+                        t.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 }

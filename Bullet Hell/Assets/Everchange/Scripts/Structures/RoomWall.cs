@@ -17,13 +17,32 @@ namespace Structures
         public bool __openOnPlayerCollision;
         public CardinalDirection __cardinalPostion;
 
+        private bool _hasGate;
+
         // ACCESSORS
         private Gate WallGate { get; set; }
-        public bool HasGate { get; set; }
+        public EventHandler OnReady;
+        public bool HasGate 
+        {
+            set
+            {
+                this._hasGate = value;
+                if (!this._hasGate)
+                {
+                    this.WallGate.Close();
+                    this.WallGate.OpenOnCollision = false;
+                }
+            }
+            get => this._hasGate;
+        }
         public bool OpenOnCollision
         {
-            set => this.WallGate.OpenOnCollision = value;
-            get => this.WallGate.OpenOnCollision;
+            set
+            {
+                this.__openOnPlayerCollision = value;
+                this.WallGate.OpenOnCollision = value;
+            }
+            get => (this.WallGate.OpenOnCollision);
         }
         /// <summary>
         /// Cardinal position of this door. (i.e. N, S, E, W)
@@ -31,7 +50,6 @@ namespace Structures
         private CardinalDirection CardinalPosition 
         { 
             get => this.__cardinalPostion; 
-            set => this.__cardinalPostion = value; 
         }
 
         // METHODS
@@ -59,15 +77,12 @@ namespace Structures
         // MONOBEHAVIOUR
         private void Awake()
         {
-            this.WallGate = this.transform.GetComponentInChildren<Gate>();
+            this.WallGate = this.transform.GetComponentInChildren<Gate>(true);
             if (this.WallGate == null)
                 throw new MissingMemberException($"missing child object {typeof(Gate)}");
-            this.CardinalPosition = this.__cardinalPostion;
-            this.CardinalPosition = this.__cardinalPostion;
-            this.OpenOnCollision = this.__openOnPlayerCollision;
-
-            this.WallGate.CardinalPosition = this.CardinalPosition;
             this.WallGate.OpenOnCollision = this.OpenOnCollision;
+            this.WallGate.CardinalPosition = this.CardinalPosition;
+            OnReady?.Invoke(this, new EventArgs());
         }
     }
 }
