@@ -98,7 +98,7 @@ namespace Utilities
         /// this item cannot be sold
         /// </summary>
         /// <returns></returns>
-        public float? GetPrice() => this.Saleable ? this.Price : (float?)null;
+        public int GetPrice() => this.Price;
         /// <summary>
         /// Returns TRUE if this item can be sold.
         /// </summary>
