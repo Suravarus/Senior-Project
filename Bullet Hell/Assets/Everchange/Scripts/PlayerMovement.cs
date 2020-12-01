@@ -102,7 +102,28 @@ public class PlayerMovement : MonoBehaviour
                 List<Collider2D> cds = new List<Collider2D>();
                 Debug.Log(collider.OverlapCollider(new ContactFilter2D().NoFilter(), cds));
 
-                if (cds.Count > 0) this.GetComponent<Looter>().PickupLoot(cds[0]);
+                if (cds.Count > 0)
+                {
+                    for(int i = 0; i < cds.Count; i++)
+                    {
+                        if(cds[i].GetComponent<PickupRadius>() == null)
+                        {
+                            if (cds[i].GetComponentInChildren<PickupRadius>() != null)
+                            {
+                                this.GetComponent<Looter>().PickupLoot(cds[i]);
+                                Debug.Log("Component found in child of GameObject");
+                            }
+                            else
+                                Debug.Log("No 'PickupRadius' component");
+                        }
+                        else if(cds[i].GetComponent<PickupRadius>() != null)
+                        {
+                            this.GetComponent<Looter>().PickupLoot(cds[i]);
+                            Debug.Log("Component found in GameObject");
+                        }                                                    
+                    }
+                    //this.GetComponent<Looter>().PickupLoot(cds[0]);
+                }
             }
         };
 

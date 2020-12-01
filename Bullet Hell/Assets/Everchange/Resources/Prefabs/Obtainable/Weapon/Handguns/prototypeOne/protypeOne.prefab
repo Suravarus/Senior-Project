@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2007236660}
   - component: {fileID: 2007236661}
   - component: {fileID: 1758519889403851997}
+  - component: {fileID: 5849159552180686732}
   m_Layer: 0
   m_Name: protypeOne
   m_TagString: Untagged
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 1018385478467568026}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 12.560861, y: -5.710554, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 1018385477105011898}
   m_Father: {fileID: 0}
@@ -137,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 5be25f42eb831e44c8ce3cbaa6d3afa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -296,3 +297,16 @@ MonoBehaviour:
   __pickupSound: {fileID: 8300000, guid: 199bf4b7f2386b64189f0111c39ae277, type: 3}
   __dropSound: {fileID: 8300000, guid: c7dc9dd9edc38054d8eff4ca93e3f718, type: 3}
   __noAmmo: {fileID: 8300000, guid: 074f6e64cee69e74f880363a77d453b1, type: 3}
+--- !u!114 &5849159552180686732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018385478467568026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0

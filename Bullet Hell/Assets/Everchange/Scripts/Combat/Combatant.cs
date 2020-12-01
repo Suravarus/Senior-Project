@@ -54,11 +54,13 @@ namespace Combat
             {
                 this._health = value;
                 if (this._health > this.MaxHealth)
-                    throw new ArgumentOutOfRangeException(nameof(Health)
-                        , this._health
-                        , $"Cannot be greater than {nameof(MaxHealth)}: {this.MaxHealth}");
+                    //throw new ArgumentOutOfRangeException(nameof(Health)
+                    //    , this._health
+                    //    , $"Cannot be greater than {nameof(MaxHealth)}: {this.MaxHealth}");
+                    this._health = this.MaxHealth;
                 if (this._health < 0)
                     this._health = 0;
+                this.CombatHealthBar.UpdateValues(this);
             }
             get { return this._health; }
         }
@@ -137,15 +139,16 @@ namespace Combat
             }
 
             // SET Combat parameters - data will be validated by accessors.
+            this.CombatHealthBar = this.__healthBar;
+            if (this.CombatHealthBar == null)
+                throw new MissingFieldException(
+                    $"{this.name} - {nameof(this.__healthBar)}");
             this.EnemyTag = this._enemyTag;
             this.MaxHealth = this._maxHealth;
             this.Health = this._health;
             this.OnDeath = new List<OnDeathF>();
             this.OnTakeDamage = new List<OnTakeDamageF>();
-            this.CombatHealthBar = this.__healthBar;
-            if (this.CombatHealthBar == null)
-                throw new MissingFieldException(
-                    $"{this.name} - {nameof(this.__healthBar)}");
+            
         }
 
         public virtual void Start()
@@ -185,8 +188,6 @@ namespace Combat
             if (!this.Invulnurable)
             {
                 this.Health -= Mathf.RoundToInt(a.Damage + a.Weapon.GetBaseDamage());
-
-                this.CombatHealthBar.UpdateValues(this);
 
                 if (!this.IsAlive()) this.Die();
             }

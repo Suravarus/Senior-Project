@@ -84,6 +84,8 @@ namespace AudioSys
             this.Speaker = this.GetComponent<AudioSource>();
             if (this.Speaker == null)
                 throw new MissingComponentException(typeof(AudioSource).ToString());
+            Speaker.volume = 0.25f;
         }
+        
     }
 }

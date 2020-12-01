@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UI;
 using ProcGen;
 using Combat;
 using Combat.AI;
@@ -86,6 +86,10 @@ namespace Structures
             if (this.DeathCount == this.AICount)
             {
                 Debug.Log($"rm: open gate");
+                if(UnityEngine.Random.Range(1,4) == 1)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Loot.Looter>().KeyCount += 1;
+                }
                 // open the gates
                 this.OpenGates();
             }

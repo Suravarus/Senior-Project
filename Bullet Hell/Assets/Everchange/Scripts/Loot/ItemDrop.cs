@@ -10,7 +10,9 @@ namespace Loot
         public GameItem[] commonItems; // if shop spawn, put augments in commonItems
         public GameItem[] uncommonItems;
         public GameItem[] rareItems;
-        public GameItem[] weapons;
+        public GameObject[] weapons;
+        List<GameObject> weaponPool = new List<GameObject>();
+        GameObject[] weaponPrefab;
         public bool uniqueItem;
         public bool shopSpawn = false;
         //public string test;
@@ -99,7 +101,7 @@ namespace Loot
             if (dropItem == true)
             {
                 GameItem item = null;
-                IWeapon weapon = null;
+                GameObject weapon = null;
                 
                 // For shop spawns
                 if (uniqueItem == true)
@@ -115,7 +117,26 @@ namespace Loot
 
                     if (isWeapon == true)
                     {
-                        weapon = this.weapons[Random.Range(0, weapons.Length)].GetComponent<IWeapon>();
+                        /*var g = this.weapons[Random.Range(0, weapons.Length)];
+                        Instantiate(g, this.transform.position, this.transform.rotation);
+                        weapon = g.GetComponent<IWeapon>();
+                        if (weapon == null)
+                        {
+                            weapon = g.transform.GetChild(0).GetComponent<IWeapon>();
+
+                        }
+                        Debug.Log("This ran, object: " + g.name);
+                        Debug.Log("This ran, weapon: " + weapon.GetGameInfo().GetLowercaseName());*/
+                        weaponPrefab = Resources.LoadAll<GameObject>("Prefabs/Obtainable/Weapon");
+                        if (weaponPrefab.Length != 0)
+                        {
+                            foreach (GameObject weap in weaponPrefab)
+                            {
+                                weaponPool.Add(weap);
+                            }
+                        }
+                        int randomWeap = Random.Range(0, weaponPrefab.Length);
+                        weapon = weaponPool[randomWeap];
                     }
                     else
                     {
@@ -183,12 +204,29 @@ namespace Loot
                 {
                     if (shopSpawn == true)
                     {
-                        // FIXME [VENDOR] weapon.inShop does not exist - @JC
-                        // the shop should keep track of its inventory.
-                        // weapon.inShop = true;
+                        if (weapon.GetComponent<PickupRadius>() == null)
+                        {
+                            if (weapon.GetComponentInChildren<PickupRadius>() != null)
+                            {
+                                weapon.transform.GetChild(0).GetComponent<GameItem>().inShop = true;
+                                Debug.Log("Weapon Spawned: " + weapon.name);
+                            }
+
+                            else
+                                Debug.Log("No weapon found");
+                            //weapon.GetComponent<GameItem>().inShop = true;
+                            
+                        }
+                        else
+                        {
+                            weapon.GetComponent<GameItem>().inShop = true;
+                            Debug.Log("Weapon Spawned: " + weapon.name);
+                        }
+                        
+
                     }
-                    Instantiate(weapon.GetGameObject(), this.transform.position, this.transform.rotation);
-                    weapon.GetGameObject().transform.localScale = new Vector3(3, 3, 1);
+                    Instantiate(weapon, this.transform.position, this.transform.rotation);
+                    //weapon.transform.localScale = new Vector3(3, 3, 1);
                 }
                 else
                     Debug.Log("Nothing was dropped");
