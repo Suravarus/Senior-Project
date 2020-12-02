@@ -101,14 +101,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 List<Collider2D> cds = new List<Collider2D>();
                 Debug.Log(collider.OverlapCollider(new ContactFilter2D().NoFilter(), cds));
-
+                // FIXME can currently equip boss
                 if (cds.Count > 0)
                 {
                     for(int i = 0; i < cds.Count; i++)
                     {
                         if(cds[i].GetComponent<PickupRadius>() == null)
                         {
-                            if (cds[i].transform.GetChild(0).GetComponent<PickupRadius>() != null)
+                            if (cds[i].GetComponentInChildren<PickupRadius>() != null)
                             {
                                 this.GetComponent<Looter>().PickupLoot(cds[i]);
                                 Debug.Log("Component found in child of GameObject");
