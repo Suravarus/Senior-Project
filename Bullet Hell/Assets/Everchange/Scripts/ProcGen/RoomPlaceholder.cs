@@ -50,7 +50,7 @@ namespace ProcGen
                     break;
             }
             bool setGates = true;
-            if (prefabs.Length > 0 && (roomType == RoomType.Spawn || roomType == RoomType.Normal))
+            if (prefabs.Length > 0)
             {
                 int attempts = 0;
                 var index = 0;
