@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         if(cds[i].GetComponent<PickupRadius>() == null)
                         {
-                            if (cds[i].GetComponentInChildren<PickupRadius>() != null)
+                            if (cds[i].transform.GetChild(0).GetComponent<PickupRadius>() != null)
                             {
                                 this.GetComponent<Looter>().PickupLoot(cds[i]);
                                 Debug.Log("Component found in child of GameObject");
