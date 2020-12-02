@@ -12,13 +12,21 @@ namespace Loot
         // PROPERTIES
         private WeaponWielder Wielder { get; set; }
         public int Gold = 0;
-        public int KeyCount = 1; // FIXME gives player 1 key for free
+        public int _keyCount = 1; // FIXME gives player 1 key for free
         public CurrencyUI currencyUI;
         public CurrencyUI keyUI;
         // ACCESSORS
+        public int KeyCount
+        {
+            set
+            {
+                this._keyCount = value;
+                this.keyUI.SetAmount(this._keyCount);
+            }
+            get => this._keyCount;
+        }
         private Rigidbody2D RigidBody { get; set; }
         // METHODS
-
         public void PickupLoot(Collider2D lootCollider)
         {
             var loot = lootCollider.GetComponent<GameItem>();
@@ -81,7 +89,7 @@ namespace Loot
                         break;
                     case GameItem.ItemClass.Chest:
                         lootCollider.GetComponent<Chest>().OpenChest();
-                        keyUI.SetAmount(KeyCount);
+                        keyUI.SetAmount(_keyCount);
                         break;
                     //Augment
                     case GameItem.ItemClass.Augment:
@@ -132,8 +140,8 @@ namespace Loot
                         if (keyDrop.inShop == true && Gold >= keyDrop.__itemPrice)
                         {
                             Gold -= keyDrop.__itemPrice;
-                            KeyCount += 1;
-                            keyUI.SetAmount(KeyCount);
+                            _keyCount += 1;
+                            keyUI.SetAmount(_keyCount);
                             Destroy(lootCollider.gameObject);
                         }
                         else
@@ -155,7 +163,10 @@ namespace Loot
         {
             if (this.currencyUI == null)
                 throw new MissingFieldException(nameof(this.currencyUI));
-            try { keyUI.SetAmount(KeyCount); }
+            try { 
+                keyUI.SetAmount(_keyCount);
+                this.currencyUI.SetAmount(Gold);
+            }
             catch(Exception ex) { Debug.Log($"looter {ex.Message}"); }
         }
     }
