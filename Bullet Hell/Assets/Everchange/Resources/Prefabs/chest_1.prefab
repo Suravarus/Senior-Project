@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 554235138724792884}
   - component: {fileID: 4262562221457852824}
   - component: {fileID: 7916372802478060819}
-  - component: {fileID: 552673212623607359}
   m_Layer: 0
   m_Name: chest_1
   m_TagString: Untagged
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chest: {fileID: 8502561781473637786, guid: 58b05b6ff6904b044a65db6136e0b85f, type: 3}
-  dropType: 0
+  dropType: 2
 --- !u!61 &4262562221457852824
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,17 +151,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &552673212623607359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554235138724792885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b578e3e1e1e903b478f8aabd53cb8119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chest: {fileID: 8502561781473637786, guid: 58b05b6ff6904b044a65db6136e0b85f, type: 3}
-  dropType: 0

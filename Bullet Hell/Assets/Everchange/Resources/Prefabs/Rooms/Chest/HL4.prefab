@@ -2285,7 +2285,7 @@ GameObject:
   - component: {fileID: 3665400464765048720}
   - component: {fileID: 4044317293360153120}
   m_Layer: 0
-  m_Name: RoomTemplate
+  m_Name: HL4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3097,7 +3097,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 552673212623607359, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
 --- !u!4 &5134847879816458411 stripped
 Transform:
@@ -3163,7 +3164,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 552673212623607359, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
 --- !u!4 &7911779835752226558 stripped
 Transform:
@@ -3177,10 +3179,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3665400464765048720}
     m_Modifications:
-    - target: {fileID: 554235138724792884, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
-      propertyPath: dropType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 554235138724792885, guid: 98823a95c1e3c1f41898e7a7f6a0ed8a, type: 3}
       propertyPath: m_Name
       value: chest_1 (1)
