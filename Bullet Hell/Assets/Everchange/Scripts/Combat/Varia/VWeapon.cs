@@ -216,11 +216,11 @@ namespace Combat.Varia
 
         protected virtual void FixedUpdate()
         {
-            
-            if (this.GetGunBarrel().transform.parent != null)
-            {
-                this.Controllers[0].Pitch = this.transform.rotation.z;
-            }
+            // FIXME this code is causing errors when dropping varia weapons.
+            //if (this.GetGunBarrel().transform.parent != null)
+            //{
+            //    this.Controllers[0].Pitch = this.transform.rotation.z;
+            //}
 
             // IF the weapon is waiting to fire:
             if (this.WaitingToFire)

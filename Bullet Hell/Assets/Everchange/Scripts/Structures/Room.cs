@@ -49,31 +49,32 @@ namespace Structures
         public RoomType GetRoomType() => this.Type;
         private void BeginCombat()
         {
-            // seal room
-            foreach (RoomWall w in this.Walls)
-            {
-                w.OpenOnCollision = false;
-                w.CloseGate();
-            }
-            if (this.MOBS != null)
-            {
-                // reveal mobs
-                this.MOBS.gameObject.SetActive(true);
-                // add listener to mobs
-                this.AICount = 0;
-                this.DeathCount = 0;
-                foreach (AIWeaponWielder ai in this.MOBS.GetComponentsInChildren<AIWeaponWielder>(true))
-                {
-                    this.AICount += 1;
-                    ai.OnDeath.Add(c => OnAIDeath(c));
-                }
-            } else
-            {
-                this.OpenGates();
-            }
             // deactivate all triggers
             foreach (RoomTrigger rt in this.RoomTriggers)
                 rt.gameObject.SetActive(false);
+
+            if (this.MOBS != null && this.MOBS.transform.childCount > 0)
+            {
+                // seal room
+                foreach (RoomWall w in this.Walls)
+                {
+                    w.OpenOnCollision = false;
+                    w.CloseGate();
+                }
+                if (this.MOBS != null)
+                {
+                    // reveal mobs
+                    this.MOBS.gameObject.SetActive(true);
+                    // add listener to mobs
+                    this.AICount = 0;
+                    this.DeathCount = 0;
+                    foreach (AIWeaponWielder ai in this.MOBS.GetComponentsInChildren<AIWeaponWielder>(true))
+                    {
+                        this.AICount += 1;
+                        ai.OnDeath.Add(c => OnAIDeath(c));
+                    }
+                }
+            }
         }
 
         private void OnAIDeath(Combatant c)

@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using Utilities;
+using Loot;
 
 namespace Combat
 {
@@ -93,9 +94,10 @@ namespace Combat
         {
             // GET enemy combatant from the collisionInfo
             var isWeapon = other.GetComponent<Weapon>() != null;
+            var isLoot = other.GetComponent<PickupRadius>() != null;
             var isAmmo = other.GetComponent<Ammo>() != null;
             var isScanner = other.GetComponent<Structures.PlayerScanner>();
-            if (!isWeapon && !isAmmo && !isScanner)
+            if (!isWeapon && !isAmmo && !isScanner && !isLoot)
             {
                 var collisionCombatant = other.GetComponent<Combatant>();
                 var isOtherCombatant = collisionCombatant != null
@@ -107,9 +109,10 @@ namespace Combat
                 {
                     // Report the collision to the Combatant that shot the ammo.
                     if (this.Shooter != null)
-                    this.Shooter.OnAmmoCollision(other.gameObject.GetInstanceID());
+                        this.Shooter.OnAmmoCollision(other.gameObject.GetInstanceID());
                     // Destroy this gameobject.
-                    if(!this.isVariaPrefab && !piercingPowerUp)    Destroy(this.gameObject);
+                    if(!this.isVariaPrefab && !piercingPowerUp)
+                        Destroy(this.gameObject);
                 }
             }
         }

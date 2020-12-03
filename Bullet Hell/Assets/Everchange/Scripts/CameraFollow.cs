@@ -16,6 +16,10 @@ public class CameraFollow : MonoBehaviour
     //public float bottomLimit;
 
     //LateUpdates occurrs directly after Update
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void LateUpdate()
     {
         if (target != null)

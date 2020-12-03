@@ -3,11 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using Input;
 using Combat;
 using Combat.UI;
 using Loot;
+using Structures;
 
 
 [RequireComponent(typeof(WeaponWielder))]
@@ -42,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(this);
         // INITIALIZATIONS
         this.Direction = Vector2.zero;
         this.CursorScreenPosition = Vector2.zero;
@@ -211,8 +214,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnEnable() { this.Keybindings.Enable(); }
-    void OnDisable() { if (this.Keybindings != null) this.Keybindings.Disable(); }
+    void OnEnable() 
+    {
+        this.Keybindings.Enable(); 
+    }
+    void OnDisable() 
+    { 
+        if (this.Keybindings != null) this.Keybindings.Disable();
+    }
 
     public Vector2 GetDirection() { return this.Direction; }
     public Vector2 GetCursorPosition() { return this.CursorScreenPosition; }

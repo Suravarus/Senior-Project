@@ -6,7 +6,8 @@ namespace Structures
     {
         public void Start()
         {
-            this.SendMessageUpwards(nameof(IFloor.OnSpawnpointReady), this, SendMessageOptions.DontRequireReceiver);
+            var floor = GameObject.FindObjectOfType<Floor>();
+            floor.OnSpawnpointReady(this);
         }
     }
 }

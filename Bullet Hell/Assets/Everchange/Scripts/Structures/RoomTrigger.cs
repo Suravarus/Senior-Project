@@ -12,7 +12,7 @@ namespace Structures
         {
             if (other.CompareTag("Player"))
             {
-                Triggered.Invoke(this, new EventArgs());
+                Triggered?.Invoke(this, new EventArgs());
             }
                 
             
