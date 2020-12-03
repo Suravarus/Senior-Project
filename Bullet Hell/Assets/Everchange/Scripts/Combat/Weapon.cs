@@ -131,7 +131,7 @@ public class Weapon : GameItem, IWeapon
         if (this.WaitingToFire)
         {
             // UPDATE elapsed time since the last shot was fired (increate rate if we have the power up)
-            if (wielder.rateOfFireTimerTemp > 0)
+            if (this.Wielder != null && this.Wielder.IsAlive() && this.Wielder.rateOfFireTimerTemp > 0)
             {
                 this.TimeSinceFireRequest += (Time.deltaTime * wielder.rateOfFireTimerStrength) - this.TimeSinceFireRequest;
             }
@@ -298,7 +298,7 @@ public class Weapon : GameItem, IWeapon
     /// </summary>
     /// <param name="w">Weapon whose info will be shown in the Slot</param>
     /// <param name="s">Slot to be updated</param>
-    private static void UpdateAmmoSlot(Weapon w, Slot s)
+    public static void UpdateAmmoSlot(IWeapon w, Slot s)
     {
         if (w.InfiniteAmmo)
             s.SetText("INF");

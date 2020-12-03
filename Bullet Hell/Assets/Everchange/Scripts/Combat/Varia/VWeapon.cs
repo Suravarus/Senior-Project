@@ -34,13 +34,26 @@ namespace Combat.Varia
         // PROPERTIES
         private int _ammoCount;
         private float _fireDelay;
+        private Slot _uiAmmoSlot;
         // ACCESSORS
         public float Range { get; set; }
         private float BaseDamage { get; set; }
         public BasePattern[] Controllers { get; set; }
         private bool FlipEnabled { get; set; }
         private bool Flipped { get; set; }
-        public Slot UIAmmoSlot { get; set; }
+        public Slot UIAmmoSlot 
+        {
+            set
+            {
+                this._uiAmmoSlot = value;
+                if (this._uiAmmoSlot != null)
+                {
+                    Weapon.UpdateAmmoSlot(this, this._uiAmmoSlot);
+                }
+            }
+
+            get => this._uiAmmoSlot;
+        }
         public bool InfiniteAmmo { get; set; }
         public int AmmoCount
         {
@@ -217,13 +230,13 @@ namespace Combat.Varia
         protected virtual void FixedUpdate()
         {
             // FIXME this code is causing errors when dropping varia weapons.
-            //if (this.GetGunBarrel().transform.parent != null)
-            //{
-            //    this.Controllers[0].Pitch = this.transform.rotation.z;
-            //}
+            if (this.GetGunBarrel().transform.parent != null)
+            {
+                this.Controllers[0].Pitch = this.transform.rotation.z;
+            }
 
             // IF the weapon is waiting to fire:
-            if (this.WaitingToFire)
+            if (this.Wielder != null && this.Wielder.IsAlive() && this.WaitingToFire)
             {
                 // UPDATE elapsed time since the last shot was fired (increate rate if we have the power up)
                 if (this.Wielder.rateOfFireTimerTemp > 0)

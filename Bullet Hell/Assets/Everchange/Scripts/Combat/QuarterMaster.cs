@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Combat.UI;
+using Combat.Varia;
 using Loot;
 namespace Combat
 {
@@ -185,14 +186,28 @@ namespace Combat
 
         private void DropWeaponAt(IWeapon weapon, Vector2 position)
         {
+            var variaWeapon = weapon.GetGameObject().GetComponent<VWeapon>();
+               
             if (weapon.GetSpeaker() != null)
                 weapon.GetSpeaker().PlaySound(Audio.WeaponSounds.Sounds.Drop);
-            weapon.GetGameObject().transform.SetParent(null);
-            weapon.GetGameObject().transform.position = position;
+
+            if (variaWeapon == null)
+            {
+                weapon.GetGameObject().transform.SetParent(null);
+                weapon.GetGameObject().transform.position = position;
+            }
+
+            else
+            {
+                weapon.GetGunBarrel().transform.SetParent(null);
+                weapon.GetGunBarrel().transform.position = position;
+            }
+                
+            
             weapon.UIAmmoSlot = null;
 
             var collider = weapon.GetGameObject().GetComponent<Collider2D>();
-            if (collider != null) collider.enabled = true;
+            collider.enabled = true;
         }
 
         /// <summary>
