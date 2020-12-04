@@ -2095,7 +2095,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2889592713384878675}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2107,7 +2107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &1311200161167699306
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2216,7 +2216,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3094923765938182783}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2228,7 +2228,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &2305463899578744608
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2666,7 +2666,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3903768394138510698}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2678,7 +2678,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &5074259785416153681
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2787,7 +2787,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4021561959814153676}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2799,7 +2799,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &8401677826743445011
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2908,7 +2908,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4238555046447900010}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2920,7 +2920,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &2001680187970506857
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3165,7 +3165,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6976800873460627989}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3177,7 +3177,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &2064469568611590605
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3356,7 +3356,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7410889975459465066}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3368,7 +3368,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &1551669610762206072
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3554,7 +3554,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7456384401710023530}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3566,7 +3566,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &7456384401710023528
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3754,7 +3754,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7688117716586555628}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3766,7 +3766,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &1275518187609650687
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3893,7 +3893,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 344296
+  m_InstanceId: 391960
 --- !u!1 &8353477504338043189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4585,7 +4585,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 344358
+  m_InstanceId: 392022
 --- !u!1 &8353477505623635979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,7 +4784,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 344376
+  m_InstanceId: 392040
 --- !u!1 &8353477505867036899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,7 +5118,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 344402
+  m_InstanceId: 392066
 --- !u!1 &8654498043026231570
 GameObject:
   m_ObjectHideFlags: 0

@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 6613837134367072107}
   - component: {fileID: 6613837134367072106}
   - component: {fileID: 6613837134367072109}
+  - component: {fileID: 856309348169387125}
   m_Layer: 8
   m_Name: stoneBlocks
   m_TagString: Untagged
@@ -966,6 +967,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8371774, y: 0.79999995}
   m_EdgeRadius: 0
+--- !u!50 &856309348169387125
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837134367072111}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837134441620692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1118,7 @@ GameObject:
   - component: {fileID: 6613837134852229996}
   - component: {fileID: 6613837134852229999}
   - component: {fileID: 6613837134852229998}
+  - component: {fileID: 6829888846568166034}
   m_Layer: 8
   m_Name: stoneBlocks (2)
   m_TagString: Untagged
@@ -1242,6 +1265,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8371774, y: 0.79999995}
   m_EdgeRadius: 0
+--- !u!50 &6829888846568166034
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837134852229984}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837134923463264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1346,7 @@ GameObject:
   - component: {fileID: 6613837134933400320}
   - component: {fileID: 6613837134933400323}
   - component: {fileID: 6613837134933400322}
+  - component: {fileID: 5450033191643916531}
   m_Layer: 8
   m_Name: stoneBlocks
   m_TagString: Untagged
@@ -1448,6 +1493,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8371774, y: 0.79999995}
   m_EdgeRadius: 0
+--- !u!50 &5450033191643916531
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837134933400324}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837134934173639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1526,7 @@ GameObject:
   - component: {fileID: 6613837134934173635}
   - component: {fileID: 6613837134934173634}
   - component: {fileID: 6613837134934173637}
+  - component: {fileID: 4422014019864453611}
   m_Layer: 8
   m_Name: stoneBlocks (3)
   m_TagString: Untagged
@@ -1606,6 +1673,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.5080802}
   m_EdgeRadius: 0
+--- !u!50 &4422014019864453611
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837134934173639}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837134981383233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1828,7 @@ GameObject:
   - component: {fileID: 6613837135035842258}
   - component: {fileID: 6613837135035842261}
   - component: {fileID: 6613837135035842260}
+  - component: {fileID: 1034398199315395633}
   m_Layer: 8
   m_Name: stoneBlocks (3)
   m_TagString: Untagged
@@ -1886,6 +1975,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.5080802}
   m_EdgeRadius: 0
+--- !u!50 &1034398199315395633
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837135035842262}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837135070492333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +2008,7 @@ GameObject:
   - component: {fileID: 6613837135070492329}
   - component: {fileID: 6613837135070492328}
   - component: {fileID: 6613837135070492331}
+  - component: {fileID: 4879064032320861613}
   m_Layer: 8
   m_Name: stoneBlocks (1)
   m_TagString: Untagged
@@ -2044,6 +2155,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24000002, y: 0.5080802}
   m_EdgeRadius: 0
+--- !u!50 &4879064032320861613
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837135070492333}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837135119742261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,6 +2188,7 @@ GameObject:
   - component: {fileID: 6613837135119742257}
   - component: {fileID: 6613837135119742256}
   - component: {fileID: 6613837135119742259}
+  - component: {fileID: 6862284832316059977}
   m_Layer: 8
   m_Name: stoneBlocks (2)
   m_TagString: Untagged
@@ -2202,6 +2335,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8371774, y: 0.79999995}
   m_EdgeRadius: 0
+--- !u!50 &6862284832316059977
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837135119742261}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837135272543064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,6 +2481,7 @@ GameObject:
   - component: {fileID: 6613837135569922491}
   - component: {fileID: 6613837135569922490}
   - component: {fileID: 6613837135569922493}
+  - component: {fileID: 5640873816679944549}
   m_Layer: 8
   m_Name: stoneBlocks (1)
   m_TagString: Untagged
@@ -2473,6 +2628,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24000002, y: 0.5080802}
   m_EdgeRadius: 0
+--- !u!50 &5640873816679944549
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613837135569922495}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6613837135931306127
 GameObject:
   m_ObjectHideFlags: 0
