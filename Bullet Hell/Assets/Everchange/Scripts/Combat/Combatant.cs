@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Combat.UI;
 using Loot;
+using UnityEngine.SceneManagement;
 namespace Combat
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -214,9 +215,18 @@ namespace Combat
         /// </summary>
         public void Die()
         {
-            this.OnDie();
-            this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
+            
+            if (!this.gameObject.CompareTag("Player"))
+            {
+                this.OnDie();
+                this.gameObject.SetActive(false);
+                Destroy(this.gameObject);
+            }
+            else
+            {                
+                SceneManager.LoadScene(3);
+                this.Health = MaxHealth;
+            }
         }
 
         void OnTriggerEnter2D(Collider2D other)

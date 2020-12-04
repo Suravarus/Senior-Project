@@ -10,6 +10,7 @@ TagManager:
   - Regen
   - Coins
   - Ammo
+  - Augment
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - ND_UserBullet7
   - ND_UserBullet8
   - Terrain
-  - 
+  - Hazards
   - 
   - 
   - 
