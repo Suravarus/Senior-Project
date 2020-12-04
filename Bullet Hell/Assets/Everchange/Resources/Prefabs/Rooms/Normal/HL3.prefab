@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8696143066990910808}
   - component: {fileID: 6789729265323191530}
   - component: {fileID: 7754400208920208055}
+  - component: {fileID: 3706546562089945770}
   m_Layer: 8
   m_Name: bush-tall
   m_TagString: Untagged
@@ -109,6 +110,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.125, y: 0.8605287}
   m_EdgeRadius: 0
+--- !u!50 &3706546562089945770
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128103285328151323}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &159776387694250292
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +532,7 @@ GameObject:
   - component: {fileID: 4782052731846653939}
   - component: {fileID: 612406687825276240}
   - component: {fileID: 1574579729209011050}
+  - component: {fileID: 8474829585541778374}
   m_Layer: 8
   m_Name: bush-tall (1)
   m_TagString: Untagged
@@ -608,6 +631,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.125, y: 0.8605287}
   m_EdgeRadius: 0
+--- !u!50 &8474829585541778374
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999777243221193822}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1032232598237649486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2847,7 @@ GameObject:
   - component: {fileID: 8539167107659434022}
   - component: {fileID: 5662877907406784389}
   - component: {fileID: 1365077671845787022}
+  - component: {fileID: 341124257053182344}
   m_Layer: 8
   m_Name: tree-dried
   m_TagString: Untagged
@@ -2901,6 +2946,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2190409, y: 1.3891692}
   m_EdgeRadius: 0
+--- !u!50 &341124257053182344
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111006223882009976}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &3174181995770614931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3311,6 +3377,7 @@ GameObject:
   - component: {fileID: 6494759995641869033}
   - component: {fileID: 5760369690058356361}
   - component: {fileID: 2650726593040417766}
+  - component: {fileID: 4026477223299375029}
   m_Layer: 8
   m_Name: bush (6)
   m_TagString: Untagged
@@ -3399,6 +3466,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &4026477223299375029
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334662923185038802}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &3561861218973143211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4113,7 @@ GameObject:
   - component: {fileID: 7633970631036803530}
   - component: {fileID: 5033402652636472616}
   - component: {fileID: 8241103632159043321}
+  - component: {fileID: 8709407239630161519}
   m_Layer: 8
   m_Name: bush (2)
   m_TagString: Untagged
@@ -4113,6 +4202,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &8709407239630161519
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874516491686191399}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4141636099598663739
 GameObject:
   m_ObjectHideFlags: 0
@@ -6757,6 +6867,7 @@ GameObject:
   - component: {fileID: 7505532143167085813}
   - component: {fileID: 2750954820217440712}
   - component: {fileID: 2622435715315125512}
+  - component: {fileID: 8616579668593661336}
   m_Layer: 8
   m_Name: bush (1)
   m_TagString: Untagged
@@ -6845,6 +6956,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &8616579668593661336
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925577994359461171}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6072476535388974335
 GameObject:
   m_ObjectHideFlags: 0
@@ -9537,6 +9669,7 @@ GameObject:
   - component: {fileID: 7257896030272050695}
   - component: {fileID: 2645988863500948359}
   - component: {fileID: 7895764054670458095}
+  - component: {fileID: 4756218347199119695}
   m_Layer: 8
   m_Name: bush (4)
   m_TagString: Untagged
@@ -9625,6 +9758,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &4756218347199119695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430886384137389690}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7443968535567917669
 GameObject:
   m_ObjectHideFlags: 0
@@ -10139,6 +10293,7 @@ GameObject:
   - component: {fileID: 4839231870595214295}
   - component: {fileID: 3493960916749738407}
   - component: {fileID: 6176464901521832910}
+  - component: {fileID: 8820485155731243856}
   m_Layer: 8
   m_Name: bush (5)
   m_TagString: Untagged
@@ -10227,6 +10382,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &8820485155731243856
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737857248936122957}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7855210330380954848
 GameObject:
   m_ObjectHideFlags: 0
@@ -11738,6 +11914,7 @@ GameObject:
   - component: {fileID: 7723912608319724499}
   - component: {fileID: 8153363793125472215}
   - component: {fileID: 8683599571231986411}
+  - component: {fileID: 3049299794419070359}
   m_Layer: 8
   m_Name: tree-dried (1)
   m_TagString: Untagged
@@ -11836,6 +12013,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2190409, y: 1.3891692}
   m_EdgeRadius: 0
+--- !u!50 &3049299794419070359
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340028557004430386}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8349889549607312712
 GameObject:
   m_ObjectHideFlags: 0
@@ -12258,6 +12456,7 @@ GameObject:
   - component: {fileID: 6340956568457248491}
   - component: {fileID: 7974276749660217592}
   - component: {fileID: 1690326069532419743}
+  - component: {fileID: 1965783568382932389}
   m_Layer: 8
   m_Name: bush (7)
   m_TagString: Untagged
@@ -12346,6 +12545,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &1965783568382932389
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519684497520965823}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8560315532322732512
 GameObject:
   m_ObjectHideFlags: 0
@@ -12644,6 +12864,7 @@ GameObject:
   - component: {fileID: 762646049993070162}
   - component: {fileID: 7222250402592932772}
   - component: {fileID: 877223932173421427}
+  - component: {fileID: 831147128909633804}
   m_Layer: 8
   m_Name: bush
   m_TagString: Untagged
@@ -12732,6 +12953,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &831147128909633804
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8704321563512511391}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8711361223775798369
 GameObject:
   m_ObjectHideFlags: 0
@@ -13639,6 +13881,7 @@ GameObject:
   - component: {fileID: 2635207551522466341}
   - component: {fileID: 6528416040233450174}
   - component: {fileID: 8501580597133301500}
+  - component: {fileID: 6611300502738341494}
   m_Layer: 8
   m_Name: bush (3)
   m_TagString: Untagged
@@ -13727,6 +13970,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.525}
   serializedVersion: 2
   m_Radius: 0.90625
+--- !u!50 &6611300502738341494
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8968606071612055057}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &9026542089209166979
 GameObject:
   m_ObjectHideFlags: 0
