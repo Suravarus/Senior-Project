@@ -43,7 +43,7 @@ namespace Structures
             if (!this.AstarUpdated && this.Rooms.Count == this.NumberOfRooms)
             {
                 this.AstarUpdated = true;
-                AstarPath.active.Scan();
+                AstarPath.active?.Scan();
             }
         }
     }
