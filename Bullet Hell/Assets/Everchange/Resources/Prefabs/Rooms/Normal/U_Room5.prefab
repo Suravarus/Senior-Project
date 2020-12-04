@@ -6633,6 +6633,7 @@ GameObject:
   - component: {fileID: 8113573153394031065}
   - component: {fileID: 8113573153394031078}
   - component: {fileID: 8113573153394031079}
+  - component: {fileID: 128594105658457751}
   m_Layer: 8
   m_Name: Inner wall top
   m_TagString: Untagged
@@ -6779,6 +6780,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &128594105658457751
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573153394031077}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573153517860334
 GameObject:
   m_ObjectHideFlags: 0
@@ -7964,6 +7986,7 @@ GameObject:
   - component: {fileID: 8113573154252706041}
   - component: {fileID: 8113573154252705926}
   - component: {fileID: 8113573154252705927}
+  - component: {fileID: 8143009025900646906}
   m_Layer: 8
   m_Name: Inner wall right
   m_TagString: Untagged
@@ -8110,6 +8133,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &8143009025900646906
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573154252705925}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573154279752939
 GameObject:
   m_ObjectHideFlags: 0
@@ -8256,6 +8300,7 @@ GameObject:
   - component: {fileID: 8113573154311538330}
   - component: {fileID: 8113573154311538331}
   - component: {fileID: 8113573154311538328}
+  - component: {fileID: 811551069423109182}
   m_Layer: 8
   m_Name: Inner wall bottom
   m_TagString: Untagged
@@ -8402,6 +8447,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &811551069423109182
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573154311538342}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573154380164658
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,6 +8480,7 @@ GameObject:
   - component: {fileID: 8113573154380164662}
   - component: {fileID: 8113573154380164663}
   - component: {fileID: 8113573154380164660}
+  - component: {fileID: 20555622126489122}
   m_Layer: 8
   m_Name: Inner wall left
   m_TagString: Untagged
@@ -8560,6 +8627,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &20555622126489122
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573154380164658}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573154480212138
 GameObject:
   m_ObjectHideFlags: 0
@@ -8646,6 +8734,7 @@ GameObject:
   - component: {fileID: 8113573154506194059}
   - component: {fileID: 8113573154506194061}
   - component: {fileID: 8113573154506194058}
+  - component: {fileID: 1066196108293557329}
   m_Layer: 8
   m_Name: rock
   m_TagString: Untagged
@@ -8734,6 +8823,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.046948656, y: 0.83579016}
   m_Size: {x: 1.2329011, y: 1.1154684}
   m_Direction: 1
+--- !u!50 &1066196108293557329
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573154506194056}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573154581970140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9318,6 +9428,7 @@ GameObject:
   - component: {fileID: 8113573154845568705}
   - component: {fileID: 8113573154845568707}
   - component: {fileID: 8113573154845568704}
+  - component: {fileID: 6353818423090806567}
   m_Layer: 8
   m_Name: rock (1)
   m_TagString: Untagged
@@ -9406,6 +9517,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.046948656, y: 0.83579016}
   m_Size: {x: 1.2329011, y: 1.1154684}
   m_Direction: 1
+--- !u!50 &6353818423090806567
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113573154845568718}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8113573154850025675
 GameObject:
   m_ObjectHideFlags: 0

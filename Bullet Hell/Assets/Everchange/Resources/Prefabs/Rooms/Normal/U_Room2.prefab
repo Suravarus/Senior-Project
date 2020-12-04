@@ -4100,6 +4100,7 @@ GameObject:
   - component: {fileID: 4520535326396519778}
   - component: {fileID: 4520535326396519779}
   - component: {fileID: 4520535326396519804}
+  - component: {fileID: 1123441811403786157}
   m_Layer: 8
   m_Name: tree-dried (2)
   m_TagString: Untagged
@@ -4231,7 +4232,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 366266
+  m_InstanceId: 150300
+--- !u!50 &1123441811403786157
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520535326396519806}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4520535326399489410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,6 +4651,7 @@ GameObject:
   - component: {fileID: 4520535326474147800}
   - component: {fileID: 4520535326474147801}
   - component: {fileID: 4520535326474147802}
+  - component: {fileID: 598380180660483806}
   m_Layer: 8
   m_Name: Inner wall up
   m_TagString: Untagged
@@ -4775,6 +4798,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &598380180660483806
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520535326474147796}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4520535326609574003
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,6 +5143,7 @@ GameObject:
   - component: {fileID: 4520535326691603386}
   - component: {fileID: 4520535326691603387}
   - component: {fileID: 4520535326691603380}
+  - component: {fileID: 2330286432591284435}
   m_Layer: 8
   m_Name: tree-dried (1)
   m_TagString: Untagged
@@ -5230,7 +5275,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 366338
+  m_InstanceId: 150372
+--- !u!50 &2330286432591284435
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520535326691603382}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4520535326702382253
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,6 +6084,7 @@ GameObject:
   - component: {fileID: 4520535326861507340}
   - component: {fileID: 4520535326861507341}
   - component: {fileID: 4520535326861507342}
+  - component: {fileID: 5572595045005677646}
   m_Layer: 8
   m_Name: Inner wall down
   m_TagString: Untagged
@@ -6164,6 +6231,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4800003, y: 4.5389256}
   m_EdgeRadius: 0
+--- !u!50 &5572595045005677646
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520535326861507336}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4520535326933608276
 GameObject:
   m_ObjectHideFlags: 0
