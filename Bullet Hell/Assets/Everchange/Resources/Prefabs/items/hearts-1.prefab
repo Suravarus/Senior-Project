@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8998694013779310561}
   - component: {fileID: 4480484628391127937}
-  - component: {fileID: -9030610074576481877}
   - component: {fileID: -1968181523769024911}
   m_Layer: 0
   m_Name: hearts-1
@@ -84,20 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9030610074576481877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8741565108420698108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5e782b07064894ada5bc5b1e978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inShop: 1
-  Item_Rarity: 0
 --- !u!58 &-1968181523769024911
 CircleCollider2D:
   m_ObjectHideFlags: 0
