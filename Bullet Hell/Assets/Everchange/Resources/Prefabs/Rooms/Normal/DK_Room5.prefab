@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 393146108813926563}
   - component: {fileID: 393146108813926560}
   - component: {fileID: 393146108813926561}
+  - component: {fileID: 8597930560389514255}
   m_Layer: 8
   m_Name: tree-dried (1)
   m_TagString: Untagged
@@ -143,7 +144,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 184376
+  m_InstanceId: -122574
+--- !u!50 &8597930560389514255
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393146108813926591}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &393146108825115739
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +178,7 @@ GameObject:
   - component: {fileID: 393146108825115743}
   - component: {fileID: 393146108825115740}
   - component: {fileID: 393146108825115741}
+  - component: {fileID: 8515048171876829307}
   m_Layer: 8
   m_Name: tree-dried (2)
   m_TagString: Untagged
@@ -287,7 +310,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 184390
+  m_InstanceId: -122580
+--- !u!50 &8515048171876829307
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393146108825115739}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &393146108914250161
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,19 +501,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393146109538885483}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &393146109538885485
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -498,6 +542,7 @@ GameObject:
   - component: {fileID: 393146110368037014}
   - component: {fileID: 393146110368037015}
   - component: {fileID: 393146110368037012}
+  - component: {fileID: 4744543903972964500}
   m_Layer: 8
   m_Name: tree-dried
   m_TagString: Untagged
@@ -629,7 +674,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 184422
+  m_InstanceId: -122594
+--- !u!50 &4744543903972964500
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393146110368037010}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &393146110525372838
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +708,7 @@ GameObject:
   - component: {fileID: 393146110525372842}
   - component: {fileID: 393146110525372843}
   - component: {fileID: 393146110525372840}
+  - component: {fileID: 7117311236997184247}
   m_Layer: 8
   m_Name: tree-dried (3)
   m_TagString: Untagged
@@ -773,7 +840,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 184434
+  m_InstanceId: -122600
+--- !u!50 &7117311236997184247
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393146110525372838}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &725491540016105267
 GameObject:
   m_ObjectHideFlags: 0
