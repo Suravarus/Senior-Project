@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5003839948118269666}
   - component: {fileID: 4159670547475026155}
   - component: {fileID: 4159670545893793470}
+  - component: {fileID: -1340023934278202433}
   m_Layer: 0
   m_Name: Shield Augment
   m_TagString: Augment
@@ -141,3 +142,16 @@ MonoBehaviour:
   Item_Rarity: 0
   __classID: 3
   augmentType: 0
+--- !u!114 &-1340023934278202433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003839948118269676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0

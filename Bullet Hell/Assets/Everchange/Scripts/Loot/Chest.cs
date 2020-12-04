@@ -31,7 +31,10 @@ using UnityEngine;
             {
                 foreach (GameObject item in aPrefab)
                 {
+                if (item.tag != "Coins")
+                {
                     dropPool.Add(item);
+                }
                 }
             }
 
