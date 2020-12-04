@@ -181,8 +181,8 @@ public class PlayerMovement : MonoBehaviour
                     // get mouse position
                     Vector3 target = Camera.main.ScreenToWorldPoint(CursorScreenPosition);
                     // maintain the same z-value
-                    target.x += 0.7f;
-                    target.y -= 0.7f;
+                    target.x += 0.35f;
+                    target.y -= 0.35f;
                     target.z = this.Wielder.GetWeaponWrapper().transform.position.z;
 
                     // AIM weapon toward mouse location
