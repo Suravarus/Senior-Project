@@ -1917,6 +1917,7 @@ GameObject:
   - component: {fileID: 2747543910022709828}
   - component: {fileID: 2747543910022709827}
   - component: {fileID: 2747543910022709826}
+  - component: {fileID: 2827206596688277203}
   m_Layer: 8
   m_Name: tree-dried (1)
   m_TagString: Untagged
@@ -2048,7 +2049,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 362628
+  m_InstanceId: 454270
+--- !u!50 &2827206596688277203
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747543910022709824}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2747543910408887202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,6 +2083,7 @@ GameObject:
   - component: {fileID: 2747543910408887206}
   - component: {fileID: 2747543910408887205}
   - component: {fileID: 2747543910408887204}
+  - component: {fileID: 8878451218567568058}
   m_Layer: 8
   m_Name: tree-dried
   m_TagString: Untagged
@@ -2192,7 +2215,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 362644
+  m_InstanceId: 454286
+--- !u!50 &8878451218567568058
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747543910408887202}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2747543910728166947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,6 +2249,7 @@ GameObject:
   - component: {fileID: 2747543910728166951}
   - component: {fileID: 2747543910728166950}
   - component: {fileID: 2747543910728166949}
+  - component: {fileID: 1099173752526308213}
   m_Layer: 8
   m_Name: tree-dried (2)
   m_TagString: Untagged
@@ -2336,7 +2381,28 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 362658
+  m_InstanceId: 454300
+--- !u!50 &1099173752526308213
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747543910728166947}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2747543910962408380
 GameObject:
   m_ObjectHideFlags: 0
