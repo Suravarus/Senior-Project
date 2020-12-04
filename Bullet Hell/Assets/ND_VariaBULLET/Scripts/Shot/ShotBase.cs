@@ -207,29 +207,37 @@ namespace ND_VariaBULLET
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            // GET enemy combatant from the collisionInfo
-            var isWeapon = collision.gameObject.GetComponent<Weapon>() != null;
-            var isLoot = collision.gameObject.GetComponent<PickupRadius>() != null;
-            var isAmmo = collision.gameObject.GetComponent<IAmmo>() != null;
-            var isScanner = collision.gameObject.GetComponent<Structures.PlayerScanner>();
-            if (!isWeapon && !isAmmo && !isScanner && !isLoot)
+            // FIXME - added try catch as a temporary.
+            // This code was causing errors in boss script.
+            try
             {
-                var collisionCombatant = collision.gameObject.GetComponent<Combatant>();
-                var isOtherCombatant = collisionCombatant != null
-                    && collisionCombatant.gameObject.GetInstanceID() != this.Weapon.Wielder.gameObject.GetInstanceID();
-                var isEnemyCombatant = isOtherCombatant && collisionCombatant.CompareTag(this.Weapon.Wielder.EnemyTag);
-
-                // IF the other collider is not a Combatant, or it's an enemy Combatant
-                if (collisionCombatant == null || isEnemyCombatant)
+                // GET enemy combatant from the collisionInfo
+                var isWeapon = collision.gameObject.GetComponent<Weapon>() != null;
+                var isLoot = collision.gameObject.GetComponent<PickupRadius>() != null;
+                var isAmmo = collision.gameObject.GetComponent<IAmmo>() != null;
+                var isScanner = collision.gameObject.GetComponent<Structures.PlayerScanner>();
+                if (!isWeapon && !isAmmo && !isScanner && !isLoot)
                 {
-                    // Report the collision to the Combatant that shot the ammo.
-                    if (this.Shooter != null)
-                        this.Shooter.OnAmmoCollision(collision.gameObject.GetInstanceID());
-                    // Destroy this gameobject.
-                    //if (!this.isVariaPrefab && !piercingPowerUp)
-                    //    Destroy(this.gameObject);
-                    RePoolOrDestroy();
+                    var collisionCombatant = collision.gameObject.GetComponent<Combatant>();
+                    var isOtherCombatant = collisionCombatant != null
+                        && collisionCombatant.gameObject.GetInstanceID() != this.Weapon.Wielder.gameObject.GetInstanceID();
+                    var isEnemyCombatant = isOtherCombatant && collisionCombatant.CompareTag(this.Weapon.Wielder.EnemyTag);
+
+                    // IF the other collider is not a Combatant, or it's an enemy Combatant
+                    if (collisionCombatant == null || isEnemyCombatant)
+                    {
+                        // Report the collision to the Combatant that shot the ammo.
+                        if (this.Shooter != null)
+                            this.Shooter.OnAmmoCollision(collision.gameObject.GetInstanceID());
+                        // Destroy this gameobject.
+                        //if (!this.isVariaPrefab && !piercingPowerUp)
+                        //    Destroy(this.gameObject);
+                        RePoolOrDestroy();
+                    }
                 }
+            } catch(Exception ex)
+            {
+                RePoolOrDestroy();
             }
         }
 
