@@ -140,6 +140,7 @@ namespace Loot
                         if (keyDrop.inShop == true && Gold >= keyDrop.__itemPrice)
                         {
                             Gold -= keyDrop.__itemPrice;
+                            currencyUI.SetAmount(Gold);
                             _keyCount += 1;
                             keyUI.SetAmount(_keyCount);
                             Destroy(lootCollider.gameObject);
