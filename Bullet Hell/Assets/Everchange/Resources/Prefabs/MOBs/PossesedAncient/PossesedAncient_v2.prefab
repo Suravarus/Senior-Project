@@ -728,8 +728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonItems:
-  - {fileID: -3671069243730374986, guid: 5196fbbdea65cc94fba652b03c62a77e, type: 3}
-  - {fileID: -9030610074576481877, guid: bf0ba44a39165614e926941044c27274, type: 3}
+  - {fileID: 3169639170030125685, guid: 7ca27920721e0534d89fb75e454c6870, type: 3}
+  - {fileID: 460804985250438901, guid: c80f142c924a962439b1fcad0695d836, type: 3}
   uncommonItems: []
   rareItems: []
   weapons: []
