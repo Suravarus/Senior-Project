@@ -143,7 +143,7 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: -42428
+  m_InstanceId: 184376
 --- !u!1 &393146108825115739
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: -42434
+  m_InstanceId: 184390
 --- !u!1 &393146108914250161
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: -42448
+  m_InstanceId: 184422
 --- !u!1 &393146110525372838
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: -42454
+  m_InstanceId: 184434
 --- !u!1 &725491540016105267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,12 +2351,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748987808562596
 MonoBehaviour:
@@ -2450,12 +2450,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748987823735867
 MonoBehaviour:
@@ -2549,12 +2549,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748987889015666
 MonoBehaviour:
@@ -2648,12 +2648,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748988150532252
 MonoBehaviour:
@@ -2747,12 +2747,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748989475710068
 MonoBehaviour:
@@ -2846,12 +2846,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7266748989023521522
 MonoBehaviour:

@@ -5078,6 +5078,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1690273582947324464}
     m_Modifications:
+    - target: {fileID: 5696742601200238935, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6956956204253629672, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
       propertyPath: m_Name
       value: PossesedAncient_v2
@@ -5140,6 +5144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1690273582947324464}
     m_Modifications:
+    - target: {fileID: 5696742601200238935, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6956956204253629672, guid: 4b943e26e26cbbb4587b714d9d03e5d9, type: 3}
       propertyPath: m_Name
       value: PossesedAncient_v2 (1)
