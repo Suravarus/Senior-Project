@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 592709117131165968}
   - component: {fileID: 8426958880032284441}
   - component: {fileID: 8426958881753431653}
+  - component: {fileID: 948073049335598098}
   m_Layer: 0
   m_Name: RateOfFire Augment
   m_TagString: Augment
@@ -140,3 +141,16 @@ MonoBehaviour:
   Item_Rarity: 0
   __classID: 3
   augmentType: 1
+--- !u!114 &948073049335598098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592709117131165982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0

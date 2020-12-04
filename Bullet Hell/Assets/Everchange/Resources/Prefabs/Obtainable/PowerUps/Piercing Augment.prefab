@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8146412698280550730}
   - component: {fileID: 992749637836648259}
   - component: {fileID: 992749638282841663}
+  - component: {fileID: 9217637130915465869}
   m_Layer: 0
   m_Name: Piercing Augment
   m_TagString: Augment
@@ -140,3 +141,16 @@ MonoBehaviour:
   Item_Rarity: 0
   __classID: 3
   augmentType: 2
+--- !u!114 &9217637130915465869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146412698280550724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a28f71dd1daf04ea9c6b5031b5bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inShop: 0
