@@ -96,8 +96,9 @@ namespace Combat
             var isWeapon = other.GetComponent<Weapon>() != null;
             var isLoot = other.GetComponent<PickupRadius>() != null;
             var isAmmo = other.GetComponent<IAmmo>() != null;
+            var isHazard = LayerMask.LayerToName(other.gameObject.layer) == "Hazards";
             var isScanner = other.GetComponent<Structures.PlayerScanner>();
-            if (!isWeapon && !isAmmo && !isScanner && !isLoot)
+            if (!isWeapon && !isAmmo && !isScanner && !isLoot && !isHazard)
             {
                 var collisionCombatant = other.GetComponent<Combatant>();
                 var isOtherCombatant = collisionCombatant != null
