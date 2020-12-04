@@ -250,7 +250,7 @@ namespace Combat.AI
             if (this.RangedWeapon.InRange(enemy.GetBodyTransform(Combatant.BodyPart.Chest).position))
             {
                 // DONT charge at target
-                this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+                //this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
                 // SHOOT target 
                 this.ShootWeapon();
             } else // ELSE
@@ -287,13 +287,18 @@ namespace Combat.AI
         public override void OnAmmoCollision(int instanceID)
         {
             base.OnAmmoCollision(instanceID);
-            if (this.InCombat() && instanceID != this.CurrentTarget.gameObject.GetInstanceID())
+            if (this.InCombat())
             {
-                this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
-            } else
-            {
-                this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+                if (instanceID != this.CurrentTarget.gameObject.GetInstanceID())
+                {
+                    this.GetComponent<ShooterAI>().chargeAtTheTarget = true;
+                }
+                else
+                {
+                    this.GetComponent<ShooterAI>().chargeAtTheTarget = false;
+                }
             }
+            
         }
 
         public override void TakeDamage(IAmmo a)
