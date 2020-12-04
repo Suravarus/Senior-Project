@@ -67,7 +67,6 @@ namespace ProcGen
 
                 if (!repeat)
                 {
-                    this.ParentFloor.Rooms.Add(room);
                     Destroy(this.transform.GetChild(0).gameObject);
                     this.ActiveRoom = Instantiate(room, this.transform.position, Quaternion.identity);
                     this.ActiveRoom.RoomReady += SetRoomGates;
@@ -75,6 +74,9 @@ namespace ProcGen
                     Debug.Log($"acn {this.ActiveRoom.name}");
                 }
             }
+            
+            this.ParentFloor.Rooms.Add(this.ActiveRoom);
+
             if (setGates)
                 SetRoomGates();
         }
