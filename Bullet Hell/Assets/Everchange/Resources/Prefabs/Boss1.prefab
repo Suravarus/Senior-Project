@@ -1836,7 +1836,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 7cefe9e9e8c984bbd9ff43235be8f54f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   DefaultEmitter: 0
   sortLayer: 1
   PointScale: 0.2
-  pointDisplay: 0
+  pointDisplay: 2
   ExitPointOffset: 5
   ParentRotation: 0
   Pitch: 0

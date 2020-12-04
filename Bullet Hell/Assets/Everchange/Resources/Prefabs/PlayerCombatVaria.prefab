@@ -287,7 +287,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 8f5186c15ed0d0641be7a708c4be7568, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -378,8 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTag: Enemy
-  _health: 100
-  _maxHealth: 100
+  _health: 2000
+  _maxHealth: 2000
   shieldPowerUp: 0
   __healthBar: {fileID: 0}
   animator: {fileID: 333867401150948273}
@@ -407,7 +407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gold: 0
+  _keyCount: 1
   currencyUI: {fileID: 0}
+  keyUI: {fileID: 0}
 --- !u!114 &1410104939
 MonoBehaviour:
   m_ObjectHideFlags: 0
