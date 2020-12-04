@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 4888148921041991024}
   - component: {fileID: 4888148921041991026}
   - component: {fileID: 4888148921041991027}
+  - component: {fileID: 479667094539646376}
   m_Layer: 8
   m_Name: rock
   m_TagString: Untagged
@@ -562,6 +563,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.046948656, y: 0.83579016}
   m_Size: {x: 1.2329011, y: 1.1154684}
   m_Direction: 1
+--- !u!50 &479667094539646376
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888148921041991025}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4888148921096625903
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +635,7 @@ GameObject:
   - component: {fileID: 4888148921560405213}
   - component: {fileID: 4888148921560405215}
   - component: {fileID: 4888148921560405212}
+  - component: {fileID: 5882515339706420449}
   m_Layer: 8
   m_Name: sign
   m_TagString: Untagged
@@ -701,6 +724,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03140694, y: 0.40752637}
   m_Size: {x: 0.98204446, y: 1.5826056}
   m_Direction: 0
+--- !u!50 &5882515339706420449
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888148921560405026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4888148922164706094
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +882,7 @@ GameObject:
   - component: {fileID: 4888148922641182268}
   - component: {fileID: 4888148922641182270}
   - component: {fileID: 4888148922641182271}
+  - component: {fileID: 5924293902830519727}
   m_Layer: 8
   m_Name: rock (1)
   m_TagString: Untagged
@@ -926,6 +971,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.046948656, y: 0.83579016}
   m_Size: {x: 1.2329011, y: 1.1154684}
   m_Direction: 1
+--- !u!50 &5924293902830519727
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888148922641182269}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &5271572078393327109
 GameObject:
   m_ObjectHideFlags: 0
