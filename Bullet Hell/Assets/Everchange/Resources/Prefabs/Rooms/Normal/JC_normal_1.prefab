@@ -124,7 +124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: f1af0d5ba5f43bf4db369c115fd713f6, type: 3}
   m_Color: {r: 0.4509804, g: 0.4509804, b: 0.4509804, a: 1}
   m_FlipX: 0
@@ -454,12 +454,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209200616114651
 MonoBehaviour:
@@ -887,7 +887,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54176
+  m_InstanceId: 319396
 --- !u!1 &614209200646998892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,8 +1826,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1298856001
+  m_SortingLayer: 16
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: db07cc93e21f1457d9a1364618027fbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1899,7 +1899,7 @@ MonoBehaviour:
   - {x: -0.29711968, y: 2.1389189, z: 0}
   m_ShapePathHash: -1457789140
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54272
+  m_InstanceId: 319474
 --- !u!1 &614209200851229898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,12 +3764,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209201175046319
 MonoBehaviour:
@@ -4174,12 +4174,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209201199211638
 MonoBehaviour:
@@ -5366,7 +5366,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54616
+  m_InstanceId: 319768
 --- !u!1 &614209201555185545
 GameObject:
   m_ObjectHideFlags: 0
@@ -6541,7 +6541,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54740
+  m_InstanceId: 319862
 --- !u!1 &614209202016787522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7979,12 +7979,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209202254317183
 MonoBehaviour:
@@ -8553,12 +8553,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209202395126497
 MonoBehaviour:
@@ -9539,8 +9539,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1298856001
+  m_SortingLayer: 16
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2eb82ac66de274383af71b2eb2c75da0, type: 3}
   m_Color: {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
@@ -10377,12 +10377,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1298856001
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &614209202616164792
 MonoBehaviour:
@@ -10533,7 +10533,7 @@ MonoBehaviour:
   - {x: -1.3805268, y: 0.20657748, z: 0}
   m_ShapePathHash: 222916331
   m_Mesh: {fileID: 0}
-  m_InstanceId: 55140
+  m_InstanceId: 320198
 --- !u!1 &614209202673434921
 GameObject:
   m_ObjectHideFlags: 0
